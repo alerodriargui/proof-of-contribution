@@ -1,0 +1,6 @@
+/.env
+/*_merged_pr_authors*.csv
+/*_merged_prs.csv
+/smoke_*.csv
+__pycache__/
+*.pyc

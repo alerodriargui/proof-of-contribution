@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Frequently asked questions about Proof of Contribution and its open-source crypto contribution data."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="FAQ | Proof of Contribution" />
+    <meta
+      property="og:description"
+      content="Frequently asked questions about Proof of Contribution and its open-source crypto contribution data."
+    />
+    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ | Proof of Contribution" />
+    <meta
+      name="twitter:description"
+      content="Frequently asked questions about Proof of Contribution and its open-source crypto contribution data."
+    />
+    <meta name="twitter:image" content="./assets/poc-logo.svg" />
+    <title>FAQ | Proof of Contribution</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css?v=20260621-1" />
+    <script src="./theme.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <div class="brand-copy">
+          <p class="eyebrow">A proof-of-contribution layer for open-source ecosystems.</p>
+          <h2>Proof of Contribution</h2>
+        </div>
+      </div>
+      <div class="header-side">
+        <nav class="header-nav" aria-label="Project">
+          <a href="./">Dashboard</a>
+          <a href="./stats.html">Statistics</a>
+          <a href="./about.html">About</a>
+          <a
+            class="repo-link"
+            href="https://github.com/alerodriargui/crypto-devs-counter"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub Repository"
+          >
+            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+          </a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell info-shell">
+      <section class="faq-section standalone-faq" aria-labelledby="faqTitle">
+        <div class="section-head">
+          <h2 id="faqTitle">FAQ</h2>
+          <span>Project notes</span>
+        </div>
+        <div class="faq-grid">
+          <details open>
+            <summary>What counts as contribution?</summary>
+            <p>
+              The current dataset counts merged pull requests, grouped by contributor,
+              organization, and project.
+            </p>
+          </details>
+          <details>
+            <summary>Why crypto ecosystems?</summary>
+            <p>
+              Crypto infrastructure is built in public across many repositories, so merged
+              open-source work is a useful signal for contributor discovery.
+            </p>
+          </details>
+          <details>
+            <summary>Is the project open source?</summary>
+            <p>
+              Yes. The dashboard and scripts live in the public repository linked in the header.
+            </p>
+          </details>
+          <details>
+            <summary>Can the methodology evolve?</summary>
+            <p>
+              Yes. Future versions can add richer signals, but the baseline stays simple:
+              visible work merged into public repositories.
+            </p>
+          </details>
+          <details>
+            <summary>Why merged pull requests?</summary>
+            <p>
+              Merged pull requests are easy to audit, reproducible through GitHub data, and
+              strongly tied to accepted work in a project.
+            </p>
+          </details>
+          <details>
+            <summary>Where is the source code?</summary>
+            <p>
+              The source is available from the Repository link in the header.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+    </footer>
+  </body>
+</html>

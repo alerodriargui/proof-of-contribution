@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Statistics & charts for merged pull requests, contributors activity across crypto open-source ecosystems over time."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Proof of Contribution – Statistics" />
+    <meta
+      property="og:description"
+      content="Time-series charts for PR activity and contributor growth across crypto open-source networks."
+    />
+    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Proof of Contribution – Statistics" />
+    <meta
+      name="twitter:description"
+      content="Time-series charts for PR activity and contributor growth across crypto open-source networks."
+    />
+    <meta name="twitter:image" content="./assets/poc-logo.svg" />
+    <title>Statistics – Proof of Contribution</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css?v=20260621-1" />
+    <link rel="stylesheet" href="./stats.css" />
+    <script src="./theme.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <div class="brand-copy">
+          <p class="eyebrow">A proof-of-contribution layer for open-source ecosystems.</p>
+          <h2>Proof of Contribution</h2>
+        </div>
+      </div>
+      <div class="header-side">
+        <nav class="header-nav" aria-label="Project">
+          <a href="./">Dashboard</a>
+          <a href="./stats.html" aria-current="page">Statistics</a>
+          <a href="./about.html">About</a>
+          <a
+            class="repo-link"
+            href="https://github.com/alerodriargui/crypto-devs-counter"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub Repository"
+          >
+            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+          </a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </nav>
+        <div class="status" id="dataStatus" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </header>
+
+    <main class="shell">
+
+      <!-- Time range + org selector toolbar -->
+      <section class="stats-toolbar" aria-label="Chart filters">
+        <div class="stats-toolbar-left">
+          <div class="time-filter-group" role="group" aria-label="Time range">
+            <button class="time-btn" data-range="7"   id="range7">7D</button>
+            <button class="time-btn" data-range="30"  id="range30">1M</button>
+            <button class="time-btn" data-range="90"  id="range90">3M</button>
+            <button class="time-btn" data-range="180" id="range180">6M</button>
+            <button class="time-btn" data-range="365" id="range365">1Y</button>
+            <button class="time-btn active" data-range="all" id="rangeAll">All</button>
+          </div>
+
+          <div class="granularity-group" role="group" aria-label="Granularity">
+            <button class="gran-btn" data-gran="day"   id="granDay">Day</button>
+            <button class="gran-btn" data-gran="week"  id="granWeek">Week</button>
+            <button class="gran-btn active" data-gran="month" id="granMonth">Month</button>
+          </div>
+        </div>
+
+        <div class="stats-toolbar-right">
+          <!-- Network toggle pills -->
+          <div class="network-toggles" id="networkToggles" role="group" aria-label="Network filter">
+            <!-- filled by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Loading / error status -->
+      <div class="stats-load-state" id="statsLoadState" aria-live="polite">
+        <div class="spinner" id="spinner"></div>
+        <span id="loadLabel">Loading data…</span>
+      </div>
+
+      <!-- Charts grid -->
+      <div class="charts-grid" id="chartsGrid" hidden>
+
+        <!-- 1. Merged PRs per network over time -->
+        <section class="chart-card" aria-labelledby="chartMergedPrsTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartMergedPrsTitle">Merged PRs per Network</h2>
+              <p class="chart-subtitle">Number of pull requests merged each period, broken down by network</p>
+            </div>
+            <span class="chart-badge" id="badgeMergedPrs">–</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartMergedPrs" role="img" aria-label="Merged PRs per network over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 2. New contributors -->
+        <section class="chart-card" aria-labelledby="chartNewContribTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartNewContribTitle">New Contributors</h2>
+              <p class="chart-subtitle">First-time contributors appearing each period</p>
+            </div>
+            <span class="chart-badge" id="badgeNewContrib">–</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartNewContrib" role="img" aria-label="New contributors over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 3. Total (cumulative) contributors -->
+        <section class="chart-card" aria-labelledby="chartTotalContribTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartTotalContribTitle">Total Contributors</h2>
+              <p class="chart-subtitle">Cumulative unique contributors across all networks</p>
+            </div>
+            <span class="chart-badge" id="badgeTotalContrib">–</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartTotalContrib" role="img" aria-label="Cumulative contributors over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 4. Total PRs all orgs combined -->
+        <section class="chart-card" aria-labelledby="chartTotalPrsTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartTotalPrsTitle">Total Merged PRs</h2>
+              <p class="chart-subtitle">All networks combined – cumulative PR count over time</p>
+            </div>
+            <span class="chart-badge" id="badgeTotalPrs">–</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartTotalPrs" role="img" aria-label="Total merged PRs over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 5. Contributor Experience Tiers -->
+        <section class="chart-card" aria-labelledby="chartContribTiersTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartContribTiersTitle">Contributor Experience</h2>
+              <p class="chart-subtitle">Distribution of developers by total PRs merged</p>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartContribTiers" role="img" aria-label="Contributor experience tiers"></canvas>
+          </div>
+        </section>
+
+        <!-- 6. Network Share -->
+        <section class="chart-card" aria-labelledby="chartNetworkShareTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartNetworkShareTitle">Network Market Share</h2>
+              <p class="chart-subtitle">Distribution of total merged PRs across all ecosystems</p>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartNetworkShare" role="img" aria-label="Network market share"></canvas>
+          </div>
+        </section>
+
+        <!-- 7. Multi-network Contributors -->
+        <section class="chart-card" aria-labelledby="chartMultiNetworkTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartMultiNetworkTitle">Ecosystem Loyalty</h2>
+              <p class="chart-subtitle">Contributors active in 1 vs multiple networks</p>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartMultiNetwork" role="img" aria-label="Ecosystem loyalty"></canvas>
+          </div>
+        </section>
+
+        <!-- 8. Activity by Day of the Week -->
+        <section class="chart-card" aria-labelledby="chartDayOfWeekTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartDayOfWeekTitle">Day of the Week Activity</h2>
+              <p class="chart-subtitle">Average PRs merged by day of the week</p>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartDayOfWeek" role="img" aria-label="Activity by day of the week"></canvas>
+          </div>
+        </section>
+
+      </div><!-- /charts-grid -->
+
+    </main>
+
+    <footer class="site-footer">
+      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+    </footer>
+
+    <!-- Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="./stats.js?v=20260619-2"></script>
+  </body>
+</html>

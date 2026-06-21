@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Proof of Contribution tracks merged pull requests across open-source crypto projects."
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Proof of Contribution" />
+    <meta
+      property="og:description"
+      content="A public contribution map for crypto builders and open-source ecosystems."
+    />
+    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Proof of Contribution" />
+    <meta
+      name="twitter:description"
+      content="A public contribution map for crypto builders and open-source ecosystems."
+    />
+    <meta name="twitter:image" content="./assets/poc-logo.svg" />
+    <title>Proof of Contribution</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css?v=20260621-1" />
+    <script src="./theme.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <div class="brand-copy">
+          <p class="eyebrow">A proof-of-contribution layer for open-source ecosystems.</p>
+          <h2>Proof of Contribution</h2>
+        </div>
+      </div>
+      <div class="header-side">
+        <nav class="header-nav" aria-label="Project">
+          <a href="./" aria-current="page">Dashboard</a>
+          <a href="./stats.html">Statistics</a>
+          <a href="./about.html">About</a>
+          <a
+            class="repo-link"
+            href="https://github.com/alerodriargui/crypto-devs-counter"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub Repository"
+          >
+            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+          </a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </nav>
+        <div class="status" id="dataStatus" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <section class="toolbar" aria-label="Filters">
+        <label class="field search-field">
+          <span>User</span>
+          <div class="search-input-wrap">
+            <input id="userSearch" type="search" autocomplete="off" placeholder="Search Github @" />
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Organization</span>
+          <select id="orgFilter">
+            <option value="all">All organizations</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Project</span>
+          <select id="projectFilter">
+            <option value="all">All projects</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Sort</span>
+          <select id="sortMode">
+            <option value="prs">Most PRs</option>
+            <option value="projects">Most projects</option>
+            <option value="user">User A-Z</option>
+          </select>
+        </label>
+
+        <label class="check">
+          <input id="hideBots" type="checkbox" />
+          <span>Hide bots</span>
+        </label>
+      </section>
+
+      <div class="legend-row" aria-label="Legend">
+        <span class="legend-item">
+          <span class="legend-swatch bot-swatch" aria-hidden="true"></span>
+          Bot accounts are marked as BOT.
+        </span>
+        <span class="legend-item">
+          <span class="legend-swatch ghost-swatch" aria-hidden="true"></span>
+          GHOST is GitHub's placeholder for deleted or unavailable users.
+        </span>
+      </div>
+
+      <section class="metrics" aria-label="Summary">
+        <div class="metric metric-branded">
+          <img src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+          <span>PRs</span>
+          <strong id="metricPrs">0</strong>
+        </div>
+        <div class="metric">
+          <span>Users</span>
+          <strong id="metricUsers">0</strong>
+        </div>
+        <div class="metric">
+          <span>Projects</span>
+          <strong id="metricProjects">0</strong>
+        </div>
+        <div class="metric">
+          <span>Organizations</span>
+          <strong id="metricOrgs">0</strong>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel main-panel">
+          <div class="panel-head">
+            <h2>Contributors</h2>
+            <span id="resultCount">0 rows</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Organization</th>
+                  <th class="number">PRs</th>
+                  <th class="number">Projects</th>
+                  <th>Top project</th>
+                </tr>
+              </thead>
+              <tbody id="developerRows"></tbody>
+            </table>
+          </div>
+          <div class="pagination" aria-label="Contributors pagination">
+            <label class="page-size">
+              <span>Rows</span>
+              <select id="pageSize">
+                <option value="50">50</option>
+                <option value="100" selected>100</option>
+                <option value="250">250</option>
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+              </select>
+            </label>
+            <div class="page-controls">
+              <button id="prevPage" type="button">Previous</button>
+              <span id="pageInfo">Page 1 of 1</span>
+              <button id="nextPage" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+    </footer>
+
+    <script src="./app.js?v=20260619-14"></script>
+  </body>
+</html>

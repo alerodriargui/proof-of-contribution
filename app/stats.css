@@ -1,0 +1,256 @@
+/* ====================================================
+   stats.css — Statistics page styles
+   ==================================================== */
+
+/* ── Stats toolbar ─────────────────────────────────── */
+.stats-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 18px 0 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 28px;
+}
+
+.stats-toolbar-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stats-toolbar-right {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Time range pills ────────────────────────────────── */
+.time-filter-group,
+.granularity-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(20, 34, 52, 0.05);
+}
+
+.time-btn,
+.gran-btn {
+  min-width: 42px;
+  height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+}
+
+.time-btn:hover,
+.gran-btn:hover {
+  background: var(--panel-strong);
+  color: var(--ink);
+}
+
+.time-btn.active,
+.gran-btn.active {
+  background: var(--proof);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.28);
+}
+
+/* ── Network toggle pills ────────────────────────────── */
+.network-toggles {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.net-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 11px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 800;
+  transition: opacity 0.15s, box-shadow 0.15s, border-color 0.15s;
+  background: var(--panel);
+  color: var(--muted);
+}
+
+.net-toggle.active {
+  opacity: 1;
+  border-color: currentColor;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.net-toggle:not(.active) {
+  opacity: 0.45;
+  border-color: var(--line);
+}
+
+.net-toggle .net-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: 0 0 auto;
+}
+
+/* ── Load state ─────────────────────────────────────── */
+.stats-load-state {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 48px 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+  justify-content: center;
+}
+
+.stats-load-state[hidden] {
+  display: none;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--line);
+  border-top-color: var(--proof);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  flex: 0 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Charts grid ────────────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.charts-grid[hidden] {
+  display: none;
+}
+
+/* ── Chart card ─────────────────────────────────────── */
+.chart-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(20, 34, 52, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+
+.chart-card:hover {
+  box-shadow: 0 16px 48px rgba(20, 34, 52, 0.11);
+}
+
+.chart-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 22px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chart-card-head h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--ink-strong);
+  margin-bottom: 3px;
+}
+
+.chart-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.4;
+}
+
+.chart-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.1);
+  color: var(--proof);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.chart-wrap {
+  flex: 1;
+  position: relative;
+  padding: 18px 22px 18px;
+}
+
+.chart-wrap canvas {
+  display: block;
+  width: 100% !important;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-full {
+    grid-column: auto;
+  }
+
+  .stats-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats-toolbar-right {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .time-btn,
+  .gran-btn {
+    min-width: 36px;
+    padding: 0 7px;
+    font-size: 0.78rem;
+  }
+
+  .chart-wrap {
+    padding-inline: 10px;
+  }
+
+  .chart-card-head {
+    padding-inline: 14px;
+  }
+}

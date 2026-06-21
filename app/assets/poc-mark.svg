@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 116" role="img" aria-labelledby="title desc">
+  <title id="title">Proof of Contribution mark</title>
+  <desc id="desc">Networked Ethereum-inspired proof of contribution symbol.</desc>
+  <defs>
+    <linearGradient id="lineGradient" x1="28" y1="4" x2="68" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#9385ff"/>
+      <stop offset="0.48" stop-color="#706cc0"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="nodeGradient" x1="20" y1="8" x2="74" y2="108" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="0.42" stop-color="#746ed3"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="leftFacet" x1="9" y1="64" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.46" stop-color="#b8bec8"/>
+      <stop offset="1" stop-color="#4b5563"/>
+    </linearGradient>
+    <linearGradient id="rightFacet" x1="87" y1="64" x2="46" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="0.46" stop-color="#c4cad4"/>
+      <stop offset="1" stop-color="#4b5563"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-15%" width="140%" height="135%" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1f2937" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#softShadow)">
+    <path d="M48 8 8 50v18l40 40 40-40V50L48 8Z" stroke="url(#lineGradient)" stroke-width="3.8"/>
+    <path d="M48 8v30M48 38 28 58M48 38l20 20M28 58v14l20 20M68 58v14L48 92M48 92v18" stroke="url(#lineGradient)" stroke-width="6.2"/>
+    <path d="M8 68 48 104 88 68" stroke="#111827" stroke-width="3.2"/>
+    <path d="M20 66 8 78M76 66l12 12" stroke="#4b5563" stroke-width="3"/>
+  </g>
+  <path d="m48 104-39-26 39 14 39-14-39 26Z" fill="#111827" opacity="0.14"/>
+  <path d="m48 92-39-14 39 28V92Z" fill="url(#leftFacet)" opacity="0.88"/>
+  <path d="m48 92 39-14-39 28V92Z" fill="url(#rightFacet)" opacity="0.82"/>
+  <path d="m48 92-22-8 22 16 22-16-22 8Z" fill="#e5e7eb" opacity="0.66"/>
+  <g fill="url(#nodeGradient)">
+    <circle cx="48" cy="8" r="7.5"/>
+    <circle cx="8" cy="50" r="7.5"/>
+    <circle cx="88" cy="50" r="7.5"/>
+    <circle cx="28" cy="58" r="8.5"/>
+    <circle cx="68" cy="58" r="8.5"/>
+    <circle cx="8" cy="68" r="7.5"/>
+    <circle cx="88" cy="68" r="7.5"/>
+    <circle cx="48" cy="108" r="7.5"/>
+  </g>
+</svg>
