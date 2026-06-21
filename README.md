@@ -1,4 +1,4 @@
-# crypto-devs-counter
+# Proof of Contribution
 
 Local dashboard for exploring merged pull request authors in crypto GitHub orgs.
 
@@ -69,6 +69,32 @@ The app reads all twelve CSV files when they exist and combines them in the UI:
 `uniswap_merged_prs.csv`, `ripple_merged_prs.csv`, `bnb_merged_prs.csv`,
 `doge_merged_prs.csv`, `hype_merged_prs.csv`, `tron_merged_prs.csv`,
 `cardano_merged_prs.csv`, `stellar_merged_prs.csv`, and `link_merged_prs.csv`.
+
+## Deploy on Render
+
+This repo is a static site. The included `render.yaml` publishes the repository
+root and redirects `/` to `/app/`.
+
+In the Render dashboard, create a new Blueprint from this repository. If you
+create a Static Site manually instead, use:
+
+```text
+Build Command: echo "No build step required"
+Publish Directory: .
+```
+
+Do not set the publish directory to `app`, because the dashboard loads CSV files
+from `data/`.
+
+The deployed app will be available at:
+
+```text
+https://proof-of-contribution.onrender.com/app/
+```
+
+Render will serve the CSV files already committed in `data/`. To refresh the
+data, regenerate the CSVs locally with `ethereum_pr_counter.py`, commit the new
+files, and push. Render will redeploy from the new commit.
 
 ## Smoke Test
 

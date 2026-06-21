@@ -127,7 +127,7 @@ def load_dotenv(path: str = ENV_FILE) -> None:
 def build_headers(token: str | None) -> dict[str, str]:
     headers = {
         "Accept": "application/vnd.github+json",
-        "User-Agent": "crypto-devs-counter",
+        "User-Agent": "proof-of-contribution",
         "X-GitHub-Api-Version": "2022-11-28",
     }
     if token:
