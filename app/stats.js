@@ -251,13 +251,14 @@ function buildTimeSeries() {
 
   const tierData = Object.keys(tiers).map(k => ({ label: k, value: tiers[k] }));
 
-  // ── 6. Network Share ─────────────────────────────────
+  // ── 6. Developers by Network ─────────────────────────
   const networkShare = NETWORKS.map(net => {
     if (!activeOrgs.has(net.id)) return { label: net.label, value: 0, color: net.color };
-    let total = 0;
-    const days = aggregatedPrs.get(net.id);
-    if (days) days.forEach(c => total += c);
-    return { label: net.label, value: total, color: net.color };
+    let developers = 0;
+    statsState.userData.forEach((data) => {
+      if (data.orgs.has(net.id)) developers++;
+    });
+    return { label: net.label, value: developers, color: net.color };
   }).filter(n => n.value > 0);
 
   // ── 7. Loyalty (Multi-network) ───────────────────────
@@ -531,7 +532,16 @@ function renderCharts() {
     options: {
       aspectRatio: 1.5,
       plugins: {
-        legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } }
+        legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              const label = ctx.label || "";
+              const value = ctx.parsed || 0;
+              return ` ${label}: ${fmt(value)} developers`;
+            },
+          },
+        },
       }
     }
   });
