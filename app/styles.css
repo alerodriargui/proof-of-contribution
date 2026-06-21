@@ -856,6 +856,8 @@ select:focus {
 .tag.bnb { background: #fff7e8; color: #e39c0d; }
 .tag.link,
 .tag.smartcontractkit { background: #edf3ff; color: #2a5ada; }
+.tag.solana,
+.tag.solana-labs { background: #e7fff6; color: #087a5b; }
 
 .tag.stellar { background: #000000; color: #ffffff; }
 
@@ -870,6 +872,8 @@ select:focus {
 .dark .tag.bnb { background: rgba(227, 156, 13, 0.1); color: #fbbf24; }
 .dark .tag.link,
 .dark .tag.smartcontractkit { background: rgba(42, 90, 218, 0.16); color: #93c5fd; }
+.dark .tag.solana,
+.dark .tag.solana-labs { background: rgba(20, 241, 149, 0.12); color: #5eead4; }
 .dark .tag.plus-tag { background: rgba(255, 255, 255, 0.05); color: var(--muted); border-color: rgba(255, 255, 255, 0.1); }
 
 .faq-section {

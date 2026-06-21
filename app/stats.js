@@ -21,6 +21,7 @@ const NETWORKS = [
   { id: "cardano",  label: "Cardano",     color: "#0033ad" },
   { id: "stellar",  label: "Stellar",     color: "#000000" },
   { id: "link",     label: "Chainlink",   color: "#2a5ada" },
+  { id: "solana",   label: "Solana",      color: "#14f195" },
 ];
 
 // ── Data sources (same as app.js) ────────────────────

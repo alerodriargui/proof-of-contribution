@@ -11,6 +11,7 @@ const SOURCES = [
   { url: "../data/cardano_merged_prs.csv", kind: "pulls", org: "cardano" },
   { url: "../data/stellar_merged_prs.csv", kind: "pulls", org: "stellar" },
   { url: "../data/link_merged_prs.csv", kind: "pulls", org: "link" },
+  { url: "../data/solana_merged_prs.csv", kind: "pulls", org: "solana" },
   { url: "../data/crypto_merged_prs.csv", kind: "pulls" },
   { url: "../data/crypto_merged_pr_authors_by_project.csv", kind: "project" },
   { url: "../data/crypto_merged_pr_authors.csv", kind: "summary" },
@@ -268,6 +269,8 @@ function orgLabel(org) {
     stellar: "Stellar",
     link: "Chainlink",
     smartcontractkit: "Chainlink",
+    solana: "Solana",
+    "solana-labs": "Solana",
   };
   const key = (org || "").toLowerCase();
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));

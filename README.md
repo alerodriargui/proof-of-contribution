@@ -17,9 +17,10 @@ python .\ethereum_pr_counter.py --org tronprotocol --events-only --pr-output tro
 python .\ethereum_pr_counter.py --org cardano-foundation --events-only --pr-output cardano_merged_prs.csv
 python .\ethereum_pr_counter.py --org stellar --events-only --pr-output stellar_merged_prs.csv
 python .\ethereum_pr_counter.py --org smartcontractkit --events-only --pr-output link_merged_prs.csv
+python .\ethereum_pr_counter.py --org solana-labs --events-only --pr-output solana_merged_prs.csv
 ```
 
-That gives you twelve CSV files:
+That gives you thirteen CSV files:
 
 ```text
 ethereum_merged_prs.csv
@@ -34,6 +35,7 @@ tron_merged_prs.csv
 cardano_merged_prs.csv
 stellar_merged_prs.csv
 link_merged_prs.csv
+solana_merged_prs.csv
 ```
 
 Each row is one merged PR, including `merged_at` and `merged_date`, so the app
@@ -64,11 +66,12 @@ Open:
 http://localhost:8000/app/
 ```
 
-The app reads all twelve CSV files when they exist and combines them in the UI:
+The app reads all thirteen CSV files when they exist and combines them in the UI:
 `ethereum_merged_prs.csv`, `bitcoin_merged_prs.csv`, `aave_merged_prs.csv`,
 `uniswap_merged_prs.csv`, `ripple_merged_prs.csv`, `bnb_merged_prs.csv`,
 `doge_merged_prs.csv`, `hype_merged_prs.csv`, `tron_merged_prs.csv`,
-`cardano_merged_prs.csv`, `stellar_merged_prs.csv`, and `link_merged_prs.csv`.
+`cardano_merged_prs.csv`, `stellar_merged_prs.csv`, `link_merged_prs.csv`, and
+`solana_merged_prs.csv`.
 
 ## Deploy on Render
 
