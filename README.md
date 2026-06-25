@@ -63,6 +63,12 @@ python -m http.server 8000
 Open:
 
 ```text
+http://localhost:8000/
+```
+
+The repository root serves the public landing page. The interactive dashboard is at:
+
+```text
 http://localhost:8000/app/
 ```
 
@@ -76,7 +82,7 @@ The app reads all thirteen CSV files when they exist and combines them in the UI
 ## Deploy on Render
 
 This repo is a static site. The included `render.yaml` publishes the repository
-root and redirects `/` to `/app/`.
+root. The landing page is served from `/` and the dashboard from `/app/`.
 
 In the Render dashboard, create a new Blueprint from this repository. If you
 create a Static Site manually instead, use:
@@ -92,6 +98,7 @@ from `data/`.
 The deployed app will be available at:
 
 ```text
+https://proof-of-contribution.onrender.com/
 https://proof-of-contribution.onrender.com/app/
 ```
 

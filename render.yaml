@@ -4,7 +4,3 @@ services:
     runtime: static
     buildCommand: echo "No build step required"
     staticPublishPath: .
-    routes:
-      - type: redirect
-        source: /
-        destination: /app/
