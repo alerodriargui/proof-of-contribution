@@ -10,6 +10,7 @@ import os
 import sys
 import time
 from collections import Counter, defaultdict
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from http.client import IncompleteRead
 from pathlib import Path
@@ -81,6 +82,23 @@ def parse_args() -> argparse.Namespace:
         type=float,
         default=0.1,
         help="Seconds to pause between API requests. Default: 0.1",
+    )
+    parser.add_argument(
+        "--incremental",
+        action="store_true",
+        help=(
+            "Keep the existing PR CSV and fetch only recently updated pull requests. "
+            "Falls back to a full scan when the output file does not exist."
+        ),
+    )
+    parser.add_argument(
+        "--overlap-hours",
+        type=float,
+        default=48,
+        help=(
+            "Hours to look back from the newest existing merged PR in incremental mode. "
+            "Default: 48"
+        ),
     )
     return parser.parse_args()
 
@@ -273,6 +291,10 @@ def github_get_paginated(
     return items
 
 
+def parse_github_datetime(value: str) -> datetime:
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
 def fetch_repositories(
     org: str, headers: dict[str, str], sleep_seconds: float
 ) -> list[dict[str, Any]]:
@@ -286,15 +308,41 @@ def fetch_repositories(
 
 
 def fetch_closed_pull_requests(
-    org: str, repo: str, headers: dict[str, str], sleep_seconds: float
+    org: str,
+    repo: str,
+    headers: dict[str, str],
+    sleep_seconds: float,
+    updated_since: datetime | None = None,
 ) -> list[dict[str, Any]]:
     url = f"{API_ROOT}/repos/{org}/{repo}/pulls"
-    return github_get_paginated(
+    pulls: list[dict[str, Any]] = []
+    next_url = with_query(
         url,
-        headers,
-        sleep_seconds,
-        params={"state": "closed", "sort": "updated", "direction": "desc"},
+        {
+            "per_page": 100,
+            "state": "closed",
+            "sort": "updated",
+            "direction": "desc",
+        },
     )
+
+    while next_url:
+        payload, response_headers = github_get_json(next_url, headers, sleep_seconds)
+        if not isinstance(payload, list):
+            raise GitHubAPIError(f"Expected list response from {next_url}")
+
+        pulls.extend(payload)
+        if updated_since and payload:
+            oldest_updated_at = payload[-1].get("updated_at")
+            if (
+                isinstance(oldest_updated_at, str)
+                and parse_github_datetime(oldest_updated_at) < updated_since
+            ):
+                break
+
+        next_url = parse_link_header(response_headers.get("Link")).get("next")
+
+    return pulls
 
 
 def count_merged_pr_authors(
@@ -302,6 +350,8 @@ def count_merged_pr_authors(
     repositories: list[dict[str, Any]],
     headers: dict[str, str],
     sleep_seconds: float,
+    updated_since: datetime | None = None,
+    existing_projects: set[str] | None = None,
 ) -> tuple[Counter[tuple[str, str]], dict[str, str], list[dict[str, int | str]], int, int]:
     counts: Counter[tuple[str, str]] = Counter()
     avatar_urls: dict[str, str] = {}
@@ -317,7 +367,18 @@ def count_merged_pr_authors(
 
         print(f"Processing repo {index}/{total_repos}: {repo_name}", flush=True)
         try:
-            pulls = fetch_closed_pull_requests(org, repo_name, headers, sleep_seconds)
+            repo_updated_since = (
+                updated_since
+                if existing_projects is None or repo_name in existing_projects
+                else None
+            )
+            pulls = fetch_closed_pull_requests(
+                org,
+                repo_name,
+                headers,
+                sleep_seconds,
+                updated_since=repo_updated_since,
+            )
         except GitHubAPIError as exc:
             print(f"Error processing {repo_name}: {exc}", file=sys.stderr, flush=True)
             continue
@@ -349,6 +410,62 @@ def count_merged_pr_authors(
                 )
 
     return counts, avatar_urls, merged_prs, processed, sum(counts.values())
+
+
+def load_pr_csv(output_path: str) -> list[dict[str, int | str]]:
+    path = Path(output_path)
+    if not path.exists():
+        return []
+
+    rows: list[dict[str, int | str]] = []
+    with path.open(newline="", encoding="utf-8-sig") as csv_file:
+        reader = csv.DictReader(csv_file)
+        required = {
+            "org",
+            "proyecto",
+            "usuario",
+            "pr_number",
+            "pr_title",
+            "merged_at",
+            "merged_date",
+            "url",
+        }
+        if not reader.fieldnames or not required.issubset(reader.fieldnames):
+            raise GitHubAPIError(f"Existing CSV has an invalid header: {output_path}")
+
+        for row in reader:
+            row.setdefault("avatar_url", "")
+            rows.append({key: value or "" for key, value in row.items()})
+
+    return rows
+
+
+def incremental_cutoff(
+    existing_rows: list[dict[str, int | str]], overlap_hours: float
+) -> datetime | None:
+    merged_dates = [
+        parse_github_datetime(str(row["merged_at"]))
+        for row in existing_rows
+        if row.get("merged_at")
+    ]
+    if not merged_dates:
+        return None
+    return max(merged_dates) - timedelta(hours=max(overlap_hours, 0))
+
+
+def merge_pr_rows(
+    existing_rows: list[dict[str, int | str]],
+    fresh_rows: list[dict[str, int | str]],
+) -> list[dict[str, int | str]]:
+    merged: dict[tuple[str, str, str], dict[str, int | str]] = {}
+    for row in [*existing_rows, *fresh_rows]:
+        key = (
+            str(row.get("org", "")),
+            str(row.get("proyecto", "")),
+            str(row.get("pr_number", "")),
+        )
+        merged[key] = row
+    return list(merged.values())
 
 
 def summarize_user_counts(
@@ -426,7 +543,8 @@ def write_project_csv(
 
 
 def write_pr_csv(output_path: str, rows: list[dict[str, int | str]]) -> None:
-    Path(output_path).parent.mkdir(parents=True, exist_ok=True)
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
     rows.sort(
         key=lambda row: (
             str(row["merged_at"]),
@@ -437,21 +555,26 @@ def write_pr_csv(output_path: str, rows: list[dict[str, int | str]]) -> None:
         reverse=True,
     )
 
-    with open(output_path, "w", newline="", encoding="utf-8") as csv_file:
-        fieldnames = [
-            "org",
-            "proyecto",
-            "usuario",
-            "avatar_url",
-            "pr_number",
-            "pr_title",
-            "merged_at",
-            "merged_date",
-            "url",
-        ]
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
+    temporary_path = path.with_name(f".{path.name}.tmp")
+    fieldnames = [
+        "org",
+        "proyecto",
+        "usuario",
+        "avatar_url",
+        "pr_number",
+        "pr_title",
+        "merged_at",
+        "merged_date",
+        "url",
+    ]
+    try:
+        with temporary_path.open("w", newline="", encoding="utf-8") as csv_file:
+            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(rows)
+        os.replace(temporary_path, path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
 
 
 def output_path_for_org(template: str, org: str) -> str:
@@ -479,6 +602,19 @@ def main() -> int:
         all_counts: dict[str, Counter[tuple[str, str]]] = {}
         all_avatar_urls: dict[str, dict[str, str]] = {}
         all_merged_prs: list[dict[str, int | str]] = []
+        pr_output = output_path_for_org(args.pr_output, org)
+        existing_prs = load_pr_csv(pr_output) if args.incremental else []
+        updated_since = incremental_cutoff(existing_prs, args.overlap_hours)
+        if updated_since:
+            cutoff_label = updated_since.astimezone(timezone.utc).isoformat().replace(
+                "+00:00", "Z"
+            )
+            print(
+                f"Incremental refresh from {cutoff_label}; "
+                f"keeping {len(existing_prs)} existing rows.",
+                flush=True,
+            )
+
         print(f"Fetching repositories from {org}...", flush=True)
         try:
             repositories = fetch_repositories(org, headers, args.sleep)
@@ -496,15 +632,20 @@ def main() -> int:
             repositories,
             headers,
             args.sleep,
+            updated_since=updated_since,
+            existing_projects={
+                str(row["proyecto"])
+                for row in existing_prs
+                if row.get("proyecto")
+            },
         )
         all_counts[org] = counts
         all_avatar_urls[org] = avatar_urls
-        all_merged_prs.extend(merged_prs)
+        all_merged_prs.extend(merge_pr_rows(existing_prs, merged_prs))
         total_processed_repos += processed_repos
         total_merged_prs += total_prs
         processed_any = True
 
-        pr_output = output_path_for_org(args.pr_output, org)
         write_pr_csv(pr_output, all_merged_prs)
 
         if args.events_only:

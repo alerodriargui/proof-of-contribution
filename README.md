@@ -95,9 +95,33 @@ The deployed app will be available at:
 https://proof-of-contribution.onrender.com/app/
 ```
 
-Render will serve the CSV files already committed in `data/`. To refresh the
-data, regenerate the CSVs locally with `ethereum_pr_counter.py`, commit the new
-files, and push. Render will redeploy from the new commit.
+Render serves the CSV files committed in `data/`. The GitHub Actions workflow
+`.github/workflows/refresh-data.yml` refreshes them every 12 hours, validates
+all thirteen files, and creates a commit only when every step succeeds. Render's
+Auto-Deploy then publishes that commit while the previous deployment stays
+online. The scheduled runs start at 00:17 and 12:17 UTC.
+
+In GitHub, create an Actions repository secret named `DATA_GITHUB_TOKEN` with a
+fine-grained token that can read public repositories. This is recommended
+because the built-in Actions token has a lower API rate limit for this scan.
+The workflow falls back to the built-in token when the secret is absent.
+
+You can also run the same incremental batch locally:
+
+```powershell
+python .\scripts\refresh_data.py
+python .\scripts\validate_data.py
+```
+
+To rebuild the complete history instead:
+
+```powershell
+python .\scripts\refresh_data.py --full
+```
+
+The incremental refresh overlaps the latest 48 hours, merges rows by pull
+request ID, and replaces each CSV atomically. It never edits files being served
+by the live Render deployment.
 
 ## Smoke Test
 

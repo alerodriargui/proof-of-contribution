@@ -1,0 +1,52 @@
+name: Refresh dashboard data
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub Actions schedules use UTC. Run away from the top of the hour.
+    - cron: "17 */12 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-dashboard-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh CSV files incrementally
+        env:
+          GITHUB_TOKEN: ${{ secrets.DATA_GITHUB_TOKEN || github.token }}
+        run: python scripts/refresh_data.py
+
+      - name: Validate generated data
+        run: python scripts/validate_data.py
+
+      - name: Commit and publish changed data
+        shell: bash
+        run: |
+          if git diff --quiet -- data; then
+            echo "No data changes to publish."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "chore(data): automatic 12-hour refresh"
+          git push
