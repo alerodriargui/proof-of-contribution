@@ -10,7 +10,7 @@ python .\ethereum_pr_counter.py --org bitcoin --events-only --pr-output bitcoin_
 python .\ethereum_pr_counter.py --org aave --events-only --pr-output aave_merged_prs.csv
 python .\ethereum_pr_counter.py --org uniswap --events-only --pr-output uniswap_merged_prs.csv
 python .\ethereum_pr_counter.py --org ripple --events-only --pr-output ripple_merged_prs.csv
-python .\ethereum_pr_counter.py --org bnb --events-only --pr-output bnb_merged_prs.csv
+python .\ethereum_pr_counter.py --org bnb-chain --events-only --pr-output bnb_merged_prs.csv
 python .\ethereum_pr_counter.py --org dogecoin --events-only --pr-output doge_merged_prs.csv
 python .\ethereum_pr_counter.py --org hyperliquid-dex --events-only --pr-output hype_merged_prs.csv
 python .\ethereum_pr_counter.py --org tronprotocol --events-only --pr-output tron_merged_prs.csv

@@ -17,7 +17,7 @@ NETWORKS = (
     ("aave", "aave"),
     ("uniswap", "uniswap"),
     ("ripple", "ripple"),
-    ("bnb", "bnb"),
+    ("bnb-chain", "bnb"),
     ("dogecoin", "doge"),
     ("hyperliquid-dex", "hype"),
     ("tronprotocol", "tron"),
