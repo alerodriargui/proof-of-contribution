@@ -517,19 +517,63 @@ a {
   text-transform: uppercase;
 }
 
-.ecosystem-list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+.logo-marquee {
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
 }
 
-.ecosystem-list span {
-  color: #373247;
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
-  font-weight: 850;
-  white-space: nowrap;
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee 48s linear infinite;
+}
+
+.logo-marquee-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(28px, 4vw, 56px);
+  padding-right: clamp(28px, 4vw, 56px);
+}
+
+.logo-marquee img {
+  display: block;
+  height: 28px;
+  width: auto;
+  filter: grayscale(1);
+  opacity: 0.62;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease;
+}
+
+.logo-marquee img:hover {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.06);
+}
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
@@ -1083,10 +1127,8 @@ a {
     display: none;
   }
 
-  .ecosystem-list {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 4px;
+  .logo-marquee img {
+    height: 24px;
   }
 
   .section {
@@ -1202,6 +1244,35 @@ a {
   }
 
   .button {
+    transition: none;
+  }
+
+  .logo-marquee {
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .logo-marquee-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    animation: none;
+    gap: 20px 32px;
+  }
+
+  .logo-marquee-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-right: 0;
+    gap: 20px 32px;
+  }
+
+  .logo-marquee-group + .logo-marquee-group {
+    display: none;
+  }
+
+  .logo-marquee img {
     transition: none;
   }
 }
