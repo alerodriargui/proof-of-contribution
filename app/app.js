@@ -21,13 +21,33 @@ const SOURCES = [
   { url: "../data/base_merged_pr_authors.csv", kind: "legacy", org: "base" },
 ];
 
+const DEFAULT_HIDE_BOTS = true;
+const HIDE_BOTS_STORAGE_KEY = "poc.hideBots";
+
+function preferredHideBots() {
+  try {
+    const stored = localStorage.getItem(HIDE_BOTS_STORAGE_KEY);
+    return stored === null ? DEFAULT_HIDE_BOTS : stored === "true";
+  } catch (error) {
+    return DEFAULT_HIDE_BOTS;
+  }
+}
+
+function saveHideBotsPreference(value) {
+  try {
+    localStorage.setItem(HIDE_BOTS_STORAGE_KEY, String(value));
+  } catch (error) {
+    // Keep the in-memory filter state if browser storage is unavailable.
+  }
+}
+
 const state = {
   rows: [],
   org: "all",
   project: "all",
   query: "",
   sort: "prs",
-  hideBots: false,
+  hideBots: preferredHideBots(),
   selectedUser: null,
   selectedProject: null,
   page: 1,
@@ -777,6 +797,7 @@ function bindEvents() {
 
   on(els.hideBots, "change", (event) => {
     state.hideBots = event.target.checked;
+    saveHideBotsPreference(state.hideBots);
     state.selectedUser = null;
     state.selectedProject = null;
     state.page = 1;
@@ -863,6 +884,9 @@ function on(element, eventName, handler) {
 }
 
 async function init() {
+  if (els.hideBots) {
+    els.hideBots.checked = state.hideBots;
+  }
   bindEvents();
   if (els.dataStatus) {
     els.dataStatus.textContent = "Loading data...";

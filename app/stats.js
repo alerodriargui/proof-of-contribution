@@ -30,6 +30,22 @@ const PULL_SOURCES = NETWORKS.map((net) => ({
   org: net.id,
 }));
 
+const DEFAULT_HIDE_BOTS = true;
+const HIDE_BOTS_STORAGE_KEY = "poc.hideBots";
+
+function preferredHideBots() {
+  try {
+    const stored = localStorage.getItem(HIDE_BOTS_STORAGE_KEY);
+    return stored === null ? DEFAULT_HIDE_BOTS : stored === "true";
+  } catch (error) {
+    return DEFAULT_HIDE_BOTS;
+  }
+}
+
+function isBot(login) {
+  return /\[bot\]$/i.test(login) || /bot$/i.test(login);
+}
+
 // ── State ─────────────────────────────────────────────
 const statsState = {
   // aggregated PR counts: Map<orgId, Map<dayKey, number>>
@@ -44,6 +60,7 @@ const statsState = {
   range: "all",
   // granularity: "day" | "week" | "month"
   gran: "month",
+  hideBots: preferredHideBots(),
 };
 
 // ── Chart instances ───────────────────────────────────
@@ -673,6 +690,7 @@ async function loadAll() {
         const usuario = (row.usuario || row.user || "").trim();
         const project = (row.proyecto || "unknown").trim();
         if (!date || !usuario) return;
+        if (statsState.hideBots && isBot(usuario)) return;
 
         const dayKey = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
 
