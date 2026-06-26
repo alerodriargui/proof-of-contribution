@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,700,Add RwagmiHookV2 hook on base,2026-06-26T14:47:11Z,2026-06-26,https://github.com/Uniswap/hooklist/pull/700
+uniswap,uniswapx-parameterization-api,dannythedawger,https://avatars.githubusercontent.com/u/23269489?v=4,456,fix: obfuscate two-sided RFQ quote to market makers,2026-06-26T14:14:23Z,2026-06-26,https://github.com/Uniswap/uniswapx-parameterization-api/pull/456
 uniswap,sdks,ericneil-sanc,https://avatars.githubusercontent.com/u/216762316?v=4,561,fix: update slippage tolerance equation,2026-06-25T19:52:19Z,2026-06-25,https://github.com/Uniswap/sdks/pull/561
 uniswap,sdks,hensha256,https://avatars.githubusercontent.com/u/34962750?v=4,616,fix(universal-router-sdk): decode minHopPriceX36 in calldata parser,2026-06-25T19:10:58Z,2026-06-25,https://github.com/Uniswap/sdks/pull/616
 uniswap,ai-toolkit,hello-happy-puppy,https://avatars.githubusercontent.com/u/116666869?v=4,542,chore(release): promote next to production (2026-06-25),2026-06-25T18:57:28Z,2026-06-25,https://github.com/Uniswap/ai-toolkit/pull/542

@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+tronprotocol,tron-deployment,Sunny6889,https://avatars.githubusercontent.com/u/186005755?v=4,201,fix(txgen): build-txgen-falcon graceful liboqs skip; document Falcon …,2026-06-26T09:15:43Z,2026-06-26,https://github.com/tronprotocol/tron-deployment/pull/201
+tronprotocol,tips,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,896,Add TIP-173 and TIP-1167 (Last Call),2026-06-26T08:31:34Z,2026-06-26,https://github.com/tronprotocol/tips/pull/896
+tronprotocol,java-tron,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,6857,"fix(vm): isolate constant-call config, self-dispatch vote-witness cost",2026-06-26T08:09:25Z,2026-06-26,https://github.com/tronprotocol/java-tron/pull/6857
+tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,125,"fix(analysis): improve TRON builtin diagnostics, drop dead via-ir branch",2026-06-26T06:52:01Z,2026-06-26,https://github.com/tronprotocol/solidity/pull/125
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,124,fix(astimport): accept sun/trx subdenominations in --import-ast,2026-06-26T01:02:12Z,2026-06-26,https://github.com/tronprotocol/solidity/pull/124
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,123,fix(codegen): fix legacy ICE when calling getchainparameter,2026-06-25T12:58:06Z,2026-06-25,https://github.com/tronprotocol/solidity/pull/123
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,122,fix(codegen): clean up dead code and order-fragile assertion in TRON paths,2026-06-25T11:22:24Z,2026-06-25,https://github.com/tronprotocol/solidity/pull/122
