@@ -1,15 +1,15 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "f2b277191ccf2414",
-  "generated_at": "2026-06-26T22:36:38Z",
+  "version": "b05b918639671ba8",
+  "generated_at": "2026-06-26T23:27:25Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269723,
+  "source_pr_count": 269730,
   "row_count": 25031,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 58554,
+      "raw_pr_count": 58556,
       "summary_row_count": 8227
     },
     {
@@ -27,7 +27,7 @@
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
-      "raw_pr_count": 15064,
+      "raw_pr_count": 15065,
       "summary_row_count": 1548
     },
     {
@@ -69,13 +69,13 @@
     {
       "path": "data/stellar_merged_prs.csv",
       "org": "stellar",
-      "raw_pr_count": 27605,
+      "raw_pr_count": 27606,
       "summary_row_count": 1883
     },
     {
       "path": "data/link_merged_prs.csv",
       "org": "link",
-      "raw_pr_count": 44756,
+      "raw_pr_count": 44759,
       "summary_row_count": 2682
     },
     {
