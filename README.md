@@ -38,8 +38,8 @@ link_merged_prs.csv
 solana_merged_prs.csv
 ```
 
-Each row is one merged PR, including `merged_at` and `merged_date`, so the app
-can build user totals, project breakdowns, and time charts from the same source.
+Each row is one merged PR, including `merged_at` and `merged_date`. Those raw
+CSV files remain the reproducible source of truth.
 
 ## Token
 
@@ -72,12 +72,12 @@ The repository root serves the public landing page. The interactive dashboard is
 http://localhost:8000/app/
 ```
 
-The app reads all thirteen CSV files when they exist and combines them in the UI:
-`ethereum_merged_prs.csv`, `bitcoin_merged_prs.csv`, `aave_merged_prs.csv`,
-`uniswap_merged_prs.csv`, `ripple_merged_prs.csv`, `bnb_merged_prs.csv`,
-`doge_merged_prs.csv`, `hype_merged_prs.csv`, `tron_merged_prs.csv`,
-`cardano_merged_prs.csv`, `stellar_merged_prs.csv`, `link_merged_prs.csv`, and
-`solana_merged_prs.csv`.
+The dashboard's normal startup path reads `data/dashboard-meta.json` and the
+cache-versioned `data/dashboard-summary.json`. The summary is pre-aggregated by
+`org`, `project`, and `user`, so the first render does not parse the complete raw
+PR history in the browser. The raw CSV files remain available and are loaded on
+demand for detailed contributor history. If the summary files are missing, the
+dashboard falls back to the older CSV loading path.
 
 ## Deploy on Render
 
@@ -129,6 +129,14 @@ python .\scripts\refresh_data.py --full
 The incremental refresh overlaps the latest 48 hours, merges rows by pull
 request ID, and replaces each CSV atomically. It never edits files being served
 by the live Render deployment.
+
+`scripts/refresh_data.py` also regenerates `data/dashboard-summary.json` and
+`data/dashboard-meta.json` after the CSV refresh succeeds. To rebuild just the
+optimized dashboard files from existing CSVs, run:
+
+```powershell
+python .\scripts\build_dashboard_summary.py
+```
 
 ## Smoke Test
 

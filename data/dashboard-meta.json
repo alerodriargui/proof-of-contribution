@@ -1,0 +1,88 @@
+{
+  "schema": "dashboard-meta.v1",
+  "version": "f2b277191ccf2414",
+  "generated_at": "2026-06-26T22:36:38Z",
+  "summary_path": "data/dashboard-summary.json",
+  "source_pr_count": 269723,
+  "row_count": 25031,
+  "source_files": [
+    {
+      "path": "data/ethereum_merged_prs.csv",
+      "org": "ethereum",
+      "raw_pr_count": 58554,
+      "summary_row_count": 8227
+    },
+    {
+      "path": "data/bitcoin_merged_prs.csv",
+      "org": "bitcoin",
+      "raw_pr_count": 17925,
+      "summary_row_count": 1481
+    },
+    {
+      "path": "data/aave_merged_prs.csv",
+      "org": "aave",
+      "raw_pr_count": 5198,
+      "summary_row_count": 481
+    },
+    {
+      "path": "data/uniswap_merged_prs.csv",
+      "org": "uniswap",
+      "raw_pr_count": 15064,
+      "summary_row_count": 1548
+    },
+    {
+      "path": "data/ripple_merged_prs.csv",
+      "org": "ripple",
+      "raw_pr_count": 4829,
+      "summary_row_count": 403
+    },
+    {
+      "path": "data/bnb_merged_prs.csv",
+      "org": "bnb",
+      "raw_pr_count": 11084,
+      "summary_row_count": 1300
+    },
+    {
+      "path": "data/doge_merged_prs.csv",
+      "org": "doge",
+      "raw_pr_count": 1601,
+      "summary_row_count": 257
+    },
+    {
+      "path": "data/hype_merged_prs.csv",
+      "org": "hype",
+      "raw_pr_count": 244,
+      "summary_row_count": 120
+    },
+    {
+      "path": "data/tron_merged_prs.csv",
+      "org": "tron",
+      "raw_pr_count": 7240,
+      "summary_row_count": 657
+    },
+    {
+      "path": "data/cardano_merged_prs.csv",
+      "org": "cardano",
+      "raw_pr_count": 33803,
+      "summary_row_count": 3331
+    },
+    {
+      "path": "data/stellar_merged_prs.csv",
+      "org": "stellar",
+      "raw_pr_count": 27605,
+      "summary_row_count": 1883
+    },
+    {
+      "path": "data/link_merged_prs.csv",
+      "org": "link",
+      "raw_pr_count": 44756,
+      "summary_row_count": 2682
+    },
+    {
+      "path": "data/solana_merged_prs.csv",
+      "org": "solana",
+      "raw_pr_count": 41820,
+      "summary_row_count": 2661
+    }
+  ]
+}

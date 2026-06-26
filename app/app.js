@@ -1,4 +1,7 @@
-const SOURCES = [
+const SUMMARY_URL = "../data/dashboard-summary.json";
+const META_URL = "../data/dashboard-meta.json";
+
+const RAW_SOURCES = [
   { url: "../data/ethereum_merged_prs.csv", kind: "pulls", org: "ethereum" },
   { url: "../data/bitcoin_merged_prs.csv", kind: "pulls", org: "bitcoin" },
   { url: "../data/aave_merged_prs.csv", kind: "pulls", org: "aave" },
@@ -12,6 +15,10 @@ const SOURCES = [
   { url: "../data/stellar_merged_prs.csv", kind: "pulls", org: "stellar" },
   { url: "../data/link_merged_prs.csv", kind: "pulls", org: "link" },
   { url: "../data/solana_merged_prs.csv", kind: "pulls", org: "solana" },
+];
+
+const FALLBACK_SOURCES = [
+  ...RAW_SOURCES,
   { url: "../data/crypto_merged_prs.csv", kind: "pulls" },
   { url: "../data/crypto_merged_pr_authors_by_project.csv", kind: "project" },
   { url: "../data/crypto_merged_pr_authors.csv", kind: "summary" },
@@ -43,6 +50,9 @@ function saveHideBotsPreference(value) {
 
 const state = {
   rows: [],
+  detailRows: new Map(),
+  detailsLoading: new Set(),
+  dataVersion: "",
   org: "all",
   project: "all",
   query: "",
@@ -126,7 +136,8 @@ function parseCsv(text) {
 }
 
 async function loadCsv(source) {
-  const response = await fetch(source.url, { cache: "no-store" });
+  const version = state.dataVersion ? `?v=${encodeURIComponent(state.dataVersion)}` : "";
+  const response = await fetch(`${source.url}${version}`);
   if (!response.ok) {
     throw new Error(`${source.url} returned ${response.status}`);
   }
@@ -134,6 +145,33 @@ async function loadCsv(source) {
     ...source,
     rows: parseCsv(await response.text()),
   };
+}
+
+async function loadJson(url, options = {}) {
+  const response = await fetch(url, options);
+  if (!response.ok) {
+    throw new Error(`${url} returned ${response.status}`);
+  }
+  return response.json();
+}
+
+async function loadDashboardMeta() {
+  try {
+    const meta = await loadJson(META_URL, { cache: "no-cache" });
+    state.dataVersion = meta.version || "";
+    return meta;
+  } catch (error) {
+    state.dataVersion = "";
+    return null;
+  }
+}
+
+async function loadDashboardSummary() {
+  const meta = await loadDashboardMeta();
+  const version = meta?.version ? `?v=${encodeURIComponent(meta.version)}` : "";
+  const summary = await loadJson(`${SUMMARY_URL}${version}`);
+  state.dataVersion = summary.version || state.dataVersion;
+  return normalizeSummaryRows(summary);
 }
 
 function normalizeRows(source) {
@@ -150,6 +188,29 @@ function normalizeRows(source) {
       merged_at: row.merged_at || "",
       merged_date: row.merged_date || "",
       sourceKind: source.kind,
+    }))
+    .filter((row) => row.usuario && Number.isFinite(row.n_prs) && row.n_prs > 0);
+}
+
+function normalizeSummaryRows(summary) {
+  if (!summary || !Array.isArray(summary.rows)) {
+    throw new Error("dashboard-summary.json is missing rows");
+  }
+
+  return summary.rows
+    .map((row) => ({
+      org: (row.org || "unknown").toLowerCase(),
+      proyecto: row.project || row.proyecto || "",
+      usuario: row.user || row.usuario || "",
+      avatar_url: row.avatar_url || "",
+      pr_number: "",
+      pr_title: "",
+      url: "",
+      n_prs: Number(row.merged_pr_count || row.n_prs || 0),
+      merged_at: row.latest_merged_at || "",
+      merged_date: row.latest_merged_at || "",
+      first_merged_at: row.first_merged_at || "",
+      sourceKind: "summary",
     }))
     .filter((row) => row.usuario && Number.isFinite(row.n_prs) && row.n_prs > 0);
 }
@@ -359,6 +420,63 @@ function selectedProjectMatches(row, project) {
   );
 }
 
+function currentVisibleRows() {
+  return filteredRowsByUserQuery(baseRows());
+}
+
+function currentDeveloper(login) {
+  return aggregateDevelopers(currentVisibleRows()).find((row) => row.usuario === login);
+}
+
+function rawSourceForOrg(org) {
+  return RAW_SOURCES.find((source) => source.org === org);
+}
+
+function detailRowsForUser(user) {
+  return user.orgs
+    .flatMap((org) => state.detailRows.get(org) || [])
+    .filter((row) => {
+      if (row.usuario !== user.usuario) {
+        return false;
+      }
+      if (state.org !== "all" && row.org !== state.org) {
+        return false;
+      }
+      if (state.project !== "all" && row.proyecto !== state.project) {
+        return false;
+      }
+      return true;
+    });
+}
+
+function isLoadingUserDetails(user) {
+  return user.orgs.some((org) => state.detailsLoading.has(org));
+}
+
+async function ensureDetailsForUser(user) {
+  const sources = user.orgs
+    .filter((org) => !state.detailRows.has(org) && !state.detailsLoading.has(org))
+    .map(rawSourceForOrg)
+    .filter(Boolean);
+
+  if (sources.length === 0) {
+    return;
+  }
+
+  sources.forEach((source) => state.detailsLoading.add(source.org));
+  render();
+
+  const loaded = await Promise.allSettled(sources.map(loadCsv));
+  loaded.forEach((result, index) => {
+    const source = sources[index];
+    if (result.status === "fulfilled") {
+      state.detailRows.set(source.org, normalizeRows(result.value));
+    }
+    state.detailsLoading.delete(source.org);
+  });
+  render();
+}
+
 function projectBreakdownRows(rows, user) {
   const projectCounts = new Map();
   rows
@@ -497,6 +615,18 @@ function renderProjectPullList(rows, user, project) {
 }
 
 function renderInlineDetail(row, rows) {
+  if (isLoadingUserDetails(row) && rows.length === 0) {
+    return `
+      <tr class="inline-detail-row" data-detail-for="${escapeHtml(row.usuario)}">
+        <td colspan="5" class="inline-detail-cell">
+          <div class="inline-detail">
+            <div class="project-empty">Loading detailed pull request history...</div>
+          </div>
+        </td>
+      </tr>
+    `;
+  }
+
   const projectRows = projectBreakdownRows(rows, row);
   const profile = buildContributorProfile(rows, row);
   const profileAction = isBot(row.usuario) || isGhostUser(row.usuario)
@@ -678,6 +808,7 @@ function renderDevelopers(developers, sourceRows) {
   els.developerRows.innerHTML = visibleRows
     .map((row) => {
       const selected = selectedUserMatches(row);
+      const detailRows = selected ? detailRowsForUser(row) : sourceRows;
       const bot = isBot(row.usuario);
       const ghostUser = isGhostUser(row.usuario);
       let orgTags = "";
@@ -708,7 +839,7 @@ function renderDevelopers(developers, sourceRows) {
           <td class="number">${formatNumber(row.n_projects)}</td>
           <td>${escapeHtml(row.top_project)}</td>
         </tr>
-        ${selected ? renderInlineDetail(row, sourceRows) : ""}
+        ${selected ? renderInlineDetail(row, detailRows) : ""}
       `;
     })
     .join("");
@@ -820,7 +951,7 @@ function bindEvents() {
     render();
   });
 
-  on(els.developerRows, "click", (event) => {
+  on(els.developerRows, "click", async (event) => {
     const projectToggle = event.target.closest('[data-project-action="toggle"]');
     if (projectToggle) {
       const detailRow = projectToggle.closest("tr.inline-detail-row");
@@ -841,6 +972,10 @@ function bindEvents() {
             proyecto: nextProject,
           };
       render();
+      const developer = currentDeveloper(state.selectedUser.usuario);
+      if (developer) {
+        await ensureDetailsForUser(developer);
+      }
       return;
     }
 
@@ -867,13 +1002,18 @@ function bindEvents() {
     const selected =
       state.selectedUser &&
       state.selectedUser.usuario === row.dataset.user;
-    state.selectedUser = selected
+    const developer = currentDeveloper(row.dataset.user);
+    state.selectedUser = selected || !developer
       ? null
       : {
-          usuario: row.dataset.user,
+          usuario: developer.usuario,
+          orgs: developer.orgs,
         };
     state.selectedProject = null;
     render();
+    if (developer && state.selectedUser) {
+      await ensureDetailsForUser(developer);
+    }
   });
 }
 
@@ -889,30 +1029,35 @@ async function init() {
   }
   bindEvents();
   if (els.dataStatus) {
-    els.dataStatus.textContent = "Loading data...";
+    els.dataStatus.textContent = "Loading summary...";
   }
 
-  const loaded = await Promise.allSettled(SOURCES.map(loadCsv));
-  const successful = loaded
-    .filter((result) => result.status === "fulfilled")
-    .map((result) => result.value);
+  try {
+    state.rows = await loadDashboardSummary();
+  } catch (summaryError) {
+    if (els.dataStatus) {
+      els.dataStatus.textContent = "Loading CSV fallback...";
+    }
+    const loaded = await Promise.allSettled(FALLBACK_SOURCES.map(loadCsv));
+    const successful = loaded
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => result.value);
 
-  const pullSources = successful.filter((source) => source.kind === "pulls");
-  const projectSource = successful.find((source) => source.kind === "project");
-  const summarySource = successful.find((source) => source.kind === "summary");
-  const fallbackSources = successful.filter((source) => source.kind === "legacy");
-  const sourceGroups = [
-    pullSources,
-    projectSource ? [projectSource] : [],
-    summarySource ? [summarySource] : [],
-    fallbackSources,
-  ];
-  const selectedRows =
-    sourceGroups
-      .map((sources) => sources.flatMap(normalizeRows))
-      .find((rows) => rows.length > 0) || [];
-
-  state.rows = selectedRows;
+    const pullSources = successful.filter((source) => source.kind === "pulls");
+    const projectSource = successful.find((source) => source.kind === "project");
+    const summarySource = successful.find((source) => source.kind === "summary");
+    const fallbackSources = successful.filter((source) => source.kind === "legacy");
+    const sourceGroups = [
+      pullSources,
+      projectSource ? [projectSource] : [],
+      summarySource ? [summarySource] : [],
+      fallbackSources,
+    ];
+    state.rows =
+      sourceGroups
+        .map((sources) => sources.flatMap(normalizeRows))
+        .find((rows) => rows.length > 0) || [];
+  }
 
   if (state.rows.length === 0) {
     if (els.dataStatus) {

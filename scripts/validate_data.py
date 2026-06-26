@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import json
 import sys
 from pathlib import Path
 
@@ -66,6 +67,27 @@ def main() -> int:
             print(f"{path.name}: INVALID ({'; '.join(errors)})", file=sys.stderr)
         else:
             print(f"{path.name}: OK ({row_count:,} rows)")
+    summary_path = ROOT / "data" / "dashboard-summary.json"
+    meta_path = ROOT / "data" / "dashboard-meta.json"
+    for path in (summary_path, meta_path):
+        if not path.exists():
+            failed = True
+            print(f"{path.name}: INVALID (file does not exist)", file=sys.stderr)
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as error:
+            failed = True
+            print(f"{path.name}: INVALID ({error})", file=sys.stderr)
+            continue
+        if not payload.get("version"):
+            failed = True
+            print(f"{path.name}: INVALID (missing version)", file=sys.stderr)
+        elif path.name == "dashboard-summary.json" and not isinstance(payload.get("rows"), list):
+            failed = True
+            print(f"{path.name}: INVALID (missing rows array)", file=sys.stderr)
+        else:
+            print(f"{path.name}: OK")
     return 1 if failed else 0
 
 

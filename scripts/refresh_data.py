@@ -79,6 +79,16 @@ def main() -> int:
             )
             return result.returncode
 
+    summary_command = [sys.executable, str(ROOT / "scripts" / "build_dashboard_summary.py")]
+    print("\n=== Building dashboard summary ===", flush=True)
+    result = subprocess.run(summary_command, cwd=ROOT, check=False)
+    if result.returncode:
+        print(
+            f"Dashboard summary build failed with exit code {result.returncode}.",
+            file=sys.stderr,
+        )
+        return result.returncode
+
     return 0
 
 
