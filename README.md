@@ -1,6 +1,29 @@
 # Proof of Contribution
 
-Local dashboard for exploring merged pull request authors in crypto GitHub orgs.
+> Open-source data infrastructure and dashboards for making GitHub contribution histories visible across crypto ecosystems.
+
+## Live Deployments
+
+- 🌐 **Landing Page**: [proof-of-contribution.onrender.com](https://proof-of-contribution.onrender.com/)
+- 📊 **Interactive Dashboard**: [proof-of-contribution.onrender.com/app/](https://proof-of-contribution.onrender.com/app/)
+
+## Architecture Overview
+
+- **Data Scraper** (`ethereum_pr_counter.py`): A Python CLI tool that queries the GitHub API to pull public repository PRs and identify merged contributions. It supports full and incremental scans to manage API rate limits efficiently.
+- **Automated Data Pipelines**: Scheduled GitHub Actions workflows ([refresh-data.yml](file:///.github/workflows/refresh-data.yml)) refresh datasets every 12 hours. All output datasets are validated automatically before being committed.
+- **Frontend App** ([/app](file:///app)): A fast, lightweight static web app designed with rich visuals. It pre-loads aggregated contributor stats from [dashboard-summary.json](file:///data/dashboard-summary.json) for snappy rendering, loading raw logs dynamically as requested.
+- **Hosting**: Deployed on Render. Render auto-deploys updates whenever new scans are committed to the repository.
+
+## Contributing
+
+We welcome contributions from the community!
+- Get started by reading the [Contributing Guidelines](CONTRIBUTING.md).
+- Browse our [Starter Issues](docs/starter_issues.md) for excellent entry points (e.g. adding new ecosystem configurations, improving dashboard visuals, etc.).
+- Refer to our [Code of Conduct](CODE_OF_CONDUCT.md) and [Security Policy](SECURITY.md) to keep collaboration healthy and safe.
+
+---
+
+## Local Scans
 
 The current workflow is intentionally split into two independent scans:
 
