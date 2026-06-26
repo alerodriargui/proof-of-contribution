@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,124,fix(astimport): accept sun/trx subdenominations in --import-ast,2026-06-26T01:02:12Z,2026-06-26,https://github.com/tronprotocol/solidity/pull/124
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,123,fix(codegen): fix legacy ICE when calling getchainparameter,2026-06-25T12:58:06Z,2026-06-25,https://github.com/tronprotocol/solidity/pull/123
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,122,fix(codegen): clean up dead code and order-fragile assertion in TRON paths,2026-06-25T11:22:24Z,2026-06-25,https://github.com/tronprotocol/solidity/pull/122
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,121,fix(smtchecker): stop ICE on TRON crypto builtins,2026-06-25T08:41:30Z,2026-06-25,https://github.com/tronprotocol/solidity/pull/121
