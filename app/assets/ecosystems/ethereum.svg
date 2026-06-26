@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true">
-  <path fill="currentColor" opacity="0.55" d="M16 3 15 14.5 16 19l1-4.5L16 3z"/>
-  <path fill="currentColor" d="M16 3l9.5 12.5L16 19 6.5 15.5 16 3z"/>
-  <path fill="currentColor" opacity="0.55" d="M16 19 6.5 27.5 16 29l9.5-1.5L16 19z"/>
-  <path fill="currentColor" d="M16 19l9.5 10L16 29l-9.5-9.5L16 19z"/>
+  <path fill="currentColor" opacity="0.45" d="M16 2.5 5 16.2l11 6.7 11-6.7L16 2.5z"/>
+  <path fill="currentColor" opacity="0.8" d="M16 2.5v20.4L5 16.2 16 2.5z"/>
+  <path fill="currentColor" opacity="0.55" d="M16 23.6v5.9L27 18.7 16 23.6z"/>
+  <path fill="currentColor" opacity="0.8" d="M16 29.5V23.6L5 18.7l11 10.8z"/>
 </svg>
