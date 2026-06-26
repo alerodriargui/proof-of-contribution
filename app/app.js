@@ -618,7 +618,7 @@ function renderInlineDetail(row, rows) {
   if (isLoadingUserDetails(row) && rows.length === 0) {
     return `
       <tr class="inline-detail-row" data-detail-for="${escapeHtml(row.usuario)}">
-        <td colspan="5" class="inline-detail-cell">
+        <td colspan="6" class="inline-detail-cell">
           <div class="inline-detail">
             <div class="project-empty">Loading detailed pull request history...</div>
           </div>
@@ -719,7 +719,7 @@ function renderInlineDetail(row, rows) {
 
   return `
     <tr class="inline-detail-row" data-detail-for="${escapeHtml(row.usuario)}">
-      <td colspan="5" class="inline-detail-cell">
+      <td colspan="6" class="inline-detail-cell">
         <div class="inline-detail">
           <div class="inline-detail-head">
             <div>
@@ -801,16 +801,17 @@ function renderDevelopers(developers, sourceRows) {
   }
 
   if (rows.length === 0) {
-    els.developerRows.innerHTML = `<tr><td colspan="5" class="empty">No rows</td></tr>`;
+    els.developerRows.innerHTML = `<tr><td colspan="6" class="empty">No rows</td></tr>`;
     return;
   }
 
   els.developerRows.innerHTML = visibleRows
-    .map((row) => {
+    .map((row, index) => {
       const selected = selectedUserMatches(row);
       const detailRows = selected ? detailRowsForUser(row) : sourceRows;
       const bot = isBot(row.usuario);
       const ghostUser = isGhostUser(row.usuario);
+      const rank = start + index + 1;
       let orgTags = "";
       if (row.orgs.length > 1) {
         const primaryOrg = row.orgs[0];
@@ -831,6 +832,7 @@ function renderDevelopers(developers, sourceRows) {
           ].filter(Boolean).join(" ")}"
           data-user="${escapeHtml(row.usuario)}"
         >
+          <td class="rank">${rank}</td>
           <td class="login">
             ${profileLinkMarkup(row)}
           </td>

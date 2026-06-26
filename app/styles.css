@@ -674,6 +674,19 @@ tbody tr.inline-detail-row:hover {
   font-weight: 800;
 }
 
+.rank-col {
+  width: 50px;
+  text-align: center;
+}
+
+.rank {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 650;
+  text-align: center;
+  width: 50px;
+}
+
 .pagination {
   display: flex;
   align-items: center;
