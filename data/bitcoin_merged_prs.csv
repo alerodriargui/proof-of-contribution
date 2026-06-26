@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bitcoin,bips,reflecttypefor,https://avatars.githubusercontent.com/u/230836907?v=4,2199,script: check link format in nested mediawiki files,2026-06-26T19:25:30Z,2026-06-26,https://github.com/bitcoin/bips/pull/2199
 bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,35602,doc: Clarify build docs about `pkgconf` / `pkg-config` requirements,2026-06-26T14:33:11Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35602
 bitcoin,bitcoin,brunoerg,https://avatars.githubusercontent.com/u/19480819?v=4,35220,fuzz: connman: strengthen assertions and extend coverage,2026-06-26T13:30:56Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35220
 bitcoin,bitcoin,instagibbs,https://avatars.githubusercontent.com/u/5767891?v=4,35506,test: ensure group data cluster pointers are live,2026-06-26T12:31:20Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35506
@@ -60,7 +61,7 @@ bitcoin,bitcoin,polespinasa,https://avatars.githubusercontent.com/u/57642229?v=4
 bitcoin,bitcoin,fanquake,,35514,ci: Alpine 3.24,2026-06-11T14:36:08Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35514
 bitcoin,bips,ajtowns,https://avatars.githubusercontent.com/u/127186?v=4,2197,"BIP-434: Add ref impl, mark complete / CI: add version check",2026-06-11T14:11:18Z,2026-06-11,https://github.com/bitcoin/bips/pull/2197
 bitcoin,bitcoin,thomasbuilds,,35120,btcsignals: delete broken scoped_connection move assignment,2026-06-11T11:35:46Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35120
-bitcoin,bitcoin,maflcko,,35288,ci: Bump toward Ubuntu 26.04,2026-06-11T09:36:59Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35288
+bitcoin,bitcoin,maflcko,https://avatars.githubusercontent.com/u/6399679?v=4,35288,ci: Bump toward Ubuntu 26.04,2026-06-11T09:36:59Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35288
 bitcoin,bitcoin,andrewtoth,https://avatars.githubusercontent.com/u/237213?v=4,35455,fuzz: improve dbwrapper_concurrent_reads performance,2026-06-11T07:47:44Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35455
 bitcoin,bitcoin,w0xlt,,35489,fuzz: test non-max descriptor satisfaction weight,2026-06-11T07:22:49Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35489
 bitcoin,bitcoin,maflcko,https://avatars.githubusercontent.com/u/6399679?v=4,35497,test: FakeNodeClock follow-ups in unit tests,2026-06-11T07:11:46Z,2026-06-11,https://github.com/bitcoin/bitcoin/pull/35497
