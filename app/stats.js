@@ -607,6 +607,27 @@ function renderCharts() {
 }
 
 // ── Network toggle UI ─────────────────────────────────
+function resetActiveOrgs() {
+  statsState.activeOrgs = new Set(NETWORKS.map((n) => n.id));
+}
+
+function bindNetworkToggles() {
+  const wrap = $("networkToggles");
+  wrap.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-org]");
+    if (!btn) return;
+    const org = btn.dataset.org;
+    if (statsState.activeOrgs.has(org)) {
+      statsState.activeOrgs.delete(org);
+      if (statsState.activeOrgs.size === 0) resetActiveOrgs();
+    } else {
+      statsState.activeOrgs.add(org);
+    }
+    renderNetworkToggles();
+    renderCharts();
+  });
+}
+
 function renderNetworkToggles() {
   const wrap = $("networkToggles");
   wrap.innerHTML = NETWORKS.map((net) => {
@@ -623,20 +644,6 @@ function renderNetworkToggles() {
         ${net.label}
       </button>`;
   }).join("");
-
-  wrap.addEventListener("click", (e) => {
-    const btn = e.target.closest("[data-org]");
-    if (!btn) return;
-    const org = btn.dataset.org;
-    if (statsState.activeOrgs.has(org)) {
-      if (statsState.activeOrgs.size <= 1) return; // keep at least one
-      statsState.activeOrgs.delete(org);
-    } else {
-      statsState.activeOrgs.add(org);
-    }
-    renderNetworkToggles();
-    renderCharts();
-  });
 }
 
 // ── Time range buttons ────────────────────────────────
@@ -729,6 +736,7 @@ async function loadAll() {
   loadState.setAttribute("hidden", "");
   chartsGrid.removeAttribute("hidden");
 
+  bindNetworkToggles();
   renderNetworkToggles();
   bindTimeButtons();
   bindGranButtons();
