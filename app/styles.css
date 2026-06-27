@@ -923,6 +923,20 @@ select:focus {
   box-shadow: var(--shadow);
 }
 
+/* ── Profile link GitHub icon ───────────────────────── */
+.gh-icon-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--muted);
+  text-decoration: none;
+  vertical-align: middle;
+  transition: color 0.15s;
+}
+
+.gh-icon-link:hover {
+  color: var(--ink-strong);
+}
+
 .faq-grid summary {
   min-height: 54px;
   padding: 15px 16px;

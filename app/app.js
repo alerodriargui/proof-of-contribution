@@ -50,16 +50,12 @@ function saveHideBotsPreference(value) {
 
 const state = {
   rows: [],
-  detailRows: new Map(),
-  detailsLoading: new Set(),
   dataVersion: "",
   org: "all",
   project: "all",
   query: "",
   sort: "prs",
   hideBots: preferredHideBots(),
-  selectedUser: null,
-  selectedProject: null,
   page: 1,
   pageSize: 100,
 };
@@ -408,123 +404,6 @@ function renderMetrics(rows, developers) {
   els.metricOrgs.textContent = formatNumber(new Set(rows.map((row) => row.org)).size);
 }
 
-function selectedUserMatches(row) {
-  return state.selectedUser && row.usuario === state.selectedUser.usuario;
-}
-
-function selectedProjectMatches(row, project) {
-  return (
-    state.selectedProject &&
-    row.usuario === state.selectedProject.usuario &&
-    project === state.selectedProject.proyecto
-  );
-}
-
-function currentVisibleRows() {
-  return filteredRowsByUserQuery(baseRows());
-}
-
-function currentDeveloper(login) {
-  return aggregateDevelopers(currentVisibleRows()).find((row) => row.usuario === login);
-}
-
-function rawSourceForOrg(org) {
-  return RAW_SOURCES.find((source) => source.org === org);
-}
-
-function detailRowsForUser(user) {
-  return user.orgs
-    .flatMap((org) => state.detailRows.get(org) || [])
-    .filter((row) => {
-      if (row.usuario !== user.usuario) {
-        return false;
-      }
-      if (state.org !== "all" && row.org !== state.org) {
-        return false;
-      }
-      if (state.project !== "all" && row.proyecto !== state.project) {
-        return false;
-      }
-      return true;
-    });
-}
-
-function isLoadingUserDetails(user) {
-  return user.orgs.some((org) => state.detailsLoading.has(org));
-}
-
-async function ensureDetailsForUser(user) {
-  const sources = user.orgs
-    .filter((org) => !state.detailRows.has(org) && !state.detailsLoading.has(org))
-    .map(rawSourceForOrg)
-    .filter(Boolean);
-
-  if (sources.length === 0) {
-    return;
-  }
-
-  sources.forEach((source) => state.detailsLoading.add(source.org));
-  render();
-
-  const loaded = await Promise.allSettled(sources.map(loadCsv));
-  loaded.forEach((result, index) => {
-    const source = sources[index];
-    if (result.status === "fulfilled") {
-      state.detailRows.set(source.org, normalizeRows(result.value));
-    }
-    state.detailsLoading.delete(source.org);
-  });
-  render();
-}
-
-function projectBreakdownRows(rows, user) {
-  const projectCounts = new Map();
-  rows
-    .filter((row) => row.usuario === user.usuario)
-    .forEach((row) => {
-      const project = row.proyecto || "All projects";
-      if (!projectCounts.has(project)) {
-        projectCounts.set(project, { nPrs: 0, orgs: new Set() });
-      }
-      const item = projectCounts.get(project);
-      item.nPrs += row.n_prs;
-      if (row.org) {
-        item.orgs.add(row.org);
-      }
-    });
-
-  return [...projectCounts.entries()]
-    .map(([project, item]) => ({
-      project,
-      nPrs: item.nPrs,
-      orgs: [...item.orgs].sort(),
-    }))
-    .sort((a, b) => b.nPrs - a.nPrs || a.project.localeCompare(b.project));
-}
-
-function projectPullRows(rows, user, project) {
-  return rows
-    .filter(
-      (row) =>
-        row.usuario === user.usuario && row.proyecto === project,
-    )
-    .sort((a, b) => {
-      const aTime = Date.parse(a.merged_at || a.merged_date || "0") || 0;
-      const bTime = Date.parse(b.merged_at || b.merged_date || "0") || 0;
-      return bTime - aTime || Number(b.pr_number) - Number(a.pr_number);
-    });
-}
-
-function userPullRows(rows, user) {
-  return rows
-    .filter((row) => row.usuario === user.usuario)
-    .sort((a, b) => {
-      const aTime = Date.parse(a.merged_at || a.merged_date || "0") || 0;
-      const bTime = Date.parse(b.merged_at || b.merged_date || "0") || 0;
-      return bTime - aTime || Number(b.pr_number) - Number(a.pr_number);
-    });
-}
-
 function formatDateLabel(rawDate) {
   const date = new Date(rawDate);
   if (Number.isNaN(date.getTime())) {
@@ -537,250 +416,11 @@ function formatDateLabel(rawDate) {
   });
 }
 
-function monthKey(rawDate) {
-  const date = new Date(rawDate);
-  if (Number.isNaN(date.getTime())) {
-    return "";
-  }
-  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
-}
-
-function monthLabel(key) {
-  const [year, month] = key.split("-").map(Number);
-  if (!year || !month) {
-    return key;
-  }
-  return new Date(Date.UTC(year, month - 1, 1)).toLocaleDateString("en-US", {
-    month: "short",
-    year: "2-digit",
-    timeZone: "UTC",
-  });
-}
-
-function buildContributorProfile(rows, user) {
-  const pullRows = userPullRows(rows, user);
-  const datedRows = pullRows.filter((pull) => pull.merged_at || pull.merged_date);
-  const firstPull = datedRows.at(-1);
-  const lastPull = datedRows[0];
-  const timelineCounts = new Map();
-
-  datedRows.forEach((pull) => {
-    const key = monthKey(pull.merged_at || pull.merged_date);
-    if (key) {
-      timelineCounts.set(key, (timelineCounts.get(key) || 0) + pull.n_prs);
-    }
-  });
-
-  const allTimeline = [...timelineCounts.entries()]
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([key, count]) => ({ key, count }));
-  const timeline = allTimeline.slice(-12);
-  const maxTimelineCount = Math.max(...timeline.map((item) => item.count), 1);
-
-  return {
-    pullRows,
-    firstDate: firstPull ? formatDateLabel(firstPull.merged_at || firstPull.merged_date) : "Unknown",
-    lastDate: lastPull ? formatDateLabel(lastPull.merged_at || lastPull.merged_date) : "Unknown",
-    timeline,
-    maxTimelineCount,
-    recentPulls: pullRows.slice(0, 6),
-  };
-}
-
 function pluralizePr(count) {
   return count === 1 ? "PR" : "PRs";
 }
 
-function renderProjectPullList(rows, user, project) {
-  const pullRows = projectPullRows(rows, user, project);
-
-  if (pullRows.length === 0) {
-    return `<div class="project-empty">No PRs found for this project in the current data.</div>`;
-  }
-
-  return `
-    <div class="project-pr-list">
-      ${pullRows
-        .map(
-          (pr) => `
-            <a class="project-pr-link" href="${escapeHtml(pr.url)}" target="_blank" rel="noreferrer">
-              <span class="project-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "Untitled PR")}</span>
-              <span class="project-pr-meta">${escapeHtml(pr.merged_date || pr.merged_at || "")}</span>
-            </a>
-          `,
-        )
-        .join("")}
-    </div>
-  `;
-}
-
-function renderInlineDetail(row, rows) {
-  if (isLoadingUserDetails(row) && rows.length === 0) {
-    return `
-      <tr class="inline-detail-row" data-detail-for="${escapeHtml(row.usuario)}">
-        <td colspan="6" class="inline-detail-cell">
-          <div class="inline-detail">
-            <div class="project-empty">Loading detailed pull request history...</div>
-          </div>
-        </td>
-      </tr>
-    `;
-  }
-
-  const projectRows = projectBreakdownRows(rows, row);
-  const profile = buildContributorProfile(rows, row);
-  const profileAction = isBot(row.usuario) || isGhostUser(row.usuario)
-    ? ""
-    : `<a href="${githubProfileUrl(row.usuario)}" target="_blank" rel="noreferrer">GitHub</a>`;
-  const orgLabels = row.orgs.map(orgLabel);
-  const ecosystemText =
-    row.orgs.length > 1
-      ? `Multi-ecosystem contributor across ${orgLabels.join(", ")}`
-      : `Active in ${orgLabels[0] || "this ecosystem"}`;
-  const timelineContent =
-    profile.timeline.length > 0
-      ? `
-        <div class="timeline-y-axis" aria-hidden="true">
-          <span>${formatNumber(profile.maxTimelineCount)}</span>
-          <span>${formatNumber(Math.ceil(profile.maxTimelineCount / 2))}</span>
-          <span>0</span>
-        </div>
-        <div class="timeline-bars" style="grid-template-columns: repeat(${profile.timeline.length}, minmax(0, 1fr));">
-          ${profile.timeline
-            .map((item, index) => {
-                const label = monthLabel(item.key);
-                const valueLabel = `${formatNumber(item.count)} ${pluralizePr(item.count)}`;
-                return `
-                  <button
-                    type="button"
-                    class="timeline-bar"
-                    aria-label="${escapeHtml(`${label}: ${valueLabel}`)}"
-                    data-tooltip="${escapeHtml(`${label}: ${valueLabel}`)}"
-                  >
-                    <span class="timeline-track">
-                      <span class="timeline-fill" style="height: ${Math.max((item.count / profile.maxTimelineCount) * 100, 8)}%"></span>
-                    </span>
-                    <span class="timeline-label">${escapeHtml(label)}</span>
-                  </button>
-                `;
-              })
-            .join("")}
-        </div>
-      `
-      : `<div class="project-empty">No dated PRs found for this contributor.</div>`;
-  const recentPulls =
-    profile.recentPulls.length > 0
-      ? profile.recentPulls
-          .map(
-            (pr) => `
-              <a class="recent-pr-link" href="${escapeHtml(pr.url)}" target="_blank" rel="noreferrer">
-                <span class="recent-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "Untitled PR")}</span>
-                <span class="recent-pr-meta">${escapeHtml(orgLabel(pr.org))} / ${escapeHtml(pr.proyecto || "unknown")} - ${escapeHtml(pr.merged_date || pr.merged_at || "")}</span>
-              </a>
-            `,
-          )
-          .join("")
-      : `<div class="project-empty">No recent PRs found for this contributor.</div>`;
-  const detailContent =
-    projectRows.length > 0
-      ? projectRows
-          .map(
-            ({ project, nPrs, orgs }) => {
-              const expanded = selectedProjectMatches(row, project);
-              return `
-              <div class="project-item ${expanded ? "expanded" : ""}">
-                <button
-                  type="button"
-                  class="project-toggle"
-                  data-project-action="toggle"
-                  data-project="${escapeHtml(project)}"
-                  aria-expanded="${expanded ? "true" : "false"}"
-                >
-                  <span>
-                    <span class="detail-name">${escapeHtml(project)}</span>
-                    <span class="detail-meta">${escapeHtml(orgs.map(orgLabel).join(", "))}</span>
-                  </span>
-                  <span class="project-summary">
-                    <span class="detail-prs">${formatNumber(nPrs)} ${pluralizePr(nPrs)}</span>
-                    <span class="project-chevron">${expanded ? "Hide" : "View"}</span>
-                  </span>
-                </button>
-                ${
-                  expanded
-                    ? renderProjectPullList(rows, row, project)
-                    : ""
-                }
-              </div>
-            `;
-            },
-          )
-          .join("")
-      : `<div class="empty">Run the project-level CSV to see this breakdown</div>`;
-
-  return `
-    <tr class="inline-detail-row" data-detail-for="${escapeHtml(row.usuario)}">
-      <td colspan="6" class="inline-detail-cell">
-        <div class="inline-detail">
-          <div class="inline-detail-head">
-            <div>
-              <strong>${escapeHtml(row.usuario)}</strong>
-              <span>${escapeHtml(ecosystemText)}</span>
-            </div>
-            <div class="detail-actions">
-              ${profileAction}
-              <button type="button" data-detail-action="close">Clear</button>
-            </div>
-          </div>
-          <div class="contributor-profile">
-            <div class="profile-stats" aria-label="Contributor summary">
-              <div class="profile-stat">
-                <span>First contribution</span>
-                <strong>${escapeHtml(profile.firstDate)}</strong>
-              </div>
-              <div class="profile-stat">
-                <span>Latest contribution</span>
-                <strong>${escapeHtml(profile.lastDate)}</strong>
-              </div>
-              <div class="profile-stat">
-                <span>Projects</span>
-                <strong>${formatNumber(row.n_projects)}</strong>
-              </div>
-              <div class="profile-stat">
-                <span>Ecosystems</span>
-                <strong>${formatNumber(row.orgs.length)}</strong>
-              </div>
-            </div>
-            <div class="profile-grid">
-              <section class="profile-section profile-section-wide" aria-label="Activity timeline">
-                <div class="profile-section-head">
-                  <h3>Timeline</h3>
-                  <span>Last 12 active months</span>
-                </div>
-                <div class="timeline-chart">${timelineContent}</div>
-              </section>
-              <section class="profile-section" aria-label="Recent pull requests">
-                <div class="profile-section-head">
-                  <h3>Recent PRs</h3>
-                  <span>${formatNumber(profile.pullRows.length)} total</span>
-                </div>
-                <div class="recent-pr-list">${recentPulls}</div>
-              </section>
-              <section class="profile-section" aria-label="Repositories">
-                <div class="profile-section-head">
-                  <h3>Repositories</h3>
-                  <span>${formatNumber(projectRows.length)} repos</span>
-                </div>
-                <div class="detail-list">${detailContent}</div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </td>
-    </tr>
-  `;
-}
-
-function renderDevelopers(developers, sourceRows) {
+function renderDevelopers(developers) {
   const rows = sortedDevelopers(developers);
   const totalPages = Math.max(Math.ceil(rows.length / state.pageSize), 1);
   state.page = Math.min(Math.max(state.page, 1), totalPages);
@@ -807,8 +447,6 @@ function renderDevelopers(developers, sourceRows) {
 
   els.developerRows.innerHTML = visibleRows
     .map((row, index) => {
-      const selected = selectedUserMatches(row);
-      const detailRows = selected ? detailRowsForUser(row) : sourceRows;
       const bot = isBot(row.usuario);
       const ghostUser = isGhostUser(row.usuario);
       const rank = start + index + 1;
@@ -826,7 +464,6 @@ function renderDevelopers(developers, sourceRows) {
       return `
         <tr
           class="${[
-            selected ? "selected-row" : "",
             bot ? "bot-row" : "",
             ghostUser ? "ghost-user-row" : "",
           ].filter(Boolean).join(" ")}"
@@ -841,7 +478,6 @@ function renderDevelopers(developers, sourceRows) {
           <td class="number">${formatNumber(row.n_projects)}</td>
           <td>${escapeHtml(row.top_project)}</td>
         </tr>
-        ${selected ? renderInlineDetail(row, detailRows) : ""}
       `;
     })
     .join("");
@@ -853,7 +489,7 @@ function render() {
   const visibleRows = filteredRowsByUserQuery(rows);
   const developers = aggregateDevelopers(visibleRows);
   renderMetrics(visibleRows, developers);
-  renderDevelopers(developers, visibleRows);
+  renderDevelopers(developers);
 }
 
 function escapeHtml(value) {
@@ -895,16 +531,15 @@ function profileLinkMarkup(row) {
   if (bot || ghostUser) {
     return `<span class="profile-person">${content}</span>`;
   }
-  return `<a class="profile-link" href="${githubProfileUrl(login)}" target="_blank" rel="noreferrer">${content}</a>`;
+  const userUrl = `user.html?username=${encodeURIComponent(login)}`;
+  const ghLink = `<a class="gh-icon-link" href="${githubProfileUrl(login)}" target="_blank" rel="noreferrer" aria-label="GitHub profile">` +
+    `<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>`;
+  return `<a class="profile-link" href="${userUrl}">${content}</a> ${ghLink}`;
 }
 
 function bindEvents() {
   on(els.userSearch, "input", (event) => {
     state.query = event.target.value;
-    state.selectedUser = null;
-    state.selectedProject = null;
-    state.orgMenuOpen = false;
-    state.projectMenuOpen = false;
     state.page = 1;
     render();
   });
@@ -931,8 +566,6 @@ function bindEvents() {
   on(els.hideBots, "change", (event) => {
     state.hideBots = event.target.checked;
     saveHideBotsPreference(state.hideBots);
-    state.selectedUser = null;
-    state.selectedProject = null;
     state.page = 1;
     render();
   });
@@ -953,69 +586,19 @@ function bindEvents() {
     render();
   });
 
-  on(els.developerRows, "click", async (event) => {
-    const projectToggle = event.target.closest('[data-project-action="toggle"]');
-    if (projectToggle) {
-      const detailRow = projectToggle.closest("tr.inline-detail-row");
-      if (!detailRow || !state.selectedUser) {
-        return;
-      }
-
-      const nextProject = projectToggle.dataset.project;
-      const sameProject =
-        state.selectedProject &&
-        state.selectedProject.usuario === state.selectedUser.usuario &&
-        state.selectedProject.proyecto === nextProject;
-
-      state.selectedProject = sameProject
-        ? null
-        : {
-            usuario: state.selectedUser.usuario,
-            proyecto: nextProject,
-          };
-      render();
-      const developer = currentDeveloper(state.selectedUser.usuario);
-      if (developer) {
-        await ensureDetailsForUser(developer);
-      }
-      return;
-    }
-
-    if (event.target.closest('[data-detail-action="close"]')) {
-      state.selectedUser = null;
-      state.selectedProject = null;
-      render();
-      return;
-    }
-
+  on(els.developerRows, "click", (event) => {
     if (event.target.closest("a")) {
       return;
     }
-
-    if (event.target.closest(".inline-detail-row")) {
-      return;
-    }
-
     const row = event.target.closest("tr[data-user]");
     if (!row) {
       return;
     }
-
-    const selected =
-      state.selectedUser &&
-      state.selectedUser.usuario === row.dataset.user;
-    const developer = currentDeveloper(row.dataset.user);
-    state.selectedUser = selected || !developer
-      ? null
-      : {
-          usuario: developer.usuario,
-          orgs: developer.orgs,
-        };
-    state.selectedProject = null;
-    render();
-    if (developer && state.selectedUser) {
-      await ensureDetailsForUser(developer);
-    }
+    const params = new URLSearchParams({ username: row.dataset.user });
+    params.set("username", row.dataset.user);
+    if (state.org !== "all") params.set("org", state.org);
+    if (state.project !== "all") params.set("project", state.project);
+    window.location.href = `user.html?${params.toString()}`;
   });
 }
 

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Contributor profile showing PR activity across crypto open-source ecosystems." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Contributor Profile – Proof of Contribution" />
+    <meta property="og:description" content="Dedicated contributor profile with timeline, PR history, and ecosystem breakdown." />
+    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Contributor Profile – Proof of Contribution</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+    <link rel="stylesheet" href="./styles.css?v=20260628-1" />
+    <link rel="stylesheet" href="./user.css" />
+    <script src="./theme.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-lockup">
+        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <div class="brand-copy">
+          <p class="eyebrow">A proof-of-contribution layer for open-source ecosystems.</p>
+          <h2>Proof of Contribution</h2>
+        </div>
+      </div>
+      <div class="header-side">
+        <nav class="header-nav" aria-label="Project">
+          <a href="../">Home</a>
+          <a href="./">Dashboard</a>
+          <a href="./stats.html">Statistics</a>
+          <a href="./about.html">About</a>
+          <a href="./faq.html">FAQ</a>
+          <a class="repo-link" href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer" aria-label="GitHub Repository">
+            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+          </a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </nav>
+        <div class="status" id="dataStatus" aria-live="polite" aria-atomic="true"></div>
+      </div>
+    </header>
+
+    <main class="shell">
+
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="./" id="backLink">Dashboard</a>
+        <span aria-hidden="true"> / </span>
+        <span id="breadcrumbUser">Contributor</span>
+      </nav>
+
+      <div id="loadState" class="user-load-state" aria-live="polite">
+        <div class="spinner"></div>
+        <span>Loading profile…</span>
+      </div>
+
+      <div id="profileContent" hidden>
+
+        <div id="userNotFound" hidden>
+          <div class="not-found-card">
+            <h2>User not found</h2>
+            <p>This contributor was not found in the current dataset.</p>
+            <a href="./" class="btn">Back to Dashboard</a>
+          </div>
+        </div>
+
+        <section class="profile-hero" aria-label="Contributor overview">
+          <div class="profile-avatar">
+            <img id="avatarImg" src="" alt="" />
+          </div>
+          <div class="profile-hero-body">
+            <h1 id="profileUsername">–</h1>
+            <p id="profileEcosystem" class="profile-ecosystem">–</p>
+            <div class="profile-hero-actions">
+              <a id="ghProfileLink" href="#" target="_blank" rel="noreferrer" class="btn-outline">GitHub Profile</a>
+            </div>
+          </div>
+          <div class="profile-hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-value" id="heroPrs">–</span>
+              <span class="hero-stat-label">PRs merged</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value" id="heroProjects">–</span>
+              <span class="hero-stat-label">Projects</span>
+            </div>
+            <div class="hero-stat">
+              <span class="hero-stat-value" id="heroOrgs">–</span>
+              <span class="hero-stat-label">Ecosystems</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="profile-stats-grid" aria-label="Contributor details">
+          <div class="profile-stat-card">
+            <span class="pstat-label">First contribution</span>
+            <strong class="pstat-value" id="firstContrib">–</strong>
+          </div>
+          <div class="profile-stat-card">
+            <span class="pstat-label">Latest contribution</span>
+            <strong class="pstat-value" id="latestContrib">–</strong>
+          </div>
+          <div class="profile-stat-card">
+            <span class="pstat-label">Total PRs</span>
+            <strong class="pstat-value" id="totalPrsStat">–</strong>
+          </div>
+          <div class="profile-stat-card">
+            <span class="pstat-label">Orgs contributed to</span>
+            <strong class="pstat-value" id="orgsList">–</strong>
+          </div>
+        </section>
+
+        <div class="profile-sections">
+
+          <section class="profile-section-card" aria-label="Activity timeline">
+            <div class="ps-head">
+              <h3>Timeline</h3>
+              <span id="timelineInfo">Last 12 active months</span>
+            </div>
+            <div class="timeline-chart" id="timelineChart">
+              <div class="project-empty" id="timelineEmpty">No dated PRs found.</div>
+              <div class="timeline-y-axis" id="timelineYAxis" aria-hidden="true" hidden></div>
+              <div class="timeline-bars" id="timelineBars" hidden></div>
+            </div>
+          </section>
+
+          <section class="profile-section-card" aria-label="Recent pull requests">
+            <div class="ps-head">
+              <h3>Recent PRs</h3>
+              <span id="recentPrCount">0 total</span>
+            </div>
+            <div class="recent-pr-list" id="recentPrList">
+              <div class="project-empty">No recent PRs found.</div>
+            </div>
+          </section>
+
+          <section class="profile-section-card profile-section-wide" aria-label="Repositories">
+            <div class="ps-head">
+              <h3>Repositories</h3>
+              <span id="repoCount">0 repos</span>
+            </div>
+            <div class="detail-list" id="repoList">
+              <div class="project-empty">Loading project data…</div>
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <footer class="site-footer">
+      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+    </footer>
+
+    <script src="./user.js?v=20260628-1"></script>
+  </body>
+</html>
