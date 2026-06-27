@@ -21,7 +21,7 @@ on:
     # every 12 hours. Low-activity ecosystems are only refreshed in the
     # same pass (no separate schedule needed). Cadence can be tuned per
     # ecosystem via the `config` dict in scripts/refresh_data.py.
-    - cron: "17 */12 * * *"
+    - cron: "17 */2 * * *"
 
 permissions:
   contents: write
