@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./styles.css?v=20260628-1" />
     <link rel="stylesheet" href="./user.css" />
     <script src="./theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   </head>
   <body>
     <header class="topbar">
@@ -113,17 +114,36 @@
           </div>
         </section>
 
+        <section class="chart-grid" aria-label="Contribution charts">
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>PRs by Ecosystem</h3>
+              <span>Distribution across ecosystems</span>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="chartEcosystems"></canvas>
+            </div>
+          </div>
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h3>Top Projects</h3>
+              <span>Most contributed repositories</span>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="chartProjects"></canvas>
+            </div>
+          </div>
+        </section>
+
         <div class="profile-sections">
 
           <section class="profile-section-card" aria-label="Activity timeline">
             <div class="ps-head">
-              <h3>Timeline</h3>
-              <span id="timelineInfo">Last 12 active months</span>
+              <h3>Monthly Trend</h3>
+              <span id="timelineInfo">PRs per month</span>
             </div>
-            <div class="timeline-chart" id="timelineChart">
-              <div class="project-empty" id="timelineEmpty">No dated PRs found.</div>
-              <div class="timeline-y-axis" id="timelineYAxis" aria-hidden="true" hidden></div>
-              <div class="timeline-bars" id="timelineBars" hidden></div>
+            <div class="chart-wrap" style="padding:0 14px 14px;">
+              <canvas id="chartTrend"></canvas>
             </div>
           </section>
 
@@ -134,16 +154,6 @@
             </div>
             <div class="recent-pr-list" id="recentPrList">
               <div class="project-empty">No recent PRs found.</div>
-            </div>
-          </section>
-
-          <section class="profile-section-card profile-section-wide" aria-label="Repositories">
-            <div class="ps-head">
-              <h3>Repositories</h3>
-              <span id="repoCount">0 repos</span>
-            </div>
-            <div class="detail-list" id="repoList">
-              <div class="project-empty">Loading project data…</div>
             </div>
           </section>
 

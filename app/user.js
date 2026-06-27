@@ -34,6 +34,18 @@ function orgLabel(org) {
   return ORG_LABELS[key] || (key.charAt(0).toUpperCase() + key.slice(1));
 }
 
+const ORG_COLORS = {
+  ethereum: "#3b82f6", bitcoin: "#f59e0b", bnb: "#e3a00d",
+  uniswap: "#a855f7", ripple: "#0ea5e9", aave: "#8b5cf6",
+  doge: "#ca8a04", hype: "#06b6d4", tron: "#ef4444",
+  cardano: "#0033ad", stellar: "#000000", link: "#2a5ada",
+  solana: "#14f195",
+};
+
+function orgColor(org) {
+  return ORG_COLORS[(org || "").toLowerCase()] || "#6366f1";
+}
+
 const $ = (id) => document.getElementById(id);
 
 function formatNumber(n) {
@@ -120,6 +132,7 @@ const state = {
   summaryUser: null,
   detailRows: new Map(),
   orgsLoaded: new Set(),
+  charts: [],
 };
 
 // ── URL params ────────────────────────────────────────
@@ -222,7 +235,6 @@ async function ensureDetails(user) {
   if (sources.length === 0) return;
 
   sources.forEach(s => state.orgsLoaded.add(s.org));
-  showRepoLoading();
 
   const results = await Promise.allSettled(sources.map(s =>
     fetchCsv(s.url).then(rows => ({ org: s.org, rows }))
@@ -249,7 +261,7 @@ async function ensureDetails(user) {
   renderDetails(user);
 }
 
-function userPullRows(user) {
+function userPullRows() {
   const all = [];
   state.detailRows.forEach(rows => all.push(...rows));
   return all.sort((a, b) => {
@@ -259,69 +271,183 @@ function userPullRows(user) {
   });
 }
 
-function projectBreakdown(pullRows, user) {
-  const counts = new Map();
-  pullRows.filter(r => r.usuario.toLowerCase() === user.usuario).forEach(r => {
-    const p = r.proyecto || "All projects";
-    if (!counts.has(p)) counts.set(p, { nPrs: 0, orgs: new Set() });
-    const item = counts.get(p);
-    item.nPrs += 1;
-    if (r.org) item.orgs.add(r.org);
-  });
-  return [...counts.entries()]
-    .map(([project, item]) => ({ project, nPrs: item.nPrs, orgs: [...item.orgs].sort() }))
-    .sort((a, b) => b.nPrs - a.nPrs || a.project.localeCompare(b.project));
+function destroyCharts() {
+  state.charts.forEach(c => c.destroy());
+  state.charts = [];
 }
 
-function showRepoLoading() {
-  $("repoList").innerHTML = `<div class="project-empty">Loading detailed data…</div>`;
-}
+function renderCharts(pulls, user) {
+  destroyCharts();
 
-function renderDetails(user) {
-  const pulls = userPullRows(user);
-  const dated = pulls.filter(r => r.merged_at || r.merged_date);
-  const firstPR = dated.at(-1);
-  const lastPR = dated[0];
+  const isDark = document.documentElement.classList.contains("dark");
+  const textColor = isDark ? "#94a3b8" : "#687586";
+  const gridColor = isDark ? "rgba(255,255,255,0.05)" : "#f0f0f0";
+  const tooltipOpts = {
+    enabled: true,
+    backgroundColor: isDark ? "rgba(17,24,39,0.95)" : "rgba(255,255,255,0.95)",
+    titleColor: isDark ? "#f9fafb" : "#111827",
+    bodyColor: isDark ? "#d1d5db" : "#4b5563",
+    borderColor: isDark ? "#374151" : "#e5e7eb",
+    borderWidth: 1,
+    padding: 10,
+    cornerRadius: 8,
+  };
 
-  const timelineCounts = new Map();
-  dated.forEach(r => {
-    const key = monthKey(r.merged_at || r.merged_date);
-    if (key) timelineCounts.set(key, (timelineCounts.get(key) || 0) + 1);
+  // ── 1. Doughnut: PRs by ecosystem ────────────────
+  const orgCounts = new Map();
+  pulls.forEach(r => {
+    const o = r.org || "other";
+    orgCounts.set(o, (orgCounts.get(o) || 0) + 1);
   });
-  const timeline = [...timelineCounts.entries()]
-    .sort(([a], [b]) => a.localeCompare(b)).slice(-12)
-    .map(([key, count]) => ({ key, count }));
-  const maxCount = Math.max(...timeline.map(t => t.count), 1);
-
-  // Timeline
-  const yAxis = $("timelineYAxis");
-  const bars = $("timelineBars");
-  const empty = $("timelineEmpty");
-  if (timeline.length > 0) {
-    empty.hidden = true;
-    yAxis.hidden = false;
-    yAxis.innerHTML = `<span>${formatNumber(maxCount)}</span><span>${formatNumber(Math.ceil(maxCount / 2))}</span><span>0</span>`;
-    bars.hidden = false;
-    bars.style.gridTemplateColumns = `repeat(${timeline.length}, minmax(0, 1fr))`;
-    bars.innerHTML = timeline.map(item => {
-      const label = monthLabel(item.key);
-      const val = `${formatNumber(item.count)} ${pluralizePr(item.count)}`;
-      return `<button type="button" class="timeline-bar" aria-label="${escapeHtml(label + ': ' + val)}" data-tooltip="${escapeHtml(label + ': ' + val)}">
-        <span class="timeline-track">
-          <span class="timeline-fill" style="height: ${Math.max((item.count / maxCount) * 100, 8)}%"></span>
-        </span>
-        <span class="timeline-label">${escapeHtml(label)}</span>
-      </button>`;
-    }).join("");
-  } else {
-    empty.hidden = false;
-    yAxis.hidden = true;
-    bars.hidden = true;
+  const orgEntries = [...orgCounts.entries()].sort((a, b) => b[1] - a[1]);
+  const ecoCtx = document.getElementById("chartEcosystems");
+  if (orgEntries.length > 0 && ecoCtx) {
+    state.charts.push(new Chart(ecoCtx, {
+      type: "doughnut",
+      data: {
+        labels: orgEntries.map(([org]) => orgLabel(org)),
+        datasets: [{
+          data: orgEntries.map(([, c]) => c),
+          backgroundColor: orgEntries.map(([org]) => orgColor(org)),
+          borderWidth: 0,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        cutout: "55%",
+        plugins: {
+          legend: {
+            position: "right",
+            labels: { color: textColor, boxWidth: 12, padding: 12, font: { size: 11 } },
+          },
+          tooltip: {
+            ...tooltipOpts,
+            callbacks: {
+              label: ctx => ` ${ctx.label}: ${formatNumber(ctx.parsed)} ${pluralizePr(ctx.parsed)}`,
+            },
+          },
+        },
+      },
+    }));
   }
 
-  // Recent PRs
+  // ── 2. Horizontal bar: Top 10 projects ────────────
+  const projectCounts = new Map();
+  pulls.forEach(r => {
+    const p = r.proyecto || "unknown";
+    projectCounts.set(p, (projectCounts.get(p) || 0) + 1);
+  });
+  const topProjects = [...projectCounts.entries()]
+    .sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const projCtx = document.getElementById("chartProjects");
+  if (topProjects.length > 0 && projCtx) {
+    state.charts.push(new Chart(projCtx, {
+      type: "bar",
+      data: {
+        labels: topProjects.map(([p]) => p),
+        datasets: [{
+          data: topProjects.map(([, c]) => c),
+          backgroundColor: topProjects.map(() => (isDark ? "#6366f1" : "#4f46e5")),
+          borderRadius: 4,
+        }],
+      },
+      options: {
+        indexAxis: "y",
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            ...tooltipOpts,
+            callbacks: {
+              label: ctx => ` ${formatNumber(ctx.parsed)} ${pluralizePr(ctx.parsed)}`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { color: gridColor },
+            ticks: { color: textColor, font: { size: 10 } },
+            beginAtZero: true,
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: textColor, font: { size: 10 } },
+          },
+        },
+      },
+    }));
+  }
+
+  // ── 3. Line: Monthly trend ────────────────────────
+  const dated = pulls.filter(r => r.merged_at || r.merged_date);
+  const monthBuckets = new Map();
+  dated.forEach(r => {
+    const key = monthKey(r.merged_at || r.merged_date);
+    if (key) monthBuckets.set(key, (monthBuckets.get(key) || 0) + 1);
+  });
+  const sortedMonths = [...monthBuckets.entries()].sort(([a], [b]) => a.localeCompare(b));
+  const trendCtx = document.getElementById("chartTrend");
+  if (sortedMonths.length > 0 && trendCtx) {
+    const lineColor = isDark ? "#818cf8" : "#4f46e5";
+    const fillColor = isDark ? "rgba(99,102,241,0.15)" : "rgba(79,70,229,0.12)";
+    const pointColor = isDark ? "#a5b4fc" : "#6366f1";
+    state.charts.push(new Chart(trendCtx, {
+      type: "line",
+      data: {
+        labels: sortedMonths.map(([k]) => monthLabel(k)),
+        datasets: [{
+          data: sortedMonths.map(([, c]) => c),
+          borderColor: lineColor,
+          backgroundColor: fillColor,
+          fill: true,
+          tension: 0.25,
+          pointBackgroundColor: pointColor,
+          pointRadius: 3,
+          pointHoverRadius: 6,
+          pointBorderWidth: 0,
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            ...tooltipOpts,
+            callbacks: {
+              label: ctx => ` ${formatNumber(ctx.parsed)} ${pluralizePr(ctx.parsed)}`,
+            },
+          },
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              color: textColor,
+              font: { size: 10 },
+              maxTicksLimit: 12,
+            },
+          },
+          y: {
+            grid: { color: gridColor },
+            ticks: {
+              color: textColor,
+              font: { size: 10 },
+              precision: 0,
+            },
+            beginAtZero: true,
+          },
+        },
+      },
+    }));
+  }
+}
+
+function renderRecentPrs(pulls) {
   const recentEl = $("recentPrList");
-  const recent = pulls.slice(0, 6);
+  const recent = pulls.slice(0, 10);
   $("recentPrCount").textContent = `${formatNumber(pulls.length)} total`;
   if (recent.length > 0) {
     recentEl.innerHTML = recent.map(pr =>
@@ -333,39 +459,20 @@ function renderDetails(user) {
   } else {
     recentEl.innerHTML = `<div class="project-empty">No recent PRs found.</div>`;
   }
+}
 
-  // Repos
-  const projects = projectBreakdown(pulls, user);
-  $("repoCount").textContent = `${formatNumber(projects.length)} repos`;
-  const repoEl = $("repoList");
-  if (projects.length > 0) {
-    repoEl.innerHTML = projects.map(({ project, nPrs, orgs }) =>
-      `<div class="project-item expanded">
-        <div class="project-toggle" aria-expanded="true">
-          <span>
-            <span class="detail-name">${escapeHtml(project)}</span>
-            <span class="detail-meta">${escapeHtml(orgs.map(orgLabel).join(", "))}</span>
-          </span>
-          <span class="project-summary">
-            <span class="detail-prs">${formatNumber(nPrs)} ${pluralizePr(nPrs)}</span>
-          </span>
-        </div>
-        <div class="project-pr-list">
-          ${pulls.filter(r => r.proyecto === project).slice(0, 20).map(pr =>
-            `<a class="project-pr-link" href="${escapeHtml(pr.url)}" target="_blank" rel="noreferrer">
-              <span class="project-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "Untitled PR")}</span>
-              <span class="project-pr-meta">${escapeHtml(pr.merged_date || pr.merged_at || "")}</span>
-            </a>`
-          ).join("")}
-          ${pulls.filter(r => r.proyecto === project).length > 20
-            ? `<div class="project-empty">+ ${formatNumber(pulls.filter(r => r.proyecto === project).length - 20)} more PRs</div>`
-            : ""}
-        </div>
-      </div>`
-    ).join("");
-  } else {
-    repoEl.innerHTML = `<div class="project-empty">No PR detail data available.</div>`;
-  }
+function renderDetails(user) {
+  const pulls = userPullRows();
+  const dated = pulls.filter(r => r.merged_at || r.merged_date);
+
+  // Update timeline info
+  $("timelineInfo").textContent = `${formatNumber(pulls.length)} total PRs`;
+
+  // Charts
+  renderCharts(pulls, user);
+
+  // Recent PRs
+  renderRecentPrs(pulls);
 }
 
 // ── Init ──────────────────────────────────────────────
@@ -401,6 +508,17 @@ async function init() {
 
     // Load detail CSVs in background
     ensureDetails(user);
+
+    // Re-render charts on theme toggle
+    const themeToggle = document.getElementById("themeToggle");
+    if (themeToggle) {
+      themeToggle.addEventListener("click", () => {
+        setTimeout(() => {
+          const pulls = userPullRows();
+          if (pulls.length > 0) renderCharts(pulls, state.summaryUser);
+        }, 80);
+      });
+    }
   } catch (err) {
     $("loadState").hidden = true;
     const statusEl = $("dataStatus");

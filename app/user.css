@@ -190,6 +190,57 @@
   margin: 2px 3px 2px 0;
 }
 
+/* ── Chart grid ─────────────────────────────────────── */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding: 20px 0;
+}
+
+.chart-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px 10px;
+}
+
+.chart-card-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--ink-strong);
+}
+
+.chart-card-header span {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.chart-wrap {
+  position: relative;
+  padding: 6px 10px 14px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-wrap canvas {
+  max-width: 100%;
+  max-height: 240px;
+}
+
 /* ── Profile sections ───────────────────────────────── */
 .profile-sections {
   display: grid;
@@ -233,10 +284,7 @@
   white-space: nowrap;
 }
 
-/* Reuse existing detail-list, project-item, recent-pr-list styles */
-.profile-section-card .recent-pr-list,
-.profile-section-card .detail-list,
-.profile-section-card .timeline-chart {
+.profile-section-card .recent-pr-list {
   padding: 14px 20px 18px;
 }
 
@@ -254,6 +302,9 @@
   .profile-stats-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .chart-grid {
+    grid-template-columns: 1fr;
+  }
   .profile-sections {
     grid-template-columns: 1fr;
   }
@@ -266,5 +317,8 @@
   .profile-hero-stats {
     flex-wrap: wrap;
     gap: 12px;
+  }
+  .chart-wrap canvas {
+    max-height: 200px;
   }
 }
