@@ -353,6 +353,24 @@ function orgLabel(org) {
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
 }
 
+const ORG_COLORS = {
+  ethereum: "#3b82f6", bitcoin: "#f59e0b", bnb: "#e3a00d",
+  uniswap: "#a855f7", ripple: "#0ea5e9", aave: "#8b5cf6",
+  doge: "#ca8a04", hype: "#06b6d4", tron: "#ef4444",
+  cardano: "#0033ad", stellar: "#000000", link: "#2a5ada",
+  solana: "#14f195", base: "#0052ff",
+};
+
+function orgColor(org) {
+  return ORG_COLORS[(org || "").toLowerCase()] || "#6366f1";
+}
+
+function orgTagMarkup(org) {
+  const key = org.toLowerCase();
+  const color = orgColor(key);
+  return `<span class="tag"><span class="tag-dot" style="background:${color}"></span>${escapeHtml(orgLabel(org))}</span>`;
+}
+
 function orgTagClass(org) {
   return org === "all" ? "org-all" : org;
 }
@@ -454,12 +472,9 @@ function renderDevelopers(developers) {
       if (row.orgs.length > 1) {
         const primaryOrg = row.orgs[0];
         const otherOrgs = row.orgs.slice(1).map(orgLabel).join(", ");
-        orgTags = `<span class="tag ${escapeHtml(primaryOrg.toLowerCase())}">${escapeHtml(orgLabel(primaryOrg))}</span> ` +
-                 `<span class="tag plus-tag" title="Also active in: ${escapeHtml(otherOrgs)}">+${row.orgs.length - 1}</span>`;
+        orgTags = `${orgTagMarkup(primaryOrg)} <span class="tag plus-tag" title="Also active in: ${escapeHtml(otherOrgs)}">+${row.orgs.length - 1}</span>`;
       } else {
-        orgTags = row.orgs
-          .map((org) => `<span class="tag ${escapeHtml(org.toLowerCase())}">${escapeHtml(orgLabel(org))}</span>`)
-          .join(" ");
+        orgTags = row.orgs.map(orgTagMarkup).join(" ");
       }
       return `
         <tr

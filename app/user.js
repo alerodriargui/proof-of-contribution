@@ -222,7 +222,10 @@ function renderStatCards(user) {
   $("firstContrib").textContent = user.firstDate;
   $("latestContrib").textContent = user.latestDate;
   $("totalPrsStat").textContent = formatNumber(user.n_prs);
-  const orgLinks = user.orgs.map(o => `<span class="tag ${escapeHtml(o)}">${escapeHtml(orgLabel(o))}</span>`).join(" ");
+  const orgLinks = user.orgs.map(o => {
+    const c = orgColor(o);
+    return `<span class="tag"><span class="tag-dot" style="background:${c}"></span>${escapeHtml(orgLabel(o))}</span>`;
+  }).join(" ");
   $("orgsList").innerHTML = orgLinks;
 }
 

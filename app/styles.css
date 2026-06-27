@@ -844,50 +844,42 @@ select:focus {
 .tag {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  height: 24px;
-  min-width: 24px;
+  gap: 5px;
+  height: 22px;
   line-height: normal;
   max-width: 220px;
-  border-radius: 999px;
-  padding: 0 10px;
-  background: #edf6f4;
-  color: var(--green);
-  font-size: 0.82rem;
-  font-weight: 800;
+  border-radius: 6px;
+  padding: 0 7px;
+  background: #f1f2f3;
+  color: var(--ink-strong);
+  font-size: 0.78rem;
+  font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   vertical-align: middle;
 }
 
-.tag.ethereum { background: #eef4ff; color: #2364aa; }
-.tag.bitcoin { background: #fff5dc; color: #a16207; }
-.tag.aave { background: #f1efff; color: #6f45d8; }
-.tag.base { background: #eaf3ff; color: #1459d9; }
-.tag.uniswap { background: #f5efff; color: #7a3cff; }
-.tag.ripple { background: #eef9ff; color: #0b5fff; }
-.tag.bnb { background: #fff7e8; color: #e39c0d; }
-.tag.link,
-.tag.smartcontractkit { background: #edf3ff; color: #2a5ada; }
-.tag.solana,
-.tag.solana-labs { background: #e7fff6; color: #087a5b; }
+.tag-dot {
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
 
-.tag.stellar { background: #000000; color: #ffffff; }
+.tag.plus-tag {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0 6px;
+  gap: 0;
+  cursor: default;
+}
 
-.dark .tag { background: rgba(255, 255, 255, 0.05); color: var(--muted); }
-.dark .tag.stellar { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
-.dark .tag.ethereum { background: rgba(56, 189, 248, 0.1); color: #38bdf8; }
-.dark .tag.bitcoin { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
-.dark .tag.aave { background: rgba(139, 92, 246, 0.1); color: #a78bfa; }
-.dark .tag.base { background: rgba(0, 82, 255, 0.1); color: #60a5fa; }
-.dark .tag.uniswap { background: rgba(255, 0, 122, 0.1); color: #fb7185; }
-.dark .tag.ripple { background: rgba(35, 41, 47, 0.1); color: #94a3b8; }
-.dark .tag.bnb { background: rgba(227, 156, 13, 0.1); color: #fbbf24; }
-.dark .tag.link,
-.dark .tag.smartcontractkit { background: rgba(42, 90, 218, 0.16); color: #93c5fd; }
-.dark .tag.solana,
-.dark .tag.solana-labs { background: rgba(20, 241, 149, 0.12); color: #5eead4; }
-.dark .tag.plus-tag { background: rgba(255, 255, 255, 0.05); color: var(--muted); border-color: rgba(255, 255, 255, 0.1); }
+.dark .tag { background: rgba(255, 255, 255, 0.07); }
+.dark .tag.plus-tag { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.08); }
 
 .faq-section {
   margin-top: 18px;
