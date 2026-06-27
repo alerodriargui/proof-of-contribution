@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-27T12:01:43Z",
+  "generated_at": "2026-06-27T14:17:41Z",
   "total_repos_processed": 10,
   "total_merged_prs": 200,
   "ecosystems": [
@@ -14,16 +14,16 @@
       "prs_after_merge": 1601,
       "api_request_count": 11,
       "rate_limit_remaining": "4082",
-      "rate_limit_reset": "1782564475",
-      "started_at": "2026-06-27T12:01:32.616842+00:00",
-      "finished_at": "2026-06-27T12:01:43.355363+00:00",
-      "duration_seconds": 10.74,
+      "rate_limit_reset": "1782572938",
+      "started_at": "2026-06-27T14:17:34.859118+00:00",
+      "finished_at": "2026-06-27T14:17:41.961210+00:00",
+      "duration_seconds": 7.1,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "dogecoin",
         "last_merged_at": "2026-05-12T02:42:33Z",
-        "last_run_at": "2026-06-27T12:01:43Z",
+        "last_run_at": "2026-06-27T14:17:41Z",
         "total_prs": 1601,
         "incremental": true,
         "overlap_hours": 48.0
