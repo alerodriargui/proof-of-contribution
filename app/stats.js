@@ -50,9 +50,11 @@ function isBot(login) {
 const statsState = {
   // aggregated PR counts: Map<orgId, Map<dayKey, number>>
   aggregatedPrs: new Map(),
+  // aggregated PR counts excluding bots: Map<orgId, Map<dayKey, number>>
+  aggregatedPrsExBots: new Map(),
   // aggregated projects: Map<orgId, Map<dayKey, Map<projectName, number>>>
   projectActivity: new Map(),
-  // user data: Map<usuario, { firstSeen: Date, orgs: Set }>
+  // user data: Map<usuario, { firstSeen: Date, orgs: Set, prCount: number, isBot: boolean }>
   userData: new Map(),
   // which orgs are currently visible
   activeOrgs: new Set(NETWORKS.map((n) => n.id)),
@@ -159,13 +161,14 @@ function cutoffDate(range) {
 
 // ── Data processing ───────────────────────────────────
 function buildTimeSeries() {
-  const { aggregatedPrs, userData, activeOrgs, range, gran } = statsState;
+  const { aggregatedPrs, aggregatedPrsExBots, userData, activeOrgs, range, gran, hideBots } = statsState;
   const cutoff = cutoffDate(range);
+  const effectivePrs = hideBots ? aggregatedPrsExBots : aggregatedPrs;
 
   const allKeys = new Set();
   const orgBuckets = new Map();
 
-  aggregatedPrs.forEach((days, org) => {
+  effectivePrs.forEach((days, org) => {
     if (!activeOrgs.has(org)) return;
     const buckets = new Map();
     orgBuckets.set(org, buckets);
@@ -196,14 +199,23 @@ function buildTimeSeries() {
       borderWidth: 2,
       pointRadius: sortedKeys.length > 60 ? 0 : 3,
       pointHoverRadius: 5,
-      tension: 0, // Performance: Straight lines are faster to draw
+      tension: 0,
       fill: false,
     });
   });
 
+  // Build a filtered user list applying hideBots + activeOrgs
+  const filteredUsers = [];
+  userData.forEach((data) => {
+    if (hideBots && data.isBot) return;
+    const activeUserOrgs = [...data.orgs].filter(o => activeOrgs.has(o));
+    if (activeUserOrgs.length === 0) return;
+    filteredUsers.push(data);
+  });
+
   const newContribBuckets = new Map();
   let totalContribBeforeCutoff = 0;
-  userData.forEach((data) => {
+  filteredUsers.forEach((data) => {
     const { firstSeen } = data;
     if (cutoff && firstSeen < cutoff) {
       totalContribBeforeCutoff++;
@@ -225,7 +237,7 @@ function buildTimeSeries() {
   const totalPrPerBucket = new Map();
   let runningPrs = 0;
 
-  aggregatedPrs.forEach((days, org) => {
+  effectivePrs.forEach((days, org) => {
     if (!activeOrgs.has(org)) return;
     days.forEach((count, dayKey) => {
       const [y, m, d] = dayKey.split("-").map(Number);
@@ -246,25 +258,13 @@ function buildTimeSeries() {
   });
 
   // ── 5. Contributor Tiers (Experience) ────────────────
-  const userPrCounts = new Map();
-  statsState.projectActivity.forEach((days, org) => {
-    if (!activeOrgs.has(org)) return;
-    days.forEach((projectCounts) => {
-      // Note: projectActivity doesn't track users per project per day yet.
-      // I'll use a simpler approach: calculate PRs per user overall.
-    });
-  });
-
-  // Refined approach: use the userData which already tracks firstSeen and orgs.
-  // Wait, userData doesn't track total PRs per user. Let's fix loadAll first.
-  
   const tiers = { "1 PR": 0, "2-5 PRs": 0, "6-20 PRs": 0, "21+ PRs": 0 };
-  statsState.userData.forEach(u => {
+  filteredUsers.forEach(u => {
     const count = u.prCount || 0;
     if (count >= 21) tiers["21+ PRs"]++;
-    else if (count >= 6)  tiers["6-20 PRs"]++;
-    else if (count >= 2)  tiers["2-5 PRs"]++;
-    else if (count >= 1)  tiers["1 PR"]++;
+    else if (count >= 6) tiers["6-20 PRs"]++;
+    else if (count >= 2) tiers["2-5 PRs"]++;
+    else if (count >= 1) tiers["1 PR"]++;
   });
 
   const tierData = Object.keys(tiers).map(k => ({ label: k, value: tiers[k] }));
@@ -273,7 +273,7 @@ function buildTimeSeries() {
   const networkShare = NETWORKS.map(net => {
     if (!activeOrgs.has(net.id)) return { label: net.label, value: 0, color: net.color };
     let developers = 0;
-    statsState.userData.forEach((data) => {
+    filteredUsers.forEach((data) => {
       if (data.orgs.has(net.id)) developers++;
     });
     return { label: net.label, value: developers, color: net.color };
@@ -281,8 +281,7 @@ function buildTimeSeries() {
 
   // ── 7. Loyalty (Multi-network) ───────────────────────
   let singleNet = 0, multiNet = 0;
-  statsState.userData.forEach(data => {
-    // Only count if at least one of their orgs is active
+  filteredUsers.forEach(data => {
     const activeUserOrgs = [...data.orgs].filter(o => activeOrgs.has(o));
     if (activeUserOrgs.length === 1) singleNet++;
     else if (activeUserOrgs.length > 1) multiNet++;
@@ -290,12 +289,13 @@ function buildTimeSeries() {
 
   // ── 8. Day of Week ───────────────────────────────────
   const dowCounts = new Array(7).fill(0);
-  aggregatedPrs.forEach((days, org) => {
+  effectivePrs.forEach((days, org) => {
     if (!activeOrgs.has(org)) return;
     days.forEach((count, dayKey) => {
       const [y, m, d] = dayKey.split("-").map(Number);
-      const dow = new Date(Date.UTC(y, m - 1, d)).getUTCDay();
-      dowCounts[dow] += count;
+      const date = new Date(Date.UTC(y, m - 1, d));
+      if (cutoff && date < cutoff) return;
+      dowCounts[date.getUTCDay()] += count;
     });
   });
 
@@ -669,6 +669,19 @@ function bindGranButtons() {
   });
 }
 
+// ── Hide bots toggle ───────────────────────────────────
+function bindHideBotsToggle() {
+  const cb = $("hideBotsStats");
+  if (!cb) return;
+  cb.addEventListener("change", () => {
+    statsState.hideBots = cb.checked;
+    try {
+      localStorage.setItem(HIDE_BOTS_STORAGE_KEY, String(cb.checked));
+    } catch (_) { /* ignore */ }
+    renderCharts();
+  });
+}
+
 // ── Data loading ──────────────────────────────────────
 async function loadAll() {
   const loadState = $("statsLoadState");
@@ -689,7 +702,8 @@ async function loadAll() {
   results.forEach((result) => {
     if (result.status === "fulfilled") {
       const { org, rows } = result.value;
-      const days = new Map();
+      const daysAll = new Map();
+      const daysExBots = new Map();
       const projectDays = new Map(); // dayKey -> Map<projectName, count>
 
       rows.forEach((row) => {
@@ -697,12 +711,17 @@ async function loadAll() {
         const usuario = (row.usuario || row.user || "").trim();
         const project = (row.proyecto || "unknown").trim();
         if (!date || !usuario) return;
-        if (statsState.hideBots && isBot(usuario)) return;
 
+        const isBotUser = isBot(usuario);
         const dayKey = `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}-${String(date.getUTCDate()).padStart(2, "0")}`;
 
-        // 1. Aggregated PRs per day
-        days.set(dayKey, (days.get(dayKey) || 0) + 1);
+        // 1. Aggregated PRs per day (all PRs)
+        daysAll.set(dayKey, (daysAll.get(dayKey) || 0) + 1);
+
+        // 1b. Aggregated PRs per day (excluding bots)
+        if (!isBotUser) {
+          daysExBots.set(dayKey, (daysExBots.get(dayKey) || 0) + 1);
+        }
 
         // 2. Project activity per day
         if (!projectDays.has(dayKey)) projectDays.set(dayKey, new Map());
@@ -711,7 +730,7 @@ async function loadAll() {
 
         // 3. User mapping
         if (!statsState.userData.has(usuario)) {
-          statsState.userData.set(usuario, { firstSeen: date, orgs: new Set(), prCount: 0 });
+          statsState.userData.set(usuario, { firstSeen: date, orgs: new Set(), prCount: 0, isBot: isBotUser });
         }
         const u = statsState.userData.get(usuario);
         if (date < u.firstSeen) u.firstSeen = date;
@@ -719,7 +738,8 @@ async function loadAll() {
         u.prCount++;
       });
 
-      statsState.aggregatedPrs.set(org, days);
+      statsState.aggregatedPrs.set(org, daysAll);
+      statsState.aggregatedPrsExBots.set(org, daysExBots);
       statsState.projectActivity.set(org, projectDays);
       loaded++;
     }
@@ -740,6 +760,7 @@ async function loadAll() {
   renderNetworkToggles();
   bindTimeButtons();
   bindGranButtons();
+  bindHideBotsToggle();
   renderCharts();
 
   // Re-render charts when theme changes
