@@ -241,6 +241,12 @@
   max-height: 240px;
 }
 
+.trend-chart-wrap {
+  position: relative;
+  height: 220px;
+  padding: 0 14px 14px;
+}
+
 /* ── Profile sections ───────────────────────────────── */
 .profile-sections {
   display: grid;
