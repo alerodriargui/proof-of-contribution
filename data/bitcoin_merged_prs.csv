@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bitcoin,bitcoin,rkrux,https://avatars.githubusercontent.com/u/5960750?v=4,35543,test: introduce ExtendedPrivateKey and ExtendedPublicKey classes,2026-06-26T22:56:26Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35543
 bitcoin,bips,reflecttypefor,https://avatars.githubusercontent.com/u/230836907?v=4,2199,script: check link format in nested mediawiki files,2026-06-26T19:25:30Z,2026-06-26,https://github.com/bitcoin/bips/pull/2199
 bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,35602,doc: Clarify build docs about `pkgconf` / `pkg-config` requirements,2026-06-26T14:33:11Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35602
 bitcoin,bitcoin,brunoerg,https://avatars.githubusercontent.com/u/19480819?v=4,35220,fuzz: connman: strengthen assertions and extend coverage,2026-06-26T13:30:56Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35220

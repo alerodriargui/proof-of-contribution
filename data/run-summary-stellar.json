@@ -1,0 +1,33 @@
+{
+  "schema": "run-summary.v1",
+  "generated_at": "2026-06-27T04:40:13Z",
+  "total_repos_processed": 145,
+  "total_merged_prs": 4828,
+  "ecosystems": [
+    {
+      "org": "stellar",
+      "incremental": true,
+      "overlap_hours": 48.0,
+      "total_repos": 145,
+      "processed_repos": 145,
+      "prs_found": 4828,
+      "prs_after_merge": 27606,
+      "api_request_count": 147,
+      "rate_limit_remaining": "3689",
+      "rate_limit_reset": "1782535818",
+      "started_at": "2026-06-27T04:37:28.120254+00:00",
+      "finished_at": "2026-06-27T04:40:13.470386+00:00",
+      "duration_seconds": 165.35,
+      "skipped_repos": [],
+      "errors": [],
+      "checkpoint": {
+        "org": "stellar",
+        "last_merged_at": "2026-06-26T21:39:51Z",
+        "last_run_at": "2026-06-27T04:40:13Z",
+        "total_prs": 27606,
+        "incremental": true,
+        "overlap_hours": 48.0
+      }
+    }
+  ]
+}
