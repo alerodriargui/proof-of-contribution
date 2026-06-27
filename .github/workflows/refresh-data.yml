@@ -2,8 +2,25 @@ name: Refresh dashboard data
 
 on:
   workflow_dispatch:
+    inputs:
+      full:
+        type: boolean
+        default: false
+        description: "Skip incremental mode; perform a full historical scan"
+      sleep:
+        type: number
+        default: 0.1
+        description: "Seconds to pause between GitHub API requests"
+      rate_limit_threshold:
+        type: number
+        default: 100
+        description: "Minimum remaining API requests before pausing"
   schedule:
     # GitHub Actions schedules use UTC. Run away from the top of the hour.
+    # Active ecosystems (ethereum, bitcoin, solana, etc.) get fresh data
+    # every 12 hours. Low-activity ecosystems are only refreshed in the
+    # same pass (no separate schedule needed). Cadence can be tuned per
+    # ecosystem via the `config` dict in scripts/refresh_data.py.
     - cron: "17 */12 * * *"
 
 permissions:
@@ -32,7 +49,11 @@ jobs:
       - name: Refresh CSV files incrementally
         env:
           GITHUB_TOKEN: ${{ secrets.DATA_GITHUB_TOKEN || github.token }}
-        run: python scripts/refresh_data.py
+        run: |
+          python scripts/refresh_data.py \
+            ${{ inputs.full && '--full' || '' }} \
+            --sleep ${{ inputs.sleep || 0.1 }} \
+            --rate-limit-threshold ${{ inputs.rate_limit_threshold || 100 }}
 
       - name: Validate generated data
         run: python scripts/validate_data.py

@@ -59,7 +59,7 @@ def validate(path: Path) -> tuple[int, list[str]]:
 
 def main() -> int:
     failed = False
-    for _, filename_prefix in NETWORKS:
+    for _, filename_prefix, _ in NETWORKS:
         path = ROOT / "data" / f"{filename_prefix}_merged_prs.csv"
         row_count, errors = validate(path)
         if errors:
@@ -88,6 +88,30 @@ def main() -> int:
             print(f"{path.name}: INVALID (missing rows array)", file=sys.stderr)
         else:
             print(f"{path.name}: OK")
+
+    # Validate checkpoints exist with valid data
+    checkpoint_dir = ROOT / "data" / "checkpoints"
+    if not checkpoint_dir.exists():
+        print("checkpoints/: SKIP (directory does not exist; will be created on next refresh)", file=sys.stderr)
+    else:
+        cp_ok = True
+        for _, filename_prefix, _ in NETWORKS:
+            cp_path = checkpoint_dir / f"{filename_prefix}.json"
+            if not cp_path.exists():
+                cp_ok = False
+                print(f"checkpoints/{filename_prefix}.json: MISSING (will be created on next refresh)", file=sys.stderr)
+                continue
+            try:
+                data = json.loads(cp_path.read_text(encoding="utf-8"))
+                if not data.get("last_run_at"):
+                    cp_ok = False
+                    print(f"checkpoints/{filename_prefix}.json: WARN (missing last_run_at)", file=sys.stderr)
+            except json.JSONDecodeError as error:
+                cp_ok = False
+                print(f"checkpoints/{filename_prefix}.json: INVALID ({error})", file=sys.stderr)
+        if cp_ok:
+            print("checkpoints/: OK")
+
     return 1 if failed else 0
 
 

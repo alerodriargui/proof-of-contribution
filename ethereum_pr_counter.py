@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Count merged pull request authors across public repositories in GitHub orgs."""
+"""
+Count merged pull request authors across public repositories in GitHub orgs.
+
+Includes rate-limit monitoring, checkpoint persistence, retry with jitter,
+and structured run-summary output for safe incremental refresh cadences.
+"""
 
 from __future__ import annotations
 
@@ -7,6 +12,7 @@ import argparse
 import csv
 import json
 import os
+import random
 import sys
 import time
 from collections import Counter, defaultdict
@@ -28,10 +34,26 @@ DEFAULT_PR_OUTPUT = "data/{org}_merged_prs.csv"
 ENV_FILE = ".env"
 MAX_HTTP_ATTEMPTS = 5
 RETRYABLE_HTTP_CODES = {500, 502, 503, 504}
+DEFAULT_CHECKPOINT_DIR = "data/checkpoints"
+DEFAULT_RATE_LIMIT_THRESHOLD = 100
 
 
 class GitHubAPIError(RuntimeError):
     """Raised for GitHub API errors that should be reported cleanly."""
+
+
+# Global request counter for observability
+_api_request_count: int = 0
+
+
+def get_api_request_count() -> int:
+    global _api_request_count
+    return _api_request_count
+
+
+def increment_api_request_count() -> None:
+    global _api_request_count
+    _api_request_count += 1
 
 
 def parse_args() -> argparse.Namespace:
@@ -99,6 +121,25 @@ def parse_args() -> argparse.Namespace:
             "Hours to look back from the newest existing merged PR in incremental mode. "
             "Default: 48"
         ),
+    )
+    parser.add_argument(
+        "--rate-limit-threshold",
+        type=int,
+        default=DEFAULT_RATE_LIMIT_THRESHOLD,
+        help=(
+            "Minimum remaining API requests before the job pauses. "
+            "Default: %(default)s"
+        ),
+    )
+    parser.add_argument(
+        "--checkpoint-dir",
+        default=DEFAULT_CHECKPOINT_DIR,
+        help="Directory for per-org checkpoint JSON files. Default: %(default)s",
+    )
+    parser.add_argument(
+        "--run-summary-output",
+        default=None,
+        help="Write a machine-readable run summary JSON to this path.",
     )
     return parser.parse_args()
 
@@ -176,6 +217,33 @@ def parse_link_header(link_header: str | None) -> dict[str, str]:
     return links
 
 
+# Latest rate-limit info captured from the most recent API response
+_latest_rate_limit_remaining: str | None = None
+_latest_rate_limit_reset: str | None = None
+
+
+def get_rate_limit_info(headers: Any | None = None) -> tuple[str | None, str | None]:
+    global _latest_rate_limit_remaining, _latest_rate_limit_reset
+    if headers is not None:
+        rem = headers.get("X-RateLimit-Remaining")
+        rst = headers.get("X-RateLimit-Reset")
+        if rem is not None:
+            _latest_rate_limit_remaining = rem
+        if rst is not None:
+            _latest_rate_limit_reset = rst
+    return _latest_rate_limit_remaining, _latest_rate_limit_reset
+
+
+def get_rate_limit_remaining(headers: Any | None = None) -> int | None:
+    rem, _ = get_rate_limit_info(headers)
+    if rem is None:
+        return None
+    try:
+        return int(rem)
+    except (ValueError, TypeError):
+        return None
+
+
 def seconds_until_rate_reset(headers: Any) -> float:
     reset = headers.get("X-RateLimit-Reset")
     if reset:
@@ -220,6 +288,8 @@ def sleep_before_retry(
         delay = min(2**attempt, 30)
 
     delay = max(delay, sleep_seconds)
+    jitter = random.uniform(0.5, 1.5)
+    delay = delay * jitter
     print(
         f"Temporary GitHub API read error. Retrying in {delay:.1f}s "
         f"(attempt {attempt + 1}/{MAX_HTTP_ATTEMPTS})...",
@@ -233,10 +303,12 @@ def github_get_json(url: str, headers: dict[str, str], sleep_seconds: float) -> 
     attempt = 0
     while True:
         request = Request(url, headers=headers)
+        increment_api_request_count()
         try:
             with urlopen(request, timeout=60) as response:
                 payload = response.read().decode("utf-8")
                 response_headers = response.headers
+                get_rate_limit_info(response_headers)
                 maybe_wait_for_rate_limit(response_headers)
                 time.sleep(sleep_seconds)
                 return json.loads(payload), response_headers
@@ -581,6 +653,68 @@ def output_path_for_org(template: str, org: str) -> str:
     return template.format(org=org)
 
 
+def iso_now() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def load_checkpoint(checkpoint_dir: str, org: str) -> dict[str, Any]:
+    path = Path(checkpoint_dir) / f"{org}.json"
+    if not path.exists():
+        return {}
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def save_checkpoint(
+    checkpoint_dir: str, org: str, data: dict[str, Any]
+) -> None:
+    path = Path(checkpoint_dir) / f"{org}.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
+
+def make_run_summary(
+    org: str,
+    incremental: bool,
+    overlap_hours: float,
+    total_repos: int,
+    processed_repos: int,
+    prs_found: int,
+    prs_after_merge: int,
+    request_count: int,
+    rate_limit_remaining: str | None,
+    rate_limit_reset: str | None,
+    start_time: float,
+    end_time: float,
+    skipped_repos: list[str],
+    errors: list[str],
+    checkpoint: dict[str, Any] | None,
+) -> dict[str, Any]:
+    return {
+        "org": org,
+        "incremental": incremental,
+        "overlap_hours": overlap_hours,
+        "total_repos": total_repos,
+        "processed_repos": processed_repos,
+        "prs_found": prs_found,
+        "prs_after_merge": prs_after_merge,
+        "api_request_count": request_count,
+        "rate_limit_remaining": rate_limit_remaining,
+        "rate_limit_reset": rate_limit_reset,
+        "started_at": datetime.fromtimestamp(start_time, tz=timezone.utc).isoformat(),
+        "finished_at": datetime.fromtimestamp(end_time, tz=timezone.utc).isoformat(),
+        "duration_seconds": round(end_time - start_time, 2),
+        "skipped_repos": skipped_repos,
+        "errors": errors,
+        "checkpoint": checkpoint,
+    }
+
+
 def main() -> int:
     args = parse_args()
     orgs = selected_orgs(args.orgs)
@@ -597,11 +731,12 @@ def main() -> int:
     total_processed_repos = 0
     total_merged_prs = 0
     processed_any = False
+    run_summaries: list[dict[str, Any]] = []
 
     for org in orgs:
-        all_counts: dict[str, Counter[tuple[str, str]]] = {}
-        all_avatar_urls: dict[str, dict[str, str]] = {}
-        all_merged_prs: list[dict[str, int | str]] = []
+        org_request_count_before = get_api_request_count()
+        org_start = time.time()
+        checkpoint = load_checkpoint(args.checkpoint_dir, org)
         pr_output = output_path_for_org(args.pr_output, org)
         existing_prs = load_pr_csv(pr_output) if args.incremental else []
         updated_since = incremental_cutoff(existing_prs, args.overlap_hours)
@@ -620,6 +755,16 @@ def main() -> int:
             repositories = fetch_repositories(org, headers, args.sleep)
         except GitHubAPIError as exc:
             print(f"Failed to fetch repositories for {org}: {exc}", file=sys.stderr)
+            run_summaries.append(
+                make_run_summary(
+                    org, args.incremental, args.overlap_hours,
+                    0, 0, 0, 0,
+                    get_api_request_count() - org_request_count_before,
+                    None, None,
+                    org_start, time.time(),
+                    [], [str(exc)], checkpoint,
+                )
+            )
             continue
 
         if args.max_repos is not None:
@@ -627,18 +772,87 @@ def main() -> int:
 
         print(f"Found {len(repositories)} repositories.", flush=True)
 
-        counts, avatar_urls, merged_prs, processed_repos, total_prs = count_merged_pr_authors(
-            org,
-            repositories,
-            headers,
-            args.sleep,
-            updated_since=updated_since,
-            existing_projects={
-                str(row["proyecto"])
-                for row in existing_prs
-                if row.get("proyecto")
-            },
-        )
+        skipped_repos: list[str] = []
+        org_errors: list[str] = []
+        all_counts: dict[str, Counter[tuple[str, str]]] = {}
+        all_avatar_urls: dict[str, dict[str, str]] = {}
+        all_merged_prs: list[dict[str, int | str]] = []
+        existing_projects = {
+            str(row["proyecto"])
+            for row in existing_prs
+            if row.get("proyecto")
+        } if args.incremental else None
+
+        counts: Counter[tuple[str, str]] = Counter()
+        avatar_urls: dict[str, str] = {}
+        merged_prs: list[dict[str, int | str]] = []
+        processed_repos = 0
+        total_prs = 0
+        total_repos = len(repositories)
+
+        for index, repo in enumerate(repositories, start=1):
+            repo_name = repo.get("name")
+            if not repo_name:
+                print(f"Skipping repo {index}/{total_repos}: missing name", file=sys.stderr)
+                continue
+
+            print(f"Processing repo {index}/{total_repos}: {repo_name}", flush=True)
+            try:
+                repo_updated_since = (
+                    updated_since
+                    if existing_projects is None or repo_name in existing_projects
+                    else None
+                )
+                pulls = fetch_closed_pull_requests(
+                    org,
+                    repo_name,
+                    headers,
+                    args.sleep,
+                    updated_since=repo_updated_since,
+                )
+            except GitHubAPIError as exc:
+                print(f"Error processing {repo_name}: {exc}", file=sys.stderr, flush=True)
+                skipped_repos.append(repo_name)
+                org_errors.append(f"{repo_name}: {exc}")
+                continue
+
+            processed_repos += 1
+            for pull_request in pulls:
+                merged_at = pull_request.get("merged_at")
+                if merged_at is None:
+                    continue
+                user = pull_request.get("user") or {}
+                login = user.get("login")
+                if login:
+                    avatar_url_val = user.get("avatar_url") or ""
+                    counts[(repo_name, login)] += 1
+                    if avatar_url_val:
+                        avatar_urls[login] = avatar_url_val
+                    merged_prs.append(
+                        {
+                            "org": org,
+                            "proyecto": repo_name,
+                            "usuario": login,
+                            "avatar_url": avatar_url_val,
+                            "pr_number": pull_request.get("number") or "",
+                            "pr_title": pull_request.get("title") or "",
+                            "merged_at": merged_at,
+                            "merged_date": str(merged_at).split("T", 1)[0],
+                            "url": pull_request.get("html_url") or "",
+                        }
+                    )
+
+            # Check rate-limit budget after each repo
+            budget = get_rate_limit_remaining(headers)
+            if budget is not None and budget < args.rate_limit_threshold:
+                print(
+                    f"Rate limit remaining ({budget}) below threshold "
+                    f"({args.rate_limit_threshold}). Pausing {org}.",
+                    flush=True,
+                )
+                break
+
+        total_prs = sum(counts.values())
         all_counts[org] = counts
         all_avatar_urls[org] = avatar_urls
         all_merged_prs.extend(merge_pr_rows(existing_prs, merged_prs))
@@ -648,16 +862,41 @@ def main() -> int:
 
         write_pr_csv(pr_output, all_merged_prs)
 
-        if args.events_only:
-            print(f"Wrote {pr_output}", flush=True)
-            continue
+        if not args.events_only:
+            write_summary_csv(args.output, all_counts, all_avatar_urls)
+            write_project_csv(args.project_output, all_counts, all_avatar_urls)
+            print(f"Wrote {args.output}", flush=True)
+            print(f"Wrote {args.project_output}", flush=True)
 
-        write_summary_csv(args.output, all_counts, all_avatar_urls)
-        write_project_csv(args.project_output, all_counts, all_avatar_urls)
-
-        print(f"Wrote {args.output}", flush=True)
-        print(f"Wrote {args.project_output}", flush=True)
         print(f"Wrote {pr_output}", flush=True)
+
+        # Persist checkpoint
+        last_merged = max(
+            (str(r["merged_at"]) for r in all_merged_prs if r.get("merged_at")),
+            default=None,
+        )
+        cp_data = {
+            "org": org,
+            "last_merged_at": last_merged,
+            "last_run_at": iso_now(),
+            "total_prs": len(all_merged_prs),
+            "incremental": args.incremental,
+            "overlap_hours": args.overlap_hours,
+        }
+        save_checkpoint(args.checkpoint_dir, org, cp_data)
+
+        # Build run summary for this org
+        rate_limit_remaining, rate_limit_reset = get_rate_limit_info(headers)
+        run_summaries.append(
+            make_run_summary(
+                org, args.incremental, args.overlap_hours,
+                total_repos, processed_repos, total_prs, len(all_merged_prs),
+                get_api_request_count() - org_request_count_before,
+                rate_limit_remaining, rate_limit_reset,
+                org_start, time.time(),
+                skipped_repos, org_errors, cp_data,
+            )
+        )
 
     if not processed_any:
         print("No organizations were processed successfully.", file=sys.stderr)
@@ -666,6 +905,23 @@ def main() -> int:
     print("Done.", flush=True)
     print(f"Total repositories processed: {total_processed_repos}", flush=True)
     print(f"Total merged PRs counted: {total_merged_prs}", flush=True)
+
+    # Write aggregated run summary
+    if args.run_summary_output:
+        summary_path = Path(args.run_summary_output)
+        summary_path.parent.mkdir(parents=True, exist_ok=True)
+        report = {
+            "schema": "run-summary.v1",
+            "generated_at": iso_now(),
+            "total_repos_processed": total_processed_repos,
+            "total_merged_prs": total_merged_prs,
+            "ecosystems": run_summaries,
+        }
+        summary_path.write_text(
+            json.dumps(report, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(f"Wrote {args.run_summary_output}", flush=True)
 
     return 0
 

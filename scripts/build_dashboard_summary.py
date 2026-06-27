@@ -76,23 +76,36 @@ def read_source(path: Path, fallback_org: str) -> tuple[list[dict[str, object]],
     return rows, source_count
 
 
+def read_checkpoint(org: str) -> str | None:
+    cp_path = DATA_DIR / "checkpoints" / f"{org}.json"
+    if not cp_path.exists():
+        return None
+    try:
+        data = json.loads(cp_path.read_text(encoding="utf-8"))
+        return data.get("last_run_at") or None
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
 def main() -> int:
     generated_at = iso_now()
     rows: list[dict[str, object]] = []
     source_files: list[dict[str, object]] = []
     source_pr_count = 0
 
-    for org, filename_prefix in NETWORKS:
+    for org, filename_prefix, _ in NETWORKS:
         path = DATA_DIR / f"{filename_prefix}_merged_prs.csv"
         file_rows, file_source_count = read_source(path, filename_prefix)
         rows.extend(file_rows)
         source_pr_count += file_source_count
+        last_updated = read_checkpoint(filename_prefix)
         source_files.append(
             {
                 "path": f"data/{path.name}",
                 "org": filename_prefix,
                 "raw_pr_count": file_source_count,
                 "summary_row_count": len(file_rows),
+                "last_updated": last_updated,
             },
         )
 
