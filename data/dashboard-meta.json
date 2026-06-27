@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "6e284a75bd80acf6",
-  "generated_at": "2026-06-27T04:47:11Z",
+  "version": "117f4975278eb391",
+  "generated_at": "2026-06-27T09:35:34Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269745,
+  "source_pr_count": 269746,
   "row_count": 25031,
   "source_files": [
     {
@@ -11,35 +11,35 @@
       "org": "ethereum",
       "raw_pr_count": 58556,
       "summary_row_count": 8227,
-      "last_updated": "2026-06-27T04:24:07Z"
+      "last_updated": "2026-06-27T09:12:42Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 17926,
       "summary_row_count": 1481,
-      "last_updated": "2026-06-27T04:24:14Z"
+      "last_updated": "2026-06-27T09:12:48Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5198,
       "summary_row_count": 481,
-      "last_updated": "2026-06-27T04:25:40Z"
+      "last_updated": "2026-06-27T09:14:14Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15065,
       "summary_row_count": 1548,
-      "last_updated": "2026-06-27T04:28:35Z"
+      "last_updated": "2026-06-27T09:17:10Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4829,
       "summary_row_count": 403,
-      "last_updated": "2026-06-27T04:29:59Z"
+      "last_updated": "2026-06-27T09:18:32Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -72,7 +72,7 @@
     {
       "path": "data/cardano_merged_prs.csv",
       "org": "cardano",
-      "raw_pr_count": 33803,
+      "raw_pr_count": 33804,
       "summary_row_count": 3331,
       "last_updated": null
     },
@@ -81,7 +81,7 @@
       "org": "stellar",
       "raw_pr_count": 27606,
       "summary_row_count": 1883,
-      "last_updated": "2026-06-27T04:40:13Z"
+      "last_updated": "2026-06-27T09:28:37Z"
     },
     {
       "path": "data/link_merged_prs.csv",
