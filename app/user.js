@@ -447,7 +447,7 @@ function renderCharts(pulls, user) {
 
 function renderRecentPrs(pulls) {
   const recentEl = $("recentPrList");
-  const recent = pulls.slice(0, 10);
+  const recent = pulls.slice(0, 3);
   $("recentPrCount").textContent = `${formatNumber(pulls.length)} total`;
   if (recent.length > 0) {
     recentEl.innerHTML = recent.map(pr =>
