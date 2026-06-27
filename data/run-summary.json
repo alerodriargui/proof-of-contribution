@@ -1,13 +1,13 @@
 {
   "schema": "refresh-run-summary.v1",
-  "generated_at": "2026-06-27T15:58:41Z",
+  "generated_at": "2026-06-27T17:52:27Z",
   "full_refresh": false,
   "default_overlap_hours": 48,
   "rate_limit_threshold": 100,
   "ecosystems": [
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:44:15Z",
+      "generated_at": "2026-06-27T17:36:06Z",
       "total_repos_processed": 298,
       "total_merged_prs": 8570,
       "ecosystems": [
@@ -21,10 +21,10 @@
           "prs_after_merge": 58557,
           "api_request_count": 305,
           "rate_limit_remaining": "4695",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:40:53.572557+00:00",
-          "finished_at": "2026-06-27T15:44:15.190827+00:00",
-          "duration_seconds": 201.62,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:32:36.373965+00:00",
+          "finished_at": "2026-06-27T17:36:06.433631+00:00",
+          "duration_seconds": 210.06,
           "skipped_repos": [
             "cryptography-specs",
             "eth-rnd-archive",
@@ -38,7 +38,7 @@
           "checkpoint": {
             "org": "ethereum",
             "last_merged_at": "2026-06-27T11:02:40Z",
-            "last_run_at": "2026-06-27T15:44:15Z",
+            "last_run_at": "2026-06-27T17:36:06Z",
             "total_prs": 58557,
             "incremental": true,
             "overlap_hours": 48.0
@@ -48,7 +48,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:44:19Z",
+      "generated_at": "2026-06-27T17:36:11Z",
       "total_repos_processed": 4,
       "total_merged_prs": 150,
       "ecosystems": [
@@ -62,16 +62,16 @@
           "prs_after_merge": 17927,
           "api_request_count": 5,
           "rate_limit_remaining": "4690",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:44:15.306428+00:00",
-          "finished_at": "2026-06-27T15:44:19.694881+00:00",
-          "duration_seconds": 4.39,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:36:06.530423+00:00",
+          "finished_at": "2026-06-27T17:36:11.496088+00:00",
+          "duration_seconds": 4.97,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "bitcoin",
             "last_merged_at": "2026-06-27T09:55:58Z",
-            "last_run_at": "2026-06-27T15:44:19Z",
+            "last_run_at": "2026-06-27T17:36:11Z",
             "total_prs": 17927,
             "incremental": true,
             "overlap_hours": 48.0
@@ -81,7 +81,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:45:13Z",
+      "generated_at": "2026-06-27T17:37:14Z",
       "total_repos_processed": 103,
       "total_merged_prs": 1446,
       "ecosystems": [
@@ -95,16 +95,16 @@
           "prs_after_merge": 5198,
           "api_request_count": 105,
           "rate_limit_remaining": "4585",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:44:19.779248+00:00",
-          "finished_at": "2026-06-27T15:45:13.633457+00:00",
-          "duration_seconds": 53.85,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:36:11.575216+00:00",
+          "finished_at": "2026-06-27T17:37:14.155831+00:00",
+          "duration_seconds": 62.58,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "aave",
             "last_merged_at": "2026-06-26T07:40:12Z",
-            "last_run_at": "2026-06-27T15:45:13Z",
+            "last_run_at": "2026-06-27T17:37:14Z",
             "total_prs": 5198,
             "incremental": true,
             "overlap_hours": 48.0
@@ -114,7 +114,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:47:01Z",
+      "generated_at": "2026-06-27T17:39:17Z",
       "total_repos_processed": 170,
       "total_merged_prs": 4165,
       "ecosystems": [
@@ -128,16 +128,16 @@
           "prs_after_merge": 15065,
           "api_request_count": 172,
           "rate_limit_remaining": "4413",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:45:13.715651+00:00",
-          "finished_at": "2026-06-27T15:47:01.994167+00:00",
-          "duration_seconds": 108.28,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:37:14.232863+00:00",
+          "finished_at": "2026-06-27T17:39:17.951910+00:00",
+          "duration_seconds": 123.72,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "uniswap",
             "last_merged_at": "2026-06-26T22:25:53Z",
-            "last_run_at": "2026-06-27T15:47:01Z",
+            "last_run_at": "2026-06-27T17:39:17Z",
             "total_prs": 15065,
             "incremental": true,
             "overlap_hours": 48.0
@@ -147,7 +147,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:47:54Z",
+      "generated_at": "2026-06-27T17:40:18Z",
       "total_repos_processed": 92,
       "total_merged_prs": 1886,
       "ecosystems": [
@@ -161,16 +161,16 @@
           "prs_after_merge": 4829,
           "api_request_count": 93,
           "rate_limit_remaining": "4320",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:47:02.081213+00:00",
-          "finished_at": "2026-06-27T15:47:54.732745+00:00",
-          "duration_seconds": 52.65,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:39:18.035085+00:00",
+          "finished_at": "2026-06-27T17:40:18.357840+00:00",
+          "duration_seconds": 60.32,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "ripple",
             "last_merged_at": "2026-06-26T15:53:31Z",
-            "last_run_at": "2026-06-27T15:47:54Z",
+            "last_run_at": "2026-06-27T17:40:18Z",
             "total_prs": 4829,
             "incremental": true,
             "overlap_hours": 48.0
@@ -180,7 +180,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:50:00Z",
+      "generated_at": "2026-06-27T17:42:40Z",
       "total_repos_processed": 224,
       "total_merged_prs": 4310,
       "ecosystems": [
@@ -194,16 +194,16 @@
           "prs_after_merge": 11084,
           "api_request_count": 227,
           "rate_limit_remaining": "4093",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:47:54.816414+00:00",
-          "finished_at": "2026-06-27T15:50:00.237409+00:00",
-          "duration_seconds": 125.42,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:40:18.436082+00:00",
+          "finished_at": "2026-06-27T17:42:40.291393+00:00",
+          "duration_seconds": 141.86,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "bnb-chain",
             "last_merged_at": "2026-06-25T08:51:03Z",
-            "last_run_at": "2026-06-27T15:50:00Z",
+            "last_run_at": "2026-06-27T17:42:40Z",
             "total_prs": 11084,
             "incremental": true,
             "overlap_hours": 48.0
@@ -213,7 +213,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:50:07Z",
+      "generated_at": "2026-06-27T17:42:48Z",
       "total_repos_processed": 10,
       "total_merged_prs": 200,
       "ecosystems": [
@@ -227,16 +227,16 @@
           "prs_after_merge": 1601,
           "api_request_count": 11,
           "rate_limit_remaining": "4082",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:50:00.324272+00:00",
-          "finished_at": "2026-06-27T15:50:07.513891+00:00",
-          "duration_seconds": 7.19,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:42:40.370737+00:00",
+          "finished_at": "2026-06-27T17:42:48.335564+00:00",
+          "duration_seconds": 7.96,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "dogecoin",
             "last_merged_at": "2026-05-12T02:42:33Z",
-            "last_run_at": "2026-06-27T15:50:07Z",
+            "last_run_at": "2026-06-27T17:42:48Z",
             "total_prs": 1601,
             "incremental": true,
             "overlap_hours": 48.0
@@ -246,7 +246,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:50:15Z",
+      "generated_at": "2026-06-27T17:42:56Z",
       "total_repos_processed": 11,
       "total_merged_prs": 226,
       "ecosystems": [
@@ -260,16 +260,16 @@
           "prs_after_merge": 244,
           "api_request_count": 12,
           "rate_limit_remaining": "4070",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:50:07.594163+00:00",
-          "finished_at": "2026-06-27T15:50:15.103844+00:00",
-          "duration_seconds": 7.51,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:42:48.410920+00:00",
+          "finished_at": "2026-06-27T17:42:56.104606+00:00",
+          "duration_seconds": 7.69,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "hyperliquid-dex",
             "last_merged_at": "2026-06-04T19:46:56Z",
-            "last_run_at": "2026-06-27T15:50:15Z",
+            "last_run_at": "2026-06-27T17:42:56Z",
             "total_prs": 244,
             "incremental": true,
             "overlap_hours": 48.0
@@ -279,7 +279,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:50:54Z",
+      "generated_at": "2026-06-27T17:43:40Z",
       "total_repos_processed": 72,
       "total_merged_prs": 1740,
       "ecosystems": [
@@ -293,16 +293,16 @@
           "prs_after_merge": 7253,
           "api_request_count": 73,
           "rate_limit_remaining": "3997",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:50:15.184458+00:00",
-          "finished_at": "2026-06-27T15:50:54.607710+00:00",
-          "duration_seconds": 39.42,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:42:56.181298+00:00",
+          "finished_at": "2026-06-27T17:43:40.825663+00:00",
+          "duration_seconds": 44.64,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "tronprotocol",
             "last_merged_at": "2026-06-27T00:52:45Z",
-            "last_run_at": "2026-06-27T15:50:54Z",
+            "last_run_at": "2026-06-27T17:43:40Z",
             "total_prs": 7253,
             "incremental": true,
             "overlap_hours": 48.0
@@ -312,7 +312,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:52:34Z",
+      "generated_at": "2026-06-27T17:45:28Z",
       "total_repos_processed": 157,
       "total_merged_prs": 4600,
       "ecosystems": [
@@ -326,16 +326,16 @@
           "prs_after_merge": 33804,
           "api_request_count": 159,
           "rate_limit_remaining": "3838",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:50:54.690207+00:00",
-          "finished_at": "2026-06-27T15:52:34.438756+00:00",
-          "duration_seconds": 99.75,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:43:40.903387+00:00",
+          "finished_at": "2026-06-27T17:45:28.421794+00:00",
+          "duration_seconds": 107.52,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "cardano-foundation",
             "last_merged_at": "2026-06-27T08:18:17Z",
-            "last_run_at": "2026-06-27T15:52:34Z",
+            "last_run_at": "2026-06-27T17:45:28Z",
             "total_prs": 33804,
             "incremental": true,
             "overlap_hours": 48.0
@@ -345,7 +345,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:54:17Z",
+      "generated_at": "2026-06-27T17:47:26Z",
       "total_repos_processed": 145,
       "total_merged_prs": 4828,
       "ecosystems": [
@@ -356,20 +356,20 @@
           "total_repos": 145,
           "processed_repos": 145,
           "prs_found": 4828,
-          "prs_after_merge": 27606,
+          "prs_after_merge": 27607,
           "api_request_count": 147,
           "rate_limit_remaining": "3691",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:52:34.531746+00:00",
-          "finished_at": "2026-06-27T15:54:17.016565+00:00",
-          "duration_seconds": 102.48,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:45:28.507924+00:00",
+          "finished_at": "2026-06-27T17:47:26.032307+00:00",
+          "duration_seconds": 117.52,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "stellar",
-            "last_merged_at": "2026-06-26T21:39:51Z",
-            "last_run_at": "2026-06-27T15:54:17Z",
-            "total_prs": 27606,
+            "last_merged_at": "2026-06-27T17:02:33Z",
+            "last_run_at": "2026-06-27T17:47:26Z",
+            "total_prs": 27607,
             "incremental": true,
             "overlap_hours": 48.0
           }
@@ -378,7 +378,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:57:28Z",
+      "generated_at": "2026-06-27T17:51:02Z",
       "total_repos_processed": 378,
       "total_merged_prs": 5764,
       "ecosystems": [
@@ -392,16 +392,16 @@
           "prs_after_merge": 44762,
           "api_request_count": 382,
           "rate_limit_remaining": "3309",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:54:17.108955+00:00",
-          "finished_at": "2026-06-27T15:57:28.289246+00:00",
-          "duration_seconds": 191.18,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:47:26.117068+00:00",
+          "finished_at": "2026-06-27T17:51:02.982141+00:00",
+          "duration_seconds": 216.87,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "smartcontractkit",
             "last_merged_at": "2026-06-27T14:40:42Z",
-            "last_run_at": "2026-06-27T15:57:28Z",
+            "last_run_at": "2026-06-27T17:51:02Z",
             "total_prs": 44762,
             "incremental": true,
             "overlap_hours": 48.0
@@ -411,7 +411,7 @@
     },
     {
       "schema": "run-summary.v1",
-      "generated_at": "2026-06-27T15:58:39Z",
+      "generated_at": "2026-06-27T17:52:25Z",
       "total_repos_processed": 116,
       "total_merged_prs": 1910,
       "ecosystems": [
@@ -425,16 +425,16 @@
           "prs_after_merge": 41820,
           "api_request_count": 118,
           "rate_limit_remaining": "3191",
-          "rate_limit_reset": "1782578453",
-          "started_at": "2026-06-27T15:57:28.387988+00:00",
-          "finished_at": "2026-06-27T15:58:39.433130+00:00",
-          "duration_seconds": 71.05,
+          "rate_limit_reset": "1782585156",
+          "started_at": "2026-06-27T17:51:03.074509+00:00",
+          "finished_at": "2026-06-27T17:52:25.610828+00:00",
+          "duration_seconds": 82.54,
           "skipped_repos": [],
           "errors": [],
           "checkpoint": {
             "org": "solana-labs",
             "last_merged_at": "2025-02-09T15:22:17Z",
-            "last_run_at": "2026-06-27T15:58:39Z",
+            "last_run_at": "2026-06-27T17:52:25Z",
             "total_prs": 41820,
             "incremental": true,
             "overlap_hours": 48.0

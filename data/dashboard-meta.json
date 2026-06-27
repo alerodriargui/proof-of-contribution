@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "d37f20715734ac98",
-  "generated_at": "2026-06-27T15:58:39Z",
+  "version": "6264ea2cc6b2b607",
+  "generated_at": "2026-06-27T17:52:25Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269750,
+  "source_pr_count": 269751,
   "row_count": 25032,
   "source_files": [
     {
@@ -11,35 +11,35 @@
       "org": "ethereum",
       "raw_pr_count": 58557,
       "summary_row_count": 8228,
-      "last_updated": "2026-06-27T15:44:15Z"
+      "last_updated": "2026-06-27T17:36:06Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 17927,
       "summary_row_count": 1481,
-      "last_updated": "2026-06-27T15:44:19Z"
+      "last_updated": "2026-06-27T17:36:11Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5198,
       "summary_row_count": 481,
-      "last_updated": "2026-06-27T15:45:13Z"
+      "last_updated": "2026-06-27T17:37:14Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15065,
       "summary_row_count": 1548,
-      "last_updated": "2026-06-27T15:47:01Z"
+      "last_updated": "2026-06-27T17:39:17Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4829,
       "summary_row_count": 403,
-      "last_updated": "2026-06-27T15:47:54Z"
+      "last_updated": "2026-06-27T17:40:18Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -79,9 +79,9 @@
     {
       "path": "data/stellar_merged_prs.csv",
       "org": "stellar",
-      "raw_pr_count": 27606,
+      "raw_pr_count": 27607,
       "summary_row_count": 1883,
-      "last_updated": "2026-06-27T15:54:17Z"
+      "last_updated": "2026-06-27T17:47:26Z"
     },
     {
       "path": "data/link_merged_prs.csv",
