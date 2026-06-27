@@ -361,7 +361,7 @@ function renderCharts(pulls, user) {
           tooltip: {
             ...tooltipOpts,
             callbacks: {
-              label: ctx => ` ${formatNumber(ctx.parsed)} ${pluralizePr(ctx.parsed)}`,
+              label: ctx => ` ${formatNumber(ctx.parsed.x)} ${pluralizePr(ctx.parsed.x)}`,
             },
           },
         },
@@ -417,7 +417,7 @@ function renderCharts(pulls, user) {
           tooltip: {
             ...tooltipOpts,
             callbacks: {
-              label: ctx => ` ${formatNumber(ctx.parsed)} ${pluralizePr(ctx.parsed)}`,
+              label: ctx => ` ${formatNumber(ctx.parsed.y)} ${pluralizePr(ctx.parsed.y)}`,
             },
           },
         },
