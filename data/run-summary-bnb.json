@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-27T19:58:55Z",
+  "generated_at": "2026-06-27T21:40:48Z",
   "total_repos_processed": 224,
   "total_merged_prs": 4310,
   "ecosystems": [
@@ -13,17 +13,17 @@
       "prs_found": 4310,
       "prs_after_merge": 11084,
       "api_request_count": 227,
-      "rate_limit_remaining": "4093",
-      "rate_limit_reset": "1782593254",
-      "started_at": "2026-06-27T19:56:21.406590+00:00",
-      "finished_at": "2026-06-27T19:58:55.955926+00:00",
-      "duration_seconds": 154.55,
+      "rate_limit_remaining": "4094",
+      "rate_limit_reset": "1782599506",
+      "started_at": "2026-06-27T21:38:46.661932+00:00",
+      "finished_at": "2026-06-27T21:40:48.899044+00:00",
+      "duration_seconds": 122.24,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "bnb-chain",
         "last_merged_at": "2026-06-25T08:51:03Z",
-        "last_run_at": "2026-06-27T19:58:55Z",
+        "last_run_at": "2026-06-27T21:40:48Z",
         "total_prs": 11084,
         "incremental": true,
         "overlap_hours": 48.0
