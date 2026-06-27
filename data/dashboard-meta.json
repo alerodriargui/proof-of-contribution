@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "6264ea2cc6b2b607",
-  "generated_at": "2026-06-27T17:52:25Z",
+  "version": "dd650f00b7641ec0",
+  "generated_at": "2026-06-27T20:09:36Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269751,
+  "source_pr_count": 269755,
   "row_count": 25032,
   "source_files": [
     {
@@ -11,35 +11,35 @@
       "org": "ethereum",
       "raw_pr_count": 58557,
       "summary_row_count": 8228,
-      "last_updated": "2026-06-27T17:36:06Z"
+      "last_updated": "2026-06-27T19:51:45Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 17927,
       "summary_row_count": 1481,
-      "last_updated": "2026-06-27T17:36:11Z"
+      "last_updated": "2026-06-27T19:51:50Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
-      "raw_pr_count": 5198,
+      "raw_pr_count": 5199,
       "summary_row_count": 481,
-      "last_updated": "2026-06-27T17:37:14Z"
+      "last_updated": "2026-06-27T19:52:59Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15065,
       "summary_row_count": 1548,
-      "last_updated": "2026-06-27T17:39:17Z"
+      "last_updated": "2026-06-27T19:55:16Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4829,
       "summary_row_count": 403,
-      "last_updated": "2026-06-27T17:40:18Z"
+      "last_updated": "2026-06-27T19:56:21Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -72,16 +72,16 @@
     {
       "path": "data/cardano_merged_prs.csv",
       "org": "cardano",
-      "raw_pr_count": 33804,
+      "raw_pr_count": 33806,
       "summary_row_count": 3331,
       "last_updated": null
     },
     {
       "path": "data/stellar_merged_prs.csv",
       "org": "stellar",
-      "raw_pr_count": 27607,
+      "raw_pr_count": 27608,
       "summary_row_count": 1883,
-      "last_updated": "2026-06-27T17:47:26Z"
+      "last_updated": "2026-06-27T20:04:11Z"
     },
     {
       "path": "data/link_merged_prs.csv",
