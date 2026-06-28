@@ -1,8 +1,8 @@
 {
   "org": "ethereum",
-  "last_merged_at": "2026-06-28T17:28:30Z",
-  "last_run_at": "2026-06-28T17:41:27Z",
-  "total_prs": 58575,
+  "last_merged_at": "2026-06-28T18:00:23Z",
+  "last_run_at": "2026-06-28T19:51:48Z",
+  "total_prs": 58578,
   "incremental": true,
   "overlap_hours": 48.0
 }
