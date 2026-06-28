@@ -7,41 +7,27 @@
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content="Contributor Profile – Proof of Contribution" />
     <meta property="og:description" content="Dedicated contributor profile with timeline, PR history, and ecosystem breakdown." />
-    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta property="og:image" content="../app/assets/poc-logo.svg" />
+    <meta property="og:url" content="" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Contributor Profile – Proof of Contribution" />
     <meta name="twitter:description" content="Dedicated contributor profile with timeline, PR history, and ecosystem breakdown." />
-    <meta name="twitter:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:image" content="../app/assets/poc-logo.svg" />
     <title>Contributor Profile – Proof of Contribution</title>
-    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
-    <script>
-    // Redirect legacy ?username= URLs to canonical /contributors/{username}
-    (function() {
-      var u = new URLSearchParams(location.search).get("username");
-      if (u) {
-        var p = new URLSearchParams();
-        ["org","project"].forEach(function(k) {
-          var v = new URLSearchParams(location.search).get(k);
-          if (v) p.set(k, v);
-        });
-        var qs = p.toString();
-        location.replace("/contributors/" + encodeURIComponent(u) + (qs ? "?" + qs : ""));
-      }
-    })();
-    </script>
+    <link rel="icon" href="../app/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="../app/assets/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260628-1" />
-    <link rel="stylesheet" href="./user.css" />
-    <script src="./theme.js"></script>
+    <link rel="stylesheet" href="../app/styles.css?v=20260628-1" />
+    <link rel="stylesheet" href="../app/user.css" />
+    <script src="../app/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   </head>
   <body>
     <header class="topbar">
       <div class="brand-lockup">
-        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <img class="brand-mark" src="../app/assets/poc-mark.svg" alt="" aria-hidden="true" />
         <div class="brand-copy">
           <h2>Proof of Contribution</h2>
         </div>
@@ -49,12 +35,12 @@
       <div class="header-side">
         <nav class="header-nav" aria-label="Project">
           <a href="../">Home</a>
-          <a href="./">Dashboard</a>
-          <a href="./stats.html">Statistics</a>
-          <a href="./about.html">About</a>
-          <a href="./faq.html">FAQ</a>
+          <a href="../app/">Dashboard</a>
+          <a href="../app/stats.html">Statistics</a>
+          <a href="../app/about.html">About</a>
+          <a href="../app/faq.html">FAQ</a>
           <a class="repo-link" href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer" aria-label="GitHub Repository">
-            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+            <img src="../app/assets/github.svg" alt="" aria-hidden="true" />
           </a>
           <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
             <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -68,7 +54,7 @@
     <main class="shell">
 
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="./" id="backLink">Dashboard</a>
+        <a href="../app/" id="backLink">Dashboard</a>
         <span aria-hidden="true"> / </span>
         <span id="breadcrumbUser">Contributor</span>
       </nav>
@@ -84,7 +70,7 @@
           <div class="not-found-card">
             <h2>User not found</h2>
             <p>This contributor was not found in the current dataset.</p>
-            <a href="./" class="btn">Back to Dashboard</a>
+            <a href="../app/" class="btn">Back to Dashboard</a>
           </div>
         </div>
 
@@ -184,10 +170,10 @@
     </main>
 
     <footer class="site-footer">
-      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <img src="../app/assets/poc-logo.svg" alt="Proof of Contribution" />
       <span>Open-source contribution intelligence for crypto ecosystems.</span>
     </footer>
 
-    <script src="./user.js?v=20260628-1"></script>
+    <script src="../app/user.js?v=20260628-1"></script>
   </body>
 </html>

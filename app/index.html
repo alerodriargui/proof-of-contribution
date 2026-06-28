@@ -100,14 +100,19 @@
           <input id="hideBots" type="checkbox" checked />
           <span>Hide bots</span>
         </label>
+
+        <label class="check">
+          <input id="hideGhost" type="checkbox" checked />
+          <span>Hide ghost</span>
+        </label>
       </section>
 
       <div class="legend-row" aria-label="Legend">
-        <span class="legend-item">
+        <span class="legend-item" id="legendBot">
           <span class="legend-swatch bot-swatch" aria-hidden="true"></span>
           Bot accounts are marked as BOT.
         </span>
-        <span class="legend-item">
+        <span class="legend-item" id="legendGhost">
           <span class="legend-swatch ghost-swatch" aria-hidden="true"></span>
           GHOST is GitHub's placeholder for deleted or unavailable users.
         </span>

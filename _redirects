@@ -1,0 +1,3 @@
+# Render redirect rules
+# Serve /contributors/{username} cleanly via /contributors/index.html
+/contributors/* /contributors/index.html 200

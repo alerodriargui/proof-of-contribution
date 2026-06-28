@@ -88,6 +88,11 @@
             <input type="checkbox" id="hideBotsStats" checked />
             <span>Hide bots</span>
           </label>
+
+          <label class="check">
+            <input type="checkbox" id="hideGhostStats" checked />
+            <span>Hide ghost</span>
+          </label>
         </div>
 
         <div class="stats-toolbar-right">
@@ -98,10 +103,20 @@
         </div>
       </section>
 
-      <!-- Loading / error status -->
+      <!-- Loading skeleton (shown while data loads, hidden once charts render) -->
       <div class="stats-load-state" id="statsLoadState" aria-live="polite">
         <div class="spinner" id="spinner"></div>
         <span id="loadLabel">Loading data…</span>
+        <div class="skeleton-grid" id="skeletonGrid">
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+        </div>
       </div>
 
       <!-- Charts grid -->

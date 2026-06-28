@@ -112,6 +112,26 @@ def main() -> int:
         if cp_ok:
             print("checkpoints/: OK")
 
+    # Validate pre-aggregated stats JSON
+    stats_path = ROOT / "data" / "stats-aggregation.json"
+    if not stats_path.exists():
+        failed = True
+        print(f"{stats_path.name}: INVALID (file does not exist)", file=sys.stderr)
+    else:
+        try:
+            sp = json.loads(stats_path.read_text(encoding="utf-8"))
+            if sp.get("schema") != "stats-aggregation.v1":
+                failed = True
+                print(f"{stats_path.name}: INVALID (bad schema)", file=sys.stderr)
+            elif not isinstance(sp.get("aggregated_prs"), dict) or not isinstance(sp.get("users"), list):
+                failed = True
+                print(f"{stats_path.name}: INVALID (missing aggregated_prs or users)", file=sys.stderr)
+            else:
+                print(f"{stats_path.name}: OK ({sp.get('user_count', 0):,} users, {sp.get('total_rows', 0):,} PRs)")
+        except json.JSONDecodeError as error:
+            failed = True
+            print(f"{stats_path.name}: INVALID ({error})", file=sys.stderr)
+
     return 1 if failed else 0
 
 

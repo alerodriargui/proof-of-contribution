@@ -135,11 +135,31 @@ const state = {
   charts: [],
 };
 
-// ── URL params ────────────────────────────────────────
+// ── URL params (query string OR pathname) ────────────
 function parseParams() {
   const p = new URLSearchParams(window.location.search);
-  state.username = (p.get("username") || "").trim().toLowerCase();
+  let username = (p.get("username") || "").trim().toLowerCase();
+  if (!username) {
+    const match = window.location.pathname.match(/\/contributors\/([^/]+)/i);
+    if (match) {
+      username = decodeURIComponent(match[1]).trim().toLowerCase();
+    }
+  }
+  state.username = username;
   return { org: p.get("org") || "all", project: p.get("project") || "all" };
+}
+
+function updateOgMeta(user) {
+  const title = `${user.usuario} – Contributor Profile | Proof of Contribution`;
+  const desc = `${user.usuario} contributed ${formatNumber(user.n_prs)} PRs across ${user.orgs.length} ecosystem(s). View their full contribution profile.`;
+  document.title = title;
+  const set = (q, v) => { const el = document.querySelector(q); if (el) el.setAttribute("content", v); };
+  set('meta[property="og:title"]', title);
+  set('meta[name="description"]', desc);
+  set('meta[property="og:description"]', desc);
+  set('meta[name="twitter:title"]', title);
+  set('meta[name="twitter:description"]', desc);
+  set('meta[property="og:url"]', window.location.href);
 }
 
 // ── Data loading ──────────────────────────────────────
@@ -216,6 +236,7 @@ function renderHero(user) {
   $("heroProjects").textContent = formatNumber(user.n_projects);
   $("heroOrgs").textContent = formatNumber(user.orgs.length);
   $("breadcrumbUser").textContent = user.usuario;
+  updateOgMeta(user);
 }
 
 function renderStatCards(user) {
@@ -492,7 +513,7 @@ async function init() {
   if (filterParams.org !== "all") bp.set("org", filterParams.org);
   if (filterParams.project !== "all") bp.set("project", filterParams.project);
   const qs = bp.toString();
-  backLink.href = `./${qs ? "?" + qs : ""}`;
+  backLink.href = `../app/${qs ? "?" + qs : ""}`;
 
   try {
     state.summaryRows = await loadSummary();

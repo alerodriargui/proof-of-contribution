@@ -30,6 +30,8 @@ const FALLBACK_SOURCES = [
 
 const DEFAULT_HIDE_BOTS = true;
 const HIDE_BOTS_STORAGE_KEY = "poc.hideBots";
+const DEFAULT_HIDE_GHOST = true;
+const HIDE_GHOST_STORAGE_KEY = "poc.hideGhost";
 
 function preferredHideBots() {
   try {
@@ -48,6 +50,22 @@ function saveHideBotsPreference(value) {
   }
 }
 
+function preferredHideGhost() {
+  try {
+    const stored = localStorage.getItem(HIDE_GHOST_STORAGE_KEY);
+    return stored === null ? DEFAULT_HIDE_GHOST : stored === "true";
+  } catch (error) {
+    return DEFAULT_HIDE_GHOST;
+  }
+}
+
+function saveHideGhostPreference(value) {
+  try {
+    localStorage.setItem(HIDE_GHOST_STORAGE_KEY, String(value));
+  } catch (error) {
+  }
+}
+
 const state = {
   rows: [],
   dataVersion: "",
@@ -56,6 +74,7 @@ const state = {
   query: "",
   sort: "prs",
   hideBots: preferredHideBots(),
+  hideGhost: preferredHideGhost(),
   page: 1,
   pageSize: 100,
 };
@@ -67,6 +86,7 @@ const els = {
   projectFilter: document.querySelector("#projectFilter"),
   sortMode: document.querySelector("#sortMode"),
   hideBots: document.querySelector("#hideBots"),
+  hideGhost: document.querySelector("#hideGhost"),
   metricPrs: document.querySelector("#metricPrs"),
   metricUsers: document.querySelector("#metricUsers"),
   metricProjects: document.querySelector("#metricProjects"),
@@ -291,6 +311,9 @@ function baseRows() {
     if (state.hideBots && isBot(row.usuario)) {
       return false;
     }
+    if (state.hideGhost && isGhostUser(row.usuario)) {
+      return false;
+    }
     return true;
   });
 }
@@ -505,6 +528,7 @@ function render() {
   const developers = aggregateDevelopers(visibleRows);
   renderMetrics(visibleRows, developers);
   renderDevelopers(developers);
+  updateHelperText();
 }
 
 function escapeHtml(value) {
@@ -546,7 +570,7 @@ function profileLinkMarkup(row) {
   if (bot || ghostUser) {
     return `<span class="profile-person">${content}</span>`;
   }
-  const userUrl = `user.html?username=${encodeURIComponent(login)}`;
+  const userUrl = `/contributors/${encodeURIComponent(login)}`;
   const ghLink = `<a class="gh-icon-link" href="${githubProfileUrl(login)}" target="_blank" rel="noreferrer" aria-label="GitHub profile">` +
     `<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>`;
   return `<a class="profile-link" href="${userUrl}">${content}</a> ${ghLink}`;
@@ -585,6 +609,13 @@ function bindEvents() {
     render();
   });
 
+  on(els.hideGhost, "change", (event) => {
+    state.hideGhost = event.target.checked;
+    saveHideGhostPreference(state.hideGhost);
+    state.page = 1;
+    render();
+  });
+
   on(els.pageSize, "change", (event) => {
     state.pageSize = Number(event.target.value);
     state.page = 1;
@@ -609,12 +640,33 @@ function bindEvents() {
     if (!row) {
       return;
     }
-    const params = new URLSearchParams({ username: row.dataset.user });
-    params.set("username", row.dataset.user);
+    const params = new URLSearchParams();
     if (state.org !== "all") params.set("org", state.org);
     if (state.project !== "all") params.set("project", state.project);
-    window.location.href = `user.html?${params.toString()}`;
+    const qs = params.toString();
+    window.location.href = `/contributors/${encodeURIComponent(row.dataset.user)}${qs ? "?" + qs : ""}`;
   });
+}
+
+function updateHelperText() {
+  const botItem = document.getElementById("legendBot");
+  const ghostItem = document.getElementById("legendGhost");
+  if (!botItem || !ghostItem) return;
+  const hideB = state.hideBots;
+  const hideG = state.hideGhost;
+  if (!hideB && !hideG) {
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are marked as BOT.`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST is GitHub's placeholder for deleted or unavailable users.`;
+  } else if (hideB && !hideG) {
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are hidden.`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST is GitHub's placeholder for deleted or unavailable users.`;
+  } else if (!hideB && hideG) {
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are marked as BOT.`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST accounts are hidden.`;
+  } else {
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot and GHOST accounts are hidden from this view.`;
+    ghostItem.innerHTML = "";
+  }
 }
 
 function on(element, eventName, handler) {
@@ -626,6 +678,9 @@ function on(element, eventName, handler) {
 async function init() {
   if (els.hideBots) {
     els.hideBots.checked = state.hideBots;
+  }
+  if (els.hideGhost) {
+    els.hideGhost.checked = state.hideGhost;
   }
   bindEvents();
   if (els.dataStatus) {

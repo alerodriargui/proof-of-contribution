@@ -116,6 +116,7 @@
 /* ── Load state ─────────────────────────────────────── */
 .stats-load-state {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 14px;
   padding: 48px 0;
@@ -140,6 +141,50 @@
 
 @keyframes spin {
   to { transform: rotate(360deg); }
+}
+
+/* ── Skeleton loading cards ─────────────────────────── */
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.skeleton-card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.skeleton-head {
+  height: 60px;
+  border-bottom: 1px solid var(--line);
+}
+
+.skeleton-body {
+  flex: 1;
+  margin: 18px 22px;
+  border-radius: 8px;
+  background: var(--line);
+  opacity: 0.4;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .skeleton-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Charts grid ────────────────────────────────────── */

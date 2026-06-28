@@ -303,9 +303,15 @@ h2 {
 
 .toolbar {
   display: grid;
-  grid-template-columns: minmax(220px, 1.35fr) repeat(3, minmax(160px, 0.7fr)) auto;
+  grid-template-columns: minmax(220px, 1.35fr) repeat(3, minmax(160px, 0.7fr)) auto auto;
   gap: 12px;
   align-items: end;
+}
+
+@media (max-width: 1100px) {
+  .toolbar {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .legend-row {
