@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,35588,"scripted-diff: Rename `Sock::{RECV,SEND,ERR}`",2026-06-28T20:40:33Z,2026-06-28,https://github.com/bitcoin/bitcoin/pull/35588
+bitcoin,bips,dathonohm,https://avatars.githubusercontent.com/u/239863417?v=4,2201,BIP-110: advance to Complete status,2026-06-28T20:34:29Z,2026-06-28,https://github.com/bitcoin/bips/pull/2201
 bitcoin,bitcoin,HowHsu,https://avatars.githubusercontent.com/u/38499194?v=4,35536,fuzz: share a single mocked steady clock across FuzzedSock instances,2026-06-27T09:55:58Z,2026-06-27,https://github.com/bitcoin/bitcoin/pull/35536
 bitcoin,bitcoin,rkrux,https://avatars.githubusercontent.com/u/5960750?v=4,35543,test: introduce ExtendedPrivateKey and ExtendedPublicKey classes,2026-06-26T22:56:26Z,2026-06-26,https://github.com/bitcoin/bitcoin/pull/35543
 bitcoin,bips,reflecttypefor,https://avatars.githubusercontent.com/u/230836907?v=4,2199,script: check link format in nested mediawiki files,2026-06-26T19:25:30Z,2026-06-26,https://github.com/bitcoin/bips/pull/2199
