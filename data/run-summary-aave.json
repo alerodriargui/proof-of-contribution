@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-27T23:23:32Z",
+  "generated_at": "2026-06-28T05:00:57Z",
   "total_repos_processed": 103,
   "total_merged_prs": 1447,
   "ecosystems": [
@@ -14,16 +14,16 @@
       "prs_after_merge": 5199,
       "api_request_count": 105,
       "rate_limit_remaining": "4585",
-      "rate_limit_reset": "1782605965",
-      "started_at": "2026-06-27T23:22:39.796789+00:00",
-      "finished_at": "2026-06-27T23:23:32.112459+00:00",
-      "duration_seconds": 52.32,
+      "rate_limit_reset": "1782626090",
+      "started_at": "2026-06-28T04:59:41.091590+00:00",
+      "finished_at": "2026-06-28T05:00:57.112010+00:00",
+      "duration_seconds": 76.02,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "aave",
         "last_merged_at": "2026-06-27T18:02:45Z",
-        "last_run_at": "2026-06-27T23:23:32Z",
+        "last_run_at": "2026-06-28T05:00:57Z",
         "total_prs": 5199,
         "incremental": true,
         "overlap_hours": 48.0

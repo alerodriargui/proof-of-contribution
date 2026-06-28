@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,702,Add GoalRushHook hook on ethereum,2026-06-27T23:36:39Z,2026-06-27,https://github.com/Uniswap/hooklist/pull/702
 uniswap,sdks,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,617,Version Packages,2026-06-26T22:25:53Z,2026-06-26,https://github.com/Uniswap/sdks/pull/617
 uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,700,Add RwagmiHookV2 hook on base,2026-06-26T14:47:11Z,2026-06-26,https://github.com/Uniswap/hooklist/pull/700
 uniswap,uniswapx-parameterization-api,dannythedawger,https://avatars.githubusercontent.com/u/23269489?v=4,456,fix: obfuscate two-sided RFQ quote to market makers,2026-06-26T14:14:23Z,2026-06-26,https://github.com/Uniswap/uniswapx-parameterization-api/pull/456
