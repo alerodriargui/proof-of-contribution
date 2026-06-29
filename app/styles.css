@@ -871,40 +871,6 @@ select:focus {
 .dark .tag { background: rgba(255, 255, 255, 0.07); }
 .dark .tag.plus-tag { background: rgba(255, 255, 255, 0.04); border-color: rgba(255, 255, 255, 0.08); }
 
-.faq-section {
-  margin-top: 18px;
-}
-
-.standalone-faq {
-  margin-top: 0;
-}
-
-.section-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.section-head span {
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.faq-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.faq-grid details {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--panel);
-  box-shadow: var(--shadow);
-}
-
 /* ── Profile link GitHub icon ───────────────────────── */
 .gh-icon-link {
   display: inline-flex;
@@ -917,22 +883,6 @@ select:focus {
 
 .gh-icon-link:hover {
   color: var(--ink-strong);
-}
-
-.faq-grid summary {
-  min-height: 54px;
-  padding: 15px 16px;
-  color: var(--ink-strong);
-  font-weight: 850;
-  cursor: pointer;
-}
-
-.faq-grid p {
-  margin: 0;
-  padding: 0 16px 16px;
-  color: var(--muted);
-  font-size: 0.94rem;
-  line-height: 1.5;
 }
 
 .detail-list {
@@ -1485,8 +1435,7 @@ select:focus {
   .toolbar,
   .metrics,
   .profile-stats,
-  .profile-grid,
-  .faq-grid {
+  .profile-grid {
     grid-template-columns: 1fr;
   }
 
