@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-29T18:29:55Z",
+  "generated_at": "2026-06-29T21:50:40Z",
   "total_repos_processed": 4,
   "total_merged_prs": 152,
   "ecosystems": [
@@ -14,16 +14,16 @@
       "prs_after_merge": 17931,
       "api_request_count": 5,
       "rate_limit_remaining": "4690",
-      "rate_limit_reset": "1782761188",
-      "started_at": "2026-06-29T18:29:51.483046+00:00",
-      "finished_at": "2026-06-29T18:29:55.891027+00:00",
-      "duration_seconds": 4.41,
+      "rate_limit_reset": "1782773147",
+      "started_at": "2026-06-29T21:50:33.235409+00:00",
+      "finished_at": "2026-06-29T21:50:40.523737+00:00",
+      "duration_seconds": 7.29,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "bitcoin",
         "last_merged_at": "2026-06-29T14:48:59Z",
-        "last_run_at": "2026-06-29T18:29:55Z",
+        "last_run_at": "2026-06-29T21:50:40Z",
         "total_prs": 17931,
         "incremental": true,
         "overlap_hours": 48.0

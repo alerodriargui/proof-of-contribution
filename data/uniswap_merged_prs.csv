@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+uniswap,uniswapx-tool,ericneil-sanc,https://avatars.githubusercontent.com/u/216762316?v=4,24,Resolve permit2 on other chains,2026-06-29T21:45:14Z,2026-06-29,https://github.com/Uniswap/uniswapx-tool/pull/24
+uniswap,sdks,brnunes,https://avatars.githubusercontent.com/u/1976718?v=4,618,feat(liquidity-launcher-sdk): new SDK for the Liquidity Launcher (CCA + LBP) stack,2026-06-29T20:26:40Z,2026-06-29,https://github.com/Uniswap/sdks/pull/618
+uniswap,v4-hooks-public,SocksNFlops,https://avatars.githubusercontent.com/u/91764028?v=4,41,fix(permissioned-hooks): restore migration-dropped Swap event and UnverifiedAdapter check,2026-06-29T19:46:24Z,2026-06-29,https://github.com/Uniswap/v4-hooks-public/pull/41
 uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,702,Add GoalRushHook hook on ethereum,2026-06-27T23:36:39Z,2026-06-27,https://github.com/Uniswap/hooklist/pull/702
 uniswap,sdks,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,617,Version Packages,2026-06-26T22:25:53Z,2026-06-26,https://github.com/Uniswap/sdks/pull/617
 uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,700,Add RwagmiHookV2 hook on base,2026-06-26T14:47:11Z,2026-06-26,https://github.com/Uniswap/hooklist/pull/700
