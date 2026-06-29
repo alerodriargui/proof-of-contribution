@@ -1,45 +1,45 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "944eb57c729ab2b1",
-  "generated_at": "2026-06-28T23:52:16Z",
+  "version": "a89520e4b0ac727e",
+  "generated_at": "2026-06-29T05:18:59Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269781,
+  "source_pr_count": 269786,
   "row_count": 25033,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 58578,
+      "raw_pr_count": 58580,
       "summary_row_count": 8228,
-      "last_updated": "2026-06-28T23:35:49Z"
+      "last_updated": "2026-06-29T05:05:22Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 17929,
       "summary_row_count": 1481,
-      "last_updated": "2026-06-28T23:35:54Z"
+      "last_updated": "2026-06-29T05:05:26Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5200,
       "summary_row_count": 482,
-      "last_updated": "2026-06-28T23:36:59Z"
+      "last_updated": "2026-06-29T05:06:20Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15066,
       "summary_row_count": 1548,
-      "last_updated": "2026-06-28T23:39:04Z"
+      "last_updated": "2026-06-29T05:08:08Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4829,
       "summary_row_count": 403,
-      "last_updated": "2026-06-28T23:40:04Z"
+      "last_updated": "2026-06-29T05:09:00Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -65,7 +65,7 @@
     {
       "path": "data/tron_merged_prs.csv",
       "org": "tron",
-      "raw_pr_count": 7253,
+      "raw_pr_count": 7256,
       "summary_row_count": 657,
       "last_updated": null
     },
@@ -81,7 +81,7 @@
       "org": "stellar",
       "raw_pr_count": 27609,
       "summary_row_count": 1883,
-      "last_updated": "2026-06-28T23:47:15Z"
+      "last_updated": "2026-06-29T05:14:53Z"
     },
     {
       "path": "data/link_merged_prs.csv",

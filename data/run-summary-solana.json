@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-28T23:52:15Z",
+  "generated_at": "2026-06-29T05:18:59Z",
   "total_repos_processed": 116,
   "total_merged_prs": 1910,
   "ecosystems": [
@@ -14,16 +14,16 @@
       "prs_after_merge": 41820,
       "api_request_count": 118,
       "rate_limit_remaining": "3191",
-      "rate_limit_reset": "1782693112",
-      "started_at": "2026-06-28T23:50:53.279106+00:00",
-      "finished_at": "2026-06-28T23:52:15.979043+00:00",
-      "duration_seconds": 82.7,
+      "rate_limit_reset": "1782712917",
+      "started_at": "2026-06-29T05:17:49.566799+00:00",
+      "finished_at": "2026-06-29T05:18:59.496511+00:00",
+      "duration_seconds": 69.93,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "solana-labs",
         "last_merged_at": "2025-02-09T15:22:17Z",
-        "last_run_at": "2026-06-28T23:52:15Z",
+        "last_run_at": "2026-06-29T05:18:59Z",
         "total_prs": 41820,
         "incremental": true,
         "overlap_hours": 48.0
