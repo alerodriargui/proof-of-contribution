@@ -107,11 +107,17 @@ a {
   text-decoration: none;
   box-shadow: 0 10px 25px rgba(69, 55, 144, 0.12);
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  cursor: pointer;
 }
 
 .button:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(69, 55, 144, 0.2);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--purple);
+  outline-offset: 3px;
 }
 
 .button-small {
@@ -123,11 +129,34 @@ a {
 .button-dark {
   background: var(--ink);
   color: var(--white);
+  border-color: rgba(101, 87, 232, 0.25);
+}
+
+.button-dark:hover {
+  background: #1e1b33;
+  border-color: rgba(101, 87, 232, 0.5);
+  box-shadow: 0 14px 30px rgba(69, 55, 144, 0.25);
 }
 
 .button-primary {
-  background: linear-gradient(135deg, #7465f4, #5548d7);
+  background: linear-gradient(135deg, #8a7aff 0%, #6557e8 55%, #4a3fc7 100%);
   color: var(--white);
+  padding: 0 36px;
+  box-shadow: 0 8px 32px rgba(101, 87, 232, 0.3);
+}
+
+.button-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(101, 87, 232, 0.45);
+}
+
+.button-primary:hover span {
+  transform: translateX(4px);
+}
+
+.button-primary span {
+  display: inline-block;
+  transition: transform 200ms ease;
 }
 
 .button-light {
