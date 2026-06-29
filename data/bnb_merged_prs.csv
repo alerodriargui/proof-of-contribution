@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bnb-chain,bnb-chain.github.io,0xlucasliao,https://avatars.githubusercontent.com/u/177768160?v=4,842,Add Token Recovery Tool sunset announcements,2026-06-29T13:38:35Z,2026-06-29,https://github.com/bnb-chain/bnb-chain.github.io/pull/842
 bnb-chain,bnbagent-sdk,DarienPerezGit,https://avatars.githubusercontent.com/u/130084237?v=4,45,feat(erc8183): add async auto-settler example and complete policy/rou…,2026-06-29T07:02:22Z,2026-06-29,https://github.com/bnb-chain/bnbagent-sdk/pull/45
 bnb-chain,bsc,flywukong,https://avatars.githubusercontent.com/u/19421226?v=4,3736,miner: add BidBlock verify metrics,2026-06-25T08:51:03Z,2026-06-25,https://github.com/bnb-chain/bsc/pull/3736
 bnb-chain,reth-bsc,constwz,https://avatars.githubusercontent.com/u/122766871?v=4,418,perf(miner): adaptive root-reserve + per-attempt sparse-trie sink (ported to develop-hardfork-pasteur),2026-06-24T08:34:38Z,2026-06-24,https://github.com/bnb-chain/reth-bsc/pull/418
