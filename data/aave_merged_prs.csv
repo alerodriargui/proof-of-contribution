@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3015,feat: funkit checkout integration for Core-market supplies (#3010),2026-06-29T11:09:24Z,2026-06-29,https://github.com/aave/interface/pull/3015
 aave,interface,helpfulBro,https://avatars.githubusercontent.com/u/25915621?v=4,3032,fix: show available liquidity for e-mode-only borrowable assets,2026-06-28T09:26:48Z,2026-06-28,https://github.com/aave/interface/pull/3032
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3048,feat: add Monad chain to supported networks,2026-06-27T18:02:45Z,2026-06-27,https://github.com/aave/interface/pull/3048
 aave,aave-v4-sdk,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,397,Feat: update protocolHistory with chainId request type,2026-06-26T07:40:12Z,2026-06-26,https://github.com/aave/aave-v4-sdk/pull/397
