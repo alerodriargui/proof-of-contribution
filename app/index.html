@@ -72,19 +72,39 @@
           </div>
         </label>
 
-        <label class="field">
-          <span>Organization</span>
-          <select id="orgFilter">
-            <option value="all">All organizations</option>
-          </select>
-        </label>
+        <div class="ms-field">
+          <span class="ms-label">Organization</span>
+          <div class="multi-select" id="orgMultiSelect">
+            <button class="multi-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="multi-select-summary" id="orgSummary">All organizations</span>
+              <svg class="multi-select-arrow" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="multi-select-dropdown" id="orgDropdown" role="listbox" aria-multiselectable="true" hidden>
+              <div class="multi-select-actions">
+                <button type="button" data-action="select-all">Select all</button>
+                <button type="button" data-action="clear-all">Clear all</button>
+              </div>
+              <div id="orgOptions"></div>
+            </div>
+          </div>
+        </div>
 
-        <label class="field">
-          <span>Project</span>
-          <select id="projectFilter">
-            <option value="all">All projects</option>
-          </select>
-        </label>
+        <div class="ms-field">
+          <span class="ms-label">Project</span>
+          <div class="multi-select" id="projectMultiSelect">
+            <button class="multi-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="multi-select-summary" id="projectSummary">All projects</span>
+              <svg class="multi-select-arrow" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
+            </button>
+            <div class="multi-select-dropdown" id="projectDropdown" role="listbox" aria-multiselectable="true" hidden>
+              <div class="multi-select-actions">
+                <button type="button" data-action="select-all">Select all</button>
+                <button type="button" data-action="clear-all">Clear all</button>
+              </div>
+              <div id="projectOptions"></div>
+            </div>
+          </div>
+        </div>
 
         <label class="field">
           <span>Sort</span>

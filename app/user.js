@@ -146,7 +146,9 @@ function parseParams() {
     }
   }
   state.username = username;
-  return { org: p.get("org") || "all", project: p.get("project") || "all" };
+  const orgs = p.get("orgs") || p.get("org") || "";
+  const projects = p.get("projects") || p.get("project") || "";
+  return { org: orgs || "all", project: projects || "all", orgs, projects };
 }
 
 function updateOgMeta(user) {
@@ -471,7 +473,7 @@ function renderCharts(pulls, user) {
 
 function renderRecentPrs(pulls) {
   const recentEl = $("recentPrList");
-  const recent = pulls.slice(0, 3);
+  const recent = pulls;
   $("recentPrCount").textContent = `${formatNumber(pulls.length)} total`;
   if (recent.length > 0) {
     recentEl.innerHTML = recent.map(pr =>
@@ -510,8 +512,8 @@ async function init() {
   // Build back-link preserving filter context
   const backLink = $("backLink");
   const bp = new URLSearchParams();
-  if (filterParams.org !== "all") bp.set("org", filterParams.org);
-  if (filterParams.project !== "all") bp.set("project", filterParams.project);
+  if (filterParams.orgs) bp.set("orgs", filterParams.orgs);
+  if (filterParams.projects) bp.set("projects", filterParams.projects);
   const qs = bp.toString();
   backLink.href = `../app/${qs ? "?" + qs : ""}`;
 

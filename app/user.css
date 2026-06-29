@@ -291,6 +291,8 @@
 
 .profile-section-card .recent-pr-list {
   padding: 14px 20px 18px;
+  max-height: 380px;
+  overflow-y: auto;
 }
 
 /* ── Responsive ─────────────────────────────────────── */

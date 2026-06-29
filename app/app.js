@@ -69,8 +69,8 @@ function saveHideGhostPreference(value) {
 const state = {
   rows: [],
   dataVersion: "",
-  org: "all",
-  project: "all",
+  orgs: new Set(),
+  projects: new Set(),
   query: "",
   sort: "prs",
   hideBots: preferredHideBots(),
@@ -82,8 +82,14 @@ const state = {
 const els = {
   dataStatus: document.querySelector("#dataStatus"),
   userSearch: document.querySelector("#userSearch"),
-  orgFilter: document.querySelector("#orgFilter"),
-  projectFilter: document.querySelector("#projectFilter"),
+  orgTrigger: document.querySelector("#orgMultiSelect .multi-select-trigger"),
+  orgDropdown: document.querySelector("#orgDropdown"),
+  orgOptions: document.querySelector("#orgOptions"),
+  orgSummary: document.querySelector("#orgSummary"),
+  projectTrigger: document.querySelector("#projectMultiSelect .multi-select-trigger"),
+  projectDropdown: document.querySelector("#projectDropdown"),
+  projectOptions: document.querySelector("#projectOptions"),
+  projectSummary: document.querySelector("#projectSummary"),
   sortMode: document.querySelector("#sortMode"),
   hideBots: document.querySelector("#hideBots"),
   hideGhost: document.querySelector("#hideGhost"),
@@ -302,18 +308,10 @@ function sortedDevelopers(rows) {
 
 function baseRows() {
   return state.rows.filter((row) => {
-    if (state.org !== "all" && row.org !== state.org) {
-      return false;
-    }
-    if (state.project !== "all" && row.proyecto !== state.project) {
-      return false;
-    }
-    if (state.hideBots && isBot(row.usuario)) {
-      return false;
-    }
-    if (state.hideGhost && isGhostUser(row.usuario)) {
-      return false;
-    }
+    if (state.orgs.size > 0 && !state.orgs.has(row.org)) return false;
+    if (state.projects.size > 0 && !state.projects.has(row.proyecto)) return false;
+    if (state.hideBots && isBot(row.usuario)) return false;
+    if (state.hideGhost && isGhostUser(row.usuario)) return false;
     return true;
   });
 }
@@ -336,18 +334,7 @@ function filteredRowsByUserQuery(rows) {
   return rows.filter((row) => row.usuario.toLowerCase().includes(query));
 }
 
-function setOptions(select, values, selected, allLabel) {
-  const options = [`<option value="all">${allLabel}</option>`]
-    .concat(
-      values.map((value) => {
-        const escaped = escapeHtml(value);
-        return `<option value="${escaped}">${escaped}</option>`;
-      }),
-    )
-    .join("");
-  select.innerHTML = options;
-  select.value = values.includes(selected) ? selected : "all";
-}
+
 
 function orgLabel(org) {
   const labels = {
@@ -398,40 +385,33 @@ function orgTagClass(org) {
   return org === "all" ? "org-all" : org;
 }
 
-function refreshFilters() {
-  const orgs = [...new Set(state.rows.map((row) => row.org))].sort();
-  const currentOrg = state.org;
+function buildMultiSelectOptions(container, values, labelFn, selectedSet) {
+  container.innerHTML = values.map((v) => {
+    const label = labelFn ? labelFn(v) : v;
+    const checked = selectedSet.has(v) ? "checked" : "";
+    return `<label class="multi-select-option"><input type="checkbox" value="${escapeHtml(v)}" ${checked} /><span>${escapeHtml(label)}</span></label>`;
+  }).join("");
+}
 
-  els.orgFilter.innerHTML = '<option value="all">All organizations</option>';
-  orgs.forEach((org) => {
-    const opt = document.createElement("option");
-    opt.value = org;
-    opt.textContent = orgLabel(org);
-    opt.selected = org === currentOrg;
-    els.orgFilter.appendChild(opt);
-  });
-
-  const projects = [
-    ...new Set(
-      state.rows
-        .filter((row) => state.org === "all" || row.org === state.org)
-        .map((row) => row.proyecto)
-        .filter(Boolean),
-    ),
-  ].sort((a, b) => a.localeCompare(b));
-
-  if (!projects.includes(state.project)) {
-    state.project = "all";
+function updateSummary(el, selectedSet, allLabel) {
+  if (selectedSet.size === 0) {
+    el.textContent = allLabel;
+  } else {
+    el.textContent = `${selectedSet.size} selected`;
   }
+}
 
-  els.projectFilter.innerHTML = '<option value="all">All projects</option>';
-  projects.forEach((proj) => {
-    const opt = document.createElement("option");
-    opt.value = proj;
-    opt.textContent = proj;
-    opt.selected = proj === state.project;
-    els.projectFilter.appendChild(opt);
-  });
+function refreshFilters() {
+  const allOrgs = [...new Set(state.rows.map((row) => row.org))].sort();
+  const filteredRows = state.orgs.size === 0 ? state.rows : state.rows.filter(r => state.orgs.has(r.org));
+  const allProjects = [...new Set(filteredRows.map((row) => row.proyecto).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+
+  state.projects.forEach((p) => { if (!allProjects.includes(p)) state.projects.delete(p); });
+
+  buildMultiSelectOptions(els.orgOptions, allOrgs, orgLabel, state.orgs);
+  buildMultiSelectOptions(els.projectOptions, allProjects, null, state.projects);
+  updateSummary(els.orgSummary, state.orgs, "All organizations");
+  updateSummary(els.projectSummary, state.projects, "All projects");
 }
 
 function renderMetrics(rows, developers) {
@@ -529,6 +509,7 @@ function render() {
   renderMetrics(visibleRows, developers);
   renderDevelopers(developers);
   updateHelperText();
+  rebindMultiSelectActions();
 }
 
 function escapeHtml(value) {
@@ -576,6 +557,65 @@ function profileLinkMarkup(row) {
   return `<a class="profile-link" href="${userUrl}">${content}</a> ${ghLink}`;
 }
 
+// ── Multi-select helpers ──────────────────────
+function toggleDropdown(trigger, dropdown) {
+  const open = trigger.getAttribute("aria-expanded") === "true";
+  document.querySelectorAll(".multi-select-trigger[aria-expanded='true']").forEach((t) => {
+    t.setAttribute("aria-expanded", "false");
+    const dd = t.parentElement.querySelector(".multi-select-dropdown");
+    if (dd) dd.hidden = true;
+  });
+  if (!open) {
+    trigger.setAttribute("aria-expanded", "true");
+    dropdown.hidden = false;
+  }
+}
+
+function closeAllDropdowns() {
+  document.querySelectorAll(".multi-select-trigger[aria-expanded='true']").forEach((t) => {
+    t.setAttribute("aria-expanded", "false");
+    const dd = t.parentElement.querySelector(".multi-select-dropdown");
+    if (dd) dd.hidden = true;
+  });
+}
+
+function onMultiSelectAction(containerEl, actionBtn, selectedSet, summaryEl, allLabel) {
+  actionBtn.addEventListener("click", () => {
+    const checkboxes = containerEl.querySelectorAll("input[type='checkbox']");
+    checkboxes.forEach((cb) => {
+      if (actionBtn.dataset.action === "select-all") {
+        cb.checked = true;
+        selectedSet.add(cb.value);
+      } else {
+        cb.checked = false;
+        selectedSet.delete(cb.value);
+      }
+    });
+    updateSummary(summaryEl, selectedSet, allLabel);
+    state.page = 1;
+    render();
+  });
+}
+
+function rebindMultiSelectActions() {
+  document.querySelectorAll(".multi-select-dropdown [data-action]").forEach((btn) => {
+    const dd = btn.closest(".multi-select-dropdown");
+    const container = dd.querySelector("[id$='Options']");
+    const summary = document.querySelector(dd.id === "orgDropdown" ? "#orgSummary" : "#projectSummary");
+    const selectedSet = dd.id === "orgDropdown" ? state.orgs : state.projects;
+    const allLabel = dd.id === "orgDropdown" ? "All organizations" : "All projects";
+    btn.replaceWith(btn.cloneNode(true));
+  });
+  document.querySelectorAll(".multi-select-dropdown [data-action]").forEach((btn) => {
+    const dd = btn.closest(".multi-select-dropdown");
+    const container = dd.querySelector("[id$='Options']");
+    const summary = document.querySelector(dd.id === "orgDropdown" ? "#orgSummary" : "#projectSummary");
+    const selectedSet = dd.id === "orgDropdown" ? state.orgs : state.projects;
+    const allLabel = dd.id === "orgDropdown" ? "All organizations" : "All projects";
+    onMultiSelectAction(container, btn, selectedSet, summary, allLabel);
+  });
+}
+
 function bindEvents() {
   on(els.userSearch, "input", (event) => {
     state.query = event.target.value;
@@ -583,17 +623,31 @@ function bindEvents() {
     render();
   });
 
-  on(els.orgFilter, "change", (event) => {
-    state.org = event.target.value;
-    state.project = "all";
+  on(els.orgTrigger, "click", () => toggleDropdown(els.orgTrigger, els.orgDropdown));
+  on(els.projectTrigger, "click", () => toggleDropdown(els.projectTrigger, els.projectDropdown));
+
+  on(els.orgOptions, "change", (event) => {
+    const cb = event.target.closest("input[type='checkbox']");
+    if (!cb) return;
+    cb.checked ? state.orgs.add(cb.value) : state.orgs.delete(cb.value);
+    updateSummary(els.orgSummary, state.orgs, "All organizations");
     state.page = 1;
     render();
   });
 
-  on(els.projectFilter, "change", (event) => {
-    state.project = event.target.value;
+  on(els.projectOptions, "change", (event) => {
+    const cb = event.target.closest("input[type='checkbox']");
+    if (!cb) return;
+    cb.checked ? state.projects.add(cb.value) : state.projects.delete(cb.value);
+    updateSummary(els.projectSummary, state.projects, "All projects");
     state.page = 1;
     render();
+  });
+
+  // ── Close dropdowns on outside click ──────
+  on(document, "click", (event) => {
+    const ms = event.target.closest(".multi-select");
+    if (!ms) closeAllDropdowns();
   });
 
   on(els.sortMode, "change", (event) => {
@@ -633,16 +687,12 @@ function bindEvents() {
   });
 
   on(els.developerRows, "click", (event) => {
-    if (event.target.closest("a")) {
-      return;
-    }
+    if (event.target.closest("a")) return;
     const row = event.target.closest("tr[data-user]");
-    if (!row) {
-      return;
-    }
+    if (!row) return;
     const params = new URLSearchParams();
-    if (state.org !== "all") params.set("org", state.org);
-    if (state.project !== "all") params.set("project", state.project);
+    if (state.orgs.size > 0) params.set("orgs", [...state.orgs].join(","));
+    if (state.projects.size > 0) params.set("projects", [...state.projects].join(","));
     const qs = params.toString();
     window.location.href = `/contributors/index.html?username=${encodeURIComponent(row.dataset.user)}${qs ? "&" + qs : ""}`;
   });
@@ -721,6 +771,13 @@ async function init() {
     render();
     return;
   }
+
+  // Restore multi-select state from URL params
+  const qp = new URLSearchParams(window.location.search);
+  const orgsParam = qp.get("orgs");
+  const projectsParam = qp.get("projects");
+  if (orgsParam) orgsParam.split(",").filter(Boolean).forEach((v) => state.orgs.add(v));
+  if (projectsParam) projectsParam.split(",").filter(Boolean).forEach((v) => state.projects.add(v));
 
   if (els.dataStatus) {
     els.dataStatus.textContent = "";
