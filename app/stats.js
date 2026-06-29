@@ -304,14 +304,14 @@ function sharedOptions(labels, yLabel) {
           borderRadius: 6,
           useBorderRadius: true,
           font: { size: 12, weight: "700" },
-          color: "#687586",
+          color: textColor,
           padding: 16,
         },
       },
       tooltip: {
-        backgroundColor: "rgba(17, 24, 39, 0.95)",
-        titleColor: "#f9fafb",
-        bodyColor: "#d1d5db",
+        backgroundColor: isDark ? "rgba(30, 41, 59, 0.95)" : "rgba(17, 24, 39, 0.95)",
+        titleColor: isDark ? "#f8fafc" : "#f9fafb",
+        bodyColor: isDark ? "#94a3b8" : "#d1d5db",
         padding: 12,
         cornerRadius: 10,
         titleFont: { weight: "800" },
@@ -325,9 +325,9 @@ function sharedOptions(labels, yLabel) {
     },
     scales: {
       x: {
-        grid: { color: "rgba(209, 224, 232, 0.5)" },
+        grid: { color: gridColor },
         ticks: {
-          color: "#687586",
+          color: textColor,
           font: { size: 10, weight: "500" },
           maxRotation: 45,
           minRotation: 0,
@@ -345,16 +345,16 @@ function sharedOptions(labels, yLabel) {
         },
       },
       y: {
-        grid: { color: "rgba(209, 224, 232, 0.5)" },
+        grid: { color: gridColor },
         ticks: {
-          color: "#687586",
+          color: textColor,
           font: { size: 11 },
           callback: (v) => fmt(v),
         },
         title: {
           display: !!yLabel,
           text: yLabel ?? "",
-          color: "#687586",
+          color: textColor,
           font: { size: 11, weight: "700" },
         },
       },
