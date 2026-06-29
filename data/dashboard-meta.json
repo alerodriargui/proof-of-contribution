@@ -1,45 +1,45 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "29a47f346af2bbab",
-  "generated_at": "2026-06-29T16:30:53Z",
+  "version": "48ff19b17fbbef72",
+  "generated_at": "2026-06-29T18:43:47Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 269861,
+  "source_pr_count": 269872,
   "row_count": 25036,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 58589,
+      "raw_pr_count": 58590,
       "summary_row_count": 8228,
-      "last_updated": "2026-06-29T16:16:52Z"
+      "last_updated": "2026-06-29T18:29:51Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 17931,
       "summary_row_count": 1481,
-      "last_updated": "2026-06-29T16:16:56Z"
+      "last_updated": "2026-06-29T18:29:55Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5202,
       "summary_row_count": 482,
-      "last_updated": "2026-06-29T16:17:50Z"
+      "last_updated": "2026-06-29T18:30:49Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15066,
       "summary_row_count": 1548,
-      "last_updated": "2026-06-29T16:19:38Z"
+      "last_updated": "2026-06-29T18:32:37Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
-      "raw_pr_count": 4831,
+      "raw_pr_count": 4832,
       "summary_row_count": 403,
-      "last_updated": "2026-06-29T16:20:30Z"
+      "last_updated": "2026-06-29T18:33:29Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -79,14 +79,14 @@
     {
       "path": "data/stellar_merged_prs.csv",
       "org": "stellar",
-      "raw_pr_count": 27621,
+      "raw_pr_count": 27623,
       "summary_row_count": 1884,
-      "last_updated": "2026-06-29T16:26:33Z"
+      "last_updated": "2026-06-29T18:39:31Z"
     },
     {
       "path": "data/link_merged_prs.csv",
       "org": "link",
-      "raw_pr_count": 44786,
+      "raw_pr_count": 44793,
       "summary_row_count": 2682,
       "last_updated": null
     },
