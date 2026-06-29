@@ -80,6 +80,8 @@ select {
   gap: 12px;
   max-width: 100%;
   min-width: 0;
+  text-decoration: none;
+  color: inherit;
 }
 
 .brand-mark {
