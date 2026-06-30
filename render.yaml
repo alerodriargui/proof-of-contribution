@@ -4,3 +4,24 @@ services:
     runtime: static
     buildCommand: echo "No build step required"
     staticPublishPath: .
+    headers:
+      - path: /api/*
+        name: Access-Control-Allow-Origin
+        value: "*"
+
+  - type: web
+    name: proof-of-contribution-api
+    env: python
+    buildCommand: ""
+    startCommand: python -m api.server
+    envVars:
+      - key: X402_PAY_TO
+        sync: false
+      - key: X402_AMOUNT
+        value: "100000"
+      - key: X402_NETWORK
+        value: "eip155:8453"
+      - key: X402_MOCK_FACILITATOR
+        value: "true"
+      - key: PYTHONUNBUFFERED
+        value: "1"

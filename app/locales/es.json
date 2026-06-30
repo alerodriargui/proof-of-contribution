@@ -217,6 +217,16 @@
     "thisEcosystem": "este ecosistema",
     "profileTitle": "{user} - Perfil del Colaborador | Proof of Contribution",
     "profileDescription": "{user} contribuyó {prs} PRs en {ecosystems} ecosistema(s). Ve su perfil completo de contribuciones.",
+    "recentPrGroupMonth": "Este mes",
+    "recentPrGroupQuarter": "Últimos 3 meses",
+    "recentPrGroupOlder": "Anteriores",
+    "timeAgoJustNow": "justo ahora",
+    "timeAgoMin": "hace {n}m",
+    "timeAgoHour": "hace {n}h",
+    "timeAgoDay": "hace {n}d",
+    "timeAgoWeek": "hace {n}sem",
+    "timeAgoMonth": "hace {n}mes",
+    "timeAgoYear": "hace {n}a",
     "recentPrMeta": "{org} / {project} - {date}"
   },
   "docs": {

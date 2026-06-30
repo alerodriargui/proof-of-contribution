@@ -1,0 +1,4 @@
+# Proof of Contribution - x402 API Server
+# No external dependencies required - uses Python stdlib only.
+# 
+# Run: python -m api.server [port]

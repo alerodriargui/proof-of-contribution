@@ -148,6 +148,38 @@ function formatDate(raw) {
   return d.toLocaleDateString(window.pocI18n?.locale || "en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
+function timeAgo(raw) {
+  const d = parseDate(raw);
+  if (!d) return "";
+  const diffMs = Date.now() - d;
+  const diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 1) return t("profile.timeAgoJustNow");
+  if (diffMin < 60) return t("profile.timeAgoMin", { n: diffMin });
+  const diffHour = Math.floor(diffMin / 60);
+  if (diffHour < 24) return t("profile.timeAgoHour", { n: diffHour });
+  const diffDay = Math.floor(diffHour / 24);
+  if (diffDay < 7) return t("profile.timeAgoDay", { n: diffDay });
+  const diffWeek = Math.floor(diffDay / 7);
+  if (diffWeek < 5) return t("profile.timeAgoWeek", { n: diffWeek });
+  const diffMonth = Math.floor(diffDay / 30);
+  if (diffMonth < 12) return t("profile.timeAgoMonth", { n: diffMonth });
+  return t("profile.timeAgoYear", { n: Math.floor(diffDay / 365) });
+}
+
+function groupPrsByTime(pulls) {
+  const now = Date.now();
+  const groups = { month: [], quarter: [], older: [] };
+  pulls.forEach(pr => {
+    const d = parseDate(pr.merged_at || pr.merged_date);
+    if (!d) { groups.older.push(pr); return; }
+    const diffDay = (now - d) / 86400000;
+    if (diffDay <= 31) groups.month.push(pr);
+    else if (diffDay <= 93) groups.quarter.push(pr);
+    else groups.older.push(pr);
+  });
+  return groups;
+}
+
 function monthKey(raw) {
   const d = parseDate(raw);
   if (!d) return "";
@@ -550,18 +582,41 @@ function renderCharts(pulls, user) {
 
 function renderRecentPrs(pulls) {
   const recentEl = $("recentPrList");
-  const recent = pulls;
   $("recentPrCount").textContent = `${formatNumber(pulls.length)} ${t("common.total")}`;
-  if (recent.length > 0) {
-    recentEl.innerHTML = recent.map(pr =>
+  if (pulls.length === 0) {
+    recentEl.innerHTML = `<div class="project-empty">${escapeHtml(t("profile.noRecentPrs"))}</div>`;
+    return;
+  }
+  const groups = groupPrsByTime(pulls);
+  const groupOrder = [
+    { key: "month", label: t("profile.recentPrGroupMonth") },
+    { key: "quarter", label: t("profile.recentPrGroupQuarter") },
+    { key: "older", label: t("profile.recentPrGroupOlder") },
+  ];
+  let html = "";
+  for (const g of groupOrder) {
+    const items = groups[g.key];
+    if (items.length === 0) continue;
+    html += `<div class="recent-pr-group">
+      <div class="recent-pr-group-head">
+        <span class="recent-pr-group-label">${escapeHtml(g.label)}</span>
+        <span class="recent-pr-group-count">${formatNumber(items.length)}</span>
+      </div>`;
+    html += items.map(pr =>
       `<a class="recent-pr-link" href="${escapeHtml(pr.url)}" target="_blank" rel="noreferrer">
-        <span class="recent-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "Untitled PR")}</span>
-        <span class="recent-pr-meta">${escapeHtml(t("profile.recentPrMeta", { org: orgLabel(pr.org), project: pr.proyecto || "unknown", date: pr.merged_date || pr.merged_at || "" }))}</span>
+        <span class="recent-pr-dot" style="--dot-c:${orgColor(pr.org)}"></span>
+        <span class="recent-pr-body">
+          <span class="recent-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "")}</span>
+          <span class="recent-pr-meta">
+            <span class="recent-pr-project">${escapeHtml(pr.proyecto || "unknown")}</span>
+            <span class="recent-pr-date">· ${escapeHtml(timeAgo(pr.merged_at || pr.merged_date))}</span>
+          </span>
+        </span>
       </a>`
     ).join("");
-  } else {
-    recentEl.innerHTML = `<div class="project-empty">${escapeHtml(t("profile.noRecentPrs"))}</div>`;
+    html += `</div>`;
   }
+  recentEl.innerHTML = html;
 }
 
 function renderDetails(user) {
