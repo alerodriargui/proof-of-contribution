@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+ripple,xrpl-wasm-stdlib,pwang200,https://avatars.githubusercontent.com/u/354723?v=4,202,refactor: Convert some internal error usages to panic,2026-06-30T20:16:45Z,2026-06-30,https://github.com/ripple/xrpl-wasm-stdlib/pull/202
+ripple,explorer,kuan121,https://avatars.githubusercontent.com/u/13514933?v=4,1330,upgrade status: Strip the  prefix (not just legacy ) so a release isn't split across two bars after the rippled -> xrpld rename.,2026-06-30T18:11:35Z,2026-06-30,https://github.com/ripple/explorer/pull/1330
+ripple,opensource.ripple.com,Ocheretovich,https://avatars.githubusercontent.com/u/107276324?v=4,204,chore: remove unused ButtonToXRPL import,2026-06-30T17:11:42Z,2026-06-30,https://github.com/ripple/opensource.ripple.com/pull/204
+ripple,opensource.ripple.com,oeggert,https://avatars.githubusercontent.com/u/117319296?v=4,221,Add insights page for lending protocol and SAV,2026-06-30T17:03:42Z,2026-06-30,https://github.com/ripple/opensource.ripple.com/pull/221
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,189,feat: Typed Constant Macros,2026-06-30T15:41:57Z,2026-06-30,https://github.com/ripple/xrpl-wasm-stdlib/pull/189
 ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,70,Pin setup loan brokers to XRP vaults so cover deposits fund,2026-06-30T15:09:26Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/70
 ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,69,"Type-clean workload to zero, add mypy + basedpyright gates and CI",2026-06-30T10:47:01Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/69

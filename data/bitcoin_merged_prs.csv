@@ -1060,7 +1060,7 @@ bitcoin,bitcoin,maflcko,,33600,refactor: Construct g_verify_flag_names on first 
 bitcoin,bitcoin,Sjors,,33566,miner: fix empty mempool case for waitNext(),2025-10-23T09:49:49Z,2025-10-23,https://github.com/bitcoin/bitcoin/pull/33566
 bitcoin,bitcoin,furszy,,33679,test: set number of RPC server threads to 2,2025-10-23T09:03:48Z,2025-10-23,https://github.com/bitcoin/bitcoin/pull/33679
 bitcoin,bips,brunoerg,,1975,bip155: mark torv2 as no longer in use,2025-10-23T08:13:11Z,2025-10-23,https://github.com/bitcoin/bips/pull/1975
-bitcoin,bitcoin,hebasto,,32266,"depends: Avoid `warning: ""_FORTIFY_SOURCE"" redefined` for `libevent`",2025-10-23T07:45:33Z,2025-10-23,https://github.com/bitcoin/bitcoin/pull/32266
+bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,32266,"depends: Avoid `warning: ""_FORTIFY_SOURCE"" redefined` for `libevent`",2025-10-23T07:45:33Z,2025-10-23,https://github.com/bitcoin/bitcoin/pull/32266
 bitcoin,bitcoin,maflcko,,33674,ci: Doc ASLR workaround for sanitizer tasks,2025-10-23T07:18:56Z,2025-10-23,https://github.com/bitcoin/bitcoin/pull/33674
 bitcoin,bips,Forostovec,,2011,BIP-374: Pass G and m to VerifyProof in GenerateProof self-check,2025-10-23T01:24:18Z,2025-10-23,https://github.com/bitcoin/bips/pull/2011
 bitcoin,bitcoin,fanquake,,33461,ci: add Valgrind fuzz,2025-10-22T10:50:07Z,2025-10-22,https://github.com/bitcoin/bitcoin/pull/33461
@@ -1336,7 +1336,7 @@ bitcoin,bitcoin,fanquake,,33100,ci: remove `ninja-build` from MSAN jobs,2025-07-
 bitcoin,bitcoin,fanquake,,33076,[28.x] Backports,2025-07-30T14:31:17Z,2025-07-30,https://github.com/bitcoin/bitcoin/pull/33076
 bitcoin,bitcoin,brunoerg,,33102,fuzz: cover BanMan::IsDiscouraged,2025-07-30T13:29:31Z,2025-07-30,https://github.com/bitcoin/bitcoin/pull/33102
 bitcoin,bitcoin,rkrux,,32866,doc: add note for watch-only wallet migration,2025-07-29T18:40:32Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/32866
-bitcoin,bitcoin,davidgumberg,,32273,wallet: Fix relative path backup during migration.,2025-07-29T18:16:10Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/32273
+bitcoin,bitcoin,davidgumberg,https://avatars.githubusercontent.com/u/2257631?v=4,32273,wallet: Fix relative path backup during migration.,2025-07-29T18:16:10Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/32273
 bitcoin,bitcoin,maflcko,,33075,doc: Add legacy wallet removal release notes,2025-07-29T18:03:04Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/33075
 bitcoin,bitcoin,ishaanam,,28944,"wallet, rpc: add anti-fee-sniping to `send` and `sendall`",2025-07-29T16:07:44Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/28944
 bitcoin,bitcoin,willcl-ark,,33073,guix: warn SOURCE_DATE_EPOCH set in guix-codesign,2025-07-29T15:33:57Z,2025-07-29,https://github.com/bitcoin/bitcoin/pull/33073
@@ -1567,7 +1567,7 @@ bitcoin,bitcoin,mzumsande,,32630,test: fix sync function in rpc_psbt.py,2025-05-
 bitcoin,bips,jonatack,,1858,BIP77: remove redundant sentence line,2025-05-28T18:56:35Z,2025-05-28,https://github.com/bitcoin/bips/pull/1858
 bitcoin,bips,DanGould,,1483,BIP 77: Async Payjoin,2025-05-28T18:49:12Z,2025-05-28,https://github.com/bitcoin/bips/pull/1483
 bitcoin,bitcoin,maflcko,,32528,rpc: Round verificationprogress to 1 for a recent tip,2025-05-27T23:45:09Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32528
-bitcoin,bitcoin,stickies-v,,32364,refactor: validation: mark CheckBlockIndex as const,2025-05-27T22:32:45Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32364
+bitcoin,bitcoin,stickies-v,https://avatars.githubusercontent.com/u/69010457?v=4,32364,refactor: validation: mark CheckBlockIndex as const,2025-05-27T22:32:45Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32364
 bitcoin,bitcoin,hodlinator,,32509,qa: feature_framework_startup_failures.py fixes & improvements (#30660 follow-up),2025-05-27T21:44:43Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32509
 bitcoin,bitcoin,l0rinc,,32404,log: print reason when writing chainstate,2025-05-27T21:30:11Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32404
 bitcoin,bitcoin,l0rinc,,32487,blocks: avoid recomputing block header hash in `ReadBlock`,2025-05-27T20:01:56Z,2025-05-27,https://github.com/bitcoin/bitcoin/pull/32487
@@ -1593,7 +1593,7 @@ bitcoin,bitcoin,hebasto,,32567,subprocess: Backport upstream changes,2025-05-21T
 bitcoin,bitcoin,Sjors,,32459,qt: drop unused watch-only functionality,2025-05-21T09:13:05Z,2025-05-21,https://github.com/bitcoin/bitcoin/pull/32459
 bitcoin,bitcoin,achow101,,31622,psbt: add non-default sighash types to PSBTs and unify sighash type match checking,2025-05-21T09:02:59Z,2025-05-21,https://github.com/bitcoin/bitcoin/pull/31622
 bitcoin,bips,jonatack,,1854,BIP341: replace broken twitter link,2025-05-20T21:33:50Z,2025-05-20,https://github.com/bitcoin/bips/pull/1854
-bitcoin,bitcoin,Eunovo,,32344,"Wallet:  Fix Non-Ranged Descriptors with Range [0,0] Trigger Unexpected Wallet Errors in AddWalletDescriptor",2025-05-20T19:30:31Z,2025-05-20,https://github.com/bitcoin/bitcoin/pull/32344
+bitcoin,bitcoin,Eunovo,https://avatars.githubusercontent.com/u/37949128?v=4,32344,"Wallet:  Fix Non-Ranged Descriptors with Range [0,0] Trigger Unexpected Wallet Errors in AddWalletDescriptor",2025-05-20T19:30:31Z,2025-05-20,https://github.com/bitcoin/bitcoin/pull/32344
 bitcoin,bitcoin,theuni,,32466,threading: drop CSemaphore in favor of c++20 std::counting_semaphore,2025-05-20T19:21:00Z,2025-05-20,https://github.com/bitcoin/bitcoin/pull/32466
 bitcoin,bitcoin,nervana21,,32333,doc: Add missing top-level description to pruneblockchain RPC,2025-05-20T19:02:44Z,2025-05-20,https://github.com/bitcoin/bitcoin/pull/32333
 bitcoin,bitcoin,maflcko,,32520,Remove legacy `Parse(U)Int*`,2025-05-20T14:55:43Z,2025-05-20,https://github.com/bitcoin/bitcoin/pull/32520
@@ -1673,7 +1673,7 @@ bitcoin,bitcoin,murchandamus,,29532,Refactor BnB tests,2025-05-06T22:15:22Z,2025
 bitcoin,bitcoin,hebasto,,32287,build: Fix `macdeployqtplus` after switching to Qt 6,2025-05-06T17:10:28Z,2025-05-06,https://github.com/bitcoin/bitcoin/pull/32287
 bitcoin,bitcoin,Sjors,,32086,Shuffle depends instructions and recommend modern make for macOS,2025-05-06T17:06:46Z,2025-05-06,https://github.com/bitcoin/bitcoin/pull/32086
 bitcoin,bitcoin,hebasto,,32352,[29.x] qt: 29.1 translations update,2025-05-06T17:03:08Z,2025-05-06,https://github.com/bitcoin/bitcoin/pull/32352
-bitcoin,bitcoin,fanquake,,32405,build: replace header checks with `__has_include`,2025-05-05T14:19:43Z,2025-05-05,https://github.com/bitcoin/bitcoin/pull/32405
+bitcoin,bitcoin,fanquake,https://avatars.githubusercontent.com/u/863730?v=4,32405,build: replace header checks with `__has_include`,2025-05-05T14:19:43Z,2025-05-05,https://github.com/bitcoin/bitcoin/pull/32405
 bitcoin,bitcoin,hebasto,,32358,subprocess: Backport upstream changes,2025-05-05T11:36:03Z,2025-05-05,https://github.com/bitcoin/bitcoin/pull/32358
 bitcoin,bitcoin,maflcko,,32417,doc: Explain that .gitignore is not for IDE-specific excludes,2025-05-05T06:40:51Z,2025-05-05,https://github.com/bitcoin/bitcoin/pull/32417
 bitcoin,bitcoin,fanquake,,32403,test: remove Boost SIGCHLD workaround.,2025-05-02T21:10:50Z,2025-05-02,https://github.com/bitcoin/bitcoin/pull/32403
@@ -1687,7 +1687,7 @@ bitcoin,bitcoin,l0rinc,,32351,test: avoid stack overflow in `FindChallenges` via
 bitcoin,bips,darosior,,1800,BIP 54: Consensus Cleanup,2025-04-29T22:23:51Z,2025-04-29,https://github.com/bitcoin/bips/pull/1800
 bitcoin,bitcoin,laanwj,,31014,net: Use GetAdaptersAddresses to get local addresses on Windows,2025-04-29T22:13:41Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/31014
 bitcoin,bitcoin,Sjors,,27826,validation: log which peer sent us a header,2025-04-29T21:48:31Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/27826
-bitcoin,bitcoin,vasild,,32338,net: remove unnecessary check from AlreadyConnectedToAddress(),2025-04-29T21:31:58Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/32338
+bitcoin,bitcoin,vasild,https://avatars.githubusercontent.com/u/266751?v=4,32338,net: remove unnecessary check from AlreadyConnectedToAddress(),2025-04-29T21:31:58Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/32338
 bitcoin,bitcoin,ajtowns,https://avatars.githubusercontent.com/u/127186?v=4,29039,versionbits refactoring,2025-04-29T21:07:01Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/29039
 bitcoin,bips,gap-editor,,1842,BIP 197: Update the invalid link,2025-04-29T20:28:56Z,2025-04-29,https://github.com/bitcoin/bips/pull/1842
 bitcoin,bitcoin,maflcko,,32365,descriptors: Reject + sign while parsing unsigned,2025-04-29T17:25:20Z,2025-04-29,https://github.com/bitcoin/bitcoin/pull/32365
@@ -1708,7 +1708,7 @@ bitcoin,bitcoin,achow101,,31250,wallet: Disable creating and loading legacy wall
 bitcoin,bitcoin,hebasto,,32242,guix: Remove unused `file` package,2025-04-25T09:54:35Z,2025-04-25,https://github.com/bitcoin/bitcoin/pull/32242
 bitcoin,bitcoin,hebasto,,32215,depends: Fix cross-compiling on macOS,2025-04-25T09:15:12Z,2025-04-25,https://github.com/bitcoin/bitcoin/pull/32215
 bitcoin,bips,TheBlueMatt,,1555,BIP 321: URI Scheme (Replace BIP 21 with a new BIP containing information about more modern usage of it),2025-04-25T04:52:29Z,2025-04-25,https://github.com/bitcoin/bips/pull/1555
-bitcoin,bitcoin,VolodymyrBg,,32318,Fix failing util_time_GetTime test on Windows,2025-04-24T22:10:14Z,2025-04-24,https://github.com/bitcoin/bitcoin/pull/32318
+bitcoin,bitcoin,VolodymyrBg,https://avatars.githubusercontent.com/u/189780094?v=4,32318,Fix failing util_time_GetTime test on Windows,2025-04-24T22:10:14Z,2025-04-24,https://github.com/bitcoin/bitcoin/pull/32318
 bitcoin,bitcoin,maflcko,,32336,test: Suppress upstream `-Wduplicate-decl-specifier` in bpfcc,2025-04-24T10:03:12Z,2025-04-24,https://github.com/bitcoin/bitcoin/pull/32336
 bitcoin,bitcoin,stratospher,,31835,validation: set BLOCK_FAILED_CHILD correctly,2025-04-23T21:10:02Z,2025-04-23,https://github.com/bitcoin/bitcoin/pull/31835
 bitcoin,bitcoin,saikiran57,,32023,wallet: removed duplicate call to GetDescriptorScriptPubKeyMan,2025-04-23T20:52:03Z,2025-04-23,https://github.com/bitcoin/bitcoin/pull/32023

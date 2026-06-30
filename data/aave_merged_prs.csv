@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+aave,protocol-subgraphs,grothem,https://avatars.githubusercontent.com/u/23554636?v=4,166,feat: monad,2026-06-30T18:41:45Z,2026-06-30,https://github.com/aave/protocol-subgraphs/pull/166
+aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3046,chore: add stcusd icon,2026-06-30T17:45:23Z,2026-06-30,https://github.com/aave/interface/pull/3046
+aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3049,Fix/avail liq emode,2026-06-30T17:16:23Z,2026-06-30,https://github.com/aave/interface/pull/3049
 aave,interface,DhairyaSethi,https://avatars.githubusercontent.com/u/55102840?v=4,3050,chore: add monad,2026-06-30T11:42:02Z,2026-06-30,https://github.com/aave/interface/pull/3050
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3051,chore: add susde info patch,2026-06-29T14:52:55Z,2026-06-29,https://github.com/aave/interface/pull/3051
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3015,feat: funkit checkout integration for Core-market supplies (#3010),2026-06-29T11:09:24Z,2026-06-29,https://github.com/aave/interface/pull/3015
