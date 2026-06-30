@@ -1289,7 +1289,7 @@ a {
     line-height: 1.05;
   }
 
-  .button-small span {
+  .landing-header .button-small {
     display: none;
   }
 
