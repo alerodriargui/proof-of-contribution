@@ -63,6 +63,22 @@ function pluralizePr(n) {
   return n === 1 ? "PR" : "PRs";
 }
 
+const CONTRIBUTOR_TIERS = [
+  { id: "newcomer", label: "Newcomer", range: "1 PR", min: 1, max: 1 },
+  { id: "regular", label: "Regular", range: "2-5 PRs", min: 2, max: 5 },
+  { id: "experienced", label: "Experienced", range: "6-20 PRs", min: 6, max: 20 },
+  { id: "core", label: "Core", range: "21+ PRs", min: 21, max: Infinity },
+];
+
+function contributorTier(prCount) {
+  return CONTRIBUTOR_TIERS.find((tier) => prCount >= tier.min && prCount <= tier.max) || CONTRIBUTOR_TIERS[0];
+}
+
+function contributorTierMarkup(prCount) {
+  const tier = contributorTier(prCount);
+  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(tier.range)}">${escapeHtml(tier.label)}</span>`;
+}
+
 function parseDate(raw) {
   const d = new Date(raw);
   return isNaN(d.getTime()) ? null : d;
@@ -212,6 +228,7 @@ function buildUserFromSummary(rows) {
     top_project: topProject ? topProject[0] : "",
     firstDate: firstDate ? formatDate(firstDate) : "Unknown",
     latestDate: latestDate ? formatDate(latestDate) : "Unknown",
+    experience_tier: contributorTier(totalPrs),
     projects,
   };
 }
@@ -245,6 +262,8 @@ function renderStatCards(user) {
   $("firstContrib").textContent = user.firstDate;
   $("latestContrib").textContent = user.latestDate;
   $("totalPrsStat").textContent = formatNumber(user.n_prs);
+  const tierEl = $("experienceTier");
+  if (tierEl) tierEl.innerHTML = contributorTierMarkup(user.n_prs);
   const orgLinks = user.orgs.map(o => {
     const c = orgColor(o);
     return `<span class="tag"><span class="tag-dot" style="background:${c}"></span>${escapeHtml(orgLabel(o))}</span>`;

@@ -22,6 +22,17 @@ const NETWORKS = [
   { id: "solana",   label: "Solana",      color: "#14f195" },
 ];
 
+const CONTRIBUTOR_TIERS = [
+  { id: "newcomer", label: "Newcomer", range: "1 PR", min: 1, max: 1 },
+  { id: "regular", label: "Regular", range: "2-5 PRs", min: 2, max: 5 },
+  { id: "experienced", label: "Experienced", range: "6-20 PRs", min: 6, max: 20 },
+  { id: "core", label: "Core", range: "21+ PRs", min: 21, max: Infinity },
+];
+
+function contributorTier(prCount) {
+  return CONTRIBUTOR_TIERS.find((tier) => prCount >= tier.min && prCount <= tier.max) || CONTRIBUTOR_TIERS[0];
+}
+
 // ── Data source ──────────────────────────────────────
 const STATS_JSON_URL = "../data/stats-aggregation.json";
 
@@ -217,7 +228,7 @@ function buildTimeSeries() {
   const activeUsersByBucket = new Map();
   const newContribBuckets = new Map();
   let totalContribBeforeCutoff = 0;
-  const tiers = { "1 PR": 0, "2-5 PRs": 0, "6-20 PRs": 0, "21+ PRs": 0 };
+  const tiers = new Map(CONTRIBUTOR_TIERS.map((tier) => [tier.id, 0]));
   const networkCounts = {};
   NETWORKS.filter(n => activeOrgs.has(n.id)).forEach(n => { networkCounts[n.id] = 0; });
   let singleNet = 0, multiNet = 0;
@@ -242,10 +253,10 @@ function buildTimeSeries() {
 
     // contributor tiers
     const count = data.prCount || 0;
-    if (count >= 21) tiers["21+ PRs"]++;
-    else if (count >= 6) tiers["6-20 PRs"]++;
-    else if (count >= 2) tiers["2-5 PRs"]++;
-    else if (count >= 1) tiers["1 PR"]++;
+    if (count >= 1) {
+      const tier = contributorTier(count);
+      tiers.set(tier.id, (tiers.get(tier.id) || 0) + 1);
+    }
 
     // network share
     data.orgs.forEach(oid => { if (networkCounts[oid] !== undefined) networkCounts[oid]++; });
@@ -276,7 +287,11 @@ function buildTimeSeries() {
     return runningContrib;
   });
 
-  const tierData = Object.keys(tiers).map(k => ({ label: k, value: tiers[k] }));
+  const tierData = CONTRIBUTOR_TIERS.map((tier) => ({
+    label: tier.label,
+    range: tier.range,
+    value: tiers.get(tier.id) || 0,
+  }));
   const networkShare = NETWORKS.map(net => ({
     label: net.label,
     value: networkCounts[net.id] || 0,
@@ -517,7 +532,19 @@ function renderChart5(data) {
     },
     options: {
       ...sharedOptions([], "Developers"), aspectRatio: 1.5,
-      plugins: { ...sharedOptions().plugins, legend: { display: false } },
+      plugins: {
+        ...sharedOptions().plugins,
+        legend: { display: false },
+        tooltip: {
+          ...sharedOptions().plugins.tooltip,
+          callbacks: {
+            label(ctx) {
+              const tier = tierData[ctx.dataIndex];
+              return ` ${fmt(ctx.parsed.y)} developers (${tier.range})`;
+            },
+          },
+        },
+      },
     },
   });
 }

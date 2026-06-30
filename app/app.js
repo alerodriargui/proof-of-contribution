@@ -249,6 +249,22 @@ function isGhostUser(login) {
   return login.toLowerCase() === "ghost";
 }
 
+const CONTRIBUTOR_TIERS = [
+  { id: "newcomer", label: "Newcomer", range: "1 PR", min: 1, max: 1 },
+  { id: "regular", label: "Regular", range: "2-5 PRs", min: 2, max: 5 },
+  { id: "experienced", label: "Experienced", range: "6-20 PRs", min: 6, max: 20 },
+  { id: "core", label: "Core", range: "21+ PRs", min: 21, max: Infinity },
+];
+
+function contributorTier(prCount) {
+  return CONTRIBUTOR_TIERS.find((tier) => prCount >= tier.min && prCount <= tier.max) || CONTRIBUTOR_TIERS[0];
+}
+
+function contributorTierMarkup(prCount) {
+  const tier = contributorTier(prCount);
+  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(tier.range)}">${escapeHtml(tier.label)}</span>`;
+}
+
 function aggregateDevelopers(rows) {
   const users = new Map();
   rows.forEach((row) => {
@@ -290,6 +306,7 @@ function aggregateDevelopers(rows) {
       n_projects: item.projects.size || Number(Boolean(item.n_prs)),
       orgs: [...item.orgs].sort(),
       top_project: topProject ? topProject[0] : "",
+      experience_tier: contributorTier(item.n_prs),
     };
   });
 }
@@ -298,6 +315,8 @@ function sortedDevelopers(rows) {
   const copy = [...rows];
   if (state.sort === "user") {
     copy.sort((a, b) => a.usuario.localeCompare(b.usuario));
+  } else if (state.sort === "experience") {
+    copy.sort((a, b) => b.experience_tier.min - a.experience_tier.min || b.n_prs - a.n_prs || a.usuario.localeCompare(b.usuario));
   } else if (state.sort === "projects") {
     copy.sort((a, b) => b.n_projects - a.n_projects || b.n_prs - a.n_prs);
   } else {
@@ -462,7 +481,7 @@ function renderDevelopers(developers) {
   }
 
   if (rows.length === 0) {
-    els.developerRows.innerHTML = `<tr><td colspan="6" class="empty">No rows</td></tr>`;
+    els.developerRows.innerHTML = `<tr><td colspan="7" class="empty">No rows</td></tr>`;
     return;
   }
 
@@ -492,6 +511,7 @@ function renderDevelopers(developers) {
             ${profileLinkMarkup(row)}
           </td>
           <td class="org-tags-cell"><div class="org-tags">${orgTags}</div></td>
+          <td>${contributorTierMarkup(row.n_prs)}</td>
           <td class="number">${formatNumber(row.n_prs)}</td>
           <td class="number">${formatNumber(row.n_projects)}</td>
           <td>${escapeHtml(row.top_project)}</td>

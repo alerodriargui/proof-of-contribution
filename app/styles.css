@@ -563,6 +563,45 @@ td {
   text-transform: uppercase;
 }
 
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border: 1px solid rgba(79, 70, 229, 0.22);
+  border-radius: 999px;
+  background: rgba(79, 70, 229, 0.08);
+  color: var(--proof);
+  padding: 3px 9px;
+  font-size: 0.74rem;
+  font-weight: 900;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.tier-newcomer {
+  border-color: rgba(104, 117, 134, 0.24);
+  background: rgba(104, 117, 134, 0.08);
+  color: var(--muted);
+}
+
+.tier-regular {
+  border-color: rgba(35, 100, 170, 0.24);
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.tier-experienced {
+  border-color: rgba(15, 118, 110, 0.24);
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.tier-core {
+  border-color: rgba(161, 98, 7, 0.24);
+  background: rgba(245, 158, 11, 0.11);
+  color: var(--amber);
+}
+
 .bot-badge {
   border-color: rgba(104, 117, 134, 0.28);
   background: rgba(104, 117, 134, 0.08);
@@ -1559,6 +1598,26 @@ select:focus {
   background: rgba(148, 163, 184, 0.08);
 }
 
+.dark .tier-newcomer {
+  border-color: rgba(148, 163, 184, 0.22);
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.dark .tier-regular {
+  border-color: rgba(56, 189, 248, 0.24);
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.dark .tier-experienced {
+  border-color: rgba(45, 212, 191, 0.24);
+  background: rgba(45, 212, 191, 0.1);
+}
+
+.dark .tier-core {
+  border-color: rgba(251, 191, 36, 0.24);
+  background: rgba(251, 191, 36, 0.1);
+}
+
 .dark .bot-swatch {
   background: repeating-linear-gradient(
     135deg,
@@ -1880,9 +1939,10 @@ select:focus {
   td:nth-child(1)::before { content: "Rank"; }
   td:nth-child(2)::before { content: "User"; }
   td:nth-child(3)::before { content: "Organization"; }
-  td:nth-child(4)::before { content: "PRs"; }
-  td:nth-child(5)::before { content: "Projects"; }
-  td:nth-child(6)::before { content: "Top project"; }
+  td:nth-child(4)::before { content: "Experience"; }
+  td:nth-child(5)::before { content: "PRs"; }
+  td:nth-child(6)::before { content: "Projects"; }
+  td:nth-child(7)::before { content: "Top project"; }
 
   td.rank,
   td.number {
