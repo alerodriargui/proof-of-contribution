@@ -48,8 +48,47 @@ function orgColor(org) {
 
 const $ = (id) => document.getElementById(id);
 
+function localizeProfileDom() {
+  const textSelectors = [
+    ["#backLink", "nav.dashboard"],
+    ["#loadState span", "profile.loading"],
+    ["#userNotFound h2", "profile.notFoundTitle"],
+    ["#userNotFound p", "profile.notFoundCopy"],
+    ["#userNotFound .btn", "profile.backToDashboard"],
+    ["#ghProfileLink", "profile.githubProfile"],
+    [".hero-stat:nth-child(1) .hero-stat-label", "profile.prsMerged"],
+    [".hero-stat:nth-child(2) .hero-stat-label", "common.projects"],
+    [".hero-stat:nth-child(3) .hero-stat-label", "common.ecosystems"],
+    [".profile-stat-card:nth-child(1) .pstat-label", "profile.firstContribution"],
+    [".profile-stat-card:nth-child(2) .pstat-label", "profile.latestContribution"],
+    [".profile-stat-card:nth-child(3) .pstat-label", "profile.totalPrs"],
+    [".profile-stat-card:nth-child(4) .pstat-label", "profile.experienceTier"],
+    [".profile-stat-card:nth-child(5) .pstat-label", "profile.orgsContributedTo"],
+    ["#recentPrList .project-empty", "profile.noRecentPrs"],
+  ];
+  textSelectors.forEach(([selector, key]) => {
+    const el = document.querySelector(selector);
+    if (el) el.textContent = t(key);
+  });
+
+  const chartTitles = document.querySelectorAll(".chart-card-header h3");
+  const chartSubtitles = document.querySelectorAll(".chart-card-header span");
+  if (chartTitles[0]) chartTitles[0].textContent = t("profile.prsByEcosystem");
+  if (chartTitles[1]) chartTitles[1].textContent = t("profile.topProjects");
+  if (chartSubtitles[0]) chartSubtitles[0].textContent = t("profile.ecosystemDistribution");
+  if (chartSubtitles[1]) chartSubtitles[1].textContent = t("profile.topProjectsSubtitle");
+
+  const sectionTitles = document.querySelectorAll(".ps-head h3");
+  if (sectionTitles[0]) sectionTitles[0].textContent = t("profile.monthlyTrend");
+  if (sectionTitles[1]) sectionTitles[1].textContent = t("profile.recentPrs");
+}
+
 function formatNumber(n) {
-  return new Intl.NumberFormat("en-US").format(n);
+  return window.pocI18n ? window.pocI18n.formatNumber(n) : new Intl.NumberFormat("en-US").format(n);
+}
+
+function t(key, params = {}) {
+  return window.pocI18n ? window.pocI18n.t(key, params) : key;
 }
 
 function escapeHtml(v) {
@@ -60,7 +99,7 @@ function escapeHtml(v) {
 }
 
 function pluralizePr(n) {
-  return n === 1 ? "PR" : "PRs";
+  return n === 1 ? t("common.pr") : t("common.prs");
 }
 
 const CONTRIBUTOR_TIERS = [
@@ -82,7 +121,7 @@ function contributorTier(prCount) {
 
 function contributorTierMarkup(prCount) {
   const tier = contributorTier(prCount);
-  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(tier.range)}">${escapeHtml(tier.label)}</span>`;
+  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(t(`tier.range${tier.id}`))}">${escapeHtml(t(`tier.${tier.id}`))}</span>`;
 }
 
 function parseDate(raw) {
@@ -92,8 +131,8 @@ function parseDate(raw) {
 
 function formatDate(raw) {
   const d = parseDate(raw);
-  if (!d) return raw || "Unknown";
-  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  if (!d) return raw || t("common.unknown");
+  return d.toLocaleDateString(window.pocI18n?.locale || "en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
 function monthKey(raw) {
@@ -105,7 +144,7 @@ function monthKey(raw) {
 function monthLabel(key) {
   const [y, m] = key.split("-").map(Number);
   if (!y || !m) return key;
-  return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString("en-US", {
+  return new Date(Date.UTC(y, m - 1, 1)).toLocaleDateString(window.pocI18n?.locale || "en-US", {
     month: "short", year: "2-digit", timeZone: "UTC",
   });
 }
@@ -232,8 +271,8 @@ function buildUserFromSummary(rows) {
     n_projects: projects.size,
     orgs: [...orgs].sort(),
     top_project: topProject ? topProject[0] : "",
-    firstDate: firstDate ? formatDate(firstDate) : "Unknown",
-    latestDate: latestDate ? formatDate(latestDate) : "Unknown",
+    firstDate: firstDate ? formatDate(firstDate) : t("common.unknown"),
+    latestDate: latestDate ? formatDate(latestDate) : t("common.unknown"),
     experience_tier: contributorTier(totalPrs),
     projects,
   };
@@ -243,7 +282,7 @@ function buildUserFromSummary(rows) {
 function showNotFound() {
   $("loadState").hidden = true;
   $("userNotFound").hidden = false;
-  $("breadcrumbUser").textContent = "Not found";
+  $("breadcrumbUser").textContent = t("profile.notFoundBreadcrumb");
 }
 
 function renderHero(user) {
@@ -255,8 +294,8 @@ function renderHero(user) {
   $("ghProfileLink").href = `https://github.com/${encodeURIComponent(user.usuario)}`;
   const orgLabels = user.orgs.map(orgLabel);
   $("profileEcosystem").textContent = user.orgs.length > 1
-    ? `Multi-ecosystem contributor across ${orgLabels.join(", ")}`
-    : `Active in ${orgLabels[0] || "this ecosystem"}`;
+    ? t("profile.multiEcosystem", { ecosystems: orgLabels.join(", ") })
+    : t("profile.activeIn", { ecosystem: orgLabels[0] || t("profile.thisEcosystem") });
   $("heroPrs").textContent = formatNumber(user.n_prs);
   $("heroProjects").textContent = formatNumber(user.n_projects);
   $("heroOrgs").textContent = formatNumber(user.orgs.length);
@@ -499,16 +538,16 @@ function renderCharts(pulls, user) {
 function renderRecentPrs(pulls) {
   const recentEl = $("recentPrList");
   const recent = pulls;
-  $("recentPrCount").textContent = `${formatNumber(pulls.length)} total`;
+  $("recentPrCount").textContent = `${formatNumber(pulls.length)} ${t("common.total")}`;
   if (recent.length > 0) {
     recentEl.innerHTML = recent.map(pr =>
       `<a class="recent-pr-link" href="${escapeHtml(pr.url)}" target="_blank" rel="noreferrer">
         <span class="recent-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "Untitled PR")}</span>
-        <span class="recent-pr-meta">${escapeHtml(orgLabel(pr.org))} / ${escapeHtml(pr.proyecto || "unknown")} - ${escapeHtml(pr.merged_date || pr.merged_at || "")}</span>
+        <span class="recent-pr-meta">${escapeHtml(t("profile.recentPrMeta", { org: orgLabel(pr.org), project: pr.proyecto || "unknown", date: pr.merged_date || pr.merged_at || "" }))}</span>
       </a>`
     ).join("");
   } else {
-    recentEl.innerHTML = `<div class="project-empty">No recent PRs found.</div>`;
+    recentEl.innerHTML = `<div class="project-empty">${escapeHtml(t("profile.noRecentPrs"))}</div>`;
   }
 }
 
@@ -517,7 +556,7 @@ function renderDetails(user) {
   const dated = pulls.filter(r => r.merged_at || r.merged_date);
 
   // Update timeline info
-  $("timelineInfo").textContent = `${formatNumber(pulls.length)} total PRs`;
+  $("timelineInfo").textContent = `${formatNumber(pulls.length)} ${t("common.total")} ${t("common.prs")}`;
 
   // Charts
   renderCharts(pulls, user);
@@ -528,6 +567,10 @@ function renderDetails(user) {
 
 // ── Init ──────────────────────────────────────────────
 async function init() {
+  if (window.pocI18n) {
+    await window.pocI18n.ready;
+  }
+  localizeProfileDom();
   const filterParams = parseParams();
   if (!state.username) {
     showNotFound();

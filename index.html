@@ -29,22 +29,22 @@
     <link rel="apple-touch-icon" href="./app/assets/favicon.svg" />
     <link rel="stylesheet" href="./landing.css?v=20260626-1" />
   </head>
-  <body>
+  <body data-i18n-title="meta.landingTitle">
     <header class="landing-header">
-      <a class="landing-brand" href="./" aria-label="Proof of Contribution home">
+      <a class="landing-brand" href="./" aria-label="Proof of Contribution home" data-i18n-attr="aria-label:landing.brandHome">
         <img src="./app/assets/poc-mark.svg" alt="" aria-hidden="true" />
         <span>Proof of Contribution</span>
       </a>
 
-      <nav class="landing-nav" aria-label="Main navigation">
-        <a href="#how-it-works">How it works</a>
-        <a href="#insights">Insights</a>
-        <a href="./app/about.html">About</a>
-        <a href="./app/stats.html">Statistics</a>
+      <nav class="landing-nav" aria-label="Main navigation" data-i18n-attr="aria-label:nav.main">
+        <a href="#how-it-works" data-i18n="landing.howItWorks">How it works</a>
+        <a href="#insights" data-i18n="landing.insights">Insights</a>
+        <a href="./app/about.html" data-i18n="nav.about">About</a>
+        <a href="./app/stats.html" data-i18n="nav.statistics">Statistics</a>
       </nav>
 
       <a class="button button-small button-dark" href="./app/">
-        Explore
+        <span data-i18n="landing.explore">Explore</span>
         <span aria-hidden="true">↗</span>
       </a>
     </header>
@@ -57,21 +57,21 @@
         <div class="hero-copy">
           <p class="hero-kicker">
             <span></span>
-            Open-source contribution intelligence
+            <span data-i18n="landing.kicker">Open-source contribution intelligence</span>
           </p>
-          <h1>See who is<br /><em>actually building.</em></h1>
-          <p class="hero-intro">
+          <h1 data-i18n-html="landing.heroTitle">See who is<br /><em>actually building.</em></h1>
+          <p class="hero-intro" data-i18n="landing.heroIntro">
             Follow the contributors, projects, and ecosystems shaping open-source
             crypto through transparent, reproducible GitHub data.
           </p>
           <div class="hero-actions">
             <a class="button button-primary" href="./app/">
-              Explore contributions
+              <span data-i18n="landing.exploreContributions">Explore contributions</span>
               <span aria-hidden="true">→</span>
             </a>
             <a class="text-link" href="#how-it-works">Discover how it works ↓</a>
           </div>
-          <p class="hero-proof">
+          <p class="hero-proof" data-i18n="landing.heroProof">
             Public data. Open methodology. Built to be verified.
           </p>
         </div>
@@ -334,13 +334,14 @@
         <img src="./app/assets/poc-mark.svg" alt="" aria-hidden="true" />
         <span>Proof of Contribution</span>
       </a>
-      <p>Open-source contribution intelligence for crypto ecosystems.</p>
+      <p data-i18n="footer.tagline">Open-source contribution intelligence for crypto ecosystems.</p>
       <nav aria-label="Footer navigation">
-        <a href="./app/">Dashboard</a>
-        <a href="./app/stats.html">Statistics</a>
-        <a href="./app/about.html">About</a>
+        <a href="./app/" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="./app/stats.html" data-i18n="nav.statistics">Statistics</a>
+        <a href="./app/about.html" data-i18n="nav.about">About</a>
         <a href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
     </footer>
+    <script src="./app/i18n.js"></script>
   </body>
 </html>

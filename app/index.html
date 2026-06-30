@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="./styles.css?v=20260628-1" />
     <script src="./theme.js"></script>
   </head>
-  <body>
+  <body data-i18n-title="meta.dashboardTitle">
     <header class="topbar">
       <a class="brand-lockup" href="../">
         <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
@@ -39,21 +39,22 @@
         </div>
       </a>
       <div class="header-side">
-        <nav class="header-nav" aria-label="Project">
-          <a href="../">Home</a>
-          <a href="./" aria-current="page">Dashboard</a>
-          <a href="./stats.html">Statistics</a>
-          <a href="./about.html">About</a>
+        <nav class="header-nav" aria-label="Project" data-i18n-attr="aria-label:nav.project">
+          <a href="../" data-i18n="nav.home">Home</a>
+          <a href="./" aria-current="page" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="./stats.html" data-i18n="nav.statistics">Statistics</a>
+          <a href="./about.html" data-i18n="nav.about">About</a>
           <a
             class="repo-link"
             href="https://github.com/alerodriargui/proof-of-contribution"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Repository"
+            data-i18n-attr="aria-label:nav.githubRepository"
           >
             <img src="./assets/github.svg" alt="" aria-hidden="true" />
           </a>
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" data-i18n-attr="aria-label:nav.toggleTheme">
             <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
@@ -63,26 +64,26 @@
     </header>
 
     <main class="shell">
-      <section class="toolbar" aria-label="Filters">
+      <section class="toolbar" aria-label="Filters" data-i18n-attr="aria-label:filters.label">
         <label class="field search-field">
-          <span>User</span>
+          <span data-i18n="filters.user">User</span>
           <div class="search-input-wrap">
-            <input id="userSearch" type="search" autocomplete="off" placeholder="Search Github @" />
+            <input id="userSearch" type="search" autocomplete="off" placeholder="Search Github @" data-i18n-attr="placeholder:filters.searchPlaceholder" />
             <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </div>
         </label>
 
         <div class="ms-field">
-          <span class="ms-label">Organization</span>
+          <span class="ms-label" data-i18n="filters.organization">Organization</span>
           <div class="multi-select" id="orgMultiSelect">
             <button class="multi-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
-              <span class="multi-select-summary" id="orgSummary">All organizations</span>
+              <span class="multi-select-summary" id="orgSummary" data-i18n="filters.allOrganizations">All organizations</span>
               <svg class="multi-select-arrow" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
             </button>
             <div class="multi-select-dropdown" id="orgDropdown" role="listbox" aria-multiselectable="true" hidden>
               <div class="multi-select-actions">
-                <button type="button" data-action="select-all">Select all</button>
-                <button type="button" data-action="clear-all">Clear all</button>
+                <button type="button" data-action="select-all" data-i18n="filters.selectAll">Select all</button>
+                <button type="button" data-action="clear-all" data-i18n="filters.clearAll">Clear all</button>
               </div>
               <div id="orgOptions"></div>
             </div>
@@ -90,16 +91,16 @@
         </div>
 
         <div class="ms-field">
-          <span class="ms-label">Project</span>
+          <span class="ms-label" data-i18n="filters.project">Project</span>
           <div class="multi-select" id="projectMultiSelect">
             <button class="multi-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
-              <span class="multi-select-summary" id="projectSummary">All projects</span>
+              <span class="multi-select-summary" id="projectSummary" data-i18n="filters.allProjects">All projects</span>
               <svg class="multi-select-arrow" viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M4 6l4 4 4-4"/></svg>
             </button>
             <div class="multi-select-dropdown" id="projectDropdown" role="listbox" aria-multiselectable="true" hidden>
               <div class="multi-select-actions">
-                <button type="button" data-action="select-all">Select all</button>
-                <button type="button" data-action="clear-all">Clear all</button>
+                <button type="button" data-action="select-all" data-i18n="filters.selectAll">Select all</button>
+                <button type="button" data-action="clear-all" data-i18n="filters.clearAll">Clear all</button>
               </div>
               <div id="projectOptions"></div>
             </div>
@@ -107,53 +108,53 @@
         </div>
 
         <label class="field">
-          <span>Sort</span>
+          <span data-i18n="filters.sort">Sort</span>
           <select id="sortMode">
-            <option value="prs">Most PRs</option>
-            <option value="experience">Experience tier</option>
-            <option value="projects">Most projects</option>
-            <option value="user">User A-Z</option>
+            <option value="prs" data-i18n="filters.mostPrs">Most PRs</option>
+            <option value="experience" data-i18n="filters.experienceTier">Experience tier</option>
+            <option value="projects" data-i18n="filters.mostProjects">Most projects</option>
+            <option value="user" data-i18n="filters.userAz">User A-Z</option>
           </select>
         </label>
 
         <label class="check">
           <input id="hideBots" type="checkbox" checked />
-          <span>Hide bots</span>
+          <span data-i18n="filters.hideBots">Hide bots</span>
         </label>
 
         <label class="check">
           <input id="hideGhost" type="checkbox" checked />
-          <span>Hide ghost</span>
+          <span data-i18n="filters.hideGhost">Hide ghost</span>
         </label>
       </section>
 
       <div class="legend-row" aria-label="Legend">
         <span class="legend-item" id="legendBot">
           <span class="legend-swatch bot-swatch" aria-hidden="true"></span>
-          Bot accounts are marked as BOT.
+          <span data-i18n="dashboard.botMarked">Bot accounts are marked as BOT.</span>
         </span>
         <span class="legend-item" id="legendGhost">
           <span class="legend-swatch ghost-swatch" aria-hidden="true"></span>
-          GHOST is GitHub's placeholder for deleted or unavailable users.
+          <span data-i18n="dashboard.ghostMarked">GHOST is GitHub's placeholder for deleted or unavailable users.</span>
         </span>
       </div>
 
-      <section class="metrics" aria-label="Summary">
+      <section class="metrics" aria-label="Summary" data-i18n-attr="aria-label:dashboard.summary">
         <div class="metric metric-branded">
           <img src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
-          <span>PRs</span>
+          <span data-i18n="dashboard.prs">PRs</span>
           <strong id="metricPrs">0</strong>
         </div>
         <div class="metric">
-          <span>Users</span>
+          <span data-i18n="dashboard.users">Users</span>
           <strong id="metricUsers">0</strong>
         </div>
         <div class="metric">
-          <span>Projects</span>
+          <span data-i18n="common.projects">Projects</span>
           <strong id="metricProjects">0</strong>
         </div>
         <div class="metric">
-          <span>Organizations</span>
+          <span data-i18n="common.organizations">Organizations</span>
           <strong id="metricOrgs">0</strong>
         </div>
       </section>
@@ -161,7 +162,7 @@
       <section class="content-grid">
         <div class="panel main-panel">
           <div class="panel-head">
-            <h2>Contributors</h2>
+            <h2 data-i18n="dashboard.contributors">Contributors</h2>
             <span id="resultCount">0 rows</span>
           </div>
           <div class="table-wrap">
@@ -169,20 +170,20 @@
               <thead>
                 <tr>
                   <th class="rank-col">#</th>
-                  <th>User</th>
-                  <th>Organization</th>
-                  <th>Experience</th>
+                  <th data-i18n="filters.user">User</th>
+                  <th data-i18n="filters.organization">Organization</th>
+                  <th data-i18n="dashboard.experience">Experience</th>
                   <th class="number">PRs</th>
-                  <th class="number">Projects</th>
-                  <th>Top project</th>
+                  <th class="number" data-i18n="common.projects">Projects</th>
+                  <th data-i18n="dashboard.topProject">Top project</th>
                 </tr>
               </thead>
               <tbody id="developerRows"></tbody>
             </table>
           </div>
-          <div class="pagination" aria-label="Contributors pagination">
+          <div class="pagination" aria-label="Contributors pagination" data-i18n-attr="aria-label:dashboard.pagination">
             <label class="page-size">
-              <span>Rows</span>
+              <span data-i18n="common.rowsLabel">Rows</span>
               <select id="pageSize">
                 <option value="50">50</option>
                 <option value="100" selected>100</option>
@@ -192,9 +193,9 @@
               </select>
             </label>
             <div class="page-controls">
-              <button id="prevPage" type="button">Previous</button>
+              <button id="prevPage" type="button" data-i18n="dashboard.previous">Previous</button>
               <span id="pageInfo">Page 1 of 1</span>
-              <button id="nextPage" type="button">Next</button>
+              <button id="nextPage" type="button" data-i18n="dashboard.next">Next</button>
             </div>
           </div>
         </div>
@@ -204,9 +205,10 @@
 
     <footer class="site-footer">
       <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
-      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+      <span data-i18n="footer.tagline">Open-source contribution intelligence for crypto ecosystems.</span>
     </footer>
 
+    <script src="./i18n.js"></script>
     <script src="./app.js?v=20260627-2"></script>
   </body>
 </html>

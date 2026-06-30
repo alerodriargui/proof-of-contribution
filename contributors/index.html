@@ -24,7 +24,7 @@
     <script src="../app/theme.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   </head>
-  <body>
+  <body data-i18n-title="meta.profileTitle">
     <header class="topbar">
       <a class="brand-lockup" href="../">
         <img class="brand-mark" src="../app/assets/poc-mark.svg" alt="" aria-hidden="true" />
@@ -33,15 +33,15 @@
         </div>
       </a>
       <div class="header-side">
-        <nav class="header-nav" aria-label="Project">
-          <a href="../">Home</a>
-          <a href="../app/">Dashboard</a>
-          <a href="../app/stats.html">Statistics</a>
-          <a href="../app/about.html">About</a>
-          <a class="repo-link" href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer" aria-label="GitHub Repository">
+        <nav class="header-nav" aria-label="Project" data-i18n-attr="aria-label:nav.project">
+          <a href="../" data-i18n="nav.home">Home</a>
+          <a href="../app/" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="../app/stats.html" data-i18n="nav.statistics">Statistics</a>
+          <a href="../app/about.html" data-i18n="nav.about">About</a>
+          <a class="repo-link" href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer" aria-label="GitHub Repository" data-i18n-attr="aria-label:nav.githubRepository">
             <img src="../app/assets/github.svg" alt="" aria-hidden="true" />
           </a>
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" data-i18n-attr="aria-label:nav.toggleTheme">
             <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
@@ -177,6 +177,7 @@
       <span>Open-source contribution intelligence for crypto ecosystems.</span>
     </footer>
 
+    <script src="../app/i18n.js"></script>
     <script src="../app/user.js?v=20260628-1"></script>
   </body>
 </html>

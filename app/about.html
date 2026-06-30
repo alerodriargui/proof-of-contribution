@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="./styles.css?v=20260628-1" />
     <script src="./theme.js"></script>
   </head>
-  <body>
+  <body data-i18n-title="meta.aboutTitle">
     <header class="topbar">
       <a class="brand-lockup" href="../">
         <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
@@ -39,21 +39,22 @@
         </div>
       </a>
       <div class="header-side">
-        <nav class="header-nav" aria-label="Project">
-          <a href="../">Home</a>
-          <a href="./">Dashboard</a>
-          <a href="./stats.html">Statistics</a>
-          <a href="./about.html" aria-current="page">About</a>
+        <nav class="header-nav" aria-label="Project" data-i18n-attr="aria-label:nav.project">
+          <a href="../" data-i18n="nav.home">Home</a>
+          <a href="./" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="./stats.html" data-i18n="nav.statistics">Statistics</a>
+          <a href="./about.html" aria-current="page" data-i18n="nav.about">About</a>
           <a
             class="repo-link"
             href="https://github.com/alerodriargui/proof-of-contribution"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub Repository"
+            data-i18n-attr="aria-label:nav.githubRepository"
           >
             <img src="./assets/github.svg" alt="" aria-hidden="true" />
           </a>
-          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" data-i18n-attr="aria-label:nav.toggleTheme">
             <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
             <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
           </button>
@@ -64,42 +65,42 @@
     <main class="shell info-shell">
       <section class="project-note page-note" aria-labelledby="aboutTitle">
         <div>
-          <span class="project-kicker">Open-source crypto ecosystem project</span>
-          <h2 id="aboutTitle">A public contribution map for crypto builders.</h2>
+          <span class="project-kicker" data-i18n="about.kicker">Open-source crypto ecosystem project</span>
+          <h2 id="aboutTitle" data-i18n="about.title">A public contribution map for crypto builders.</h2>
         </div>
-        <p>
+        <p data-i18n="about.intro">
           Proof of Contribution pulls public contribution data directly from GitHub and turns
           merged pull requests into a simple contributor layer: who builds, where they
           contribute, and which projects concentrate open-source activity.
         </p>
       </section>
 
-      <section class="info-grid" aria-label="Project overview">
+      <section class="info-grid" aria-label="Project overview" data-i18n-attr="aria-label:about.overview">
         <article class="info-card">
-          <h2>Why it exists</h2>
-          <p>
+          <h2 data-i18n="about.whyTitle">Why it exists</h2>
+          <p data-i18n="about.whyCopy">
             Crypto ecosystems rely on public infrastructure, but contribution is scattered
             across many repositories. This project makes that work easier to inspect.
           </p>
         </article>
         <article class="info-card">
-          <h2>What it measures</h2>
-          <p>
+          <h2 data-i18n="about.measuresTitle">What it measures</h2>
+          <p data-i18n="about.measuresCopy">
             The current version focuses on merged pull requests by contributor, organization,
             project, and date. It is intentionally transparent and easy to reproduce.
           </p>
         </article>
         <article class="info-card">
-          <h2>Where data comes from</h2>
-          <p>
+          <h2 data-i18n="about.dataTitle">Where data comes from</h2>
+          <p data-i18n="about.dataCopy">
             The dataset is extracted from GitHub's public API when the project is refreshed,
             so the dashboard reflects the latest available repository activity from the
             scanned organizations.
           </p>
         </article>
         <article class="info-card">
-          <h2>Why it is useful</h2>
-          <p>
+          <h2 data-i18n="about.usefulTitle">Why it is useful</h2>
+          <p data-i18n="about.usefulCopy">
             Raw PR data becomes more valuable once it is grouped into metrics: contributors,
             projects, organizations, and contribution concentration can be compared from the
             same public source of truth.
@@ -110,7 +111,8 @@
 
     <footer class="site-footer">
       <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
-      <span>Open-source contribution intelligence for crypto ecosystems.</span>
+      <span data-i18n="footer.tagline">Open-source contribution intelligence for crypto ecosystems.</span>
     </footer>
+    <script src="./i18n.js"></script>
   </body>
 </html>

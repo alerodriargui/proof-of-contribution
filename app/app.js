@@ -238,7 +238,11 @@ function normalizeSummaryRows(summary) {
 }
 
 function formatNumber(value) {
-  return new Intl.NumberFormat("en-US").format(value);
+  return window.pocI18n ? window.pocI18n.formatNumber(value) : new Intl.NumberFormat("en-US").format(value);
+}
+
+function t(key, params = {}) {
+  return window.pocI18n ? window.pocI18n.t(key, params) : key;
 }
 
 function isBot(login) {
@@ -268,7 +272,7 @@ function contributorTier(prCount) {
 
 function contributorTierMarkup(prCount) {
   const tier = contributorTier(prCount);
-  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(tier.range)}">${escapeHtml(tier.label)}</span>`;
+  return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(t(`tier.range${tier.id}`))}">${escapeHtml(t(`tier.${tier.id}`))}</span>`;
 }
 
 function aggregateDevelopers(rows) {
@@ -420,9 +424,9 @@ function buildMultiSelectOptions(container, values, labelFn, selectedSet) {
 
 function updateSummary(el, selectedSet, allLabel) {
   if (selectedSet.size === 0) {
-    el.textContent = allLabel;
+    el.textContent = t(allLabel);
   } else {
-    el.textContent = `${selectedSet.size} selected`;
+    el.textContent = t("common.selected", { count: formatNumber(selectedSet.size) });
   }
 }
 
@@ -435,8 +439,8 @@ function refreshFilters() {
 
   buildMultiSelectOptions(els.orgOptions, allOrgs, orgLabel, state.orgs);
   buildMultiSelectOptions(els.projectOptions, allProjects, null, state.projects);
-  updateSummary(els.orgSummary, state.orgs, "All organizations");
-  updateSummary(els.projectSummary, state.projects, "All projects");
+  updateSummary(els.orgSummary, state.orgs, "filters.allOrganizations");
+  updateSummary(els.projectSummary, state.projects, "filters.allProjects");
 }
 
 function renderMetrics(rows, developers) {
@@ -453,9 +457,9 @@ function renderMetrics(rows, developers) {
 function formatDateLabel(rawDate) {
   const date = new Date(rawDate);
   if (Number.isNaN(date.getTime())) {
-    return rawDate || "Unknown";
+    return rawDate || t("common.unknown");
   }
-  return date.toLocaleDateString("en-US", {
+  return date.toLocaleDateString(window.pocI18n?.locale || "en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -463,7 +467,7 @@ function formatDateLabel(rawDate) {
 }
 
 function pluralizePr(count) {
-  return count === 1 ? "PR" : "PRs";
+  return count === 1 ? t("common.pr") : t("common.prs");
 }
 
 function renderDevelopers(developers) {
@@ -475,9 +479,13 @@ function renderDevelopers(developers) {
   const rangeStart = rows.length === 0 ? 0 : start + 1;
   const rangeEnd = start + visibleRows.length;
 
-  els.resultCount.textContent = `${formatNumber(rangeStart)}-${formatNumber(rangeEnd)} of ${formatNumber(rows.length)} rows`;
+  els.resultCount.textContent = t("common.rowRange", {
+    start: formatNumber(rangeStart),
+    end: formatNumber(rangeEnd),
+    total: formatNumber(rows.length),
+  });
   if (els.pageInfo) {
-    els.pageInfo.textContent = `Page ${formatNumber(state.page)} of ${formatNumber(totalPages)}`;
+    els.pageInfo.textContent = t("common.pageOf", { page: formatNumber(state.page), total: formatNumber(totalPages) });
   }
   if (els.prevPage) {
     els.prevPage.disabled = state.page <= 1;
@@ -487,7 +495,7 @@ function renderDevelopers(developers) {
   }
 
   if (rows.length === 0) {
-    els.developerRows.innerHTML = `<tr><td colspan="7" class="empty">No rows</td></tr>`;
+    els.developerRows.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(t("common.noRows"))}</td></tr>`;
     return;
   }
 
@@ -500,7 +508,7 @@ function renderDevelopers(developers) {
       if (row.orgs.length > 1) {
         const primaryOrg = row.orgs[0];
         const otherOrgs = row.orgs.slice(1).map(orgLabel).join(", ");
-        orgTags = `${orgTagMarkup(primaryOrg)} <span class="tag plus-tag" title="Also active in: ${escapeHtml(otherOrgs)}">+${row.orgs.length - 1}</span>`;
+        orgTags = `${orgTagMarkup(primaryOrg)} <span class="tag plus-tag" title="${escapeHtml(t("dashboard.alsoActiveIn", { orgs: otherOrgs }))}">+${row.orgs.length - 1}</span>`;
       } else {
         orgTags = row.orgs.map(orgTagMarkup).join(" ");
       }
@@ -578,7 +586,7 @@ function profileLinkMarkup(row) {
     return `<span class="profile-person">${content}</span>`;
   }
   const userUrl = `/contributors/index.html?username=${encodeURIComponent(login)}`;
-  const ghLink = `<a class="gh-icon-link" href="${githubProfileUrl(login)}" target="_blank" rel="noreferrer" aria-label="GitHub profile">` +
+  const ghLink = `<a class="gh-icon-link" href="${githubProfileUrl(login)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(t("dashboard.githubProfile"))}">` +
     `<svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>`;
   return `<a class="profile-link" href="${userUrl}">${content}</a> ${ghLink}`;
 }
@@ -629,7 +637,7 @@ function rebindMultiSelectActions() {
     const container = dd.querySelector("[id$='Options']");
     const summary = document.querySelector(dd.id === "orgDropdown" ? "#orgSummary" : "#projectSummary");
     const selectedSet = dd.id === "orgDropdown" ? state.orgs : state.projects;
-    const allLabel = dd.id === "orgDropdown" ? "All organizations" : "All projects";
+    const allLabel = dd.id === "orgDropdown" ? "filters.allOrganizations" : "filters.allProjects";
     btn.replaceWith(btn.cloneNode(true));
   });
   document.querySelectorAll(".multi-select-dropdown [data-action]").forEach((btn) => {
@@ -637,7 +645,7 @@ function rebindMultiSelectActions() {
     const container = dd.querySelector("[id$='Options']");
     const summary = document.querySelector(dd.id === "orgDropdown" ? "#orgSummary" : "#projectSummary");
     const selectedSet = dd.id === "orgDropdown" ? state.orgs : state.projects;
-    const allLabel = dd.id === "orgDropdown" ? "All organizations" : "All projects";
+    const allLabel = dd.id === "orgDropdown" ? "filters.allOrganizations" : "filters.allProjects";
     onMultiSelectAction(container, btn, selectedSet, summary, allLabel);
   });
 }
@@ -656,7 +664,7 @@ function bindEvents() {
     const cb = event.target.closest("input[type='checkbox']");
     if (!cb) return;
     cb.checked ? state.orgs.add(cb.value) : state.orgs.delete(cb.value);
-    updateSummary(els.orgSummary, state.orgs, "All organizations");
+    updateSummary(els.orgSummary, state.orgs, "filters.allOrganizations");
     state.page = 1;
     render();
   });
@@ -665,7 +673,7 @@ function bindEvents() {
     const cb = event.target.closest("input[type='checkbox']");
     if (!cb) return;
     cb.checked ? state.projects.add(cb.value) : state.projects.delete(cb.value);
-    updateSummary(els.projectSummary, state.projects, "All projects");
+    updateSummary(els.projectSummary, state.projects, "filters.allProjects");
     state.page = 1;
     render();
   });
@@ -731,16 +739,16 @@ function updateHelperText() {
   const hideB = state.hideBots;
   const hideG = state.hideGhost;
   if (!hideB && !hideG) {
-    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are marked as BOT.`;
-    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST is GitHub's placeholder for deleted or unavailable users.`;
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.botMarked"))}`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.ghostMarked"))}`;
   } else if (hideB && !hideG) {
-    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are hidden.`;
-    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST is GitHub's placeholder for deleted or unavailable users.`;
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.botHidden"))}`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.ghostMarked"))}`;
   } else if (!hideB && hideG) {
-    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot accounts are marked as BOT.`;
-    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> GHOST accounts are hidden.`;
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.botMarked"))}`;
+    ghostItem.innerHTML = `<span class="legend-swatch ghost-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.ghostHidden"))}`;
   } else {
-    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> Bot and GHOST accounts are hidden from this view.`;
+    botItem.innerHTML = `<span class="legend-swatch bot-swatch" aria-hidden="true"></span> ${escapeHtml(t("dashboard.botGhostHidden"))}`;
     ghostItem.innerHTML = "";
   }
 }
@@ -752,6 +760,9 @@ function on(element, eventName, handler) {
 }
 
 async function init() {
+  if (window.pocI18n) {
+    await window.pocI18n.ready;
+  }
   if (els.hideBots) {
     els.hideBots.checked = state.hideBots;
   }
@@ -760,14 +771,14 @@ async function init() {
   }
   bindEvents();
   if (els.dataStatus) {
-    els.dataStatus.textContent = "Loading summary...";
+    els.dataStatus.textContent = t("common.loadingSummary");
   }
 
   try {
     state.rows = await loadDashboardSummary();
   } catch (summaryError) {
     if (els.dataStatus) {
-      els.dataStatus.textContent = "Loading CSV fallback...";
+      els.dataStatus.textContent = t("common.loadingCsv");
     }
     const loaded = await Promise.allSettled(FALLBACK_SOURCES.map(loadCsv));
     const successful = loaded
@@ -792,7 +803,7 @@ async function init() {
 
   if (state.rows.length === 0) {
     if (els.dataStatus) {
-      els.dataStatus.innerHTML = `<span class="error">No CSV data found. Serve the repo root and refresh.</span>`;
+      els.dataStatus.innerHTML = `<span class="error">${escapeHtml(t("common.noData"))}</span>`;
     }
     render();
     return;

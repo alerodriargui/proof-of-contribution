@@ -39,6 +39,10 @@ function contributorTier(prCount) {
   return CONTRIBUTOR_TIERS.find((tier) => prCount >= tier.min && prCount <= tier.max) || CONTRIBUTOR_TIERS[0];
 }
 
+function t(key, params = {}) {
+  return window.pocI18n ? window.pocI18n.t(key, params) : key;
+}
+
 // ── Data source ──────────────────────────────────────
 const STATS_JSON_URL = "../data/stats-aggregation.json";
 
@@ -123,6 +127,43 @@ let chartContributorRetention = null;
 // ── DOM helpers ───────────────────────────────────────
 const $ = (id) => document.getElementById(id);
 
+function localizeStatsDom() {
+  const textById = {
+    loadLabel: "stats.loadingData",
+    chartMergedPrsTitle: "stats.mergedPrsTitle",
+    chartNewContribTitle: "stats.newContributorsTitle",
+    chartTotalContribTitle: "stats.totalContributorsTitle",
+    chartTotalPrsTitle: "stats.totalPrsTitle",
+    chartContribTiersTitle: "stats.contributorExperienceTitle",
+    chartNetworkShareTitle: "stats.developersByNetworkTitle",
+    chartMultiNetworkTitle: "stats.ecosystemLoyaltyTitle",
+    chartDayOfWeekTitle: "stats.dayOfWeekTitle",
+    chartContributionActivityTitle: "stats.contributionActivityTitle",
+    chartContributorRetentionTitle: "stats.contributorRetentionTitle",
+  };
+  Object.entries(textById).forEach(([id, key]) => {
+    const el = $(id);
+    if (el) el.textContent = t(key);
+  });
+
+  const subtitles = [
+    ["chartMergedPrsTitle", "stats.mergedPrsSubtitle"],
+    ["chartNewContribTitle", "stats.newContributorsSubtitle"],
+    ["chartTotalContribTitle", "stats.totalContributorsSubtitle"],
+    ["chartTotalPrsTitle", "stats.totalPrsSubtitle"],
+    ["chartContribTiersTitle", "stats.contributorExperienceSubtitle"],
+    ["chartNetworkShareTitle", "stats.developersByNetworkSubtitle"],
+    ["chartMultiNetworkTitle", "stats.ecosystemLoyaltySubtitle"],
+    ["chartDayOfWeekTitle", "stats.dayOfWeekSubtitle"],
+    ["chartContributionActivityTitle", "stats.contributionActivitySubtitle"],
+    ["chartContributorRetentionTitle", "stats.contributorRetentionSubtitle"],
+  ];
+  subtitles.forEach(([titleId, key]) => {
+    const subtitle = $(titleId)?.parentElement?.querySelector(".chart-subtitle");
+    if (subtitle) subtitle.textContent = t(key);
+  });
+}
+
 // ── Legacy CSV parser (kept for potential fallback) ──
 // No longer used; data is loaded from pre-aggregated JSON.
 
@@ -154,11 +195,11 @@ function bucketLabel(key, gran) {
   if (gran === "month") {
     const [y, m] = key.split("-");
     const date = new Date(Number(y), Number(m) - 1, 1);
-    return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
+    return date.toLocaleDateString(window.pocI18n?.locale || "en-US", { month: "short", year: "numeric" });
   }
   const [y, m, d] = key.split("-").map(Number);
   const date = new Date(y, m - 1, d || 1);
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  return date.toLocaleDateString(window.pocI18n?.locale || "en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
 // ── Range filter ──────────────────────────────────────
@@ -294,8 +335,8 @@ function buildTimeSeries() {
   });
 
   const tierData = CONTRIBUTOR_TIERS.map((tier) => ({
-    label: tier.label,
-    range: tier.range,
+    label: t(`tier.${tier.id}`),
+    range: t(`tier.range${tier.id}`),
     value: tiers.get(tier.id) || 0,
   }));
   const networkShare = NETWORKS.map(net => ({
@@ -339,7 +380,7 @@ function buildTimeSeries() {
 
 // ── Number formatter ──────────────────────────────────
 function fmt(n) {
-  return new Intl.NumberFormat("en-US").format(n);
+  return window.pocI18n ? window.pocI18n.formatNumber(n) : new Intl.NumberFormat("en-US").format(n);
 }
 
 // ── Chart.js shared defaults ──────────────────────────
@@ -451,8 +492,8 @@ function renderChart1(data) {
     type: "line",
     data: { labels, datasets: mergedPrsDatasets },
     options: {
-      ...sharedOptions(labels, "PRs merged"),
-      plugins: { ...sharedOptions(labels, "PRs merged").plugins, legend: { display: false } },
+      ...sharedOptions(labels, t("stats.prsMerged")),
+      plugins: { ...sharedOptions(labels, t("stats.prsMerged")).plugins, legend: { display: false } },
     },
   });
 }
@@ -464,15 +505,15 @@ function renderChart2(data) {
     data: {
       labels,
       datasets: [{
-        label: "New contributors", data: newContribData,
+        label: t("stats.newContributors"), data: newContribData,
         backgroundColor: "rgba(79, 70, 229, 0.72)", borderRadius: 4,
       }],
     },
     options: {
-      ...sharedOptions(labels, "New contributors"),
+      ...sharedOptions(labels, t("stats.newContributors")),
       plugins: {
         ...sharedOptions(labels).plugins, legend: { display: false },
-        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} new contributors` } },
+        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} ${t("stats.newContributors").toLowerCase()}` } },
       },
     },
   });
@@ -485,17 +526,17 @@ function renderChart3(data) {
     data: {
       labels,
       datasets: [{
-        label: "Total contributors", data: cumulContribData,
+        label: t("stats.totalContributors"), data: cumulContribData,
         borderColor: "#10b981", backgroundColor: "rgba(16, 185, 129, 0.12)",
         borderWidth: 2, tension: 0.1, fill: true,
         pointRadius: labels.length > 60 ? 0 : 3,
       }],
     },
     options: {
-      ...sharedOptions(labels, "Contributors"),
+      ...sharedOptions(labels, t("common.contributors")),
       plugins: {
         ...sharedOptions(labels).plugins, legend: { display: false },
-        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} contributors` } },
+        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} ${t("common.contributors").toLowerCase()}` } },
       },
     },
   });
@@ -508,17 +549,17 @@ function renderChart4(data) {
     data: {
       labels,
       datasets: [{
-        label: "Total merged PRs", data: cumulPrsData,
+        label: t("stats.totalPrsTitle"), data: cumulPrsData,
         borderColor: "#f59e0b", backgroundColor: "rgba(245, 158, 11, 0.1)",
         borderWidth: 2, tension: 0.1, fill: true,
         pointRadius: labels.length > 60 ? 0 : 3,
       }],
     },
     options: {
-      ...sharedOptions(labels, "Merged PRs"),
+      ...sharedOptions(labels, t("stats.mergedPrs")),
       plugins: {
         ...sharedOptions(labels).plugins, legend: { display: false },
-        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} total PRs` } },
+        tooltip: { ...sharedOptions(labels).plugins.tooltip, callbacks: { label: (ctx) => ` ${fmt(ctx.parsed.y)} ${t("common.prs")}` } },
       },
     },
   });
@@ -531,13 +572,13 @@ function renderChart5(data) {
     data: {
       labels: tierData.map(t => t.label),
       datasets: [{
-        label: "Developers", data: tierData.map(t => t.value),
+    label: t("stats.developers"), data: tierData.map(t => t.value),
         backgroundColor: ["#94a3b8", "#6366f1", "#4f46e5", "#3730a3"],
         borderRadius: 4,
       }],
     },
     options: {
-      ...sharedOptions([], "Developers"), aspectRatio: 1.5,
+      ...sharedOptions([], t("stats.developers")), aspectRatio: 1.5,
       plugins: {
         ...sharedOptions().plugins,
         legend: { display: false },
@@ -546,7 +587,7 @@ function renderChart5(data) {
           callbacks: {
             label(ctx) {
               const tier = tierData[ctx.dataIndex];
-              return ` ${fmt(ctx.parsed.y)} developers (${tier.range})`;
+              return ` ${fmt(ctx.parsed.y)} ${t("stats.developers").toLowerCase()} (${tier.range})`;
             },
           },
         },
@@ -567,7 +608,7 @@ function renderChart6(data) {
       aspectRatio: 1.5,
       plugins: {
         legend: { position: 'right', labels: { boxWidth: 12, font: { size: 11 } } },
-        tooltip: { callbacks: { label(ctx) { return ` ${ctx.label || ""}: ${fmt(ctx.parsed || 0)} developers`; } } },
+        tooltip: { callbacks: { label(ctx) { return ` ${ctx.label || ""}: ${fmt(ctx.parsed || 0)} ${t("stats.developers").toLowerCase()}`; } } },
       },
     },
   });
@@ -578,7 +619,7 @@ function renderChart7(data) {
   chartMultiNetwork = chartUpdate(chartMultiNetwork, "chartMultiNetwork", {
     type: "pie",
     data: {
-      labels: ["Single Network", "Multi-network"],
+      labels: [t("stats.singleNetwork"), t("stats.multiNetwork")],
       datasets: [{ data: loyalty, backgroundColor: ["#4f46e5", "#10b981"], borderWidth: 0 }],
     },
     options: {
@@ -590,15 +631,18 @@ function renderChart7(data) {
 
 function renderChart8(data) {
   const { dowCounts } = data;
-  const dowLabels = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dowLabels = [
+    t("stats.daySun"), t("stats.dayMon"), t("stats.dayTue"), t("stats.dayWed"),
+    t("stats.dayThu"), t("stats.dayFri"), t("stats.daySat"),
+  ];
   chartDayOfWeek = chartUpdate(chartDayOfWeek, "chartDayOfWeek", {
     type: "bar",
     data: {
       labels: dowLabels,
-      datasets: [{ label: "Total activity", data: dowCounts, backgroundColor: "rgba(79, 70, 229, 0.7)", borderRadius: 4 }],
+      datasets: [{ label: t("stats.totalActivity"), data: dowCounts, backgroundColor: "rgba(79, 70, 229, 0.7)", borderRadius: 4 }],
     },
     options: {
-      ...sharedOptions(dowLabels, "Total PRs"), aspectRatio: 1.5,
+      ...sharedOptions(dowLabels, t("stats.totalPrsAxis")), aspectRatio: 1.5,
       plugins: { ...sharedOptions().plugins, legend: { display: false } },
     },
   });
@@ -607,7 +651,7 @@ function renderChart8(data) {
 // ── Render charts (progressive) ──────────────────────
 function renderChart9(data) {
   const { labels, activeContributorData, avgPrsPerActiveContributorData } = data;
-  const options = sharedOptions(labels, "Active contributors");
+  const options = sharedOptions(labels, t("stats.activeContributors"));
   options.scales.y1 = {
     position: "right",
     grid: { drawOnChartArea: false },
@@ -618,7 +662,7 @@ function renderChart9(data) {
     },
     title: {
       display: true,
-      text: "Avg PRs",
+      text: t("stats.avgPrs"),
       color: options.scales.y.title.color,
       font: { size: 11, weight: "700" },
     },
@@ -637,7 +681,7 @@ function renderChart9(data) {
       labels,
       datasets: [
         {
-          label: "Active contributors",
+          label: t("stats.activeContributors"),
           data: activeContributorData,
           backgroundColor: "rgba(14, 165, 233, 0.72)",
           borderRadius: 4,
@@ -645,7 +689,7 @@ function renderChart9(data) {
         },
         {
           type: "line",
-          label: "Avg PRs per active contributor",
+          label: t("stats.avgPrsPerActiveContributor"),
           data: avgPrsPerActiveContributorData,
           borderColor: "#f59e0b",
           backgroundColor: "rgba(245, 158, 11, 0.1)",
@@ -662,7 +706,7 @@ function renderChart9(data) {
 
 function renderChart10(data) {
   const { labels, retainedContributorData, retentionRateData } = data;
-  const options = sharedOptions(labels, "Retained contributors");
+  const options = sharedOptions(labels, t("stats.retainedContributors"));
   options.scales.y1 = {
     position: "right",
     min: 0,
@@ -675,7 +719,7 @@ function renderChart10(data) {
     },
     title: {
       display: true,
-      text: "Retention",
+      text: t("stats.retention"),
       color: options.scales.y.title.color,
       font: { size: 11, weight: "700" },
     },
@@ -694,7 +738,7 @@ function renderChart10(data) {
       labels,
       datasets: [
         {
-          label: "Retained contributors",
+          label: t("stats.retainedContributors"),
           data: retainedContributorData,
           backgroundColor: "rgba(16, 185, 129, 0.72)",
           borderRadius: 4,
@@ -702,7 +746,7 @@ function renderChart10(data) {
         },
         {
           type: "line",
-          label: "Retention rate",
+          label: t("stats.retentionRate"),
           data: retentionRateData,
           borderColor: "#4f46e5",
           backgroundColor: "rgba(79, 70, 229, 0.1)",
@@ -722,13 +766,13 @@ function renderCharts() {
 
   // KPI badges (synchronous, cheap)
   const totalMergedPrs = data.mergedPrsDatasets.reduce((sum, ds) => sum + ds.data.reduce((s, v) => s + v, 0), 0);
-  $("badgeMergedPrs").textContent   = fmt(totalMergedPrs) + " PRs";
-  $("badgeNewContrib").textContent  = fmt(data.newContribData.reduce((s, v) => s + v, 0)) + " new";
-  $("badgeTotalContrib").textContent = fmt(data.cumulContribData.at(-1) ?? 0) + " total";
-  $("badgeTotalPrs").textContent    = fmt(data.cumulPrsData.at(-1) ?? 0) + " cumul.";
-  $("badgeContributionActivity").textContent = fmt(Math.max(...data.activeContributorData, 0)) + " peak";
+  $("badgeMergedPrs").textContent = `${fmt(totalMergedPrs)} ${t("common.prs")}`;
+  $("badgeNewContrib").textContent = t("stats.newBadge", { count: fmt(data.newContribData.reduce((s, v) => s + v, 0)) });
+  $("badgeTotalContrib").textContent = t("stats.totalBadge", { count: fmt(data.cumulContribData.at(-1) ?? 0) });
+  $("badgeTotalPrs").textContent = t("stats.cumulativeBadge", { count: fmt(data.cumulPrsData.at(-1) ?? 0) });
+  $("badgeContributionActivity").textContent = t("stats.peakBadge", { count: fmt(Math.max(...data.activeContributorData, 0)) });
   const latestRetention = [...data.retentionRateData].reverse().find((value) => value > 0) || 0;
-  $("badgeContributorRetention").textContent = `${latestRetention.toFixed(1)}% latest`;
+  $("badgeContributorRetention").textContent = t("stats.latestBadge", { value: latestRetention.toFixed(1) });
 
   // Chart 1 (most important — render immediately)
   renderChart1(data);
@@ -842,6 +886,10 @@ function bindHideGhostToggle() {
 
 // ── Data loading (from pre-aggregated JSON) ──────────
 async function loadAll() {
+  if (window.pocI18n) {
+    await window.pocI18n.ready;
+  }
+  localizeStatsDom();
   const loadState = $("statsLoadState");
   const chartsGrid = $("chartsGrid");
   const loadLabel = $("loadLabel");
@@ -858,7 +906,7 @@ async function loadAll() {
   } catch (err) {
     loadLabel.textContent = "";
     if (statusEl) {
-      statusEl.innerHTML = `<span class="error">Failed to load stats data: ${err.message}</span>`;
+      statusEl.innerHTML = `<span class="error">${t("stats.loadFailed", { message: err.message })}</span>`;
     }
     return;
   }
@@ -897,7 +945,7 @@ async function loadAll() {
     });
   }
 
-  loadLabel.textContent = `${fmt(payload.user_count)} contributors, ${fmt(payload.total_rows)} PRs`;
+  loadLabel.textContent = t("stats.loadSummary", { contributors: fmt(payload.user_count), prs: fmt(payload.total_rows) });
   loadState.setAttribute("hidden", "");
   chartsGrid.removeAttribute("hidden");
 

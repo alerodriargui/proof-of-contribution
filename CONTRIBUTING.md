@@ -66,6 +66,25 @@ python .\scripts\validate_data.py
 
 ---
 
+## Translation Workflow
+
+Proof of Contribution uses a lightweight i18n layer with one JSON file per supported locale in `app/locales/`.
+
+- `app/locales/en.json` is the canonical source locale.
+- Supported locale files are `en.json`, `es.json`, `pt.json`, `ru.json`, `zh-Hans.json`, and `hi.json`.
+- Use stable translation keys in HTML and JavaScript through `data-i18n`, `data-i18n-attr`, or `window.pocI18n.t(key, params)`.
+- Keep dynamic values as interpolation parameters, for example `{count}`, so translators can move values to the right place for each language.
+- When adding or renaming a key in `en.json`, keep the same key structure in every locale file.
+
+Validate locale parity before opening a PR:
+```powershell
+python .\scripts\validate_i18n.py
+```
+
+The CI workflow runs the same validation so missing or extra locale keys are caught automatically.
+
+---
+
 ## Running the Dashboard Locally
 
 You can serve the landing page and dashboard using Python's built-in HTTP server:
