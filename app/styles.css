@@ -2083,8 +2083,11 @@ select:focus {
     min-width: unset;
     max-width: unset;
     width: auto;
-    padding: 3px 2px;
+    max-width: 105px;
+    padding: 3px 4px;
     font-size: 0.65rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .status {
