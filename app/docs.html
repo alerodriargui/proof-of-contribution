@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Documentation for Proof of Contribution — data, methodology, and how to use or extend the project." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:title" content="Documentation | Proof of Contribution" />
+    <meta property="og:description" content="Documentation for Proof of Contribution — data, methodology, and how to use or extend the project." />
+    <meta property="og:image" content="./assets/poc-logo.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Documentation | Proof of Contribution" />
+    <meta name="twitter:description" content="Documentation for Proof of Contribution — data, methodology, and how to use or extend the project." />
+    <meta name="twitter:image" content="./assets/poc-logo.svg" />
+    <title>Documentation | Proof of Contribution</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=20260628-1" />
+    <script src="./theme.js"></script>
+  </head>
+  <body data-i18n-title="meta.docsTitle">
+    <header class="topbar">
+      <a class="brand-lockup" href="../">
+        <img class="brand-mark" src="./assets/poc-mark.svg" alt="" aria-hidden="true" />
+        <div class="brand-copy">
+          <h2>Proof of Contribution</h2>
+        </div>
+      </a>
+      <div class="header-side">
+        <nav class="header-nav" aria-label="Project" data-i18n-attr="aria-label:nav.project">
+          <a href="../" data-i18n="nav.home">Home</a>
+          <a href="./" data-i18n="nav.dashboard">Dashboard</a>
+          <a href="./stats.html" data-i18n="nav.statistics">Statistics</a>
+          <a href="./docs.html" aria-current="page" data-i18n="nav.docs">Docs</a>
+          <a
+            class="repo-link"
+            href="https://github.com/alerodriargui/proof-of-contribution"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub Repository"
+            data-i18n-attr="aria-label:nav.githubRepository"
+          >
+            <img src="./assets/github.svg" alt="" aria-hidden="true" />
+          </a>
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode" data-i18n-attr="aria-label:nav.toggleTheme">
+            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell info-shell">
+      <section class="project-note page-note" aria-labelledby="docsTitle">
+        <div>
+          <span class="project-kicker" data-i18n="docs.kicker">Documentation</span>
+          <h2 id="docsTitle" data-i18n="docs.title">How Proof of Contribution works.</h2>
+        </div>
+        <p data-i18n="docs.intro">
+          Everything you need to understand the data, methodology, and how to use or extend this project.
+        </p>
+      </section>
+
+      <section class="info-grid" aria-label="Overview" data-i18n-attr="aria-label:docs.overviewSection">
+        <article class="info-card">
+          <h2 data-i18n="docs.whatTitle">What is Proof of Contribution?</h2>
+          <p>Proof of Contribution is an open-source dashboard that tracks merged pull requests across crypto ecosystems. It turns public GitHub data into a searchable, filterable contribution map — showing who builds, where they contribute, and which projects concentrate open-source activity.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.whyTitle">Why it exists</h2>
+          <p>Crypto ecosystems rely on public infrastructure, but contribution is scattered across many repositories. This project makes that work easier to inspect by consolidating merged PRs into a single view, organized by contributor, project, organization, and ecosystem.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.howTitle">How it works</h2>
+          <p>The project periodically fetches merged pull request data from GitHub's public API for tracked organizations. The data is processed, aggregated, and served as static CSV files. The dashboard reads these files and renders the contribution layer in the browser.</p>
+        </article>
+      </section>
+
+      <section class="info-grid" aria-label="Data" data-i18n-attr="aria-label:docs.dataSection">
+        <article class="info-card">
+          <h2 data-i18n="docs.ecosystemsTitle">Ecosystems tracked</h2>
+          <p>The project currently indexes merged PRs from multiple crypto ecosystems. Each ecosystem is defined as a set of organizations on GitHub. The full list of tracked ecosystems and organizations is available in the project repository's configuration.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.collectionTitle">Collection methodology</h2>
+          <p>Data is collected through GitHub's public API using the Search endpoint for merged pull requests. The collection process is fully open-source and reproducible. Collection scripts reside in the repository for anyone to inspect or run independently.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.freshnessTitle">Data freshness</h2>
+          <p>The dataset is refreshed periodically. Each refresh captures the latest merged PRs from tracked organizations. New contributors, projects, and PRs appear after the next successful refresh cycle.</p>
+        </article>
+      </section>
+
+      <section class="info-grid" aria-label="Metrics" data-i18n-attr="aria-label:docs.metricsSection">
+        <article class="info-card">
+          <h2 data-i18n="docs.measureTitle">What we measure</h2>
+          <p>The dashboard focuses on merged pull requests by contributor, organization, project, and date. Metrics include: total PRs per contributor, number of contributors per ecosystem, project-level activity, and contribution concentration across ecosystems.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.limitationsTitle">Limitations</h2>
+          <p>This project measures merged PRs only. It does not track issues, comments, code reviews, or other forms of contribution. Additionally, only public repositories in tracked organizations are included. Data is as fresh as the last refresh cycle.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.attributionTitle">Attribution</h2>
+          <p>Contributions are attributed to GitHub usernames as they appear in merged PR author fields. Bot accounts are identified and can be filtered out. GHOST — GitHub's placeholder for deleted or unavailable users — is also identified in the dataset.</p>
+        </article>
+      </section>
+
+      <section class="info-grid" aria-label="FAQ" data-i18n-attr="aria-label:docs.faqSection">
+        <article class="info-card" style="grid-column: 1 / -1;">
+          <h2 data-i18n="docs.faqTitle">Frequently asked questions</h2>
+          <dl class="faq-list">
+            <dt>How often is the data updated?</dt>
+            <dd>The dataset is refreshed periodically. Check the repository for the latest refresh schedule.</dd>
+            <dt>Can I add a new ecosystem?</dt>
+            <dd>Yes. The collection scripts are open-source. See the Contributing section below or the repository README for instructions.</dd>
+            <dt>Why only merged PRs?</dt>
+            <dd>Merged PRs represent accepted contributions — work that was reviewed and integrated. This provides a clearer signal of meaningful contribution than raw activity metrics such as issues or comments.</dd>
+            <dt>How are bot accounts handled?</dt>
+            <dd>Accounts identified as bots are flagged in the dashboard filters. You can choose to hide or show them using the filter controls. GHOST (deleted accounts) is shown separately.</dd>
+            <dt>How is experience tier calculated?</dt>
+            <dd>Experience tiers are based on total merged PRs: Newcomer (1), Explorer (2), Regular (3-5), Builder (6-10), Experienced (11-20), Core (21-50), Veteran (51-100), Elite (101-500), Legend (501-1000), and Icon (1000+).</dd>
+          </dl>
+        </article>
+      </section>
+
+      <section class="info-grid" aria-label="Technical" data-i18n-attr="aria-label:docs.technicalSection">
+        <article class="info-card">
+          <h2 data-i18n="docs.techTitle">Technical overview</h2>
+          <p>The project is a static site hosted on Render. The frontend is vanilla HTML, CSS, and JavaScript with no framework dependencies. Internationalization (i18n) is handled client-side with JSON locale files. The dashboard is fully client-side rendered from static CSV data.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.devTitle">Local development</h2>
+          <p>Clone the repository and run the dev server from the <code>scripts/</code> directory. The dev server handles clean URL rewrites for the contributors page. Open the dashboard locally to test changes. See the repository README for full setup instructions.</p>
+        </article>
+        <article class="info-card">
+          <h2 data-i18n="docs.repoTitle">Repository structure</h2>
+          <p>The main application lives in <code>app/</code>. Data collection scripts are in <code>scripts/</code>. CSV data files are at the repository root. Locale files for i18n are in <code>app/locales/</code>. The contributor detail page is at <code>contributors/</code>.</p>
+        </article>
+      </section>
+
+      <section class="info-grid" aria-label="Contributing" data-i18n-attr="aria-label:docs.contributingSection">
+        <article class="info-card" style="grid-column: 1 / -1;">
+          <h2 data-i18n="docs.contributingTitle">Contributing</h2>
+          <p>This project is open source. Contributions are welcome. To add a new ecosystem, submit a pull request updating the collection configuration. To report issues, suggest features, or ask questions, open an issue on <a href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer">GitHub</a>.</p>
+          <p>All contributors to this project are tracked transparently through the dashboard itself.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <img src="./assets/poc-logo.svg" alt="Proof of Contribution" />
+      <span data-i18n="footer.tagline">Open-source contribution intelligence for crypto ecosystems.</span>
+    </footer>
+    <script src="./i18n.js"></script>
+  </body>
+</html>

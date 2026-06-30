@@ -327,6 +327,28 @@ h2 {
   line-height: 1.55;
 }
 
+.faq-list {
+  margin: 0;
+}
+
+.faq-list dt {
+  margin-top: 14px;
+  color: var(--ink-strong);
+  font-weight: 700;
+  font-size: 0.93rem;
+}
+
+.faq-list dt:first-child {
+  margin-top: 0;
+}
+
+.faq-list dd {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
 .toolbar {
   display: grid;
   grid-template-columns: minmax(220px, 1.35fr) repeat(3, minmax(160px, 0.7fr)) auto auto;
