@@ -2,12 +2,12 @@
   const STORAGE_KEY = "poc.locale";
   const DEFAULT_LOCALE = "en";
   const SUPPORTED_LOCALES = [
-    { code: "en", name: "English" },
-    { code: "es", name: "Español" },
-    { code: "pt", name: "Português" },
-    { code: "ru", name: "Русский" },
-    { code: "zh-Hans", name: "简体中文" },
-    { code: "hi", name: "हिन्दी" },
+    { code: "en", name: "English", flag: "🇬🇧" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+    { code: "pt", name: "Português", flag: "🇧🇷" },
+    { code: "ru", name: "Русский", flag: "🇷🇺" },
+    { code: "zh-Hans", name: "简体中文", flag: "🇨🇳" },
+    { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
   ];
   const SUPPORTED_CODES = SUPPORTED_LOCALES.map((locale) => locale.code);
 
@@ -154,7 +154,7 @@
     select.setAttribute("aria-label", t("language.selectorLabel"));
     select.dataset.languageSelector = "true";
     select.innerHTML = SUPPORTED_LOCALES.map((locale) => (
-      `<option value="${locale.code}" ${locale.code === state.locale ? "selected" : ""}>${locale.name}</option>`
+      `<option value="${locale.code}" ${locale.code === state.locale ? "selected" : ""}>${locale.flag} ${locale.name}</option>`
     )).join("");
     select.addEventListener("change", () => {
       persistLocale(select.value);

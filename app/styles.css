@@ -2049,7 +2049,7 @@ select:focus {
 
   .header-nav {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) auto auto auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) auto auto auto;
     width: 100%;
     gap: 6px;
   }
@@ -2064,12 +2064,19 @@ select:focus {
 
   .header-nav a {
     font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .repo-link,
   .theme-toggle {
     width: 36px;
     min-width: 36px;
+  }
+
+  .language-switcher {
+    justify-self: center;
   }
 
   .language-select {
@@ -2316,10 +2323,6 @@ select:focus {
 }
 
 @media (max-width: 390px) {
-  .header-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) auto auto auto;
-  }
-
   .metrics {
     grid-template-columns: 1fr;
   }
