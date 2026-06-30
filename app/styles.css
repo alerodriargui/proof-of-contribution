@@ -1837,7 +1837,7 @@ select:focus {
 
   .header-nav {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) auto auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) auto auto auto;
     width: 100%;
     gap: 6px;
   }
@@ -1858,6 +1858,14 @@ select:focus {
   .theme-toggle {
     width: 36px;
     min-width: 36px;
+  }
+
+  .language-select {
+    min-width: unset;
+    max-width: unset;
+    width: auto;
+    padding: 3px 4px;
+    font-size: 0.72rem;
   }
 
   .status {
@@ -2097,7 +2105,7 @@ select:focus {
 
 @media (max-width: 390px) {
   .header-nav {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) auto auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) auto auto auto;
   }
 
   .metrics {
