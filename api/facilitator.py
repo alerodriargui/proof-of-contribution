@@ -5,7 +5,7 @@ import time
 import secrets
 from typing import Any
 from urllib.request import Request, urlopen
-from urllib.error import URLError
+from urllib.error import HTTPError, URLError
 
 from .x402 import (
     X402_VERSION,
@@ -106,20 +106,40 @@ class MockFacilitator:
 
 
 class RemoteFacilitator:
-    def __init__(self, base_url: str):
+    def __init__(
+        self,
+        base_url: str,
+        api_key_id: str = "",
+        api_key_secret: str = "",
+    ):
         self.base_url = base_url.rstrip("/")
+        self.api_key_id = api_key_id
+        self.api_key_secret = api_key_secret
+
+    def _auth_headers(self) -> dict[str, str]:
+        headers: dict[str, str] = {"Content-Type": "application/json"}
+        if self.api_key_id and self.api_key_secret:
+            import base64
+            raw = f"{self.api_key_id}:{self.api_key_secret}"
+            encoded = base64.b64encode(raw.encode()).decode()
+            headers["Authorization"] = f"Basic {encoded}"
+        return headers
 
     def _post(self, path: str, body: dict[str, Any]) -> dict[str, Any]:
         data = json.dumps(body).encode()
+        headers = self._auth_headers()
         req = Request(
             f"{self.base_url}{path}",
             data=data,
-            headers={"Content-Type": "application/json"},
+            headers=headers,
             method="POST",
         )
         try:
             with urlopen(req, timeout=30) as resp:
                 return json.loads(resp.read().decode())
+        except HTTPError as exc:
+            detail = exc.read().decode(errors="replace")[:500]
+            return {"isValid": False, "invalidReason": f"facilitator_error: HTTP {exc.code} {detail}"}
         except URLError as exc:
             return {"isValid": False, "invalidReason": f"facilitator_error: {exc.reason}"}
 
@@ -154,5 +174,7 @@ class RemoteFacilitator:
         try:
             with urlopen(req, timeout=30) as resp:
                 return json.loads(resp.read().decode())
+        except HTTPError:
+            return {"kinds": [], "extensions": [], "signers": {}}
         except URLError:
             return {"kinds": [], "extensions": [], "signers": {}}

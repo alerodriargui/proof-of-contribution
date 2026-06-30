@@ -54,12 +54,14 @@ DEFAULT_PAY_TO = os.environ.get("X402_PAY_TO", "0x000000000000000000000000000000
 DEFAULT_AMOUNT = os.environ.get("X402_AMOUNT", "100000")
 DEFAULT_NETWORK = os.environ.get("X402_NETWORK", "eip155:8453")
 FACILITATOR_URL = os.environ.get("X402_FACILITATOR_URL", "")
+CDP_API_KEY_ID = os.environ.get("CDP_API_KEY_ID", os.environ.get("X402_CDP_KEY_ID", ""))
+CDP_API_KEY_SECRET = os.environ.get("CDP_API_KEY_SECRET", os.environ.get("X402_CDP_KEY_SECRET", ""))
 FREE_TIER = os.environ.get("X402_FREE_TIER", "").lower() in ("1", "true", "yes")
 MOCK_FACILITATOR = os.environ.get("X402_MOCK_FACILITATOR", "1").lower() in ("1", "true", "yes")
 
 
 if FACILITATOR_URL:
-    facilitator = RemoteFacilitator(FACILITATOR_URL)
+    facilitator = RemoteFacilitator(FACILITATOR_URL, api_key_id=CDP_API_KEY_ID, api_key_secret=CDP_API_KEY_SECRET)
 else:
     facilitator = MockFacilitator()
 

@@ -5,9 +5,23 @@ services:
     buildCommand: ""
     startCommand: python -m api.server
     envVars:
+      # ── Your wallet — you receive USDC here ────────────────
       - key: X402_PAY_TO
         value: 0x282A9f0387d7f1827AfDe519ac127531C7A6F7D2
+      # ── Pricing ─────────────────────────────────────────────
+      - key: X402_AMOUNT
+        value: "100000"
+      - key: X402_NETWORK
+        value: "eip155:8453"
+      # ── Facilitator (mock for now; set real one for prod) ──
       - key: X402_MOCK_FACILITATOR
         value: "true"
+      # Uncomment for production with Coinbase facilitator:
+      # - key: X402_FACILITATOR_URL
+      #   value: https://api.cdp.coinbase.com/platform/v2/x402
+      # - key: CDP_API_KEY_ID
+      #   sync: false
+      # - key: CDP_API_KEY_SECRET
+      #   sync: false
       - key: PYTHONUNBUFFERED
         value: "1"
