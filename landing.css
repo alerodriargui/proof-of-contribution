@@ -265,14 +265,6 @@ a {
   gap: 10px;
 }
 
-.hero-kicker span {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--mint);
-  box-shadow: 0 0 0 5px rgba(85, 201, 183, 0.13);
-}
-
 .hero h1 {
   max-width: 720px;
   margin: 0;
