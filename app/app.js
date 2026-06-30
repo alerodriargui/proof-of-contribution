@@ -15,6 +15,12 @@ const RAW_SOURCES = [
   { url: "../data/stellar_merged_prs.csv", kind: "pulls", org: "stellar" },
   { url: "../data/link_merged_prs.csv", kind: "pulls", org: "link" },
   { url: "../data/solana_merged_prs.csv", kind: "pulls", org: "solana" },
+  { url: "../data/avalanche_merged_prs.csv", kind: "pulls", org: "avalanche" },
+  { url: "../data/polkadot_merged_prs.csv", kind: "pulls", org: "polkadot" },
+  { url: "../data/arbitrum_merged_prs.csv", kind: "pulls", org: "arbitrum" },
+  { url: "../data/polygon_merged_prs.csv", kind: "pulls", org: "polygon" },
+  { url: "../data/near_merged_prs.csv", kind: "pulls", org: "near" },
+  { url: "../data/sui_merged_prs.csv", kind: "pulls", org: "sui" },
 ];
 
 const FALLBACK_SOURCES = [
@@ -387,6 +393,17 @@ function orgLabel(org) {
     smartcontractkit: "Chainlink",
     solana: "Solana",
     "solana-labs": "Solana",
+    avalanche: "Avalanche",
+    "ava-labs": "Avalanche",
+    polkadot: "Polkadot",
+    "polkadot-foundation": "Polkadot",
+    arbitrum: "Arbitrum",
+    offchainlabs: "Arbitrum",
+    polygon: "Polygon",
+    "0xpolygon": "Polygon",
+    near: "NEAR",
+    sui: "Sui",
+    mystenlabs: "Sui",
   };
   const key = (org || "").toLowerCase();
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
@@ -398,6 +415,8 @@ const ORG_COLORS = {
   doge: "#ca8a04", hype: "#06b6d4", tron: "#ef4444",
   cardano: "#0033ad", stellar: "#000000", link: "#2a5ada",
   solana: "#14f195", base: "#0052ff",
+  avalanche: "#e84142", polkadot: "#e6007a", arbitrum: "#28a0f0",
+  polygon: "#8247e5", near: "#000000", sui: "#4da2ff",
 };
 
 function orgColor(org) {
