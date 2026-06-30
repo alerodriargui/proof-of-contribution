@@ -600,7 +600,8 @@ td {
 }
 
 .tier-51-100,
-.tier-101-1000,
+.tier-101-500,
+.tier-501-1000,
 .tier-1000-plus {
   border-color: rgba(161, 98, 7, 0.24);
   background: rgba(245, 158, 11, 0.11);
@@ -1622,7 +1623,8 @@ select:focus {
 }
 
 .dark .tier-51-100,
-.dark .tier-101-1000,
+.dark .tier-101-500,
+.dark .tier-501-1000,
 .dark .tier-1000-plus {
   border-color: rgba(251, 191, 36, 0.24);
   background: rgba(251, 191, 36, 0.1);

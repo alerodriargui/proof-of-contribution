@@ -30,8 +30,9 @@ const CONTRIBUTOR_TIERS = [
   { id: "11-20", label: "Experienced", range: "11–20 merged PRs", min: 11, max: 20 },
   { id: "21-50", label: "Core", range: "21–50 merged PRs", min: 21, max: 50 },
   { id: "51-100", label: "Veteran", range: "51–100 merged PRs", min: 51, max: 100 },
-  { id: "101-1000", label: "Elite", range: "101–1000 merged PRs", min: 101, max: 1000 },
-  { id: "1000-plus", label: "Legend", range: "More than 1000 merged PRs", min: 1001, max: Infinity },
+  { id: "101-500", label: "Elite", range: "101–500 merged PRs", min: 101, max: 500 },
+  { id: "501-1000", label: "Legend", range: "501–1000 merged PRs", min: 501, max: 1000 },
+  { id: "1000-plus", label: "Icon", range: "More than 1000 merged PRs", min: 1001, max: Infinity },
 ];
 
 function contributorTier(prCount) {
