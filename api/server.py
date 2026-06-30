@@ -351,7 +351,7 @@ def create_server(port: int = DEFAULT_PORT) -> HTTPServer:
 
 
 def main() -> None:
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_PORT
+    port = int(os.environ.get("PORT") or sys.argv[1]) if "PORT" in os.environ or len(sys.argv) > 1 else DEFAULT_PORT
     free_mode = "FREE" if FREE_TIER else "PAID (x402)"
     mock_mode = "mock" if MOCK_FACILITATOR else f"remote ({FACILITATOR_URL})"
 
