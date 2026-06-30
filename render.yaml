@@ -13,15 +13,15 @@ services:
         value: "100000"
       - key: X402_NETWORK
         value: "eip155:8453"
-      # ── Facilitator (mock for now; set real one for prod) ──
+      # ── Coinbase CDP facilitator (production) ───────────────
+      - key: X402_FACILITATOR_URL
+        value: https://api.cdp.coinbase.com/platform/v2/x402
       - key: X402_MOCK_FACILITATOR
-        value: "true"
-      # Uncomment for production with Coinbase facilitator:
-      # - key: X402_FACILITATOR_URL
-      #   value: https://api.cdp.coinbase.com/platform/v2/x402
-      # - key: CDP_API_KEY_ID
-      #   sync: false
-      # - key: CDP_API_KEY_SECRET
-      #   sync: false
+        value: "false"
+      # CDP keys — set these manually in Render dashboard (sync: false)
+      - key: CDP_API_KEY_ID
+        sync: false
+      - key: CDP_API_KEY_SECRET
+        sync: false
       - key: PYTHONUNBUFFERED
         value: "1"
