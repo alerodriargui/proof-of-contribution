@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bnb-chain,bsc,flywukong,https://avatars.githubusercontent.com/u/19421226?v=4,3739,core/types: extract bid and block mev info into builder subpackage,2026-06-30T08:57:26Z,2026-06-30,https://github.com/bnb-chain/bsc/pull/3739
+bnb-chain,bsc-snapshots,chee-chyuan,https://avatars.githubusercontent.com/u/60590919?v=4,456,Update README with v2 snapshot details and TrieDB notice,2026-06-30T08:07:40Z,2026-06-30,https://github.com/bnb-chain/bsc-snapshots/pull/456
 bnb-chain,bnb-chain.github.io,0xlucasliao,https://avatars.githubusercontent.com/u/177768160?v=4,842,Add Token Recovery Tool sunset announcements,2026-06-29T13:38:35Z,2026-06-29,https://github.com/bnb-chain/bnb-chain.github.io/pull/842
 bnb-chain,bnbagent-sdk,DarienPerezGit,https://avatars.githubusercontent.com/u/130084237?v=4,45,feat(erc8183): add async auto-settler example and complete policy/rou…,2026-06-29T07:02:22Z,2026-06-29,https://github.com/bnb-chain/bnbagent-sdk/pull/45
 bnb-chain,bsc,flywukong,https://avatars.githubusercontent.com/u/19421226?v=4,3736,miner: add BidBlock verify metrics,2026-06-25T08:51:03Z,2026-06-25,https://github.com/bnb-chain/bsc/pull/3736

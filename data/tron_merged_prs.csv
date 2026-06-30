@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+tronprotocol,documentation-zh,abn2357,https://avatars.githubusercontent.com/u/165134544?v=4,347,docs: add Agent-friendly entry index and source-derived API specs,2026-06-30T09:10:03Z,2026-06-30,https://github.com/tronprotocol/documentation-zh/pull/347
+tronprotocol,documentation-en,abn2357,https://avatars.githubusercontent.com/u/165134544?v=4,627,docs: add Agent-friendly entry index and source-derived API specs,2026-06-30T09:09:52Z,2026-06-30,https://github.com/tronprotocol/documentation-en/pull/627
 tronprotocol,java-tron,317787106,https://avatars.githubusercontent.com/u/23312631?v=4,6859,feat(net): update libp2p from v2.2.7 to v2.2.8,2026-06-30T02:23:24Z,2026-06-30,https://github.com/tronprotocol/java-tron/pull/6859
 tronprotocol,libp2p,Sunny6889,https://avatars.githubusercontent.com/u/186005755?v=4,137,Release v2.2.8 merge to main,2026-06-29T12:23:56Z,2026-06-29,https://github.com/tronprotocol/libp2p/pull/137
 tronprotocol,libp2p,317787106,https://avatars.githubusercontent.com/u/23312631?v=4,136,fix(net): tighten IPv6 validation,2026-06-29T09:50:38Z,2026-06-29,https://github.com/tronprotocol/libp2p/pull/136

@@ -1,34 +1,36 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T04:49:13Z",
-  "total_repos_processed": 223,
-  "total_merged_prs": 4219,
+  "generated_at": "2026-06-30T10:12:53Z",
+  "total_repos_processed": 222,
+  "total_merged_prs": 4267,
   "ecosystems": [
     {
       "org": "bnb-chain",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 224,
-      "processed_repos": 223,
-      "prs_found": 4219,
-      "prs_after_merge": 11086,
+      "processed_repos": 222,
+      "prs_found": 4267,
+      "prs_after_merge": 11088,
       "api_request_count": 227,
-      "rate_limit_remaining": "4094",
-      "rate_limit_reset": "1782797782",
-      "started_at": "2026-06-30T04:46:16.885932+00:00",
-      "finished_at": "2026-06-30T04:49:13.613769+00:00",
-      "duration_seconds": 176.73,
+      "rate_limit_remaining": "3999",
+      "rate_limit_reset": "1782816546",
+      "started_at": "2026-06-30T10:10:47.712750+00:00",
+      "finished_at": "2026-06-30T10:12:53.976288+00:00",
+      "duration_seconds": 126.26,
       "skipped_repos": [
-        "node"
+        "greenfield-contracts-sdk",
+        "greenfield-whitepaper"
       ],
       "errors": [
-        "node: HTTP 401 for https://api.github.com/repos/bnb-chain/node/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
+        "greenfield-contracts-sdk: HTTP 401 for https://api.github.com/repos/bnb-chain/greenfield-contracts-sdk/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
+        "greenfield-whitepaper: HTTP 401 for https://api.github.com/repos/bnb-chain/greenfield-whitepaper/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
       ],
       "checkpoint": {
         "org": "bnb-chain",
-        "last_merged_at": "2026-06-29T13:38:35Z",
-        "last_run_at": "2026-06-30T04:49:13Z",
-        "total_prs": 11086,
+        "last_merged_at": "2026-06-30T08:57:26Z",
+        "last_run_at": "2026-06-30T10:12:53Z",
+        "total_prs": 11088,
         "incremental": true,
         "overlap_hours": 48.0
       }

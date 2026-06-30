@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,68,Resolve venv deps in basedpyright via pyrightconfig,2026-06-30T09:44:25Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/68
+ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,67,Add Zed pyright venv config and ignore .direnv,2026-06-30T09:30:47Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/67
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,197,feat: Escrow ctx,2026-06-29T18:09:45Z,2026-06-29,https://github.com/ripple/xrpl-wasm-stdlib/pull/197
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,186,feat: Escrow crate,2026-06-29T16:03:35Z,2026-06-29,https://github.com/ripple/xrpl-wasm-stdlib/pull/186
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,195,Escrow ctx,2026-06-29T13:57:04Z,2026-06-29,https://github.com/ripple/xrpl-wasm-stdlib/pull/195
