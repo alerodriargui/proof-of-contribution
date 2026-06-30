@@ -348,7 +348,7 @@
   transition: background 0.12s;
 }
 .recent-pr-link:hover {
-  background: var(--hover);
+  background: var(--panel-strong);
 }
 .recent-pr-link:focus-visible {
   outline: 2px solid var(--proof);
