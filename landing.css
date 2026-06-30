@@ -1095,6 +1095,7 @@ a {
 @media (max-width: 760px) {
   .landing-header {
     width: calc(100% - 28px);
+    min-height: 72px;
   }
 
   .landing-brand span {
@@ -1110,8 +1111,8 @@ a {
   .hero {
     width: 100%;
     max-width: 100%;
-    gap: 50px;
-    padding: 130px 18px 72px;
+    gap: 42px;
+    padding: 118px 18px 64px;
   }
 
   .hero-copy,
@@ -1125,7 +1126,8 @@ a {
   }
 
   .hero h1 {
-    font-size: clamp(3.15rem, 15vw, 4.8rem);
+    font-size: clamp(2.7rem, 13vw, 4.2rem);
+    line-height: 0.96;
   }
 
   .hero-intro {
@@ -1135,6 +1137,12 @@ a {
   .hero-actions {
     align-items: flex-start;
     flex-direction: column;
+    gap: 14px;
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    width: min(100%, 360px);
   }
 
   .preview-card {
@@ -1142,6 +1150,22 @@ a {
     border-radius: 20px;
     padding: 16px;
     overflow: hidden;
+  }
+
+  .preview-title {
+    min-width: 0;
+  }
+
+  .preview-title div,
+  .chart-heading div,
+  .mini-profile div {
+    min-width: 0;
+  }
+
+  .preview-title strong,
+  .chart-heading strong,
+  .mini-profile strong {
+    overflow-wrap: anywhere;
   }
 
   .preview-metrics {
@@ -1184,17 +1208,19 @@ a {
   }
 
   .insight-stack {
-    min-height: 430px;
+    min-height: 450px;
   }
 
   .insight-card-main {
     right: 0;
     left: 0;
     padding: 18px;
+    transform: none;
   }
 
   .floating-card {
     min-width: 160px;
+    max-width: calc(100% - 28px);
   }
 
   .floating-card-top {
@@ -1215,7 +1241,7 @@ a {
 
   .principles-section {
     gap: 55px;
-    padding-block: 90px;
+    padding: 90px 18px;
   }
 
   .principles-grid {
@@ -1227,11 +1253,19 @@ a {
   }
 
   .final-cta {
-    padding-block: 100px;
+    padding: 96px 18px;
+  }
+
+  .final-cta h2 {
+    line-height: 1.02;
   }
 }
 
 @media (max-width: 440px) {
+  .landing-header {
+    width: calc(100% - 20px);
+  }
+
   .landing-brand span {
     max-width: 95px;
     line-height: 1.05;
@@ -1243,6 +1277,7 @@ a {
 
   .preview-top {
     align-items: flex-start;
+    gap: 10px;
   }
 
   .live-pill {
@@ -1260,10 +1295,86 @@ a {
 
   .floating-card-top {
     top: 20px;
+    right: 0;
   }
 
   .floating-card-bottom {
     bottom: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .button {
+    width: 100%;
+    padding-inline: 16px;
+  }
+
+  .button-small {
+    width: auto;
+  }
+
+  .hero {
+    padding-inline: 14px;
+  }
+
+  .hero h1 {
+    font-size: 2.45rem;
+  }
+
+  .hero-kicker {
+    align-items: flex-start;
+    line-height: 1.35;
+  }
+
+  .preview-top,
+  .mini-profile {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .preview-metrics,
+  .profile-numbers {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-numbers {
+    margin: 18px 0;
+  }
+
+  .insight-stack {
+    display: grid;
+    gap: 12px;
+    min-height: auto;
+  }
+
+  .insight-stack::before {
+    display: none;
+  }
+
+  .insight-card-main {
+    position: relative;
+    inset: auto;
+  }
+
+  .floating-card {
+    position: relative;
+    inset: auto;
+    margin-top: 0;
+  }
+
+  .floating-card-top,
+  .floating-card-bottom {
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  .principles-section h2,
+  .section h2,
+  .final-cta h2 {
+    font-size: 2.35rem;
   }
 }
 

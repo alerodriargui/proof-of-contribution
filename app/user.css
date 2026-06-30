@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
   padding: 18px 0 6px;
   font-size: 0.87rem;
   color: var(--muted);
@@ -92,6 +93,7 @@
 .profile-hero-body {
   flex: 1;
   min-width: 200px;
+  max-width: 100%;
 }
 
 .profile-hero-body h1 {
@@ -99,6 +101,7 @@
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--ink-strong);
+  overflow-wrap: anywhere;
 }
 
 .profile-ecosystem {
@@ -134,6 +137,7 @@
   border: 1px solid var(--line);
   border-radius: 12px;
   margin-left: auto;
+  max-width: 100%;
 }
 
 .hero-stat {
@@ -168,6 +172,7 @@
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 16px 18px;
+  min-width: 0;
 }
 
 .pstat-label {
@@ -183,6 +188,7 @@
 .pstat-value {
   font-size: 1.1rem;
   color: var(--ink-strong);
+  overflow-wrap: anywhere;
 }
 
 .pstat-value .tag {
@@ -293,6 +299,7 @@
   padding: 14px 20px 18px;
   max-height: 380px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── Responsive ─────────────────────────────────────── */
@@ -318,14 +325,104 @@
 }
 
 @media (max-width: 500px) {
+  .breadcrumb {
+    padding-top: 10px;
+  }
+
+  .profile-hero {
+    gap: 14px;
+    padding-top: 14px;
+  }
+
+  .profile-avatar img {
+    width: 68px;
+    height: 68px;
+  }
+
+  .profile-hero-body {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .profile-hero-body h1 {
+    font-size: 1.35rem;
+  }
+
+  .btn-outline,
+  .btn {
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+  }
+
+  .profile-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .hero-stat {
+    min-width: 0;
+  }
+
+  .hero-stat-value {
+    font-size: 1.12rem;
+  }
+
+  .hero-stat-label {
+    display: block;
+    font-size: 0.64rem;
+    line-height: 1.2;
+  }
+
   .profile-stats-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 14px 0;
   }
-  .profile-hero-stats {
-    flex-wrap: wrap;
-    gap: 12px;
+
+  .chart-card-header,
+  .ps-head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding-inline: 14px;
   }
+
+  .chart-card-header span,
+  .ps-head > span {
+    white-space: normal;
+  }
+
+  .chart-wrap {
+    min-height: 230px;
+    padding-inline: 8px;
+  }
+
   .chart-wrap canvas {
-    max-height: 200px;
+    min-height: 210px;
+    max-height: none;
+  }
+
+  .trend-chart-wrap {
+    height: 240px;
+    padding-inline: 8px;
+  }
+
+  .profile-section-card .recent-pr-list {
+    max-height: none;
+    padding: 12px;
+  }
+
+  .recent-pr-title,
+  .recent-pr-meta {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 380px) {
+  .profile-hero-stats {
+    grid-template-columns: 1fr;
   }
 }
