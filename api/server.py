@@ -60,10 +60,10 @@ FREE_TIER = os.environ.get("X402_FREE_TIER", "").lower() in ("1", "true", "yes")
 MOCK_FACILITATOR = os.environ.get("X402_MOCK_FACILITATOR", "1").lower() in ("1", "true", "yes")
 
 
-if FACILITATOR_URL:
-    facilitator = RemoteFacilitator(FACILITATOR_URL, api_key_id=CDP_API_KEY_ID, api_key_secret=CDP_API_KEY_SECRET)
-else:
+if MOCK_FACILITATOR or not FACILITATOR_URL:
     facilitator = MockFacilitator()
+else:
+    facilitator = RemoteFacilitator(FACILITATOR_URL, api_key_id=CDP_API_KEY_ID, api_key_secret=CDP_API_KEY_SECRET)
 
 
 def load_json(path: Path) -> Any:
