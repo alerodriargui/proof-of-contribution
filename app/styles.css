@@ -578,25 +578,30 @@ td {
   white-space: nowrap;
 }
 
-.tier-newcomer {
+.tier-1,
+.tier-2 {
   border-color: rgba(104, 117, 134, 0.24);
   background: rgba(104, 117, 134, 0.08);
   color: var(--muted);
 }
 
-.tier-regular {
+.tier-3-5,
+.tier-6-10 {
   border-color: rgba(35, 100, 170, 0.24);
   background: var(--blue-soft);
   color: var(--blue);
 }
 
-.tier-experienced {
+.tier-11-20,
+.tier-21-50 {
   border-color: rgba(15, 118, 110, 0.24);
   background: var(--green-soft);
   color: var(--green);
 }
 
-.tier-core {
+.tier-51-100,
+.tier-101-1000,
+.tier-1000-plus {
   border-color: rgba(161, 98, 7, 0.24);
   background: rgba(245, 158, 11, 0.11);
   color: var(--amber);
@@ -1598,22 +1603,27 @@ select:focus {
   background: rgba(148, 163, 184, 0.08);
 }
 
-.dark .tier-newcomer {
+.dark .tier-1,
+.dark .tier-2 {
   border-color: rgba(148, 163, 184, 0.22);
   background: rgba(148, 163, 184, 0.08);
 }
 
-.dark .tier-regular {
+.dark .tier-3-5,
+.dark .tier-6-10 {
   border-color: rgba(56, 189, 248, 0.24);
   background: rgba(56, 189, 248, 0.1);
 }
 
-.dark .tier-experienced {
+.dark .tier-11-20,
+.dark .tier-21-50 {
   border-color: rgba(45, 212, 191, 0.24);
   background: rgba(45, 212, 191, 0.1);
 }
 
-.dark .tier-core {
+.dark .tier-51-100,
+.dark .tier-101-1000,
+.dark .tier-1000-plus {
   border-color: rgba(251, 191, 36, 0.24);
   background: rgba(251, 191, 36, 0.1);
 }

@@ -250,10 +250,15 @@ function isGhostUser(login) {
 }
 
 const CONTRIBUTOR_TIERS = [
-  { id: "newcomer", label: "Newcomer", range: "1 PR", min: 1, max: 1 },
-  { id: "regular", label: "Regular", range: "2-5 PRs", min: 2, max: 5 },
-  { id: "experienced", label: "Experienced", range: "6-20 PRs", min: 6, max: 20 },
-  { id: "core", label: "Core", range: "21+ PRs", min: 21, max: Infinity },
+  { id: "1", label: "1", range: "1 merged PR", min: 1, max: 1 },
+  { id: "2", label: "2", range: "2 merged PRs", min: 2, max: 2 },
+  { id: "3-5", label: "3–5", range: "3–5 merged PRs", min: 3, max: 5 },
+  { id: "6-10", label: "6–10", range: "6–10 merged PRs", min: 6, max: 10 },
+  { id: "11-20", label: "11–20", range: "11–20 merged PRs", min: 11, max: 20 },
+  { id: "21-50", label: "21–50", range: "21–50 merged PRs", min: 21, max: 50 },
+  { id: "51-100", label: "51–100", range: "51–100 merged PRs", min: 51, max: 100 },
+  { id: "101-1000", label: "101–1000", range: "101–1000 merged PRs", min: 101, max: 1000 },
+  { id: "1000-plus", label: "1000+", range: "More than 1000 merged PRs", min: 1001, max: Infinity },
 ];
 
 function contributorTier(prCount) {
