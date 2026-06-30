@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+uniswap,sdks,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,619,Version Packages.,2026-06-29T22:59:48Z,2026-06-29,https://github.com/Uniswap/sdks/pull/619
+uniswap,sdks,brnunes,https://avatars.githubusercontent.com/u/1976718?v=4,620,chore(codeowners): apps-lp owns liquidity-launcher-sdk version bumps,2026-06-29T22:26:57Z,2026-06-29,https://github.com/Uniswap/sdks/pull/620
 uniswap,uniswapx-tool,ericneil-sanc,https://avatars.githubusercontent.com/u/216762316?v=4,24,Resolve permit2 on other chains,2026-06-29T21:45:14Z,2026-06-29,https://github.com/Uniswap/uniswapx-tool/pull/24
 uniswap,sdks,brnunes,https://avatars.githubusercontent.com/u/1976718?v=4,618,feat(liquidity-launcher-sdk): new SDK for the Liquidity Launcher (CCA + LBP) stack,2026-06-29T20:26:40Z,2026-06-29,https://github.com/Uniswap/sdks/pull/618
 uniswap,v4-hooks-public,SocksNFlops,https://avatars.githubusercontent.com/u/91764028?v=4,41,fix(permissioned-hooks): restore migration-dropped Swap event and UnverifiedAdapter check,2026-06-29T19:46:24Z,2026-06-29,https://github.com/Uniswap/v4-hooks-public/pull/41
