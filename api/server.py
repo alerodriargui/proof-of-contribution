@@ -12,6 +12,26 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
 
+
+def _load_dotenv(path: str | Path = ".env") -> None:
+    p = Path(path) if isinstance(path, str) else path
+    if not p.exists():
+        return
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        value = value.strip()
+        if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+            value = value[1:-1]
+        if key and key not in os.environ:
+            os.environ[key] = value
+
+
+_load_dotenv(Path(__file__).resolve().parents[1] / ".env")
+
 from .x402 import (
     X402_VERSION,
     BASE_HEADER,
@@ -332,12 +352,23 @@ def main() -> None:
     port = int(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_PORT
     free_mode = "FREE" if FREE_TIER else "PAID (x402)"
     mock_mode = "mock" if MOCK_FACILITATOR else f"remote ({FACILITATOR_URL})"
+
+    pay_to_short = DEFAULT_PAY_TO
+    if len(pay_to_short) > 20:
+        pay_to_short = f"{DEFAULT_PAY_TO[:10]}...{DEFAULT_PAY_TO[-6:]}"
+
+    is_placeholder = DEFAULT_PAY_TO.lower().replace("0x", "").startswith("0000000")
     print(f"Proof of Contribution API server")
     print(f"  Mode: {free_mode}")
+    print(f"  You receive payments at: {pay_to_short}")
     print(f"  Facilitator: {mock_mode}")
     print(f"  Network: {DEFAULT_NETWORK}")
-    print(f"  Amount: {DEFAULT_AMOUNT} atomic units")
-    print(f"  PayTo: {DEFAULT_PAY_TO[:10]}...{DEFAULT_PAY_TO[-6:]}")
+    print(f"  Price: {DEFAULT_AMOUNT} atomic units ({int(DEFAULT_AMOUNT) / 10**6:.2f} USDC if 6 decimals)")
+    if is_placeholder:
+        print(f"  [WARNING] X402_PAY_TO is not set! Set it to YOUR wallet address to receive USDC.")
+    if MOCK_FACILITATOR and not is_placeholder:
+        print(f"  [WARNING] Using mock facilitator - NO real on-chain settlement occurs.")
+        print(f"    Set X402_FACILITATOR_URL and X402_MOCK_FACILITATOR=false for real payments.")
     print(f"  Listening on http://0.0.0.0:{port}")
     print()
     print("API endpoints:")

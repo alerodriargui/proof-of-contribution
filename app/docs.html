@@ -222,7 +222,8 @@
             <p>The x402 API allows programmatic access to Proof of Contribution data. Each request requires a micropayment via the <a href="https://x402.org" target="_blank" rel="noreferrer">x402 protocol</a> (HTTP 402 Payment Required).</p>
             <p><strong>Network:</strong> Base (eip155:8453)<br/>
             <strong>Token:</strong> USDC<br/>
-            <strong>Price:</strong> <code>100000</code> atomic units ($0.10) per request</p>
+            <strong>Price:</strong> <code>100000</code> atomic units ($0.10) per request<br/>
+            <strong>You receive payments at:</strong> <code>X402_PAY_TO</code> wallet address</p>
           </article>
           <article class="docs-card">
             <div class="docs-card-icon">
@@ -236,6 +237,28 @@
               <li>Client signs an EIP-3009 authorization and retries with <code>PAYMENT-SIGNATURE</code> header</li>
               <li>Server verifies, serves data, and returns <code>PAYMENT-RESPONSE</code> with tx hash</li>
             </ol>
+          </article>
+        </div>
+
+        <div class="docs-section-header" style="margin-top:2rem">
+          <h3>You receive the money</h3>
+        </div>
+        <div class="docs-card-group docs-cols-1">
+          <article class="docs-card">
+            <div class="docs-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            </div>
+            <p>When a client pays, the facilitator executes a <code>transferWithAuthorization</code> (EIP-3009)
+            on-chain — USDC moves from the <strong>client's wallet</strong> directly to <strong>your wallet</strong>
+            (the <code>X402_PAY_TO</code> address). You don't need to do anything; the money arrives in your
+            wallet automatically after each successful API request.</p>
+            <p><strong>To actually receive real USDC:</strong></p>
+            <ol style="text-align:left;padding-left:1.2em;margin:0.5em 0">
+              <li>Set <code>X402_PAY_TO</code> to <strong>your Ethereum wallet address on Base</strong></li>
+              <li>Set <code>X402_FACILITATOR_URL</code> to a real x402 facilitator that executes on-chain settlement</li>
+              <li>Set <code>X402_MOCK_FACILITATOR=false</code></li>
+            </ol>
+            <p>With the <strong>mock facilitator</strong> (default), no real transaction occurs — it's for testing only.</p>
           </article>
         </div>
 
