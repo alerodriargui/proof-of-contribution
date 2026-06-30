@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,189,feat: Typed Constant Macros,2026-06-30T15:41:57Z,2026-06-30,https://github.com/ripple/xrpl-wasm-stdlib/pull/189
+ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,70,Pin setup loan brokers to XRP vaults so cover deposits fund,2026-06-30T15:09:26Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/70
+ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,69,"Type-clean workload to zero, add mypy + basedpyright gates and CI",2026-06-30T10:47:01Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/69
 ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,68,Resolve venv deps in basedpyright via pyrightconfig,2026-06-30T09:44:25Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/68
 ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,67,Add Zed pyright venv config and ignore .direnv,2026-06-30T09:30:47Z,2026-06-30,https://github.com/ripple/rippled-workload/pull/67
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,197,feat: Escrow ctx,2026-06-29T18:09:45Z,2026-06-29,https://github.com/ripple/xrpl-wasm-stdlib/pull/197

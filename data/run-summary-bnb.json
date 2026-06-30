@@ -1,35 +1,29 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T10:12:53Z",
-  "total_repos_processed": 222,
-  "total_merged_prs": 4267,
+  "generated_at": "2026-06-30T16:46:36Z",
+  "total_repos_processed": 224,
+  "total_merged_prs": 4310,
   "ecosystems": [
     {
       "org": "bnb-chain",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 224,
-      "processed_repos": 222,
-      "prs_found": 4267,
+      "processed_repos": 224,
+      "prs_found": 4310,
       "prs_after_merge": 11088,
       "api_request_count": 227,
-      "rate_limit_remaining": "3999",
-      "rate_limit_reset": "1782816546",
-      "started_at": "2026-06-30T10:10:47.712750+00:00",
-      "finished_at": "2026-06-30T10:12:53.976288+00:00",
-      "duration_seconds": 126.26,
-      "skipped_repos": [
-        "greenfield-contracts-sdk",
-        "greenfield-whitepaper"
-      ],
-      "errors": [
-        "greenfield-contracts-sdk: HTTP 401 for https://api.github.com/repos/bnb-chain/greenfield-contracts-sdk/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
-        "greenfield-whitepaper: HTTP 401 for https://api.github.com/repos/bnb-chain/greenfield-whitepaper/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
-      ],
+      "rate_limit_remaining": "4094",
+      "rate_limit_reset": "1782840801",
+      "started_at": "2026-06-30T16:43:34.588647+00:00",
+      "finished_at": "2026-06-30T16:46:36.540794+00:00",
+      "duration_seconds": 181.95,
+      "skipped_repos": [],
+      "errors": [],
       "checkpoint": {
         "org": "bnb-chain",
         "last_merged_at": "2026-06-30T08:57:26Z",
-        "last_run_at": "2026-06-30T10:12:53Z",
+        "last_run_at": "2026-06-30T16:46:36Z",
         "total_prs": 11088,
         "incremental": true,
         "overlap_hours": 48.0

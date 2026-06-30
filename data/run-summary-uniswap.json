@@ -1,30 +1,34 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T10:09:53Z",
-  "total_repos_processed": 170,
-  "total_merged_prs": 4166,
+  "generated_at": "2026-06-30T16:42:19Z",
+  "total_repos_processed": 169,
+  "total_merged_prs": 4116,
   "ecosystems": [
     {
       "org": "uniswap",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 170,
-      "processed_repos": 170,
-      "prs_found": 4166,
-      "prs_after_merge": 15071,
+      "processed_repos": 169,
+      "prs_found": 4116,
+      "prs_after_merge": 15072,
       "api_request_count": 172,
-      "rate_limit_remaining": "4321",
-      "rate_limit_reset": "1782816546",
-      "started_at": "2026-06-30T10:07:59.590741+00:00",
-      "finished_at": "2026-06-30T10:09:53.530319+00:00",
-      "duration_seconds": 113.94,
-      "skipped_repos": [],
-      "errors": [],
+      "rate_limit_remaining": "4414",
+      "rate_limit_reset": "1782840801",
+      "started_at": "2026-06-30T16:39:42.670352+00:00",
+      "finished_at": "2026-06-30T16:42:19.692567+00:00",
+      "duration_seconds": 157.02,
+      "skipped_repos": [
+        "relayer"
+      ],
+      "errors": [
+        "relayer: HTTP 401 for https://api.github.com/repos/uniswap/relayer/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
+      ],
       "checkpoint": {
         "org": "uniswap",
-        "last_merged_at": "2026-06-29T22:59:48Z",
-        "last_run_at": "2026-06-30T10:09:53Z",
-        "total_prs": 15071,
+        "last_merged_at": "2026-06-30T15:58:30Z",
+        "last_run_at": "2026-06-30T16:42:19Z",
+        "total_prs": 15072,
         "incremental": true,
         "overlap_hours": 48.0
       }

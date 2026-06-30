@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T10:06:58Z",
+  "generated_at": "2026-06-30T16:38:17Z",
   "total_repos_processed": 298,
-  "total_merged_prs": 8577,
+  "total_merged_prs": 8579,
   "ecosystems": [
     {
       "org": "ethereum",
@@ -10,14 +10,14 @@
       "overlap_hours": 48.0,
       "total_repos": 301,
       "processed_repos": 298,
-      "prs_found": 8577,
-      "prs_after_merge": 58609,
+      "prs_found": 8579,
+      "prs_after_merge": 58620,
       "api_request_count": 305,
-      "rate_limit_remaining": "4633",
-      "rate_limit_reset": "1782816546",
-      "started_at": "2026-06-30T10:03:24.505257+00:00",
-      "finished_at": "2026-06-30T10:06:58.267880+00:00",
-      "duration_seconds": 213.76,
+      "rate_limit_remaining": "4695",
+      "rate_limit_reset": "1782840801",
+      "started_at": "2026-06-30T16:33:20.937927+00:00",
+      "finished_at": "2026-06-30T16:38:17.944556+00:00",
+      "duration_seconds": 297.01,
       "skipped_repos": [
         "cryptography-specs",
         "eth-rnd-archive",
@@ -30,9 +30,9 @@
       ],
       "checkpoint": {
         "org": "ethereum",
-        "last_merged_at": "2026-06-30T09:40:12Z",
-        "last_run_at": "2026-06-30T10:06:58Z",
-        "total_prs": 58609,
+        "last_merged_at": "2026-06-30T16:16:06Z",
+        "last_run_at": "2026-06-30T16:38:17Z",
+        "total_prs": 58620,
         "incremental": true,
         "overlap_hours": 48.0
       }
