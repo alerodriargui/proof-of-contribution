@@ -77,7 +77,7 @@ const statsState = {
   aggregatedPrsExBots: new Map(),
   // aggregated projects: Map<orgId, Map<dayKey, Map<projectName, number>>>
   projectActivity: new Map(),
-  // user data: Map<usuario, { firstSeen: Date, orgs: Set, prCount: number, isBot: boolean, isGhost: boolean }>
+  // user data: Map<usuario, { firstSeen: Date, orgs: Set, prCount: number, activeDays: Map, isBot: boolean, isGhost: boolean }>
   userData: new Map(),
   // which orgs are currently visible
   activeOrgs: new Set(NETWORKS.map((n) => n.id)),
@@ -100,6 +100,8 @@ let chartContribTiers = null;
 let chartNetworkShare = null;
 let chartMultiNetwork = null;
 let chartDayOfWeek = null;
+let chartContributionActivity = null;
+let chartContributorRetention = null;
 
 // ── DOM helpers ───────────────────────────────────────
 const $ = (id) => document.getElementById(id);
@@ -212,6 +214,7 @@ function buildTimeSeries() {
 
   // ── Single pass over user data: filteredUsers + newContribs + tiers + networkShare + loyalty ──
   const filteredUsers = [];
+  const activeUsersByBucket = new Map();
   const newContribBuckets = new Map();
   let totalContribBeforeCutoff = 0;
   const tiers = { "1 PR": 0, "2-5 PRs": 0, "6-20 PRs": 0, "21+ PRs": 0 };
@@ -250,6 +253,20 @@ function buildTimeSeries() {
     // loyalty
     if (activeUserOrgs.length === 1) singleNet++;
     else if (activeUserOrgs.length > 1) multiNet++;
+
+    activeUserOrgs.forEach((oid) => {
+      const days = data.activeDays.get(oid);
+      if (!days) return;
+      days.forEach((_count, dayKey) => {
+        const [y, m, d] = dayKey.split("-").map(Number);
+        const date = new Date(Date.UTC(y, m - 1, d));
+        if (cutoff && date < cutoff) return;
+        const key = bucketKey(date, gran);
+        if (!allKeys.has(key)) return;
+        if (!activeUsersByBucket.has(key)) activeUsersByBucket.set(key, new Set());
+        activeUsersByBucket.get(key).add(data.login);
+      });
+    });
   });
 
   const newContribData = sortedKeys.map((k) => newContribBuckets.get(k) || 0);
@@ -265,10 +282,34 @@ function buildTimeSeries() {
     value: networkCounts[net.id] || 0,
     color: net.color,
   })).filter(n => n.value > 0);
+  const activeContributorData = sortedKeys.map((k) => activeUsersByBucket.get(k)?.size || 0);
+  const avgPrsPerActiveContributorData = sortedKeys.map((k, index) => {
+    const activeCount = activeContributorData[index] || 0;
+    if (activeCount === 0) return 0;
+    return Number(((totalPrPerBucket.get(k) || 0) / activeCount).toFixed(2));
+  });
+  const retainedContributorData = [];
+  const retentionRateData = [];
+  sortedKeys.forEach((k, index) => {
+    if (index === 0) {
+      retainedContributorData.push(0);
+      retentionRateData.push(0);
+      return;
+    }
+    const previousUsers = activeUsersByBucket.get(sortedKeys[index - 1]) || new Set();
+    const currentUsers = activeUsersByBucket.get(k) || new Set();
+    let retained = 0;
+    previousUsers.forEach((login) => {
+      if (currentUsers.has(login)) retained++;
+    });
+    retainedContributorData.push(retained);
+    retentionRateData.push(previousUsers.size ? Number(((retained / previousUsers.size) * 100).toFixed(1)) : 0);
+  });
 
   const result = {
     labels, mergedPrsDatasets, newContribData, cumulContribData, cumulPrsData,
     tierData, networkShare, loyalty: [singleNet, multiNet], dowCounts,
+    activeContributorData, avgPrsPerActiveContributorData, retainedContributorData, retentionRateData,
   };
 
   statsState._memo = { hash, data: result };
@@ -531,6 +572,118 @@ function renderChart8(data) {
 }
 
 // ── Render charts (progressive) ──────────────────────
+function renderChart9(data) {
+  const { labels, activeContributorData, avgPrsPerActiveContributorData } = data;
+  const options = sharedOptions(labels, "Active contributors");
+  options.scales.y1 = {
+    position: "right",
+    grid: { drawOnChartArea: false },
+    ticks: {
+      color: options.scales.y.ticks.color,
+      font: { size: 11 },
+      callback: (v) => Number(v).toFixed(1),
+    },
+    title: {
+      display: true,
+      text: "Avg PRs",
+      color: options.scales.y.title.color,
+      font: { size: 11, weight: "700" },
+    },
+  };
+  options.plugins.legend = { display: true, position: "top", align: "start" };
+  options.plugins.tooltip.callbacks = {
+    label(ctx) {
+      if (ctx.dataset.yAxisID === "y1") return ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(2)}`;
+      return ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`;
+    },
+  };
+
+  chartContributionActivity = chartUpdate(chartContributionActivity, "chartContributionActivity", {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Active contributors",
+          data: activeContributorData,
+          backgroundColor: "rgba(14, 165, 233, 0.72)",
+          borderRadius: 4,
+          yAxisID: "y",
+        },
+        {
+          type: "line",
+          label: "Avg PRs per active contributor",
+          data: avgPrsPerActiveContributorData,
+          borderColor: "#f59e0b",
+          backgroundColor: "rgba(245, 158, 11, 0.1)",
+          borderWidth: 2,
+          pointRadius: labels.length > 60 ? 0 : 3,
+          tension: 0.1,
+          yAxisID: "y1",
+        },
+      ],
+    },
+    options,
+  });
+}
+
+function renderChart10(data) {
+  const { labels, retainedContributorData, retentionRateData } = data;
+  const options = sharedOptions(labels, "Retained contributors");
+  options.scales.y1 = {
+    position: "right",
+    min: 0,
+    max: 100,
+    grid: { drawOnChartArea: false },
+    ticks: {
+      color: options.scales.y.ticks.color,
+      font: { size: 11 },
+      callback: (v) => `${v}%`,
+    },
+    title: {
+      display: true,
+      text: "Retention",
+      color: options.scales.y.title.color,
+      font: { size: 11, weight: "700" },
+    },
+  };
+  options.plugins.legend = { display: true, position: "top", align: "start" };
+  options.plugins.tooltip.callbacks = {
+    label(ctx) {
+      if (ctx.dataset.yAxisID === "y1") return ` ${ctx.dataset.label}: ${Number(ctx.parsed.y).toFixed(1)}%`;
+      return ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`;
+    },
+  };
+
+  chartContributorRetention = chartUpdate(chartContributorRetention, "chartContributorRetention", {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Retained contributors",
+          data: retainedContributorData,
+          backgroundColor: "rgba(16, 185, 129, 0.72)",
+          borderRadius: 4,
+          yAxisID: "y",
+        },
+        {
+          type: "line",
+          label: "Retention rate",
+          data: retentionRateData,
+          borderColor: "#4f46e5",
+          backgroundColor: "rgba(79, 70, 229, 0.1)",
+          borderWidth: 2,
+          pointRadius: labels.length > 60 ? 0 : 3,
+          tension: 0.1,
+          yAxisID: "y1",
+        },
+      ],
+    },
+    options,
+  });
+}
+
 function renderCharts() {
   const data = buildTimeSeries();
 
@@ -540,6 +693,9 @@ function renderCharts() {
   $("badgeNewContrib").textContent  = fmt(data.newContribData.reduce((s, v) => s + v, 0)) + " new";
   $("badgeTotalContrib").textContent = fmt(data.cumulContribData.at(-1) ?? 0) + " total";
   $("badgeTotalPrs").textContent    = fmt(data.cumulPrsData.at(-1) ?? 0) + " cumul.";
+  $("badgeContributionActivity").textContent = fmt(Math.max(...data.activeContributorData, 0)) + " peak";
+  const latestRetention = [...data.retentionRateData].reverse().find((value) => value > 0) || 0;
+  $("badgeContributorRetention").textContent = `${latestRetention.toFixed(1)}% latest`;
 
   // Chart 1 (most important — render immediately)
   renderChart1(data);
@@ -558,6 +714,11 @@ function renderCharts() {
     renderChart7(data);
     renderChart8(data);
   }, 50);
+
+  setTimeout(() => {
+    renderChart9(data);
+    renderChart10(data);
+  }, 100);
 }
 
 // ── Network toggle UI ─────────────────────────────────
@@ -682,10 +843,22 @@ async function loadAll() {
     statsState.aggregatedPrsExBots.set(org, m);
   }
   for (const u of users) {
+    const activeDays = new Map();
+    if (u.active_days && typeof u.active_days === "object") {
+      for (const [org, days] of Object.entries(u.active_days)) {
+        activeDays.set(org, new Map(Object.entries(days)));
+      }
+    } else {
+      for (const org of u.orgs || []) {
+        activeDays.set(org, new Map([[u.first_seen, u.pr_count || 1]]));
+      }
+    }
     statsState.userData.set(u.login, {
+      login: u.login,
       firstSeen: new Date(u.first_seen),
       orgs: new Set(u.orgs),
       prCount: u.pr_count,
+      activeDays,
       isBot: u.is_bot,
       isGhost: u.is_ghost,
     });

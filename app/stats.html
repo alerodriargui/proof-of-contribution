@@ -115,6 +115,8 @@
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
         </div>
       </div>
 
@@ -226,6 +228,34 @@
           </div>
           <div class="chart-wrap">
             <canvas id="chartDayOfWeek" role="img" aria-label="Activity by day of the week"></canvas>
+          </div>
+        </section>
+
+        <!-- 9. Contribution Activity -->
+        <section class="chart-card" aria-labelledby="chartContributionActivityTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartContributionActivityTitle">Contribution Activity</h2>
+              <p class="chart-subtitle">Active contributors each period with average merged PRs per contributor</p>
+            </div>
+            <span class="chart-badge" id="badgeContributionActivity">-</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartContributionActivity" role="img" aria-label="Contribution activity over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 10. Contributor Retention -->
+        <section class="chart-card" aria-labelledby="chartContributorRetentionTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartContributorRetentionTitle">Contributor Retention</h2>
+              <p class="chart-subtitle">Share of active contributors who returned from the previous period</p>
+            </div>
+            <span class="chart-badge" id="badgeContributorRetention">-</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartContributorRetention" role="img" aria-label="Contributor retention over time"></canvas>
           </div>
         </section>
 

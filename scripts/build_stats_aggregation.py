@@ -82,6 +82,7 @@ def main() -> int:
                         "first_seen": day_key,
                         "orgs": [filename_prefix],
                         "pr_count": 1,
+                        "active_days": {filename_prefix: {day_key: 1}},
                         "is_bot": bot,
                         "is_ghost": ghost,
                     }
@@ -91,6 +92,8 @@ def main() -> int:
                     if filename_prefix not in user["orgs"]:
                         user["orgs"].append(filename_prefix)
                     user["pr_count"] += 1
+                    org_activity = user.setdefault("active_days", {}).setdefault(filename_prefix, {})
+                    org_activity[day_key] = org_activity.get(day_key, 0) + 1
 
         aggregated_prs[filename_prefix] = org_days
         aggregated_prs_ex_bots[filename_prefix] = org_days_ex_bots
