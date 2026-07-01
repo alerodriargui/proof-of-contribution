@@ -608,6 +608,7 @@ function renderRecentPrs(pulls) {
         <span class="recent-pr-body">
           <span class="recent-pr-title">#${escapeHtml(pr.pr_number)} ${escapeHtml(pr.pr_title || "")}</span>
           <span class="recent-pr-meta">
+            <span class="recent-pr-org" style="--org-c:${orgColor(pr.org)}">${escapeHtml(orgLabel(pr.org))}</span>
             <span class="recent-pr-project">${escapeHtml(pr.proyecto || "unknown")}</span>
             <span class="recent-pr-date">· ${escapeHtml(timeAgo(pr.merged_at || pr.merged_date))}</span>
           </span>
