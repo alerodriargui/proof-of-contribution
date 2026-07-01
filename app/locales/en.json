@@ -217,7 +217,7 @@
                     "noRecentPrs":  "No recent PRs found.",
                     "notFoundBreadcrumb":  "Not found",
                     "multiEcosystem":  "Multi-ecosystem contributor across {ecosystems}",
-                    "activeIn":  "Active in {ecosystem}",
+                    "activeIn":  "Contributor in {ecosystem}",
                     "thisEcosystem":  "this ecosystem",
                     "profileTitle":  "{user} - Contributor Profile | Proof of Contribution",
                     "profileDescription":  "{user} contributed {prs} PRs across {ecosystems} ecosystem(s). View their full contribution profile.",
