@@ -17,7 +17,7 @@
     <link rel="icon" href="../app/assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../app/assets/favicon.svg" />
     <script>
-    // Redirect legacy ?username= URLs to canonical /contributors/{username}
+    // Canonicalize legacy ?username= URLs without a network hop.
     (function() {
       var params = new URLSearchParams(location.search);
       var u = params.get("username");
@@ -28,7 +28,7 @@
           if (v) p.set(k, v);
         });
         var qs = p.toString();
-        location.replace("/contributors/" + encodeURIComponent(u) + (qs ? "?" + qs : ""));
+        history.replaceState(null, "", "/contributors/" + encodeURIComponent(u) + (qs ? "?" + qs : ""));
       }
     })();
     </script>
