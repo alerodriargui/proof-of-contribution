@@ -1112,6 +1112,8 @@ a {
 
 @media (max-width: 760px) {
   .landing-header {
+    grid-template-columns: minmax(0, 1fr) minmax(86px, auto) minmax(92px, auto);
+    column-gap: 8px;
     width: calc(100% - 28px);
     min-height: 72px;
   }
@@ -1122,8 +1124,16 @@ a {
 
   .button-small {
     min-height: 38px;
-    padding: 0 14px;
+    padding: 0 12px;
+    font-size: 0.78rem;
     white-space: nowrap;
+  }
+
+  .landing-header .language-select {
+    width: 100%;
+    min-height: 38px;
+    padding-inline: 9px;
+    font-size: 0.72rem;
   }
 
   .hero {
@@ -1281,16 +1291,26 @@ a {
 
 @media (max-width: 440px) {
   .landing-header {
-    width: calc(100% - 20px);
+    grid-template-columns: minmax(0, 1fr) 92px 86px;
+    column-gap: 6px;
+    width: calc(100% - 18px);
   }
 
   .landing-brand span {
-    max-width: 95px;
+    max-width: 82px;
     line-height: 1.05;
   }
 
   .landing-header .button-small {
-    display: none;
+    min-height: 36px;
+    padding-inline: 8px;
+    font-size: 0.68rem;
+  }
+
+  .landing-header .language-select {
+    min-height: 36px;
+    padding-inline: 6px;
+    font-size: 0.64rem;
   }
 
   .preview-top {
@@ -1330,6 +1350,30 @@ a {
 
   .button-small {
     width: auto;
+  }
+
+  .landing-header {
+    grid-template-columns: minmax(0, 1fr) 84px 78px;
+    width: calc(100% - 14px);
+  }
+
+  .landing-brand {
+    gap: 7px;
+  }
+
+  .landing-brand img {
+    width: 24px;
+    height: 30px;
+  }
+
+  .landing-brand span {
+    max-width: 72px;
+    font-size: 0.72rem;
+  }
+
+  .landing-header .button-small {
+    padding-inline: 6px;
+    font-size: 0.62rem;
   }
 
   .hero {
