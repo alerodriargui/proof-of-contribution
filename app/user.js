@@ -38,8 +38,27 @@ const ORG_LABELS = {
   near: "NEAR", sui: "Sui", mystenlabs: "Sui",
 };
 
-function orgLabel(org) {
+const ORG_ALIASES = {
+  "bnb-chain": "bnb",
+  dogecoin: "doge",
+  "hyperliquid-dex": "hype",
+  tronprotocol: "tron",
+  "cardano-foundation": "cardano",
+  smartcontractkit: "link",
+  "solana-labs": "solana",
+  "ava-labs": "avalanche",
+  offchainlabs: "arbitrum",
+  "0xpolygon": "polygon",
+  mystenlabs: "sui",
+};
+
+function canonicalOrg(org) {
   const key = (org || "").toLowerCase();
+  return ORG_ALIASES[key] || key;
+}
+
+function orgLabel(org) {
+  const key = canonicalOrg(org);
   return ORG_LABELS[key] || (key.charAt(0).toUpperCase() + key.slice(1));
 }
 
@@ -54,7 +73,7 @@ const ORG_COLORS = {
 };
 
 function orgColor(org) {
-  return ORG_COLORS[(org || "").toLowerCase()] || "#6366f1";
+  return ORG_COLORS[canonicalOrg(org)] || "#6366f1";
 }
 
 const $ = (id) => document.getElementById(id);
@@ -275,7 +294,7 @@ async function loadSummary() {
     throw new Error("Invalid dashboard-summary.json");
   }
   return summary.rows.map(row => ({
-    org: (row.org || "unknown").toLowerCase(),
+    org: canonicalOrg(row.org || "unknown"),
     proyecto: row.project || row.proyecto || "",
     usuario: row.user || row.usuario || "",
     avatar_url: row.avatar_url || "",
@@ -363,7 +382,7 @@ function renderStatCards(user) {
 async function ensureDetails(user) {
   const sources = user.orgs
     .filter(org => !state.detailRows.has(org) && !state.orgsLoaded.has(org))
-    .map(org => RAW_SOURCES.find(s => s.org === org))
+    .map(org => RAW_SOURCES.find(s => s.org === canonicalOrg(org)))
     .filter(Boolean);
   if (sources.length === 0) return;
 
@@ -377,7 +396,7 @@ async function ensureDetails(user) {
     if (result.status === "fulfilled") {
       const { org, rows } = result.value;
       const normalized = rows.map(row => ({
-        org: (row.org || org).toLowerCase(),
+        org: canonicalOrg(row.org || org),
         proyecto: row.proyecto || "",
         usuario: row.usuario || row.user || "",
         avatar_url: row.avatar_url || "",

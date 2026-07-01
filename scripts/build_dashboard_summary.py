@@ -16,6 +16,25 @@ DATA_DIR = ROOT / "data"
 SUMMARY_PATH = DATA_DIR / "dashboard-summary.json"
 META_PATH = DATA_DIR / "dashboard-meta.json"
 
+ORG_ALIASES = {
+    "bnb-chain": "bnb",
+    "dogecoin": "doge",
+    "hyperliquid-dex": "hype",
+    "tronprotocol": "tron",
+    "cardano-foundation": "cardano",
+    "smartcontractkit": "link",
+    "solana-labs": "solana",
+    "ava-labs": "avalanche",
+    "offchainlabs": "arbitrum",
+    "0xpolygon": "polygon",
+    "mystenlabs": "sui",
+}
+
+
+def canonical_org(org: str) -> str:
+    key = org.strip().lower()
+    return ORG_ALIASES.get(key, key)
+
 
 def iso_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
@@ -31,7 +50,7 @@ def read_source(path: Path, fallback_org: str) -> tuple[list[dict[str, object]],
     with path.open(newline="", encoding="utf-8-sig") as csv_file:
         reader = csv.DictReader(csv_file)
         for row in reader:
-            org = (row.get("org") or fallback_org).strip().lower()
+            org = canonical_org(row.get("org") or fallback_org)
             project = (row.get("proyecto") or "").strip()
             user = (row.get("usuario") or row.get("user") or "").strip()
             if not org or not project or not user:

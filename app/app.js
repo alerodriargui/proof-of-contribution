@@ -84,6 +84,25 @@ const state = {
   pageSize: 100,
 };
 
+const ORG_ALIASES = {
+  "bnb-chain": "bnb",
+  dogecoin: "doge",
+  "hyperliquid-dex": "hype",
+  tronprotocol: "tron",
+  "cardano-foundation": "cardano",
+  smartcontractkit: "link",
+  "solana-labs": "solana",
+  "ava-labs": "avalanche",
+  offchainlabs: "arbitrum",
+  "0xpolygon": "polygon",
+  mystenlabs: "sui",
+};
+
+function canonicalOrg(org) {
+  const key = (org || "").toLowerCase();
+  return ORG_ALIASES[key] || key;
+}
+
 const els = {
   dataStatus: document.querySelector("#dataStatus"),
   userSearch: document.querySelector("#userSearch"),
@@ -204,7 +223,7 @@ async function loadDashboardSummary() {
 function normalizeRows(source) {
   return source.rows
     .map((row) => ({
-      org: (row.org || source.org || "unknown").toLowerCase(),
+      org: canonicalOrg(row.org || source.org || "unknown"),
       proyecto: row.proyecto || "",
       usuario: row.usuario || row.user || "",
       avatar_url: row.avatar_url || row.avatar || "",
@@ -226,7 +245,7 @@ function normalizeSummaryRows(summary) {
 
   return summary.rows
     .map((row) => ({
-      org: (row.org || "unknown").toLowerCase(),
+      org: canonicalOrg(row.org || "unknown"),
       proyecto: row.project || row.proyecto || "",
       usuario: row.user || row.usuario || "",
       avatar_url: row.avatar_url || "",
@@ -402,7 +421,7 @@ function orgLabel(org) {
     sui: "Sui",
     mystenlabs: "Sui",
   };
-  const key = (org || "").toLowerCase();
+  const key = canonicalOrg(org);
   return labels[key] ?? (key.charAt(0).toUpperCase() + key.slice(1));
 }
 
@@ -417,11 +436,11 @@ const ORG_COLORS = {
 };
 
 function orgColor(org) {
-  return ORG_COLORS[(org || "").toLowerCase()] || "#6366f1";
+  return ORG_COLORS[canonicalOrg(org)] || "#6366f1";
 }
 
 function orgTagMarkup(org) {
-  const key = org.toLowerCase();
+  const key = canonicalOrg(org);
   const color = orgColor(key);
   return `<span class="tag"><span class="tag-dot" style="background:${color}"></span>${escapeHtml(orgLabel(org))}</span>`;
 }
