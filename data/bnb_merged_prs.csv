@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+bnb-chain,safe-transaction-service,ruojunm,https://avatars.githubusercontent.com/u/46366167?v=4,8,fix: fix ssrf security issue,2026-07-01T09:52:23Z,2026-07-01,https://github.com/bnb-chain/safe-transaction-service/pull/8
+bnb-chain,bnbagent-sdk,jardenx,https://avatars.githubusercontent.com/u/274764117?v=4,46,test(erc8183): mock intent seam for router/policy write ops,2026-07-01T08:50:58Z,2026-07-01,https://github.com/bnb-chain/bnbagent-sdk/pull/46
+bnb-chain,bnbagent-sdk,jardenx,https://avatars.githubusercontent.com/u/274764117?v=4,44,"feat: add TWAK wallet + x402 delegation, register A2A/MCP, drop the built-in REST server",2026-07-01T08:35:38Z,2026-07-01,https://github.com/bnb-chain/bnbagent-sdk/pull/44
+bnb-chain,reth-bsc,chee-chyuan,https://avatars.githubusercontent.com/u/60590919?v=4,422,fix(rpc/eth_config): return null blobSchedule to match go-bsc,2026-07-01T06:14:41Z,2026-07-01,https://github.com/bnb-chain/reth-bsc/pull/422
 bnb-chain,bsc,flywukong,https://avatars.githubusercontent.com/u/19421226?v=4,3739,core/types: extract bid and block mev info into builder subpackage,2026-06-30T08:57:26Z,2026-06-30,https://github.com/bnb-chain/bsc/pull/3739
 bnb-chain,bsc-snapshots,chee-chyuan,https://avatars.githubusercontent.com/u/60590919?v=4,456,Update README with v2 snapshot details and TrieDB notice,2026-06-30T08:07:40Z,2026-06-30,https://github.com/bnb-chain/bsc-snapshots/pull/456
 bnb-chain,bnb-chain.github.io,0xlucasliao,https://avatars.githubusercontent.com/u/177768160?v=4,842,Add Token Recovery Tool sunset announcements,2026-06-29T13:38:35Z,2026-06-29,https://github.com/bnb-chain/bnb-chain.github.io/pull/842

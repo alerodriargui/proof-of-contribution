@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T20:31:55Z",
+  "generated_at": "2026-07-01T14:14:57Z",
   "total_repos_processed": 92,
-  "total_merged_prs": 1891,
+  "total_merged_prs": 1893,
   "ecosystems": [
     {
       "org": "ripple",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 92,
       "processed_repos": 92,
-      "prs_found": 1891,
-      "prs_after_merge": 4841,
+      "prs_found": 1893,
+      "prs_after_merge": 4843,
       "api_request_count": 93,
-      "rate_limit_remaining": "4322",
-      "rate_limit_reset": "1782854517",
-      "started_at": "2026-06-30T20:30:42.062257+00:00",
-      "finished_at": "2026-06-30T20:31:55.561652+00:00",
-      "duration_seconds": 73.5,
+      "rate_limit_remaining": "4415",
+      "rate_limit_reset": "1782918537",
+      "started_at": "2026-07-01T14:14:03.836403+00:00",
+      "finished_at": "2026-07-01T14:14:57.952608+00:00",
+      "duration_seconds": 54.12,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "ripple",
-        "last_merged_at": "2026-06-30T20:16:45Z",
-        "last_run_at": "2026-06-30T20:31:55Z",
-        "total_prs": 4841,
+        "last_merged_at": "2026-07-01T10:59:53Z",
+        "last_run_at": "2026-07-01T14:14:57Z",
+        "total_prs": 4843,
         "incremental": true,
         "overlap_hours": 48.0
       }

@@ -1,34 +1,30 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T20:45:39Z",
-  "total_repos_processed": 377,
-  "total_merged_prs": 5772,
+  "generated_at": "2026-07-01T14:23:58Z",
+  "total_repos_processed": 378,
+  "total_merged_prs": 5773,
   "ecosystems": [
     {
       "org": "smartcontractkit",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 378,
-      "processed_repos": 377,
-      "prs_found": 5772,
-      "prs_after_merge": 44858,
+      "processed_repos": 378,
+      "prs_found": 5773,
+      "prs_after_merge": 44885,
       "api_request_count": 382,
-      "rate_limit_remaining": "3312",
-      "rate_limit_reset": "1782854517",
-      "started_at": "2026-06-30T20:40:58.935012+00:00",
-      "finished_at": "2026-06-30T20:45:39.294767+00:00",
-      "duration_seconds": 280.36,
-      "skipped_repos": [
-        "go-ethereum"
-      ],
-      "errors": [
-        "go-ethereum: HTTP 401 for https://api.github.com/repos/smartcontractkit/go-ethereum/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
-      ],
+      "rate_limit_remaining": "3403",
+      "rate_limit_reset": "1782918537",
+      "started_at": "2026-07-01T14:20:54.101918+00:00",
+      "finished_at": "2026-07-01T14:23:58.647588+00:00",
+      "duration_seconds": 184.55,
+      "skipped_repos": [],
+      "errors": [],
       "checkpoint": {
         "org": "smartcontractkit",
-        "last_merged_at": "2026-06-30T20:06:15Z",
-        "last_run_at": "2026-06-30T20:45:39Z",
-        "total_prs": 44858,
+        "last_merged_at": "2026-07-01T14:16:18Z",
+        "last_run_at": "2026-07-01T14:23:58Z",
+        "total_prs": 44885,
         "incremental": true,
         "overlap_hours": 48.0
       }

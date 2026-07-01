@@ -1,36 +1,30 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-06-30T20:30:41Z",
-  "total_repos_processed": 168,
-  "total_merged_prs": 4064,
+  "generated_at": "2026-07-01T14:14:03Z",
+  "total_repos_processed": 170,
+  "total_merged_prs": 4169,
   "ecosystems": [
     {
       "org": "uniswap",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 170,
-      "processed_repos": 168,
-      "prs_found": 4064,
-      "prs_after_merge": 15074,
+      "processed_repos": 170,
+      "prs_found": 4169,
+      "prs_after_merge": 15080,
       "api_request_count": 172,
-      "rate_limit_remaining": "4415",
-      "rate_limit_reset": "1782854517",
-      "started_at": "2026-06-30T20:28:06.074229+00:00",
-      "finished_at": "2026-06-30T20:30:41.980326+00:00",
-      "duration_seconds": 155.91,
-      "skipped_repos": [
-        "unified-routing-api",
-        "v3-polars"
-      ],
-      "errors": [
-        "unified-routing-api: HTTP 401 for https://api.github.com/repos/uniswap/unified-routing-api/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}",
-        "v3-polars: HTTP 401 for https://api.github.com/repos/uniswap/v3-polars/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
-      ],
+      "rate_limit_remaining": "4508",
+      "rate_limit_reset": "1782918537",
+      "started_at": "2026-07-01T14:12:14.524639+00:00",
+      "finished_at": "2026-07-01T14:14:03.751320+00:00",
+      "duration_seconds": 109.23,
+      "skipped_repos": [],
+      "errors": [],
       "checkpoint": {
         "org": "uniswap",
-        "last_merged_at": "2026-06-30T17:51:24Z",
-        "last_run_at": "2026-06-30T20:30:41Z",
-        "total_prs": 15074,
+        "last_merged_at": "2026-07-01T00:48:58Z",
+        "last_run_at": "2026-07-01T14:14:03Z",
+        "total_prs": 15080,
         "incremental": true,
         "overlap_hours": 48.0
       }

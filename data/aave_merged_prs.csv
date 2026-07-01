@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+aave,interface,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,3054,fix: whitelist token,2026-07-01T08:21:33Z,2026-07-01,https://github.com/aave/interface/pull/3054
 aave,protocol-subgraphs,grothem,https://avatars.githubusercontent.com/u/23554636?v=4,166,feat: monad,2026-06-30T18:41:45Z,2026-06-30,https://github.com/aave/protocol-subgraphs/pull/166
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3046,chore: add stcusd icon,2026-06-30T17:45:23Z,2026-06-30,https://github.com/aave/interface/pull/3046
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3049,Fix/avail liq emode,2026-06-30T17:16:23Z,2026-06-30,https://github.com/aave/interface/pull/3049
