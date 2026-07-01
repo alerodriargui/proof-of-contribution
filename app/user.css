@@ -348,7 +348,7 @@
   background: var(--panel);
 }
 
-.profile-section-card[aria-label="Recent pull requests"] .ps-head {
+.profile-section-card[aria-label="Recent contributions"] .ps-head {
   padding-bottom: 8px;
 }
 
@@ -391,7 +391,7 @@
   line-height: 1.5;
 }
 
-/* ── PR link row ────────────────────────────────── */
+/* ── Contribution link row ────────────────────────────────── */
 .recent-pr-link {
   display: flex;
   align-items: flex-start;

@@ -1,6 +1,6 @@
 ## Description
 
-Please include a summary of the changes and the motivation behind them. Include any relevant background context or issues that this PR resolves.
+Please include a summary of the changes and the motivation behind them. Include any relevant background context or issues that this contribution resolves.
 
 Fixes #(issue number)
 
