@@ -687,6 +687,28 @@ function renderDetails(user) {
 }
 
 // ── Init ──────────────────────────────────────────────
+function refreshProfileLocale() {
+  localizeProfileDom();
+
+  if (!state.username) {
+    return;
+  }
+
+  if (state.summaryRows.length > 0) {
+    const user = buildUserFromSummary(state.summaryRows);
+    if (!user) {
+      showNotFound();
+      return;
+    }
+    state.summaryUser = user;
+    renderHero(user);
+    renderStatCards(user);
+    renderDetails(user);
+  }
+}
+
+window.addEventListener("poc:locale-ready", refreshProfileLocale);
+
 async function init() {
   if (window.pocI18n) {
     await window.pocI18n.ready;
