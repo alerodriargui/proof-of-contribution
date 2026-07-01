@@ -77,7 +77,7 @@
                 },
     "dashboard":  {
                       "summary":  "Summary",
-                      "prs":  "PRs",
+                      "prs":  "PR",
                       "users":  "Users",
                       "contributors":  "Contributors",
                       "experience":  "Experience",
@@ -197,7 +197,7 @@
                     "details":  "Contributor details",
                     "firstContribution":  "First contribution",
                     "latestContribution":  "Latest contribution",
-                    "totalPrs":  "Total PRs",
+                    "totalPrs":  "Total PR",
                     "experienceTier":  "Experience tier",
                     "orgsContributedTo":  "Orgs contributed to",
                     "charts":  "Contribution charts",

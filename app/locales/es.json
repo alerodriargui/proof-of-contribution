@@ -77,7 +77,7 @@
                 },
     "dashboard":  {
                       "summary":  "Resumen",
-                      "prs":  "PRs",
+                      "prs":  "PR",
                       "users":  "Usuarios",
                       "contributors":  "Colaboradores",
                       "experience":  "Experiencia",
@@ -197,7 +197,7 @@
                     "details":  "Detalles del colaborador",
                     "firstContribution":  "Primera contribución",
                     "latestContribution":  "Última contribución",
-                    "totalPrs":  "Total de PRs",
+                    "totalPrs":  "Total de PR",
                     "experienceTier":  "Nivel de experiencia",
                     "orgsContributedTo":  "Organizaciones a las que contribuyó",
                     "charts":  "Gráficos de contribuciones",
