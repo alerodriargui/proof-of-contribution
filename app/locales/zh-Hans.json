@@ -287,20 +287,6 @@
     "faqTierQuestion": "经验等级如何计算？",
     "devCopy": "克隆仓库，并从 <code>scripts/</code> 目录运行开发服务器。开发服务器会为贡献者页面处理干净 URL 的 rewrite。在本地打开 dashboard 测试更改。完整设置说明请参见仓库 README。"
   },
-  "about": {
-    "kicker": "开源加密生态系统项目",
-    "title": "为加密构建者提供的公共贡献地图。",
-    "intro": "Proof of Contribution 直接从 GitHub 提取公开贡献数据，将已合并的拉取请求转化为简单的贡献者层：谁在构建，他们在哪里贡献，以及哪些项目集中了开源活动。",
-    "overview": "项目概览",
-    "whyTitle": "为什么存在",
-    "whyCopy": "加密生态系统依赖公共基础设施，但贡献分散在许多仓库中。本项目使这项工作更易于检查。",
-    "measuresTitle": "è¡¡é‡æŒ‡æ ‡",
-    "measuresCopy": "当前版本专注于按贡献者、组织、项目和日期划分的已合并拉取请求。它有意保持透明且易于复现。",
-    "dataTitle": "数据来源",
-    "dataCopy": "数据集在项目刷新时从 GitHub 的公共 API 提取，因此仪表板反映了被扫描组织仓库的最新活动。",
-    "usefulTitle": "为何有用",
-    "usefulCopy": "原始 PR 数据一旦分组为指标就会变得更有价值：贡献者、项目、组织和贡献集中度都可以从同一公共真实来源进行比较。"
-  },
   "landing": {
     "brandHome": "Proof of Contribution é¦–é¡µ",
     "howItWorks": "运作方式",

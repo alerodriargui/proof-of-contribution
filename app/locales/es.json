@@ -287,20 +287,6 @@
     "faqEcosystemQuestion": "¿Puedo añadir un nuevo ecosistema?",
     "devCopy": "Clona el repositorio y ejecuta el servidor de desarrollo desde el directorio <code>scripts/</code>. El servidor de desarrollo gestiona reescrituras de URL limpias para la página de colaboradores. Abre el panel localmente para probar cambios. Consulta el README del repositorio para la configuración completa."
   },
-  "about": {
-    "kicker": "Proyecto de ecosistema cripto open-source",
-    "title": "Un mapa público de contribuciones para constructores cripto.",
-    "intro": "Proof of Contribution extrae datos públicos de contribuciones directamente de GitHub y convierte las pull requests fusionadas en una capa simple de colaboradores: quién construye, dónde contribuyen y qué proyectos concentran la actividad open-source.",
-    "overview": "Resumen del proyecto",
-    "whyTitle": "Por qué existe",
-    "whyCopy": "Los ecosistemas cripto dependen de infraestructura pública, pero las contribuciones están dispersas en muchos repositorios. Este proyecto facilita la inspección de ese trabajo.",
-    "measuresTitle": "Qué mide",
-    "measuresCopy": "La versión actual se enfoca en pull requests fusionadas por colaborador, organización, proyecto y fecha. Es intencionalmente transparente y fácil de reproducir.",
-    "dataTitle": "De dónde vienen los datos",
-    "dataCopy": "El conjunto de datos se extrae de la API pública de GitHub cuando se actualiza el proyecto, por lo que el panel refleja la actividad más reciente de los repositorios de las organizaciones analizadas.",
-    "usefulTitle": "Por qué es útil",
-    "usefulCopy": "Los datos brutos de PRs se vuelven más valiosos una vez agrupados en métricas: colaboradores, proyectos, organizaciones y concentración de contribuciones pueden compararse desde la misma fuente de verdad pública."
-  },
   "landing": {
     "brandHome": "Inicio de Proof of Contribution",
     "howItWorks": "Cómo funciona",

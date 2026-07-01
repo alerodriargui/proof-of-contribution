@@ -287,20 +287,6 @@
     "faqTierQuestion": "Como o nível de experiência é calculado?",
     "devCopy": "Clone o repositório e execute o servidor de desenvolvimento a partir do diretório <code>scripts/</code>. O servidor de desenvolvimento lida com reescritas de URL limpas para a página de contribuidores. Abra o dashboard localmente para testar alterações. Veja o README do repositório para instruções completas de configuração."
   },
-  "about": {
-    "kicker": "Projeto de ecossistema cripto open-source",
-    "title": "Um mapa público de contribuições para construtores cripto.",
-    "intro": "Proof of Contribution extrai dados públicos de contribuições diretamente do GitHub e transforma pull requests mescladas em uma camada simples de contribuidores: quem constrói, onde contribuem e quais projetos concentram a atividade open-source.",
-    "overview": "Visão geral do projeto",
-    "whyTitle": "Por que existe",
-    "whyCopy": "Ecossistemas cripto dependem de infraestrutura pública, mas as contribuições estão dispersas em muitos repositórios. Este projeto facilita a inspeção desse trabalho.",
-    "measuresTitle": "O que mede",
-    "measuresCopy": "A versão atual foca em pull requests mescladas por contribuidor, organização, projeto e data. É intencionalmente transparente e fácil de reproduzir.",
-    "dataTitle": "De onde vêm os dados",
-    "dataCopy": "O conjunto de dados é extraído da API pública do GitHub quando o projeto é atualizado, então o painel reflete a atividade mais recente dos repositórios das organizações analisadas.",
-    "usefulTitle": "Por que é útil",
-    "usefulCopy": "Os dados brutos de PRs se tornam mais valiosos quando agrupados em métricas: contribuidores, projetos, organizações e concentração de contribuições podem ser comparados a partir da mesma fonte pública de verdade."
-  },
   "landing": {
     "brandHome": "Início do Proof of Contribution",
     "howItWorks": "Como funciona",
