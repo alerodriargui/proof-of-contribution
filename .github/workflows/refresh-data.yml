@@ -18,7 +18,7 @@ on:
   schedule:
     # GitHub Actions schedules use UTC. Run away from the top of the hour.
     # Active ecosystems (ethereum, bitcoin, solana, etc.) get fresh data
-    # every 12 hours. Low-activity ecosystems are only refreshed in the
+    # every 2 hours. Low-activity ecosystems are only refreshed in the
     # same pass (no separate schedule needed). Cadence can be tuned per
     # ecosystem via the `config` dict in scripts/refresh_data.py.
     - cron: "17 */2 * * *"
@@ -72,6 +72,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data
-          git commit -m "chore(data): automatic 12-hour refresh"
+          git commit -m "chore(data): automatic 2-hour refresh"
           git pull --rebase --autostash origin "$GITHUB_REF_NAME"
           git push
