@@ -199,6 +199,8 @@
                     "firstContribution":  "Primera contribución",
                     "latestContribution":  "Última contribución",
                     "totalPrs":  "Total de PR",
+                    "lines":  "Líneas",
+                    "unknownLineCounts":  "Recuentos de líneas desconocidos",
                     "experienceTier":  "Nivel de experiencia",
                     "orgsContributedTo":  "Organizaciones a las que contribuyó",
                     "charts":  "Gráficos de contribuciones",

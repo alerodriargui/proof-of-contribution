@@ -91,9 +91,9 @@ function localizeProfileDom() {
     [".hero-stat:nth-child(3) .hero-stat-label", "common.ecosystems"],
     [".profile-stat-card:nth-child(1) .pstat-label", "profile.firstContribution"],
     [".profile-stat-card:nth-child(2) .pstat-label", "profile.latestContribution"],
-    [".profile-stat-card:nth-child(3) .pstat-label", "profile.totalPrs"],
-    [".profile-stat-card:nth-child(4) .pstat-label", "profile.experienceTier"],
-    [".profile-stat-card:nth-child(5) .pstat-label", "profile.orgsContributedTo"],
+    [".profile-stat-card:nth-child(3) .pstat-label", "profile.lines"],
+    [".profile-stat-card:nth-child(4) .pstat-label", "profile.unknownLineCounts"],
+    [".profile-stat-card:nth-child(5) .pstat-label", "profile.experienceTier"],
     ["#recentPrList .project-empty", "profile.noRecentPrs"],
   ];
   textSelectors.forEach(([selector, key]) => {
@@ -384,20 +384,30 @@ function renderHero(user) {
 function renderStatCards(user) {
   $("firstContrib").textContent = user.firstDate;
   $("latestContrib").textContent = user.latestDate;
-  $("totalPrsStat").textContent = formatNumber(user.n_prs);
-  $("changedLinesStat").textContent = user.total_changed_lines
-    ? formatNumber(user.total_changed_lines)
-    : t("common.unknown");
-  $("unknownLineCountStat").textContent = user.unknown_line_count
-    ? formatNumber(user.unknown_line_count)
-    : "0";
+  const totalPrsEl = $("totalPrsStat");
+  if (totalPrsEl) totalPrsEl.textContent = formatNumber(user.n_prs);
+  const changedLinesEl = $("changedLinesStat");
+  if (changedLinesEl) {
+    changedLinesEl.textContent = user.total_changed_lines
+      ? formatNumber(user.total_changed_lines)
+      : t("common.unknown");
+  }
+  const unknownLineCountEl = $("unknownLineCountStat");
+  if (unknownLineCountEl) {
+    unknownLineCountEl.textContent = user.unknown_line_count
+      ? formatNumber(user.unknown_line_count)
+      : "0";
+  }
   const tierEl = $("experienceTier");
   if (tierEl) tierEl.innerHTML = contributorTierMarkup(user.n_prs);
-  const orgLinks = user.orgs.map(o => {
-    const c = orgColor(o);
-    return `<span class="tag"><span class="tag-dot" style="background:${c}"></span>${escapeHtml(orgLabel(o))}</span>`;
-  }).join(" ");
-  $("orgsList").innerHTML = orgLinks;
+  const orgsListEl = $("orgsList");
+  if (orgsListEl) {
+    const orgLinks = user.orgs.map(o => {
+      const c = orgColor(o);
+      return `<span class="tag"><span class="tag-dot" style="background:${c}"></span>${escapeHtml(orgLabel(o))}</span>`;
+    }).join(" ");
+    orgsListEl.innerHTML = orgLinks;
+  }
 }
 
 // ── Detail loading ────────────────────────────────────

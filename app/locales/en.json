@@ -199,6 +199,8 @@
                     "firstContribution":  "First contribution",
                     "latestContribution":  "Latest contribution",
                     "totalPrs":  "Total PR",
+                    "lines":  "Lines",
+                    "unknownLineCounts":  "Unknown line counts",
                     "experienceTier":  "Experience tier",
                     "orgsContributedTo":  "Orgs contributed to",
                     "charts":  "Contribution charts",
