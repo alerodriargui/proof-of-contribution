@@ -2,7 +2,7 @@
 
 > Open-source data infrastructure and dashboards for making GitHub contribution histories visible across crypto ecosystems.
 
-Proof of Contribution tracks merged pull requests from public GitHub organizations, stores reproducible CSV datasets, builds pre-aggregated JSON for fast browsing, and publishes the result as a static site.
+Proof of Contribution tracks merged contributions from public GitHub organizations, stores reproducible CSV datasets, builds pre-aggregated JSON for fast browsing, and publishes the result as a static site.
 
 ## Live Deployments
 
@@ -14,11 +14,11 @@ Proof of Contribution tracks merged pull requests from public GitHub organizatio
 
 ## Architecture Overview
 
-- **Data Scraper** (`ethereum_pr_counter.py`): Python CLI tool that queries the GitHub API for merged pull requests. It supports full scans, incremental scans, checkpointing, run summaries, optional line-count collection, and local `.env` token loading.
+- **Data Scraper** (`ethereum_pr_counter.py`): Python CLI tool that queries the GitHub API for merged contributions. It supports full scans, incremental scans, checkpointing, run summaries, optional line-count collection, and local `.env` token loading.
 - **Automated Data Pipeline** (`.github/workflows/refresh-data.yml`): scheduled GitHub Actions workflow that refreshes datasets, validates output, rebuilds pre-aggregated JSON, and commits changed files under `data/`.
 - **Dashboard Summary** (`scripts/build_dashboard_summary.py`): builds `data/dashboard-summary.json` and `data/dashboard-meta.json` so the dashboard can render without parsing every raw CSV on first load.
 - **Statistics Aggregation** (`scripts/build_stats_aggregation.py`): builds `data/stats-aggregation.json` for the statistics page.
-- **Line-Count Backfill** (`scripts/backfill_line_counts.py`): resumable helper for enriching existing PR rows with `additions`, `deletions`, and `changed_lines`.
+- **Line-Count Backfill** (`scripts/backfill_line_counts.py`): resumable helper for enriching existing Contribution rows with `additions`, `deletions`, and `changed_lines`.
 - **Frontend App** (`app/`): static dashboard, statistics, docs, contributor profile UI, localization files, styles, and assets.
 - **Hosting**: deployed as a static site on Render. The public domain points to the Render deployment.
 
@@ -49,7 +49,7 @@ near
 sui
 ```
 
-Each ecosystem has a raw PR file under `data/`, for example:
+Each ecosystem has a raw Contribution file under `data/`, for example:
 
 ```text
 data/ethereum_merged_prs.csv
@@ -57,7 +57,7 @@ data/solana_merged_prs.csv
 data/sui_merged_prs.csv
 ```
 
-The current `data/dashboard-meta.json` snapshot contains 18 ecosystem files, 392,609 raw PR rows, and 33,221 dashboard summary rows. That metadata file is the quickest way to check the committed dataset version, generation time, source files, and per-ecosystem row counts.
+The current `data/dashboard-meta.json` snapshot contains 18 ecosystem files, 392,609 raw Contribution rows, and 33,221 dashboard summary rows. That metadata file is the quickest way to check the committed dataset version, generation time, source files, and per-ecosystem row counts.
 
 Raw CSV columns:
 
@@ -144,7 +144,7 @@ python .\scripts\refresh_data.py --full --sleep 0.1
 
 ## Backfill Line Counts
 
-Newly discovered PRs can collect additions/deletions during refreshes. Existing CSV rows can be enriched separately with a resumable, rate-limit-aware backfill:
+Newly discovered Contributions can collect additions/deletions during refreshes. Existing CSV rows can be enriched separately with a resumable, rate-limit-aware backfill:
 
 ```powershell
 python .\scripts\backfill_line_counts.py --ecosystem ethereum --limit 1000
@@ -178,7 +178,7 @@ To verify the scraper without scanning every repository:
 python .\ethereum_pr_counter.py --org ethereum --max-repos 1 --events-only --pr-output smoke_prs.csv
 ```
 
-Use `--skip-line-counts` if you want to avoid PR-detail calls during a smoke test:
+Use `--skip-line-counts` if you want to avoid Contribution-detail calls during a smoke test:
 
 ```powershell
 python .\ethereum_pr_counter.py --org ethereum --max-repos 1 --events-only --skip-line-counts --pr-output smoke_prs.csv

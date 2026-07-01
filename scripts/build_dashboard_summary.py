@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build cacheable dashboard summary files from the raw PR CSV files."""
+"""Build cacheable dashboard summary files from the raw Contribution CSV files."""
 
 from __future__ import annotations
 

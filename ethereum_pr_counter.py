@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Count merged pull request authors across public repositories in GitHub orgs.
+Count merged contribution authors across public repositories in GitHub orgs.
 
 Includes rate-limit monitoring, checkpoint persistence, retry with jitter,
 and structured run-summary output for safe incremental refresh cadences.
@@ -29,8 +29,8 @@ from urllib.request import Request, urlopen
 API_ROOT = "https://api.github.com"
 DEFAULT_ORGS = ("ethereum",)
 DEFAULT_OUTPUT = "data/crypto_merged_pr_authors.csv"
-DEFAULT_PROJECT_OUTPUT = "data/crypto_merged_pr_authors_by_project.csv"
-DEFAULT_PR_OUTPUT = "data/{org}_merged_prs.csv"
+DEFAULT_ContributionOJECT_OUTPUT = "data/crypto_merged_pr_authors_by_project.csv"
+DEFAULT_Contribution_OUTPUT = "data/{org}_merged_prs.csv"
 ENV_FILE = ".env"
 MAX_HTTP_ATTEMPTS = 5
 RETRYABLE_HTTP_CODES = {500, 502, 503, 504}
@@ -58,7 +58,7 @@ def increment_api_request_count() -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Count merged PR authors across public GitHub repositories."
+        description="Count merged Contribution authors across public GitHub repositories."
     )
     parser.add_argument(
         "--org",
@@ -77,21 +77,21 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--project-output",
-        default=DEFAULT_PROJECT_OUTPUT,
-        help=f"Project-level CSV output path. Default: {DEFAULT_PROJECT_OUTPUT}",
+        default=DEFAULT_ContributionOJECT_OUTPUT,
+        help=f"Project-level CSV output path. Default: {DEFAULT_ContributionOJECT_OUTPUT}",
     )
     parser.add_argument(
         "--pr-output",
-        default=DEFAULT_PR_OUTPUT,
+        default=DEFAULT_Contribution_OUTPUT,
         help=(
-            "PR-level CSV output path for charts. "
+            "Contribution-level CSV output path for charts. "
             "Use {org} to include the org name. Default: {org}_merged_prs.csv"
         ),
     )
     parser.add_argument(
         "--events-only",
         action="store_true",
-        help="Only write the PR-level CSV. Useful for one CSV per org.",
+        help="Only write the Contribution-level CSV. Useful for one CSV per org.",
     )
     parser.add_argument(
         "--max-repos",
@@ -109,7 +109,7 @@ def parse_args() -> argparse.Namespace:
         "--incremental",
         action="store_true",
         help=(
-            "Keep the existing PR CSV and fetch only recently updated pull requests. "
+            "Keep the existing Contribution CSV and fetch only recently updated contributions. "
             "Falls back to a full scan when the output file does not exist."
         ),
     )
@@ -118,7 +118,7 @@ def parse_args() -> argparse.Namespace:
         type=float,
         default=48,
         help=(
-            "Hours to look back from the newest existing merged PR in incremental mode. "
+            "Hours to look back from the newest existing merged Contribution in incremental mode. "
             "Default: 48"
         ),
     )
@@ -145,7 +145,7 @@ def parse_args() -> argparse.Namespace:
         "--skip-line-counts",
         action="store_true",
         help=(
-            "Do not fetch PR detail payloads for additions/deletions. Existing "
+            "Do not fetch Contribution detail payloads for additions/deletions. Existing "
             "line-count values are preserved during incremental merges."
         ),
     )
@@ -435,7 +435,7 @@ def fetch_pull_request_detail(
     url = f"{API_ROOT}/repos/{org}/{repo}/pulls/{number}"
     payload, _ = github_get_json(url, headers, sleep_seconds)
     if not isinstance(payload, dict):
-        raise GitHubAPIError(f"Expected pull request object from {url}")
+        raise GitHubAPIError(f"Expected contribution object from {url}")
     return payload
 
 
@@ -1014,7 +1014,7 @@ def main() -> int:
 
     print("Done.", flush=True)
     print(f"Total repositories processed: {total_processed_repos}", flush=True)
-    print(f"Total merged PRs counted: {total_merged_prs}", flush=True)
+    print(f"Total merged Contributions counted: {total_merged_prs}", flush=True)
 
     # Write aggregated run summary
     if args.run_summary_output:

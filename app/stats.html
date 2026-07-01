@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Statistics & charts for merged pull requests, contributors activity across crypto open-source ecosystems over time."
+      content="Statistics & charts for merged contributions, contributors activity across crypto open-source ecosystems over time."
     />
     <meta name="theme-color" content="#ffffff" />
     <meta property="og:title" content="Proof of Contribution – Statistics" />
     <meta
       property="og:description"
-      content="Time-series charts for PR activity and contributor growth across crypto open-source networks."
+      content="Time-series charts for Contribution activity and contributor growth across crypto open-source networks."
     />
     <meta property="og:image" content="./assets/poc-logo.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Proof of Contribution – Statistics" />
     <meta
       name="twitter:description"
-      content="Time-series charts for PR activity and contributor growth across crypto open-source networks."
+      content="Time-series charts for Contribution activity and contributor growth across crypto open-source networks."
     />
     <meta name="twitter:image" content="./assets/poc-logo.svg" />
     <title>Statistics – Proof of Contribution</title>
@@ -124,17 +124,17 @@
       <!-- Charts grid -->
       <div class="charts-grid" id="chartsGrid" hidden>
 
-        <!-- 1. Merged PRs per network over time -->
+        <!-- 1. Merged Contributions per network over time -->
         <section class="chart-card" aria-labelledby="chartMergedPrsTitle">
           <div class="chart-card-head">
             <div>
-              <h2 id="chartMergedPrsTitle">Merged PRs per Network</h2>
-              <p class="chart-subtitle">Number of pull requests merged each period, broken down by network</p>
+              <h2 id="chartMergedPrsTitle">Merged Contributions per Network</h2>
+              <p class="chart-subtitle">Number of contributions merged each period, broken down by network</p>
             </div>
             <span class="chart-badge" id="badgeMergedPrs">–</span>
           </div>
           <div class="chart-wrap">
-            <canvas id="chartMergedPrs" role="img" aria-label="Merged PRs per network over time"></canvas>
+            <canvas id="chartMergedPrs" role="img" aria-label="Merged Contributions per network over time"></canvas>
           </div>
         </section>
 
@@ -166,17 +166,17 @@
           </div>
         </section>
 
-        <!-- 4. Total PRs all orgs combined -->
+        <!-- 4. Total Contributions all orgs combined -->
         <section class="chart-card" aria-labelledby="chartTotalPrsTitle">
           <div class="chart-card-head">
             <div>
-              <h2 id="chartTotalPrsTitle">Total Merged PRs</h2>
-              <p class="chart-subtitle">All networks combined – cumulative PR count over time</p>
+              <h2 id="chartTotalPrsTitle">Total Merged Contributions</h2>
+              <p class="chart-subtitle">All networks combined – cumulative Contribution count over time</p>
             </div>
             <span class="chart-badge" id="badgeTotalPrs">–</span>
           </div>
           <div class="chart-wrap">
-            <canvas id="chartTotalPrs" role="img" aria-label="Total merged PRs over time"></canvas>
+            <canvas id="chartTotalPrs" role="img" aria-label="Total merged Contributions over time"></canvas>
           </div>
         </section>
 
@@ -185,7 +185,7 @@
           <div class="chart-card-head">
             <div>
               <h2 id="chartContribTiersTitle">Contributor Experience</h2>
-              <p class="chart-subtitle">Distribution across mutually exclusive merged-PR count ranges</p>
+              <p class="chart-subtitle">Distribution across mutually exclusive merged-Contribution count ranges</p>
             </div>
           </div>
           <div class="chart-wrap">
@@ -224,7 +224,7 @@
           <div class="chart-card-head">
             <div>
               <h2 id="chartDayOfWeekTitle">Day of the Week Activity</h2>
-              <p class="chart-subtitle">Average PRs merged by day of the week</p>
+              <p class="chart-subtitle">Average Contributions merged by day of the week</p>
             </div>
           </div>
           <div class="chart-wrap">
@@ -237,7 +237,7 @@
           <div class="chart-card-head">
             <div>
               <h2 id="chartContributionActivityTitle">Contribution Activity</h2>
-              <p class="chart-subtitle">Active contributors each period with average merged PRs per contributor</p>
+              <p class="chart-subtitle">Active contributors each period with average merged Contributions per contributor</p>
             </div>
             <span class="chart-badge" id="badgeContributionActivity">-</span>
           </div>

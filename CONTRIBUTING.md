@@ -36,13 +36,13 @@ By participating, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md
 ## Working with Scrapers and Data
 
 ### Running a Scraper for a Single Org
-You can scan a specific organization and output a PR CSV file by running the core script directly:
+You can scan a specific organization and output a Contribution CSV file by running the core script directly:
 ```powershell
 python .\ethereum_pr_counter.py --org ethereum --events-only --pr-output data/ethereum_merged_prs.csv
 ```
 
 ### Refreshing All Datasets
-To incrementally fetch new PRs for all configured ecosystems (the last 48 hours is scanned by default, merging rows and replacing files atomically):
+To incrementally fetch new Contributions for all configured ecosystems (the last 48 hours is scanned by default, merging rows and replacing files atomically):
 ```powershell
 python .\scripts\refresh_data.py
 ```
@@ -76,7 +76,7 @@ Proof of Contribution uses a lightweight i18n layer with one JSON file per suppo
 - Keep dynamic values as interpolation parameters, for example `{count}`, so translators can move values to the right place for each language.
 - When adding or renaming a key in `en.json`, keep the same key structure in every locale file.
 
-Validate locale parity before opening a PR:
+Validate locale parity before opening a Contribution:
 ```powershell
 python .\scripts\validate_i18n.py
 ```
@@ -107,7 +107,7 @@ Then open your browser to:
 3. **Write Code**: Ensure your code fits the style and guidelines. Keep Python scripts simple and avoid adding external dependencies.
 4. **Test & Validate**: Make sure the scripts run cleanly and `python scripts/validate_data.py` passes successfully.
 5. **Commit**: Use clear and descriptive commit messages (e.g., `feat: add search filter`, `fix: handle empty state`).
-6. **Submit a Pull Request**: Push your branch to GitHub and open a PR using the Pull Request template.
+6. **Submit a Contribution**: Push your branch to GitHub and open a Contribution using the Contribution template.
 
 ## Coding Expectations
 

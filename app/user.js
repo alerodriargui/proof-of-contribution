@@ -132,16 +132,16 @@ function pluralizePr(n) {
 }
 
 const CONTRIBUTOR_TIERS = [
-  { id: "1", label: "Newcomer", range: "1 merged PR", min: 1, max: 1 },
-  { id: "2", label: "Explorer", range: "2 merged PRs", min: 2, max: 2 },
-  { id: "3-5", label: "Regular", range: "3–5 merged PRs", min: 3, max: 5 },
-  { id: "6-10", label: "Builder", range: "6–10 merged PRs", min: 6, max: 10 },
-  { id: "11-20", label: "Experienced", range: "11–20 merged PRs", min: 11, max: 20 },
-  { id: "21-50", label: "Core", range: "21–50 merged PRs", min: 21, max: 50 },
-  { id: "51-100", label: "Veteran", range: "51–100 merged PRs", min: 51, max: 100 },
-  { id: "101-500", label: "Elite", range: "101–500 merged PRs", min: 101, max: 500 },
-  { id: "501-1000", label: "Legend", range: "501–1000 merged PRs", min: 501, max: 1000 },
-  { id: "1000-plus", label: "Icon", range: "More than 1000 merged PRs", min: 1001, max: Infinity },
+  { id: "1", label: "Newcomer", range: "1 merged Contribution", min: 1, max: 1 },
+  { id: "2", label: "Explorer", range: "2 merged Contributions", min: 2, max: 2 },
+  { id: "3-5", label: "Regular", range: "3–5 merged Contributions", min: 3, max: 5 },
+  { id: "6-10", label: "Builder", range: "6–10 merged Contributions", min: 6, max: 10 },
+  { id: "11-20", label: "Experienced", range: "11–20 merged Contributions", min: 11, max: 20 },
+  { id: "21-50", label: "Core", range: "21–50 merged Contributions", min: 21, max: 50 },
+  { id: "51-100", label: "Veteran", range: "51–100 merged Contributions", min: 51, max: 100 },
+  { id: "101-500", label: "Elite", range: "101–500 merged Contributions", min: 101, max: 500 },
+  { id: "501-1000", label: "Legend", range: "501–1000 merged Contributions", min: 501, max: 1000 },
+  { id: "1000-plus", label: "Icon", range: "More than 1000 merged Contributions", min: 1001, max: Infinity },
 ];
 
 function contributorTier(prCount) {
@@ -295,7 +295,7 @@ function parseParams() {
 
 function updateOgMeta(user) {
   const title = `${user.usuario} – Contributor Profile | Proof of Contribution`;
-  const desc = `${user.usuario} contributed ${formatNumber(user.n_prs)} PRs across ${user.orgs.length} ecosystem(s). View their full contribution profile.`;
+  const desc = `${user.usuario} contributed ${formatNumber(user.n_prs)} Contributions across ${user.orgs.length} ecosystem(s). View their full contribution profile.`;
   document.title = title;
   const set = (q, v) => { const el = document.querySelector(q); if (el) el.setAttribute("content", v); };
   set('meta[property="og:title"]', title);
@@ -500,7 +500,7 @@ function renderCharts(pulls, user) {
     cornerRadius: 8,
   };
 
-  // ── 1. Doughnut: PRs by ecosystem ────────────────
+  // ── 1. Doughnut: Contributions by ecosystem ────────────────
   const orgCounts = new Map();
   pulls.forEach(r => {
     const o = r.org || "other";
@@ -702,7 +702,7 @@ function renderDetails(user) {
   // Charts
   renderCharts(pulls, user);
 
-  // Recent PRs
+  // Recent Contributions
   renderRecentPrs(pulls);
 }
 

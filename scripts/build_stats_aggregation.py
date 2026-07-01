@@ -3,7 +3,7 @@
 
 The Statistics page in the browser was loading and parsing all 13 CSV files
 (270k+ rows) on every visit. This script precomputes the aggregated data
-(PRs per day per org, user metadata) so the browser only fetches one JSON file.
+(Contributions per day per org, user metadata) so the browser only fetches one JSON file.
 """
 
 from __future__ import annotations
@@ -97,7 +97,7 @@ def main() -> int:
                     total_deletions += deletions
                     total_changed_lines += line_payload
 
-                # Per-org daily PR counts
+                # Per-org daily Contribution counts
                 org_days[day_key] = org_days.get(day_key, 0) + 1
                 if not bot:
                     org_days_ex_bots[day_key] = org_days_ex_bots.get(day_key, 0) + 1

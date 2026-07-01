@@ -88,6 +88,6 @@ This document contains templates for initial `good first issue` and `help wanted
     1. Create a `tests/` directory in the repository root.
     2. Write unit tests that cover:
        - Parser outputs from `ethereum_pr_counter.py`.
-       - Validation behavior in `validate_data.py` (e.g. testing duplicate PR detection, missing fields detection with mock CSVs).
+       - Validation behavior in `validate_data.py` (e.g. testing duplicate Contribution detection, missing fields detection with mock CSVs).
        - Incremental lookback window computation.
     3. Ensure tests can be run easily via `python -m unittest discover tests`.

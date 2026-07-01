@@ -50,9 +50,9 @@ def validate(path: Path) -> tuple[int, list[str]]:
             row_count += 1
             key = (row["org"], row["proyecto"], row["pr_number"])
             if not all(key):
-                errors.append(f"line {line_number}: incomplete PR key")
+                errors.append(f"line {line_number}: incomplete Contribution key")
             elif key in seen:
-                errors.append(f"line {line_number}: duplicate PR {key}")
+                errors.append(f"line {line_number}: duplicate Contribution {key}")
             seen.add(key)
 
             if not row["usuario"] or not row["merged_at"] or not row["url"]:
@@ -74,7 +74,7 @@ def validate(path: Path) -> tuple[int, list[str]]:
                 break
 
     if row_count == 0:
-        errors.append("file contains no pull requests")
+        errors.append("file contains no contributions")
     return row_count, errors
 
 
@@ -148,7 +148,7 @@ def main() -> int:
                 failed = True
                 print(f"{stats_path.name}: INVALID (missing aggregated_prs or users)", file=sys.stderr)
             else:
-                print(f"{stats_path.name}: OK ({sp.get('user_count', 0):,} users, {sp.get('total_rows', 0):,} PRs)")
+                print(f"{stats_path.name}: OK ({sp.get('user_count', 0):,} users, {sp.get('total_rows', 0):,} Contributions)")
         except json.JSONDecodeError as error:
             failed = True
             print(f"{stats_path.name}: INVALID ({error})", file=sys.stderr)

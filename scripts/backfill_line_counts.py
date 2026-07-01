@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Backfill additions/deletions for existing PR CSV files.
+"""Backfill additions/deletions for existing Contribution CSV files.
 
 This is intentionally separate from the normal refresh. Historical enrichment can
-need one GitHub PR-detail request per missing row, so it must be resumable and
+need one GitHub Contribution-detail request per missing row, so it must be resumable and
 rate-limit aware.
 """
 

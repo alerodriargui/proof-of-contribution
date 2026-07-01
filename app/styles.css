@@ -2292,7 +2292,7 @@ select:focus {
   td:nth-child(2)::before { content: "User"; }
   td:nth-child(3)::before { content: "Organization"; }
   td:nth-child(4)::before { content: "Experience"; }
-  td:nth-child(5)::before { content: "PR"; }
+  td:nth-child(5)::before { content: "Contribution"; }
   td:nth-child(6)::before { content: "Projects"; }
   td:nth-child(7)::before { content: "Top project"; }
 
