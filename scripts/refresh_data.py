@@ -38,7 +38,6 @@ NETWORKS: list[tuple[str, str, dict[str, Any]]] = [
     ("smartcontractkit", "link", {}),
     ("solana-labs", "solana", {}),
     ("ava-labs", "avalanche", {}),
-    ("polkadot-foundation", "polkadot", {}),
     ("OffchainLabs", "arbitrum", {}),
     ("0xPolygon", "polygon", {}),
     ("near", "near", {}),

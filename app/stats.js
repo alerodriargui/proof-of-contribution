@@ -21,7 +21,6 @@ const NETWORKS = [
   { id: "link",     label: "Chainlink",   color: "#2a5ada" },
   { id: "solana",   label: "Solana",      color: "#14f195" },
   { id: "avalanche", label: "Avalanche",  color: "#e84142" },
-  { id: "polkadot",  label: "Polkadot",   color: "#e6007a" },
   { id: "arbitrum",  label: "Arbitrum",   color: "#28a0f0" },
   { id: "polygon",   label: "Polygon",    color: "#8247e5" },
   { id: "near",      label: "NEAR",       color: "#000000" },

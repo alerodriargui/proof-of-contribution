@@ -18,7 +18,6 @@ const RAW_SOURCES = [
   { url: "../data/link_merged_prs.csv", org: "link" },
   { url: "../data/solana_merged_prs.csv", org: "solana" },
   { url: "../data/avalanche_merged_prs.csv", org: "avalanche" },
-  { url: "../data/polkadot_merged_prs.csv", org: "polkadot" },
   { url: "../data/arbitrum_merged_prs.csv", org: "arbitrum" },
   { url: "../data/polygon_merged_prs.csv", org: "polygon" },
   { url: "../data/near_merged_prs.csv", org: "near" },
@@ -34,7 +33,6 @@ const ORG_LABELS = {
   stellar: "Stellar", link: "Chainlink", smartcontractkit: "Chainlink",
   solana: "Solana", "solana-labs": "Solana",
   avalanche: "Avalanche", "ava-labs": "Avalanche",
-  polkadot: "Polkadot", "polkadot-foundation": "Polkadot",
   arbitrum: "Arbitrum", offchainlabs: "Arbitrum",
   polygon: "Polygon", "0xpolygon": "Polygon",
   near: "NEAR", sui: "Sui", mystenlabs: "Sui",
@@ -51,7 +49,7 @@ const ORG_COLORS = {
   doge: "#ca8a04", hype: "#06b6d4", tron: "#ef4444",
   cardano: "#0033ad", stellar: "#000000", link: "#2a5ada",
   solana: "#14f195",
-  avalanche: "#e84142", polkadot: "#e6007a", arbitrum: "#28a0f0",
+  avalanche: "#e84142", arbitrum: "#28a0f0",
   polygon: "#8247e5", near: "#000000", sui: "#4da2ff",
 };
 
