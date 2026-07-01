@@ -2,12 +2,12 @@
   const STORAGE_KEY = "poc.locale";
   const DEFAULT_LOCALE = "en";
   const SUPPORTED_LOCALES = [
-    { code: "en", name: "English", flag: "🇬🇧" },
-    { code: "es", name: "Español", flag: "🇪🇸" },
-    { code: "pt", name: "Português", flag: "🇧🇷" },
-    { code: "ru", name: "Русский", flag: "🇷🇺" },
-    { code: "zh-Hans", name: "简体中文", flag: "🇨🇳" },
-    { code: "hi", name: "हिन्दी", flag: "🇮🇳" },
+    { code: "en", name: "English", flag: "\uD83C\uDDEC\uD83C\uDDE7" },
+    { code: "es", name: "Espa\u00f1ol", flag: "\uD83C\uDDEA\uD83C\uDDF8" },
+    { code: "pt", name: "Portugu\u00eas", flag: "\uD83C\uDDE7\uD83C\uDDF7" },
+    { code: "ru", name: "\u0420\u0443\u0441\u0441\u043a\u0438\u0439", flag: "\uD83C\uDDF7\uD83C\uDDFA" },
+    { code: "zh-Hans", name: "\u7b80\u4f53\u4e2d\u6587", flag: "\uD83C\uDDE8\uD83C\uDDF3" },
+    { code: "hi", name: "\u0939\u093f\u0928\u094d\u0926\u0940", flag: "\uD83C\uDDEE\uD83C\uDDF3" },
   ];
   const SUPPORTED_CODES = SUPPORTED_LOCALES.map((locale) => locale.code);
 
