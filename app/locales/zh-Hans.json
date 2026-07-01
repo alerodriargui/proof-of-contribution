@@ -37,7 +37,7 @@
     "noRows": "没有数据行",
     "total": "总计",
     "pr": "Contribution",
-    "prs": "Contribution",
+    "prs": "Contributions",
     "contributors": "贡献者",
     "ecosystems": "生态系统",
     "projects": "项目",
@@ -63,7 +63,7 @@
   },
   "dashboard": {
     "summary": "æ‘˜è¦",
-    "prs": "Contribution",
+    "prs": "Contributions",
     "users": "用户",
     "contributors": "贡献者",
     "experience": "经验",

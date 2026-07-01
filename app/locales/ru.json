@@ -37,7 +37,7 @@
     "noRows": "Нет строк",
     "total": "всего",
     "pr": "Contribution",
-    "prs": "Contribution",
+    "prs": "Contributions",
     "contributors": "Участников",
     "ecosystems": "экосистем",
     "projects": "Проектов",
@@ -63,7 +63,7 @@
   },
   "dashboard": {
     "summary": "Сводка",
-    "prs": "Contribution",
+    "prs": "Contributions",
     "users": "Пользователи",
     "contributors": "Участники",
     "experience": "Опыт",
