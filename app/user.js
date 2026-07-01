@@ -299,6 +299,10 @@ async function loadSummary() {
     usuario: row.user || row.usuario || "",
     avatar_url: row.avatar_url || "",
     n_prs: Number(row.merged_pr_count || row.n_prs || 0),
+    total_additions: Number(row.total_additions || 0),
+    total_deletions: Number(row.total_deletions || 0),
+    total_changed_lines: Number(row.total_changed_lines || 0),
+    unknown_line_count: Number(row.unknown_line_count || 0),
     merged_at: row.latest_merged_at || "",
     merged_date: row.latest_merged_at || "",
     first_merged_at: row.first_merged_at || "",
@@ -311,6 +315,10 @@ function buildUserFromSummary(rows) {
   const orgs = new Set();
   const projects = new Map();
   let totalPrs = 0;
+  let totalAdditions = 0;
+  let totalDeletions = 0;
+  let totalChangedLines = 0;
+  let unknownLineCount = 0;
   let avatarUrl = "";
   let firstDate = null;
   let latestDate = null;
@@ -319,6 +327,10 @@ function buildUserFromSummary(rows) {
     const p = r.proyecto || "unknown";
     projects.set(p, (projects.get(p) || 0) + r.n_prs);
     totalPrs += r.n_prs;
+    totalAdditions += r.total_additions || 0;
+    totalDeletions += r.total_deletions || 0;
+    totalChangedLines += r.total_changed_lines || 0;
+    unknownLineCount += r.unknown_line_count || 0;
     if (r.avatar_url) avatarUrl = r.avatar_url;
     const fd = parseDate(r.first_merged_at);
     if (fd && (!firstDate || fd < firstDate)) firstDate = fd;
@@ -330,6 +342,10 @@ function buildUserFromSummary(rows) {
     usuario: state.username,
     avatar_url: avatarUrl,
     n_prs: totalPrs,
+    total_additions: totalAdditions,
+    total_deletions: totalDeletions,
+    total_changed_lines: totalChangedLines,
+    unknown_line_count: unknownLineCount,
     n_projects: projects.size,
     orgs: [...orgs].sort(),
     top_project: topProject ? topProject[0] : "",
@@ -369,6 +385,12 @@ function renderStatCards(user) {
   $("firstContrib").textContent = user.firstDate;
   $("latestContrib").textContent = user.latestDate;
   $("totalPrsStat").textContent = formatNumber(user.n_prs);
+  $("changedLinesStat").textContent = user.total_changed_lines
+    ? formatNumber(user.total_changed_lines)
+    : t("common.unknown");
+  $("unknownLineCountStat").textContent = user.unknown_line_count
+    ? formatNumber(user.unknown_line_count)
+    : "0";
   const tierEl = $("experienceTier");
   if (tierEl) tierEl.innerHTML = contributorTierMarkup(user.n_prs);
   const orgLinks = user.orgs.map(o => {
@@ -405,6 +427,9 @@ async function ensureDetails(user) {
         url: row.url || row.link || "",
         merged_at: row.merged_at || "",
         merged_date: row.merged_date || "",
+        additions: row.additions || "",
+        deletions: row.deletions || "",
+        changed_lines: row.changed_lines || "",
       })).filter(r => r.usuario && r.usuario.toLowerCase() === state.username);
       state.detailRows.set(org, normalized);
     }

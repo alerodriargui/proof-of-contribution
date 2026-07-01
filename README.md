@@ -61,8 +61,9 @@ link_merged_prs.csv
 solana_merged_prs.csv
 ```
 
-Each row is one merged PR, including `merged_at` and `merged_date`. Those raw
-CSV files remain the reproducible source of truth.
+Each row is one merged PR, including `merged_at`, `merged_date`, `additions`,
+`deletions`, and `changed_lines`. Empty line-count values mean unknown, not
+zero. Those raw CSV files remain the reproducible source of truth.
 
 ## Token
 
@@ -161,6 +162,25 @@ optimized dashboard files from existing CSVs, run:
 python .\scripts\build_dashboard_summary.py
 ```
 
+## Backfill Line Counts
+
+Newly discovered PRs collect additions/deletions during refreshes. Existing CSV
+rows can be enriched separately with a resumable, rate-limit-aware backfill:
+
+```powershell
+python .\scripts\backfill_line_counts.py --ecosystem ethereum --limit 1000
+```
+
+The backfill stores checkpoints in `data/line-count-checkpoints/`. Run it in
+chunks until each ecosystem is complete, then rebuild and validate the
+pre-aggregated JSON files:
+
+```powershell
+python .\scripts\build_dashboard_summary.py
+python .\scripts\build_stats_aggregation.py
+python .\scripts\validate_data.py
+```
+
 ## Smoke Test
 
 To verify the script without scanning every repository:
@@ -169,9 +189,12 @@ To verify the script without scanning every repository:
 python .\ethereum_pr_counter.py --org ethereum --max-repos 1 --events-only --pr-output smoke_prs.csv
 ```
 
+Use `--skip-line-counts` if you want to avoid PR-detail calls during a smoke
+test.
+
 ## PR CSV Format
 
 ```csv
-org,proyecto,usuario,pr_number,pr_title,merged_at,merged_date,url
-ethereum,go-ethereum,alice,1234,Fix thing,2026-06-18T12:00:00Z,2026-06-18,https://github.com/ethereum/go-ethereum/pull/1234
+org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,go-ethereum,alice,,1234,Fix thing,2026-06-18T12:00:00Z,2026-06-18,https://github.com/ethereum/go-ethereum/pull/1234,120,8,128
 ```

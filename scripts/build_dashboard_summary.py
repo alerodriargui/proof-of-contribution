@@ -40,6 +40,15 @@ def iso_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def optional_int(value: str | None) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def read_source(path: Path, fallback_org: str) -> tuple[list[dict[str, object]], int]:
     aggregates: dict[tuple[str, str, str], dict[str, object]] = {}
     source_count = 0
@@ -66,12 +75,28 @@ def read_source(path: Path, fallback_org: str) -> tuple[list[dict[str, object]],
                     "user": user,
                     "avatar_url": (row.get("avatar_url") or row.get("avatar") or "").strip(),
                     "merged_pr_count": 0,
+                    "total_additions": 0,
+                    "total_deletions": 0,
+                    "total_changed_lines": 0,
+                    "unknown_line_count": 0,
                     "first_merged_at": "",
                     "latest_merged_at": "",
                 },
             )
 
             item["merged_pr_count"] = int(item["merged_pr_count"]) + 1
+            additions = optional_int(row.get("additions"))
+            deletions = optional_int(row.get("deletions"))
+            changed_lines = optional_int(row.get("changed_lines"))
+            if additions is None or deletions is None:
+                item["unknown_line_count"] = int(item["unknown_line_count"]) + 1
+            else:
+                item["total_additions"] = int(item["total_additions"]) + additions
+                item["total_deletions"] = int(item["total_deletions"]) + deletions
+                item["total_changed_lines"] = (
+                    int(item["total_changed_lines"])
+                    + (changed_lines if changed_lines is not None else additions + deletions)
+                )
             if not item["avatar_url"]:
                 item["avatar_url"] = (row.get("avatar_url") or row.get("avatar") or "").strip()
 

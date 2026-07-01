@@ -36,11 +36,26 @@ def iso_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def optional_int(value: str | None) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def main() -> int:
     aggregated_prs: dict[str, dict[str, int]] = {}
     aggregated_prs_ex_bots: dict[str, dict[str, int]] = {}
+    aggregated_changed_lines: dict[str, dict[str, int]] = {}
+    aggregated_changed_lines_ex_bots: dict[str, dict[str, int]] = {}
     users: dict[str, dict] = {}
     total_rows = 0
+    total_additions = 0
+    total_deletions = 0
+    total_changed_lines = 0
+    unknown_line_count = 0
 
     for org, filename_prefix, _ in NETWORKS:
         path = DATA_DIR / f"{filename_prefix}_merged_prs.csv"
@@ -50,6 +65,8 @@ def main() -> int:
 
         org_days: dict[str, int] = {}
         org_days_ex_bots: dict[str, int] = {}
+        org_changed_days: dict[str, int] = {}
+        org_changed_days_ex_bots: dict[str, int] = {}
 
         with path.open(newline="", encoding="utf-8-sig") as csv_file:
             reader = csv.DictReader(csv_file)
@@ -68,11 +85,28 @@ def main() -> int:
                 total_rows += 1
                 bot = is_bot(usuario)
                 ghost = is_ghost(usuario)
+                additions = optional_int(row.get("additions"))
+                deletions = optional_int(row.get("deletions"))
+                changed_lines = optional_int(row.get("changed_lines"))
+                if additions is None or deletions is None:
+                    unknown_line_count += 1
+                    line_payload = None
+                else:
+                    line_payload = changed_lines if changed_lines is not None else additions + deletions
+                    total_additions += additions
+                    total_deletions += deletions
+                    total_changed_lines += line_payload
 
                 # Per-org daily PR counts
                 org_days[day_key] = org_days.get(day_key, 0) + 1
                 if not bot:
                     org_days_ex_bots[day_key] = org_days_ex_bots.get(day_key, 0) + 1
+                if line_payload is not None:
+                    org_changed_days[day_key] = org_changed_days.get(day_key, 0) + line_payload
+                    if not bot:
+                        org_changed_days_ex_bots[day_key] = (
+                            org_changed_days_ex_bots.get(day_key, 0) + line_payload
+                        )
 
                 # User metadata
                 user = users.get(usuario)
@@ -82,6 +116,10 @@ def main() -> int:
                         "first_seen": day_key,
                         "orgs": [filename_prefix],
                         "pr_count": 1,
+                        "total_additions": additions or 0,
+                        "total_deletions": deletions or 0,
+                        "total_changed_lines": line_payload or 0,
+                        "unknown_line_count": 1 if line_payload is None else 0,
                         "active_days": {filename_prefix: {day_key: 1}},
                         "is_bot": bot,
                         "is_ghost": ghost,
@@ -92,19 +130,34 @@ def main() -> int:
                     if filename_prefix not in user["orgs"]:
                         user["orgs"].append(filename_prefix)
                     user["pr_count"] += 1
+                    user["total_additions"] += additions or 0
+                    user["total_deletions"] += deletions or 0
+                    user["total_changed_lines"] += line_payload or 0
+                    if line_payload is None:
+                        user["unknown_line_count"] += 1
                     org_activity = user.setdefault("active_days", {}).setdefault(filename_prefix, {})
                     org_activity[day_key] = org_activity.get(day_key, 0) + 1
 
         aggregated_prs[filename_prefix] = org_days
         aggregated_prs_ex_bots[filename_prefix] = org_days_ex_bots
+        aggregated_changed_lines[filename_prefix] = org_changed_days
+        aggregated_changed_lines_ex_bots[filename_prefix] = org_changed_days_ex_bots
 
     payload = {
         "schema": "stats-aggregation.v1",
         "generated_at": iso_now(),
         "total_rows": total_rows,
         "user_count": len(users),
+        "line_totals": {
+            "additions": total_additions,
+            "deletions": total_deletions,
+            "changed_lines": total_changed_lines,
+            "unknown_prs": unknown_line_count,
+        },
         "aggregated_prs": aggregated_prs,
         "aggregated_prs_ex_bots": aggregated_prs_ex_bots,
+        "aggregated_changed_lines": aggregated_changed_lines,
+        "aggregated_changed_lines_ex_bots": aggregated_changed_lines_ex_bots,
         "users": list(users.values()),
     }
 

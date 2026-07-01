@@ -231,6 +231,10 @@ function normalizeRows(source) {
       pr_title: row.pr_title || row.title || "",
       url: row.url || row.link || "",
       n_prs: source.kind === "pulls" ? 1 : Number(row.n_prs || row.prs || 0),
+      total_additions: Number(row.additions || 0),
+      total_deletions: Number(row.deletions || 0),
+      total_changed_lines: Number(row.changed_lines || 0),
+      unknown_line_count: row.additions && row.deletions ? 0 : 1,
       merged_at: row.merged_at || "",
       merged_date: row.merged_date || "",
       sourceKind: source.kind,
@@ -253,6 +257,10 @@ function normalizeSummaryRows(summary) {
       pr_title: "",
       url: "",
       n_prs: Number(row.merged_pr_count || row.n_prs || 0),
+      total_additions: Number(row.total_additions || 0),
+      total_deletions: Number(row.total_deletions || 0),
+      total_changed_lines: Number(row.total_changed_lines || 0),
+      unknown_line_count: Number(row.unknown_line_count || 0),
       merged_at: row.latest_merged_at || "",
       merged_date: row.latest_merged_at || "",
       first_merged_at: row.first_merged_at || "",
@@ -308,6 +316,10 @@ function aggregateDevelopers(rows) {
         usuario: row.usuario,
         avatar_url: row.avatar_url,
         n_prs: 0,
+        total_additions: 0,
+        total_deletions: 0,
+        total_changed_lines: 0,
+        unknown_line_count: 0,
         orgs: new Set(),
         projects: new Set(),
         projectCounts: new Map(),
@@ -316,6 +328,10 @@ function aggregateDevelopers(rows) {
 
     const item = users.get(key);
     item.n_prs += row.n_prs;
+    item.total_additions += row.total_additions || 0;
+    item.total_deletions += row.total_deletions || 0;
+    item.total_changed_lines += row.total_changed_lines || 0;
+    item.unknown_line_count += row.unknown_line_count || 0;
     if (!item.avatar_url && row.avatar_url) {
       item.avatar_url = row.avatar_url;
     }
@@ -337,6 +353,10 @@ function aggregateDevelopers(rows) {
       usuario: item.usuario,
       avatar_url: item.avatar_url,
       n_prs: item.n_prs,
+      total_additions: item.total_additions,
+      total_deletions: item.total_deletions,
+      total_changed_lines: item.total_changed_lines,
+      unknown_line_count: item.unknown_line_count,
       n_projects: item.projects.size || Number(Boolean(item.n_prs)),
       orgs: [...item.orgs].sort(),
       top_project: topProject ? topProject[0] : "",

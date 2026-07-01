@@ -21,6 +21,16 @@ REQUIRED_COLUMNS = {
     "merged_date",
     "url",
 }
+LINE_COLUMNS = {"additions", "deletions", "changed_lines"}
+
+
+def optional_int(value: str | None) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
 
 
 def validate(path: Path) -> tuple[int, list[str]]:
@@ -47,6 +57,17 @@ def validate(path: Path) -> tuple[int, list[str]]:
 
             if not row["usuario"] or not row["merged_at"] or not row["url"]:
                 errors.append(f"line {line_number}: missing required data")
+
+            if LINE_COLUMNS.issubset(row.keys()):
+                additions = optional_int(row.get("additions"))
+                deletions = optional_int(row.get("deletions"))
+                changed_lines = optional_int(row.get("changed_lines"))
+                raw_values = [row.get(column, "") for column in LINE_COLUMNS]
+                if any(value for value in raw_values):
+                    if additions is None or deletions is None or changed_lines is None:
+                        errors.append(f"line {line_number}: invalid line-count values")
+                    elif changed_lines != additions + deletions:
+                        errors.append(f"line {line_number}: changed_lines does not match additions + deletions")
 
             if len(errors) >= 20:
                 errors.append("stopped after 20 errors")

@@ -141,6 +141,14 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Write a machine-readable run summary JSON to this path.",
     )
+    parser.add_argument(
+        "--skip-line-counts",
+        action="store_true",
+        help=(
+            "Do not fetch PR detail payloads for additions/deletions. Existing "
+            "line-count values are preserved during incremental merges."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -417,6 +425,102 @@ def fetch_closed_pull_requests(
     return pulls
 
 
+def fetch_pull_request_detail(
+    org: str,
+    repo: str,
+    number: str | int,
+    headers: dict[str, str],
+    sleep_seconds: float,
+) -> dict[str, Any]:
+    url = f"{API_ROOT}/repos/{org}/{repo}/pulls/{number}"
+    payload, _ = github_get_json(url, headers, sleep_seconds)
+    if not isinstance(payload, dict):
+        raise GitHubAPIError(f"Expected pull request object from {url}")
+    return payload
+
+
+def csv_number(value: Any) -> str:
+    if value is None or value == "":
+        return ""
+    try:
+        return str(int(value))
+    except (TypeError, ValueError):
+        return ""
+
+
+def line_count_fields(payload: dict[str, Any]) -> dict[str, str]:
+    additions = csv_number(payload.get("additions"))
+    deletions = csv_number(payload.get("deletions"))
+    if additions and deletions:
+        changed_lines = str(int(additions) + int(deletions))
+    else:
+        changed_lines = ""
+    return {
+        "additions": additions,
+        "deletions": deletions,
+        "changed_lines": changed_lines,
+    }
+
+
+def has_line_counts(row: dict[str, Any] | None) -> bool:
+    if not row:
+        return False
+    return bool(str(row.get("additions") or "") and str(row.get("deletions") or ""))
+
+
+def pr_key(row: dict[str, Any]) -> tuple[str, str, str]:
+    return (
+        str(row.get("org", "")),
+        str(row.get("proyecto", "")),
+        str(row.get("pr_number", "")),
+    )
+
+
+def make_pr_row(
+    org: str,
+    repo_name: str,
+    pull_request: dict[str, Any],
+    login: str,
+    avatar_url: str,
+    existing_row: dict[str, int | str] | None,
+    collect_line_counts: bool,
+    headers: dict[str, str],
+    sleep_seconds: float,
+) -> dict[str, int | str]:
+    merged_at = pull_request.get("merged_at") or ""
+    row: dict[str, int | str] = {
+        "org": org,
+        "proyecto": repo_name,
+        "usuario": login,
+        "avatar_url": avatar_url,
+        "pr_number": pull_request.get("number") or "",
+        "pr_title": pull_request.get("title") or "",
+        "merged_at": merged_at,
+        "merged_date": str(merged_at).split("T", 1)[0],
+        "url": pull_request.get("html_url") or "",
+    }
+
+    if has_line_counts(existing_row):
+        row.update(line_count_fields(existing_row or {}))
+    else:
+        row.update(line_count_fields(pull_request))
+
+    if collect_line_counts and not has_line_counts(row) and row["pr_number"]:
+        try:
+            detail = fetch_pull_request_detail(
+                org, repo_name, row["pr_number"], headers, sleep_seconds
+            )
+            row.update(line_count_fields(detail))
+        except GitHubAPIError as exc:
+            print(
+                f"Could not fetch line counts for {org}/{repo_name}#{row['pr_number']}: {exc}",
+                file=sys.stderr,
+                flush=True,
+            )
+
+    return row
+
+
 def count_merged_pr_authors(
     org: str,
     repositories: list[dict[str, Any]],
@@ -424,6 +528,8 @@ def count_merged_pr_authors(
     sleep_seconds: float,
     updated_since: datetime | None = None,
     existing_projects: set[str] | None = None,
+    existing_rows_by_key: dict[tuple[str, str, str], dict[str, int | str]] | None = None,
+    collect_line_counts: bool = True,
 ) -> tuple[Counter[tuple[str, str]], dict[str, str], list[dict[str, int | str]], int, int]:
     counts: Counter[tuple[str, str]] = Counter()
     avatar_urls: dict[str, str] = {}
@@ -467,18 +573,19 @@ def count_merged_pr_authors(
                 counts[(repo_name, login)] += 1
                 if avatar_url:
                     avatar_urls[login] = avatar_url
+                key = (org, repo_name, str(pull_request.get("number") or ""))
                 merged_prs.append(
-                    {
-                        "org": org,
-                        "proyecto": repo_name,
-                        "usuario": login,
-                        "avatar_url": avatar_url,
-                        "pr_number": pull_request.get("number") or "",
-                        "pr_title": pull_request.get("title") or "",
-                        "merged_at": merged_at,
-                        "merged_date": str(merged_at).split("T", 1)[0],
-                        "url": pull_request.get("html_url") or "",
-                    }
+                    make_pr_row(
+                        org,
+                        repo_name,
+                        pull_request,
+                        login,
+                        avatar_url,
+                        existing_rows_by_key.get(key) if existing_rows_by_key else None,
+                        collect_line_counts,
+                        headers,
+                        sleep_seconds,
+                    )
                 )
 
     return counts, avatar_urls, merged_prs, processed, sum(counts.values())
@@ -507,6 +614,9 @@ def load_pr_csv(output_path: str) -> list[dict[str, int | str]]:
 
         for row in reader:
             row.setdefault("avatar_url", "")
+            row.setdefault("additions", "")
+            row.setdefault("deletions", "")
+            row.setdefault("changed_lines", "")
             rows.append({key: value or "" for key, value in row.items()})
 
     return rows
@@ -531,12 +641,7 @@ def merge_pr_rows(
 ) -> list[dict[str, int | str]]:
     merged: dict[tuple[str, str, str], dict[str, int | str]] = {}
     for row in [*existing_rows, *fresh_rows]:
-        key = (
-            str(row.get("org", "")),
-            str(row.get("proyecto", "")),
-            str(row.get("pr_number", "")),
-        )
-        merged[key] = row
+        merged[pr_key(row)] = row
     return list(merged.values())
 
 
@@ -638,6 +743,9 @@ def write_pr_csv(output_path: str, rows: list[dict[str, int | str]]) -> None:
         "merged_at",
         "merged_date",
         "url",
+        "additions",
+        "deletions",
+        "changed_lines",
     ]
     try:
         with temporary_path.open("w", newline="", encoding="utf-8") as csv_file:
@@ -782,6 +890,7 @@ def main() -> int:
             for row in existing_prs
             if row.get("proyecto")
         } if args.incremental else None
+        existing_rows_by_key = {pr_key(row): row for row in existing_prs}
 
         counts: Counter[tuple[str, str]] = Counter()
         avatar_urls: dict[str, str] = {}
@@ -828,18 +937,19 @@ def main() -> int:
                     counts[(repo_name, login)] += 1
                     if avatar_url_val:
                         avatar_urls[login] = avatar_url_val
+                    key = (org, repo_name, str(pull_request.get("number") or ""))
                     merged_prs.append(
-                        {
-                            "org": org,
-                            "proyecto": repo_name,
-                            "usuario": login,
-                            "avatar_url": avatar_url_val,
-                            "pr_number": pull_request.get("number") or "",
-                            "pr_title": pull_request.get("title") or "",
-                            "merged_at": merged_at,
-                            "merged_date": str(merged_at).split("T", 1)[0],
-                            "url": pull_request.get("html_url") or "",
-                        }
+                        make_pr_row(
+                            org,
+                            repo_name,
+                            pull_request,
+                            login,
+                            avatar_url_val,
+                            existing_rows_by_key.get(key),
+                            not args.skip_line_counts,
+                            headers,
+                            args.sleep,
+                        )
                     )
 
             # Check rate-limit budget after each repo
