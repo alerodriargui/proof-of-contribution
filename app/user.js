@@ -91,9 +91,8 @@ function localizeProfileDom() {
     [".hero-stat:nth-child(3) .hero-stat-label", "common.ecosystems"],
     [".profile-stat-card:nth-child(1) .pstat-label", "profile.firstContribution"],
     [".profile-stat-card:nth-child(2) .pstat-label", "profile.latestContribution"],
-    [".profile-stat-card:nth-child(3) .pstat-label", "profile.lines"],
-    [".profile-stat-card:nth-child(4) .pstat-label", "profile.unknownLineCounts"],
-    [".profile-stat-card:nth-child(5) .pstat-label", "profile.experienceTier"],
+    [".profile-stat-card:nth-child(3) .pstat-label", "profile.activityStatus"],
+    [".profile-stat-card:nth-child(4) .pstat-label", "profile.experienceTier"],
     ["#recentPrList .project-empty", "profile.noRecentPrs"],
   ];
   textSelectors.forEach(([selector, key]) => {
@@ -152,6 +151,26 @@ function contributorTier(prCount) {
 function contributorTierMarkup(prCount) {
   const tier = contributorTier(prCount);
   return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(t(`tier.range${tier.id}`))}">${escapeHtml(t(`tier.${tier.id}`))}</span>`;
+}
+
+function activityStatus(latestContributionDate) {
+  if (!latestContributionDate) {
+    return { key: "inactive", label: t("profile.inactive"), tone: "inactive" };
+  }
+  const inactiveAfter = new Date();
+  inactiveAfter.setMonth(inactiveAfter.getMonth() - 3);
+  const active = latestContributionDate >= inactiveAfter;
+  return active
+    ? { key: "active", label: t("profile.active"), tone: "active" }
+    : { key: "inactive", label: t("profile.inactive"), tone: "inactive" };
+}
+
+function activityStatusMarkup(latestContributionDate) {
+  const status = activityStatus(latestContributionDate);
+  return `<span class="activity-status activity-status-${status.tone}">
+    <span class="activity-dot" aria-hidden="true"></span>
+    <span>${escapeHtml(status.label)}</span>
+  </span>`;
 }
 
 function parseDate(raw) {
@@ -351,6 +370,7 @@ function buildUserFromSummary(rows) {
     top_project: topProject ? topProject[0] : "",
     firstDate: firstDate ? formatDate(firstDate) : t("common.unknown"),
     latestDate: latestDate ? formatDate(latestDate) : t("common.unknown"),
+    latestContributionDate: latestDate,
     experience_tier: contributorTier(totalPrs),
     projects,
   };
@@ -386,12 +406,12 @@ function renderStatCards(user) {
   $("latestContrib").textContent = user.latestDate;
   const totalPrsEl = $("totalPrsStat");
   if (totalPrsEl) totalPrsEl.textContent = formatNumber(user.n_prs);
+  const activityStatusEl = $("activityStatus");
+  if (activityStatusEl) activityStatusEl.innerHTML = activityStatusMarkup(user.latestContributionDate);
   const changedLinesEl = $("changedLinesStat");
-  if (changedLinesEl) {
-    changedLinesEl.textContent = user.total_changed_lines
-      ? formatNumber(user.total_changed_lines)
-      : t("common.unknown");
-  }
+  if (changedLinesEl) changedLinesEl.textContent = user.total_changed_lines
+    ? formatNumber(user.total_changed_lines)
+    : t("common.unknown");
   const unknownLineCountEl = $("unknownLineCountStat");
   if (unknownLineCountEl) {
     unknownLineCountEl.textContent = user.unknown_line_count

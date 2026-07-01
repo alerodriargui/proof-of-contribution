@@ -162,7 +162,7 @@
 /* ── Stat cards grid ────────────────────────────────── */
 .profile-stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   padding: 20px 0;
 }
@@ -193,6 +193,40 @@
 
 .pstat-value .tag {
   margin: 2px 4px 2px 0;
+}
+
+.activity-status {
+  --activity-color: #64748b;
+  --activity-bg: rgba(100, 116, 139, 0.1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: var(--activity-bg);
+  color: var(--activity-color);
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.activity-status-active {
+  --activity-color: #047857;
+  --activity-bg: rgba(16, 185, 129, 0.13);
+}
+
+.activity-status-inactive {
+  --activity-color: #b91c1c;
+  --activity-bg: rgba(239, 68, 68, 0.12);
+}
+
+.activity-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--activity-color);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--activity-color) 16%, transparent);
 }
 
 /* ── Chart grid ─────────────────────────────────────── */
