@@ -578,7 +578,7 @@ bitcoin,bitcoin,willcl-ark,,34605,build: define CMAKE_COMPILE_WARNING_AS_ERROR a
 bitcoin,bitcoin,hebasto,,34572,cmake: Fix NetBSD-specific workaround for Boost,2026-02-20T11:13:10Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34572
 bitcoin,bitcoin,ryanofsky,,34568,mining: Break compatibility with existing IPC mining clients,2026-02-20T10:06:32Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34568
 bitcoin,bitcoin,willcl-ark,,34633,"Revert ""ci: Treat SHA1 LLVM signing key as warning""",2026-02-20T09:32:54Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34633
-bitcoin,bitcoin,sstone,,24539,"Add a ""tx output spender"" index",2026-02-20T08:27:26Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/24539
+bitcoin,bitcoin,sstone,https://avatars.githubusercontent.com/u/1573866?v=4,24539,"Add a ""tx output spender"" index",2026-02-20T08:27:26Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/24539
 bitcoin,bitcoin,andrewtoth,,34165,coins: don't mutate main cache when connecting block,2026-02-20T03:10:53Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34165
 bitcoin,bitcoin,willcl-ark,,34549,net: reduce log level for PCP/NAT-PMP NOT_AUTHORIZED failures,2026-02-20T00:58:08Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34549
 bitcoin,bitcoin,maflcko,,34571,test: Fix intermittent issues in feature_assumevalid.py,2026-02-20T00:52:39Z,2026-02-20,https://github.com/bitcoin/bitcoin/pull/34571
