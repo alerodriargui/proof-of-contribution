@@ -309,6 +309,11 @@
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--line) transparent;
+  background: var(--panel);
+}
+
+.profile-section-card[aria-label="Recent pull requests"] .ps-head {
+  padding-bottom: 8px;
 }
 
 /* ── Time-group headers ─────────────────────────── */
@@ -323,12 +328,13 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 20px 7px;
+  padding: 7px 20px;
   position: sticky;
   top: 0;
-  background: color-mix(in srgb, var(--panel) 94%, transparent);
-  backdrop-filter: blur(8px);
-  z-index: 1;
+  background: var(--panel);
+  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  box-shadow: 0 1px 0 var(--panel);
+  z-index: 2;
 }
 
 .recent-pr-group-label {
@@ -557,7 +563,7 @@
   }
 
   .recent-pr-group-head {
-    padding: 12px 14px 4px;
+    padding: 7px 14px;
   }
 
   .recent-pr-title {
