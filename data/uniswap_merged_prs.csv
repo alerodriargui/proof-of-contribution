@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+uniswap,v4-hooks-public,ericneil-sanc,https://avatars.githubusercontent.com/u/216762316?v=4,39,maker psm parity hook,2026-07-01T15:27:47Z,2026-07-01,https://github.com/Uniswap/v4-hooks-public/pull/39
 uniswap,liquidity-launcher,zhongeric,https://avatars.githubusercontent.com/u/25067635?v=4,179,chore: add avax and x layer deployments,2026-07-01T14:35:31Z,2026-07-01,https://github.com/Uniswap/liquidity-launcher/pull/179
 uniswap,ai-toolkit,dylanschmittle-uniswap,https://avatars.githubusercontent.com/u/196843948?v=4,544,feat(uniswap-integrations): add datadog-cost-tracker skill with gotchas,2026-07-01T00:48:58Z,2026-07-01,https://github.com/Uniswap/ai-toolkit/pull/544
 uniswap,ai-toolkit,just-toby,https://avatars.githubusercontent.com/u/66155195?v=4,432,feat(uniswap-integrations): add Datadog pup CLI skill,2026-07-01T00:23:38Z,2026-07-01,https://github.com/Uniswap/ai-toolkit/pull/432

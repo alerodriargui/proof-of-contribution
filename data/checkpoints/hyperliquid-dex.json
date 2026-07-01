@@ -1,8 +1,8 @@
 {
   "org": "hyperliquid-dex",
-  "last_merged_at": "2026-06-04T19:46:56Z",
-  "last_run_at": "2026-07-01T15:26:55Z",
-  "total_prs": 244,
+  "last_merged_at": "2026-07-01T16:00:29Z",
+  "last_run_at": "2026-07-01T18:32:02Z",
+  "total_prs": 245,
   "incremental": true,
   "overlap_hours": 48.0
 }
