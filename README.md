@@ -4,8 +4,8 @@
 
 ## Live Deployments
 
-- 🌐 **Landing Page**: [proof-of-contribution.onrender.com](https://proof-of-contribution.onrender.com/)
-- 📊 **Interactive Dashboard**: [proof-of-contribution.onrender.com/app/](https://proof-of-contribution.onrender.com/app/)
+- 🌐 **Landing Page**: [proof-of-contribution.onrender.com](https://contributionproof.com/)
+- 📊 **Interactive Dashboard**: [proof-of-contribution.onrender.com/app/](https://contributionproof.com/app/)
 
 ## Architecture Overview
 
