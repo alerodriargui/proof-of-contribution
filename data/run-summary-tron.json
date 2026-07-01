@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-01T14:17:51Z",
+  "generated_at": "2026-07-01T15:27:50Z",
   "total_repos_processed": 72,
-  "total_merged_prs": 1741,
+  "total_merged_prs": 1742,
   "ecosystems": [
     {
       "org": "tronprotocol",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 72,
       "processed_repos": 72,
-      "prs_found": 1741,
-      "prs_after_merge": 7266,
+      "prs_found": 1742,
+      "prs_after_merge": 7267,
       "api_request_count": 73,
-      "rate_limit_remaining": "4092",
-      "rate_limit_reset": "1782918537",
-      "started_at": "2026-07-01T14:17:14.769783+00:00",
-      "finished_at": "2026-07-01T14:17:51.045903+00:00",
-      "duration_seconds": 36.28,
+      "rate_limit_remaining": "3994",
+      "rate_limit_reset": "1782922188",
+      "started_at": "2026-07-01T15:26:55.910971+00:00",
+      "finished_at": "2026-07-01T15:27:50.342946+00:00",
+      "duration_seconds": 54.43,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "tronprotocol",
-        "last_merged_at": "2026-06-30T09:10:03Z",
-        "last_run_at": "2026-07-01T14:17:51Z",
-        "total_prs": 7266,
+        "last_merged_at": "2026-07-01T14:20:20Z",
+        "last_run_at": "2026-07-01T15:27:50Z",
+        "total_prs": 7267,
         "incremental": true,
         "overlap_hours": 48.0
       }

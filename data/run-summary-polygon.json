@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-01T14:41:30Z",
+  "generated_at": "2026-07-01T15:44:53Z",
   "total_repos_processed": 144,
-  "total_merged_prs": 16598,
+  "total_merged_prs": 4191,
   "ecosystems": [
     {
       "org": "0xPolygon",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 144,
       "processed_repos": 144,
-      "prs_found": 16598,
-      "prs_after_merge": 16598,
-      "api_request_count": 316,
-      "rate_limit_remaining": "2110",
-      "rate_limit_reset": "1782918537",
-      "started_at": "2026-07-01T14:37:00.493601+00:00",
-      "finished_at": "2026-07-01T14:41:30.826795+00:00",
-      "duration_seconds": 270.33,
+      "prs_found": 4191,
+      "prs_after_merge": 16601,
+      "api_request_count": 146,
+      "rate_limit_remaining": "2744",
+      "rate_limit_reset": "1782922188",
+      "started_at": "2026-07-01T15:42:45.373239+00:00",
+      "finished_at": "2026-07-01T15:44:53.738823+00:00",
+      "duration_seconds": 128.37,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "0xPolygon",
-        "last_merged_at": "2026-07-01T14:07:10Z",
-        "last_run_at": "2026-07-01T14:41:30Z",
-        "total_prs": 16598,
+        "last_merged_at": "2026-07-01T15:17:13Z",
+        "last_run_at": "2026-07-01T15:44:53Z",
+        "total_prs": 16601,
         "incremental": true,
         "overlap_hours": 48.0
       }

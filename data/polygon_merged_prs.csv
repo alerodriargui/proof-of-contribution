@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url
+0xPolygon,proof-generation-api,MaximusHaximus,https://avatars.githubusercontent.com/u/29758232?v=4,83,chore(changesets): enrich changelogs with PR and commit links,2026-07-01T15:17:13Z,2026-07-01,https://github.com/0xPolygon/proof-generation-api/pull/83
+0xPolygon,proof-generation-api,MaximusHaximus,https://avatars.githubusercontent.com/u/29758232?v=4,84,ci(proof-gen): use eRPC archive for AMOY_RPC in tests,2026-07-01T15:10:39Z,2026-07-01,https://github.com/0xPolygon/proof-generation-api/pull/84
+0xPolygon,static,MaximusHaximus,https://avatars.githubusercontent.com/u/29758232?v=4,190,feat(deploy): serve static.polygon.technology from Cloudflare Workers static assets,2026-07-01T14:56:29Z,2026-07-01,https://github.com/0xPolygon/static/pull/190
 0xPolygon,pipelines,MaximusHaximus,https://avatars.githubusercontent.com/u/29758232?v=4,47,fix(apps-npm-release): give snapshot `changeset version` a GITHUB_TOKEN,2026-07-01T14:07:10Z,2026-07-01,https://github.com/0xPolygon/pipelines/pull/47
 0xPolygon,pipelines,MaximusHaximus,https://avatars.githubusercontent.com/u/29758232?v=4,48,ci(setup-node): set check-latest so .nvmrc majors pick up latest patch,2026-07-01T14:05:05Z,2026-07-01,https://github.com/0xPolygon/pipelines/pull/48
 0xPolygon,bor,lucca30,https://avatars.githubusercontent.com/u/18359201?v=4,2274,Backport from master to develop,2026-07-01T12:16:55Z,2026-07-01,https://github.com/0xPolygon/bor/pull/2274
