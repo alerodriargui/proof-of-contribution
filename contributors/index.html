@@ -16,6 +16,22 @@
     <title>Contributor Profile – Proof of Contribution</title>
     <link rel="icon" href="../app/assets/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="../app/assets/favicon.svg" />
+    <script>
+    // Redirect legacy ?username= URLs to canonical /contributors/{username}
+    (function() {
+      var params = new URLSearchParams(location.search);
+      var u = params.get("username");
+      if (u) {
+        var p = new URLSearchParams();
+        ["org", "project", "orgs", "projects"].forEach(function(k) {
+          var v = params.get(k);
+          if (v) p.set(k, v);
+        });
+        var qs = p.toString();
+        location.replace("/contributors/" + encodeURIComponent(u) + (qs ? "?" + qs : ""));
+      }
+    })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />

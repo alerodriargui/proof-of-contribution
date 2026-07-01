@@ -4,3 +4,7 @@ services:
     runtime: static
     buildCommand: echo "No build step required"
     staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /contributors/*
+        destination: /contributors/index.html

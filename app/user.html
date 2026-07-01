@@ -18,11 +18,12 @@
     <script>
     // Redirect legacy ?username= URLs to canonical /contributors/{username}
     (function() {
-      var u = new URLSearchParams(location.search).get("username");
+      var params = new URLSearchParams(location.search);
+      var u = params.get("username");
       if (u) {
         var p = new URLSearchParams();
-        ["org","project"].forEach(function(k) {
-          var v = new URLSearchParams(location.search).get(k);
+        ["org", "project", "orgs", "projects"].forEach(function(k) {
+          var v = params.get(k);
           if (v) p.set(k, v);
         });
         var qs = p.toString();

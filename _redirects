@@ -1,2 +1,3 @@
-# Render redirect rules (not supported by Render at this time)
-# /contributors/* /contributors/index.html 200
+# Local fallback for static hosts that understand Netlify-style rewrites.
+# Render uses the equivalent route in render.yaml.
+/contributors/* /contributors/index.html 200
