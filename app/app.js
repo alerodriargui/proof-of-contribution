@@ -580,8 +580,8 @@ function githubAvatarUrl(login) {
 }
 
 function contributorProfileUrl(login, params = "") {
-  const query = params ? `&${params}` : "";
-  return `/contributors/?username=${encodeURIComponent(login)}${query}`;
+  const query = params ? `?${params}` : "";
+  return `/contributors/${encodeURIComponent(login)}${query}`;
 }
 
 function avatarMarkup(row) {
