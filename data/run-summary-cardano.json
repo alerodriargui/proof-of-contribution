@@ -1,7 +1,7 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-01T18:35:19Z",
-  "total_repos_processed": 157,
+  "generated_at": "2026-07-01T22:03:41Z",
+  "total_repos_processed": 156,
   "total_merged_prs": 4607,
   "ecosystems": [
     {
@@ -9,21 +9,25 @@
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 157,
-      "processed_repos": 157,
+      "processed_repos": 156,
       "prs_found": 4607,
       "prs_after_merge": 33845,
       "api_request_count": 159,
-      "rate_limit_remaining": "3838",
-      "rate_limit_reset": "1782933506",
-      "started_at": "2026-07-01T18:33:01.155437+00:00",
-      "finished_at": "2026-07-01T18:35:19.694000+00:00",
-      "duration_seconds": 138.54,
-      "skipped_repos": [],
-      "errors": [],
+      "rate_limit_remaining": "3795",
+      "rate_limit_reset": "1782945187",
+      "started_at": "2026-07-01T22:01:52.992466+00:00",
+      "finished_at": "2026-07-01T22:03:41.756332+00:00",
+      "duration_seconds": 108.76,
+      "skipped_repos": [
+        "cf-network-monitoring-aggregator"
+      ],
+      "errors": [
+        "cf-network-monitoring-aggregator: HTTP 401 for https://api.github.com/repos/cardano-foundation/cf-network-monitoring-aggregator/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\r\n  \"message\": \"Bad credentials\",\r\n  \"documentation_url\": \"https://docs.github.com/rest\",\r\n  \"status\": \"401\"\r\n}"
+      ],
       "checkpoint": {
         "org": "cardano-foundation",
         "last_merged_at": "2026-07-01T13:07:25Z",
-        "last_run_at": "2026-07-01T18:35:19Z",
+        "last_run_at": "2026-07-01T22:03:41Z",
         "total_prs": 33845,
         "incremental": true,
         "overlap_hours": 48.0
