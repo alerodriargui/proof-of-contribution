@@ -29,7 +29,8 @@
                 "project":  "Проект"
             },
     "footer":  {
-                   "tagline":  "Интеллект open-source вкладов для крипто-экосистем."
+                   "tagline":  "Интеллект open-source вкладов для крипто-экосистем.",
+                   "navigation":  "Навигация в футере"
                },
     "common":  {
                    "loadingSummary":  "Загрузка сводки...",

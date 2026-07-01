@@ -6,12 +6,14 @@
     <meta
       name="description"
       content="Explore the people, projects, and ecosystems building open-source crypto through transparent GitHub contribution data."
+      data-i18n-attr="content:meta.landingDescription"
     />
     <meta name="theme-color" content="#f4f1ff" />
     <meta property="og:title" content="Proof of Contribution" />
     <meta
       property="og:description"
       content="See who is building open-source crypto, where they contribute, and how ecosystems grow."
+      data-i18n-attr="content:meta.landingDescription"
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://proof-of-contribution.onrender.com/" />
@@ -21,6 +23,7 @@
     <meta
       name="twitter:description"
       content="A public contribution map for open-source crypto ecosystems."
+      data-i18n-attr="content:meta.landingDescription"
     />
     <meta name="twitter:image" content="https://proof-of-contribution.onrender.com/app/assets/poc-logo.svg" />
     <title>Proof of Contribution — Open-source contribution intelligence</title>
@@ -68,54 +71,57 @@
               <span data-i18n="landing.exploreContributions">Explore contributions</span>
               <span aria-hidden="true">→</span>
             </a>
-            <a class="text-link" href="#how-it-works">Discover how it works ↓</a>
+            <a class="text-link" href="#how-it-works">
+              <span data-i18n="landing.discoverHow">Discover how it works</span>
+              <span aria-hidden="true">↓</span>
+            </a>
           </div>
           <p class="hero-proof" data-i18n="landing.heroProof">
             Public data. Open methodology. Built to be verified.
           </p>
         </div>
 
-        <div class="hero-product" aria-label="Dashboard preview">
+        <div class="hero-product" aria-label="Dashboard preview" data-i18n-attr="aria-label:landing.dashboardPreview">
           <div class="preview-halo" aria-hidden="true"></div>
           <div class="preview-card">
             <div class="preview-top">
               <div class="preview-title">
                 <img src="./app/assets/poc-mark.svg" alt="" aria-hidden="true" />
                 <div>
-                  <span>Contribution overview</span>
-                  <strong>Open-source ecosystems</strong>
+                  <span data-i18n="landing.contributionOverview">Contribution overview</span>
+                  <strong data-i18n="landing.openSourceEcosystems">Open-source ecosystems</strong>
                 </div>
               </div>
-              <span class="live-pill"><i></i> Public data</span>
+              <span class="live-pill"><i></i> <span data-i18n="landing.publicData">Public data</span></span>
             </div>
 
             <div class="preview-metrics">
               <div>
-                <span>Merged PRs</span>
+                <span data-i18n="landing.mergedPrs">Merged PRs</span>
                 <strong>220K+</strong>
-                <small>accepted contributions</small>
+                <small data-i18n="landing.acceptedContributions">accepted contributions</small>
               </div>
               <div>
-                <span>Ecosystems</span>
+                <span data-i18n="landing.ecosystemsIndexed">Ecosystems</span>
                 <strong>12</strong>
-                <small>currently indexed</small>
+                <small data-i18n="landing.currentlyIndexed">currently indexed</small>
               </div>
               <div>
-                <span>Source</span>
-                <strong>GitHub</strong>
-                <small>public repositories</small>
+                <span data-i18n="landing.source">Source</span>
+                <strong data-i18n="landing.github">GitHub</strong>
+                <small data-i18n="landing.publicRepositories">public repositories</small>
               </div>
             </div>
 
             <div class="preview-chart">
               <div class="chart-heading">
                 <div>
-                  <span>Contribution activity</span>
-                  <strong>Accepted work over time</strong>
+                  <span data-i18n="landing.contributionActivity">Contribution activity</span>
+                  <strong data-i18n="landing.acceptedWorkOverTime">Accepted work over time</strong>
                 </div>
-                <span>All ecosystems</span>
+                <span data-i18n="landing.allEcosystems">All ecosystems</span>
               </div>
-              <svg viewBox="0 0 640 220" role="img" aria-label="Illustrative contribution activity chart">
+              <svg viewBox="0 0 640 220" role="img" aria-label="Contribution activity" data-i18n-attr="aria-label:landing.contributionActivity">
                 <defs>
                   <linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="0" stop-color="#6d5dfc" stop-opacity=".3" />
@@ -141,30 +147,30 @@
                 <circle cx="640" cy="27" r="6" />
               </svg>
               <div class="chart-labels" aria-hidden="true">
-                <span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>Today</span>
+                <span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span data-i18n="landing.today">Today</span>
               </div>
             </div>
 
             <div class="preview-contributors">
               <div>
                 <span class="avatar avatar-one">A</span>
-                <p><strong>Contributors</strong><small>Discover accepted work</small></p>
+                <p><strong data-i18n="landing.contributors">Contributors</strong><small data-i18n="landing.discoverAcceptedWork">Discover accepted work</small></p>
               </div>
               <div>
                 <span class="avatar avatar-two">P</span>
-                <p><strong>Projects</strong><small>Compare activity</small></p>
+                <p><strong data-i18n="landing.projects">Projects</strong><small data-i18n="landing.compareActivity">Compare activity</small></p>
               </div>
               <div>
                 <span class="avatar avatar-three">E</span>
-                <p><strong>Ecosystems</strong><small>Follow growth</small></p>
+                <p><strong data-i18n="landing.ecosystems">Ecosystems</strong><small data-i18n="landing.followGrowth">Follow growth</small></p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="ecosystem-strip" aria-label="Indexed ecosystems">
-        <p>Tracking public contributions across</p>
+      <section class="ecosystem-strip" aria-label="Indexed ecosystems" data-i18n-attr="aria-label:landing.openSourceEcosystems">
+        <p data-i18n="landing.trackingPublic">Tracking public contributions across</p>
         <div class="logo-marquee">
           <div class="logo-marquee-track">
             <div class="logo-marquee-group">
@@ -213,9 +219,9 @@
 
       <section class="section story-section" id="how-it-works">
         <div class="section-heading">
-          <p class="section-kicker">A clearer signal</p>
-          <h2>Contribution should be<br />visible, not buried.</h2>
-          <p>
+          <p class="section-kicker" data-i18n="landing.clearerSignal">A clearer signal</p>
+          <h2 data-i18n-html="landing.contributionVisible">Contribution should be<br />visible, not buried.</h2>
+          <p data-i18n="landing.storyCopy">
             Valuable work is scattered across thousands of repositories. We turn accepted
             pull requests into a simple, inspectable map of open-source activity.
           </p>
@@ -227,58 +233,61 @@
             <div class="step-icon source-icon" aria-hidden="true">
               <i></i><i></i><i></i>
             </div>
-            <h3>Collect public work</h3>
-            <p>We index merged pull requests from public GitHub repositories across each ecosystem.</p>
+            <h3 data-i18n="landing.collectTitle">Collect public work</h3>
+            <p data-i18n="landing.collectCopy">We index merged pull requests from public GitHub repositories across each ecosystem.</p>
           </article>
           <article>
             <span class="step-number">02</span>
             <div class="step-icon organize-icon" aria-hidden="true">
               <i></i><i></i><i></i><i></i>
             </div>
-            <h3>Make it understandable</h3>
-            <p>Contributions are organized by person, project, ecosystem, and time.</p>
+            <h3 data-i18n="landing.organizeTitle">Make it understandable</h3>
+            <p data-i18n="landing.organizeCopy">Contributions are organized by person, project, ecosystem, and time.</p>
           </article>
           <article>
             <span class="step-number">03</span>
             <div class="step-icon explore-icon" aria-hidden="true">
               <i></i><i></i>
             </div>
-            <h3>Explore the signal</h3>
-            <p>Find builders, compare ecosystems, and inspect every contribution at its source.</p>
+            <h3 data-i18n="landing.exploreSignalTitle">Explore the signal</h3>
+            <p data-i18n="landing.exploreSignalCopy">Find builders, compare ecosystems, and inspect every contribution at its source.</p>
           </article>
         </div>
       </section>
 
       <section class="section insights-section" id="insights">
         <div class="insight-copy">
-          <p class="section-kicker">Built for discovery</p>
-          <h2>Go beyond a leaderboard.</h2>
-          <p>
+          <p class="section-kicker" data-i18n="landing.builtForDiscovery">Built for discovery</p>
+          <h2 data-i18n="landing.beyondLeaderboard">Go beyond a leaderboard.</h2>
+          <p data-i18n="landing.insightsCopy">
             Understand the shape of an ecosystem—not just who has the highest count.
             Open any contributor to see their history, projects, recent work, and activity over time.
           </p>
           <ul>
-            <li><span>✓</span> Compare contributors across ecosystems</li>
-            <li><span>✓</span> Inspect project-level contribution history</li>
-            <li><span>✓</span> Follow growth through transparent statistics</li>
+            <li><span>✓</span> <span data-i18n="landing.compareContributors">Compare contributors across ecosystems</span></li>
+            <li><span>✓</span> <span data-i18n="landing.inspectProjectHistory">Inspect project-level contribution history</span></li>
+            <li><span>✓</span> <span data-i18n="landing.followTransparentStats">Follow growth through transparent statistics</span></li>
           </ul>
-          <a class="text-link text-link-dark" href="./app/stats.html">View ecosystem statistics →</a>
+          <a class="text-link text-link-dark" href="./app/stats.html">
+            <span data-i18n="landing.viewStats">View ecosystem statistics</span>
+            <span aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <div class="insight-stack" aria-label="Product capabilities">
+        <div class="insight-stack" aria-label="Product capabilities" data-i18n-attr="aria-label:landing.capabilities">
           <article class="insight-card insight-card-main">
             <div class="mini-profile">
               <span class="mini-avatar">OC</span>
               <div>
-                <span>Contributor profile</span>
-                <strong>Open-source builder</strong>
+                <span data-i18n="landing.contributorProfile">Contributor profile</span>
+                <strong data-i18n="landing.openSourceBuilder">Open-source builder</strong>
               </div>
-              <span class="verified">Verified by source ↗</span>
+              <span class="verified"><span data-i18n="landing.verifiedBySource">Verified by source</span> <span aria-hidden="true">↗</span></span>
             </div>
             <div class="profile-numbers">
-              <div><span>Merged PRs</span><strong>248</strong></div>
-              <div><span>Projects</span><strong>17</strong></div>
-              <div><span>Ecosystems</span><strong>4</strong></div>
+              <div><span data-i18n="landing.mergedPrs">Merged PRs</span><strong>248</strong></div>
+              <div><span data-i18n="landing.projects">Projects</span><strong>17</strong></div>
+              <div><span data-i18n="landing.ecosystems">Ecosystems</span><strong>4</strong></div>
             </div>
             <div class="activity-bars" aria-hidden="true">
               <i style="height: 22%"></i><i style="height: 38%"></i><i style="height: 30%"></i>
@@ -288,38 +297,38 @@
             </div>
           </article>
           <article class="floating-card floating-card-top">
-            <span>Top project</span>
-            <strong>Public infrastructure</strong>
-            <small>Accepted contribution history</small>
+            <span data-i18n="landing.topProject">Top project</span>
+            <strong data-i18n="landing.publicInfrastructure">Public infrastructure</strong>
+            <small data-i18n="landing.acceptedHistory">Accepted contribution history</small>
           </article>
           <article class="floating-card floating-card-bottom">
-            <span>Activity</span>
-            <strong>Growing</strong>
-            <small><i>↗</i> across recent months</small>
+            <span data-i18n="landing.activity">Activity</span>
+            <strong data-i18n="landing.growing">Growing</strong>
+            <small><i>↗</i> <span data-i18n="landing.acrossRecentMonths">across recent months</span></small>
           </article>
         </div>
       </section>
 
       <section class="principles-section">
         <div>
-          <p class="section-kicker">Our principles</p>
-          <h2>Public by design.<br />Useful by default.</h2>
+          <p class="section-kicker" data-i18n="landing.principles">Our principles</p>
+          <h2 data-i18n-html="landing.publicByDesign">Public by design.<br />Useful by default.</h2>
         </div>
         <div class="principles-grid">
           <article>
             <span>◎</span>
-            <h3>Transparent</h3>
-            <p>Every result comes from public repositories and links back to its source.</p>
+            <h3 data-i18n="landing.transparentTitle">Transparent</h3>
+            <p data-i18n="landing.transparentCopy">Every result comes from public repositories and links back to its source.</p>
           </article>
           <article>
             <span>◇</span>
-            <h3>Reproducible</h3>
-            <p>The collection scripts, dashboard, and methodology are open source.</p>
+            <h3 data-i18n="landing.reproducibleTitle">Reproducible</h3>
+            <p data-i18n="landing.reproducibleCopy">The collection scripts, dashboard, and methodology are open source.</p>
           </article>
           <article>
             <span>↗</span>
-            <h3>Independent</h3>
-            <p>A neutral contribution layer designed to work across ecosystems.</p>
+            <h3 data-i18n="landing.independentTitle">Independent</h3>
+            <p data-i18n="landing.independentCopy">A neutral contribution layer designed to work across ecosystems.</p>
           </article>
         </div>
       </section>
@@ -328,11 +337,11 @@
         <div class="cta-orb cta-orb-one" aria-hidden="true"></div>
         <div class="cta-orb cta-orb-two" aria-hidden="true"></div>
         <img src="./app/assets/poc-mark.svg" alt="" aria-hidden="true" />
-        <p class="section-kicker">Proof of Contribution</p>
-        <h2>Find the people building<br />the open-source future.</h2>
-        <p>Explore accepted work across crypto ecosystems in one public contribution map.</p>
+        <p class="section-kicker" data-i18n="landing.finalKicker">Proof of Contribution</p>
+        <h2 data-i18n-html="landing.finalTitle">Find the people building<br />the open-source future.</h2>
+        <p data-i18n="landing.finalCopy">Explore accepted work across crypto ecosystems in one public contribution map.</p>
         <a class="button button-light" href="./app/">
-          Open the dashboard
+          <span data-i18n="landing.openDashboard">Open the dashboard</span>
           <span aria-hidden="true">→</span>
         </a>
       </section>
@@ -344,11 +353,14 @@
         <span>Proof of Contribution</span>
       </a>
       <p data-i18n="footer.tagline">Open-source contribution intelligence for crypto ecosystems.</p>
-      <nav aria-label="Footer navigation">
+      <nav aria-label="Footer navigation" data-i18n-attr="aria-label:footer.navigation">
         <a href="./app/" data-i18n="nav.dashboard">Dashboard</a>
         <a href="./app/stats.html" data-i18n="nav.statistics">Statistics</a>
         <a href="./app/docs.html" data-i18n="nav.docs">Docs</a>
-        <a href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://github.com/alerodriargui/proof-of-contribution" target="_blank" rel="noreferrer">
+          <span data-i18n="nav.githubRepository">GitHub Repository</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </nav>
     </footer>
     <script src="./app/i18n.js"></script>

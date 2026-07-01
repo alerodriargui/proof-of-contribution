@@ -29,7 +29,8 @@
                 "project":  "Project"
             },
     "footer":  {
-                   "tagline":  "Open-source contribution intelligence for crypto ecosystems."
+                   "tagline":  "Open-source contribution intelligence for crypto ecosystems.",
+                   "navigation":  "Footer navigation"
                },
     "common":  {
                    "loadingSummary":  "Loading summary...",

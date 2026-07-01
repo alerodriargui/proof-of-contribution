@@ -29,7 +29,8 @@
                 "project":  "Projeto"
             },
     "footer":  {
-                   "tagline":  "Inteligência de contribuições open-source para ecossistemas cripto."
+                   "tagline":  "Inteligência de contribuições open-source para ecossistemas cripto.",
+                   "navigation":  "Navegação do rodapé"
                },
     "common":  {
                    "loadingSummary":  "Carregando resumo...",

@@ -144,7 +144,27 @@
   function setLocaleInUrl(locale) {
     const url = new URL(window.location.href);
     url.searchParams.set("lang", locale);
-    window.location.href = url.toString();
+    window.history.replaceState({}, "", url.toString());
+  }
+
+  async function changeLocale(locale) {
+    const nextLocale = normalizeLocale(locale) || DEFAULT_LOCALE;
+    if (nextLocale === state.locale) return;
+
+    state.locale = nextLocale;
+    persistLocale(nextLocale);
+    setLocaleInUrl(nextLocale);
+    state.messages = nextLocale === DEFAULT_LOCALE ? state.fallback : await fetchLocale(nextLocale);
+    refreshDocumentMeta();
+    applyTranslations();
+
+    const selector = document.querySelector("[data-language-selector]");
+    if (selector) {
+      selector.value = nextLocale;
+      selector.setAttribute("aria-label", t("language.selectorLabel"));
+    }
+
+    window.dispatchEvent(new CustomEvent("poc:locale-ready", { detail: { locale: state.locale } }));
   }
 
   function mountLanguageSelector() {
@@ -157,8 +177,9 @@
       `<option value="${locale.code}" ${locale.code === state.locale ? "selected" : ""}>${locale.flag} ${locale.name}</option>`
     )).join("");
     select.addEventListener("change", () => {
-      persistLocale(select.value);
-      setLocaleInUrl(select.value);
+      changeLocale(select.value).catch((error) => {
+        console.error(error);
+      });
     });
 
     const wrap = document.createElement("label");
@@ -208,6 +229,7 @@
     ready: state.ready,
     t,
     applyTranslations,
+    changeLocale,
     get locale() {
       return state.locale;
     },

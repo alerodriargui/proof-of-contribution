@@ -29,7 +29,8 @@
                 "project":  "项目"
             },
     "footer":  {
-                   "tagline":  "面向加密生态系统的开源贡献智能。"
+                   "tagline":  "面向加密生态系统的开源贡献智能。",
+                   "navigation":  "页脚导航"
                },
     "common":  {
                    "loadingSummary":  "æ­£åœ¨åŠ è½½æ‘˜è¦...",
