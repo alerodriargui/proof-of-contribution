@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+aave,aave-proposals-v3,Kogaroshi,https://avatars.githubusercontent.com/u/25688223?v=4,66,chore : update V4 & address-book deps,2026-07-02T17:48:23Z,2026-07-02,https://github.com/aave/aave-proposals-v3/pull/66,284,210,494
 aave,interface,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,3060,feat: add WMON icon,2026-07-02T13:56:48Z,2026-07-02,https://github.com/aave/interface/pull/3060,6,0,6
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3059,feat: show all assets if all assets are less than 100k,2026-07-02T13:03:53Z,2026-07-02,https://github.com/aave/interface/pull/3059,13,4,17
 aave,interface,grothem,https://avatars.githubusercontent.com/u/23554636?v=4,3057,fix: isolated emode,2026-07-02T12:50:43Z,2026-07-02,https://github.com/aave/interface/pull/3057,291,89,380

@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-02T17:11:08Z",
+  "generated_at": "2026-07-02T19:07:24Z",
   "total_repos_processed": 1,
   "total_merged_prs": 12,
   "ecosystems": [
@@ -13,17 +13,17 @@
       "prs_found": 12,
       "prs_after_merge": 28487,
       "api_request_count": 4,
-      "rate_limit_remaining": "45",
-      "rate_limit_reset": "1783012629",
-      "started_at": "2026-07-02T17:11:04.288445+00:00",
-      "finished_at": "2026-07-02T17:11:08.601119+00:00",
-      "duration_seconds": 4.31,
+      "rate_limit_remaining": "27",
+      "rate_limit_reset": "1783019258",
+      "started_at": "2026-07-02T19:07:20.361245+00:00",
+      "finished_at": "2026-07-02T19:07:24.941528+00:00",
+      "duration_seconds": 4.58,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "near",
         "last_merged_at": "2026-07-01T21:41:26Z",
-        "last_run_at": "2026-07-02T17:11:08Z",
+        "last_run_at": "2026-07-02T19:07:24Z",
         "total_prs": 28487,
         "incremental": true,
         "overlap_hours": 48.0

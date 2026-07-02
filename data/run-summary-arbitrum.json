@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-02T17:11:01Z",
+  "generated_at": "2026-07-02T19:07:17Z",
   "total_repos_processed": 1,
   "total_merged_prs": 19,
   "ecosystems": [
@@ -13,17 +13,17 @@
       "prs_found": 19,
       "prs_after_merge": 25366,
       "api_request_count": 3,
-      "rate_limit_remaining": "52",
-      "rate_limit_reset": "1783012629",
-      "started_at": "2026-07-02T17:10:58.633261+00:00",
-      "finished_at": "2026-07-02T17:11:01.647128+00:00",
-      "duration_seconds": 3.01,
+      "rate_limit_remaining": "34",
+      "rate_limit_reset": "1783019258",
+      "started_at": "2026-07-02T19:07:13.369282+00:00",
+      "finished_at": "2026-07-02T19:07:17.322583+00:00",
+      "duration_seconds": 3.95,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "OffchainLabs",
         "last_merged_at": "2026-07-01T20:49:26Z",
-        "last_run_at": "2026-07-02T17:11:01Z",
+        "last_run_at": "2026-07-02T19:07:17Z",
         "total_prs": 25366,
         "incremental": true,
         "overlap_hours": 48.0
