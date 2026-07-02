@@ -1,50 +1,50 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "fc2143bc01ad6b31",
-  "generated_at": "2026-07-02T13:14:36Z",
+  "version": "50acd8be720624e0",
+  "generated_at": "2026-07-02T17:11:12Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 392724,
-  "row_count": 33226,
+  "source_pr_count": 392765,
+  "row_count": 33230,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 58687,
-      "summary_row_count": 8236,
-      "last_updated": "2026-07-02T12:26:26Z"
+      "raw_pr_count": 58701,
+      "summary_row_count": 8237,
+      "last_updated": "2026-07-02T16:21:19Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
-      "raw_pr_count": 17938,
+      "raw_pr_count": 17939,
       "summary_row_count": 1481,
-      "last_updated": "2026-07-02T12:26:32Z"
+      "last_updated": "2026-07-02T16:21:25Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
-      "raw_pr_count": 5210,
+      "raw_pr_count": 5214,
       "summary_row_count": 482,
-      "last_updated": "2026-07-02T12:27:35Z"
+      "last_updated": "2026-07-02T16:22:31Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
-      "raw_pr_count": 15084,
-      "summary_row_count": 1549,
-      "last_updated": "2026-07-02T12:29:39Z"
+      "raw_pr_count": 15095,
+      "summary_row_count": 1550,
+      "last_updated": "2026-07-02T16:24:44Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4844,
       "summary_row_count": 404,
-      "last_updated": "2026-07-02T12:38:23Z"
+      "last_updated": "2026-07-02T16:25:44Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
       "org": "bnb",
-      "raw_pr_count": 11094,
+      "raw_pr_count": 11096,
       "summary_row_count": 1303,
       "last_updated": null
     },
@@ -65,15 +65,15 @@
     {
       "path": "data/tron_merged_prs.csv",
       "org": "tron",
-      "raw_pr_count": 7267,
-      "summary_row_count": 659,
+      "raw_pr_count": 7275,
+      "summary_row_count": 660,
       "last_updated": null
     },
     {
       "path": "data/cardano_merged_prs.csv",
       "org": "cardano",
-      "raw_pr_count": 33845,
-      "summary_row_count": 3334,
+      "raw_pr_count": 33846,
+      "summary_row_count": 3335,
       "last_updated": null
     },
     {
@@ -81,7 +81,7 @@
       "org": "stellar",
       "raw_pr_count": 27688,
       "summary_row_count": 1895,
-      "last_updated": "2026-07-02T13:14:08Z"
+      "last_updated": "2026-07-02T17:10:45Z"
     },
     {
       "path": "data/link_merged_prs.csv",
@@ -123,7 +123,7 @@
       "org": "near",
       "raw_pr_count": 28487,
       "summary_row_count": 2470,
-      "last_updated": "2026-07-02T13:14:32Z"
+      "last_updated": "2026-07-02T17:11:08Z"
     },
     {
       "path": "data/sui_merged_prs.csv",
