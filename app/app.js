@@ -273,6 +273,11 @@ function formatNumber(value) {
   return window.pocI18n ? window.pocI18n.formatNumber(value) : new Intl.NumberFormat("en-US").format(value);
 }
 
+function formatSignedNumber(value) {
+  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
+  return `${sign}${formatNumber(Math.abs(value))}`;
+}
+
 function t(key, params = {}) {
   return window.pocI18n ? window.pocI18n.t(key, params) : key;
 }
@@ -305,6 +310,21 @@ function contributorTier(prCount) {
 function contributorTierMarkup(prCount) {
   const tier = contributorTier(prCount);
   return `<span class="tier-badge tier-${tier.id}" title="${escapeHtml(t(`tier.range${tier.id}`))}">${escapeHtml(t(`tier.${tier.id}`))}</span>`;
+}
+
+function lineBalanceMarkup(row) {
+  const additions = Number(row.total_additions || 0);
+  const deletions = Number(row.total_deletions || 0);
+  const net = additions - deletions;
+  const netClass = net > 0 ? "positive" : net < 0 ? "negative" : "neutral";
+
+  return `
+    <div class="line-balance" title="+${formatNumber(additions)} / -${formatNumber(deletions)} / ${formatSignedNumber(net)}">
+      <span class="line-add">+${formatNumber(additions)}</span>
+      <span class="line-delete">-${formatNumber(deletions)}</span>
+      <span class="line-net ${netClass}">=${formatSignedNumber(net)}</span>
+    </div>
+  `;
 }
 
 function aggregateDevelopers(rows) {
@@ -550,7 +570,7 @@ function renderDevelopers(developers) {
   }
 
   if (rows.length === 0) {
-    els.developerRows.innerHTML = `<tr><td colspan="7" class="empty">${escapeHtml(t("common.noRows"))}</td></tr>`;
+    els.developerRows.innerHTML = `<tr><td colspan="8" class="empty">${escapeHtml(t("common.noRows"))}</td></tr>`;
     return;
   }
 
@@ -582,6 +602,7 @@ function renderDevelopers(developers) {
           <td class="org-tags-cell"><div class="org-tags">${orgTags}</div></td>
           <td>${contributorTierMarkup(row.n_prs)}</td>
           <td class="number">${formatNumber(row.n_prs)}</td>
+          <td class="number line-balance-cell">${lineBalanceMarkup(row)}</td>
           <td class="number">${formatNumber(row.n_projects)}</td>
           <td>${escapeHtml(row.top_project)}</td>
         </tr>

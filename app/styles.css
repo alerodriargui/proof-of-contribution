@@ -759,7 +759,7 @@ h2 {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 720px;
+  min-width: 860px;
 }
 
 th,
@@ -994,6 +994,51 @@ tbody tr.inline-detail-row:hover {
 
 .number {
   text-align: right;
+}
+
+.line-balance {
+  display: inline-grid;
+  grid-template-columns: repeat(3, max-content);
+  gap: 7px;
+  align-items: center;
+  justify-content: end;
+  min-width: 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.line-add {
+  color: var(--green);
+  font-weight: 850;
+}
+
+.line-delete {
+  color: #dc2626;
+  font-weight: 850;
+}
+
+.line-net {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  border: 1px solid rgba(104, 117, 134, 0.22);
+  border-radius: 999px;
+  background: rgba(104, 117, 134, 0.08);
+  color: var(--muted);
+  font-weight: 900;
+  padding: 2px 7px;
+}
+
+.line-net.positive {
+  border-color: rgba(15, 118, 110, 0.24);
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+.line-net.negative {
+  border-color: rgba(220, 38, 38, 0.24);
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
 }
 
 .login {
@@ -2293,12 +2338,17 @@ select:focus {
   td:nth-child(3)::before { content: "Organization"; }
   td:nth-child(4)::before { content: "Experience"; }
   td:nth-child(5)::before { content: "Contributions"; }
-  td:nth-child(6)::before { content: "Projects"; }
-  td:nth-child(7)::before { content: "Top project"; }
+  td:nth-child(6)::before { content: "+ / - / Result"; }
+  td:nth-child(7)::before { content: "Projects"; }
+  td:nth-child(8)::before { content: "Top project"; }
 
   td.rank,
   td.number {
     text-align: left;
+  }
+
+  .line-balance {
+    justify-content: start;
   }
 
   .rank {
