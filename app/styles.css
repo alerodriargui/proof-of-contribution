@@ -998,7 +998,7 @@ tbody tr.inline-detail-row:hover {
 
 .line-balance {
   display: inline-grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(2, max-content);
   gap: 7px;
   align-items: center;
   justify-content: end;
@@ -1015,19 +1015,6 @@ tbody tr.inline-detail-row:hover {
 .line-delete {
   color: #dc2626;
   font-weight: 850;
-}
-
-.line-net {
-  color: var(--muted);
-  font-weight: 900;
-}
-
-.line-net.positive {
-  color: var(--green);
-}
-
-.line-net.negative {
-  color: #dc2626;
 }
 
 .login {
@@ -2327,7 +2314,7 @@ select:focus {
   td:nth-child(3)::before { content: "Organization"; }
   td:nth-child(4)::before { content: "Experience"; }
   td:nth-child(5)::before { content: "Contributions"; }
-  td:nth-child(6)::before { content: "+ / - / Result"; }
+  td:nth-child(6)::before { content: "+ / -"; }
   td:nth-child(7)::before { content: "Projects"; }
   td:nth-child(8)::before { content: "Top project"; }
 

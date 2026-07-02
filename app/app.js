@@ -273,11 +273,6 @@ function formatNumber(value) {
   return window.pocI18n ? window.pocI18n.formatNumber(value) : new Intl.NumberFormat("en-US").format(value);
 }
 
-function formatSignedNumber(value) {
-  const sign = value > 0 ? "+" : value < 0 ? "-" : "";
-  return `${sign}${formatNumber(Math.abs(value))}`;
-}
-
 function t(key, params = {}) {
   return window.pocI18n ? window.pocI18n.t(key, params) : key;
 }
@@ -315,14 +310,11 @@ function contributorTierMarkup(prCount) {
 function lineBalanceMarkup(row) {
   const additions = Number(row.total_additions || 0);
   const deletions = Number(row.total_deletions || 0);
-  const net = additions - deletions;
-  const netClass = net > 0 ? "positive" : net < 0 ? "negative" : "neutral";
 
   return `
-    <div class="line-balance" title="+${formatNumber(additions)} / -${formatNumber(deletions)} / ${formatSignedNumber(net)}">
+    <div class="line-balance" title="+${formatNumber(additions)} / -${formatNumber(deletions)}">
       <span class="line-add">+${formatNumber(additions)}</span>
       <span class="line-delete">-${formatNumber(deletions)}</span>
-      <span class="line-net ${netClass}">=${formatSignedNumber(net)}</span>
     </div>
   `;
 }
