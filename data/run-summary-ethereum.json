@@ -1,37 +1,35 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-01T21:54:24Z",
-  "total_repos_processed": 298,
-  "total_merged_prs": 8581,
+  "generated_at": "2026-07-01T23:30:29Z",
+  "total_repos_processed": 169,
+  "total_merged_prs": 5223,
   "ecosystems": [
     {
       "org": "ethereum",
       "incremental": true,
       "overlap_hours": 48.0,
       "total_repos": 301,
-      "processed_repos": 298,
-      "prs_found": 8581,
+      "processed_repos": 169,
+      "prs_found": 5223,
       "prs_after_merge": 58666,
-      "api_request_count": 305,
-      "rate_limit_remaining": "4670",
-      "rate_limit_reset": "1782945187",
-      "started_at": "2026-07-01T21:50:37.037893+00:00",
-      "finished_at": "2026-07-01T21:54:24.482785+00:00",
-      "duration_seconds": 227.44,
+      "api_request_count": 5398,
+      "rate_limit_remaining": "51",
+      "rate_limit_reset": "1782948788",
+      "started_at": "2026-07-01T22:26:48.585690+00:00",
+      "finished_at": "2026-07-01T23:30:29.162303+00:00",
+      "duration_seconds": 3820.58,
       "skipped_repos": [
         "cryptography-specs",
-        "eth-rnd-archive",
-        "solidity-deposit-contract"
+        "eth-rnd-archive"
       ],
       "errors": [
         "cryptography-specs: HTTP 404 for https://api.github.com/repos/ethereum/cryptography-specs/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#list-pull-requests\",\"status\":\"404\"}",
-        "eth-rnd-archive: HTTP 404 for https://api.github.com/repos/ethereum/eth-rnd-archive/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#list-pull-requests\",\"status\":\"404\"}",
-        "solidity-deposit-contract: HTTP 404 for https://api.github.com/repos/ethereum/solidity-deposit-contract/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#list-pull-requests\",\"status\":\"404\"}"
+        "eth-rnd-archive: HTTP 404 for https://api.github.com/repos/ethereum/eth-rnd-archive/pulls?per_page=100&state=closed&sort=updated&direction=desc: {\"message\":\"Not Found\",\"documentation_url\":\"https://docs.github.com/rest/pulls/pulls#list-pull-requests\",\"status\":\"404\"}"
       ],
       "checkpoint": {
         "org": "ethereum",
         "last_merged_at": "2026-07-01T20:06:16Z",
-        "last_run_at": "2026-07-01T21:54:24Z",
+        "last_run_at": "2026-07-01T23:30:29Z",
         "total_prs": 58666,
         "incremental": true,
         "overlap_hours": 48.0
