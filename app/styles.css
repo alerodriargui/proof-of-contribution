@@ -1018,26 +1018,15 @@ tbody tr.inline-detail-row:hover {
 }
 
 .line-net {
-  display: inline-flex;
-  align-items: center;
-  min-height: 22px;
-  border: 1px solid rgba(104, 117, 134, 0.22);
-  border-radius: 999px;
-  background: rgba(104, 117, 134, 0.08);
   color: var(--muted);
   font-weight: 900;
-  padding: 2px 7px;
 }
 
 .line-net.positive {
-  border-color: rgba(15, 118, 110, 0.24);
-  background: var(--green-soft);
   color: var(--green);
 }
 
 .line-net.negative {
-  border-color: rgba(220, 38, 38, 0.24);
-  background: rgba(220, 38, 38, 0.1);
   color: #dc2626;
 }
 
