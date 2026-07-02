@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-02T00:31:30Z",
+  "generated_at": "2026-07-02T06:28:50Z",
   "total_repos_processed": 1,
   "total_merged_prs": 0,
   "ecosystems": [
@@ -13,17 +13,17 @@
       "prs_found": 0,
       "prs_after_merge": 245,
       "api_request_count": 2,
-      "rate_limit_remaining": "13",
-      "rate_limit_reset": "1782952389",
-      "started_at": "2026-07-02T00:31:29.189298+00:00",
-      "finished_at": "2026-07-02T00:31:30.110503+00:00",
-      "duration_seconds": 0.92,
+      "rate_limit_remaining": "69",
+      "rate_limit_reset": "1782973995",
+      "started_at": "2026-07-02T06:28:50.024100+00:00",
+      "finished_at": "2026-07-02T06:28:50.702132+00:00",
+      "duration_seconds": 0.68,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "hyperliquid-dex",
         "last_merged_at": "2026-07-01T16:00:29Z",
-        "last_run_at": "2026-07-02T00:31:30Z",
+        "last_run_at": "2026-07-02T06:28:50Z",
         "total_prs": 245,
         "incremental": true,
         "overlap_hours": 48.0
