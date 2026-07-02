@@ -1,8 +1,8 @@
 {
   "org": "aave",
-  "last_merged_at": "2026-07-01T15:41:19Z",
-  "last_run_at": "2026-07-02T06:28:41Z",
-  "total_prs": 5209,
+  "last_merged_at": "2026-07-02T07:13:03Z",
+  "last_run_at": "2026-07-02T10:01:14Z",
+  "total_prs": 5210,
   "incremental": true,
   "overlap_hours": 48.0
 }

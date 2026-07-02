@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+aave,interface,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,3055,Feat/whitelist wrapped tokenlogic,2026-07-02T07:13:03Z,2026-07-02,https://github.com/aave/interface/pull/3055,12,0,12
 aave,interface,grothem,https://avatars.githubusercontent.com/u/23554636?v=4,3056,fix: remove monad market until activation,2026-07-01T15:41:19Z,2026-07-01,https://github.com/aave/interface/pull/3056,37,24,61
 aave,interface,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,3053,fix: overflow hidden for long symbols,2026-07-01T14:12:16Z,2026-07-01,https://github.com/aave/interface/pull/3053,22,2,24
 aave,interface,AGMASO,https://avatars.githubusercontent.com/u/95312462?v=4,3054,fix: whitelist token,2026-07-01T08:21:33Z,2026-07-01,https://github.com/aave/interface/pull/3054,1,0,1

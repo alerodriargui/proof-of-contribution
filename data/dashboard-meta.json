@@ -1,45 +1,45 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "f6736bd41a48aa8a",
-  "generated_at": "2026-07-02T06:29:23Z",
+  "version": "37e038b6ea9b26d1",
+  "generated_at": "2026-07-02T10:37:06Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 392701,
+  "source_pr_count": 392712,
   "row_count": 33226,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 58670,
+      "raw_pr_count": 58677,
       "summary_row_count": 8236,
-      "last_updated": "2026-07-02T06:28:37Z"
+      "last_updated": "2026-07-02T10:00:09Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
-      "raw_pr_count": 17937,
+      "raw_pr_count": 17938,
       "summary_row_count": 1481,
-      "last_updated": "2026-07-02T06:28:39Z"
+      "last_updated": "2026-07-02T10:00:14Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
-      "raw_pr_count": 5209,
+      "raw_pr_count": 5210,
       "summary_row_count": 482,
-      "last_updated": "2026-07-02T06:28:41Z"
+      "last_updated": "2026-07-02T10:01:14Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15084,
       "summary_row_count": 1549,
-      "last_updated": "2026-07-02T06:28:44Z"
+      "last_updated": "2026-07-02T10:12:42Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4844,
       "summary_row_count": 404,
-      "last_updated": "2026-07-02T06:28:45Z"
+      "last_updated": "2026-07-02T10:23:37Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -81,7 +81,7 @@
       "org": "stellar",
       "raw_pr_count": 27688,
       "summary_row_count": 1895,
-      "last_updated": "2026-07-02T06:28:57Z"
+      "last_updated": "2026-07-02T10:23:50Z"
     },
     {
       "path": "data/link_merged_prs.csv",
@@ -123,12 +123,12 @@
       "org": "near",
       "raw_pr_count": 28487,
       "summary_row_count": 2470,
-      "last_updated": "2026-07-02T06:29:20Z"
+      "last_updated": "2026-07-02T10:24:11Z"
     },
     {
       "path": "data/sui_merged_prs.csv",
       "org": "sui",
-      "raw_pr_count": 29721,
+      "raw_pr_count": 29723,
       "summary_row_count": 1347,
       "last_updated": null
     }
