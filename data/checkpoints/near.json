@@ -1,8 +1,8 @@
 {
   "org": "near",
-  "last_merged_at": "2026-07-01T21:41:26Z",
-  "last_run_at": "2026-07-02T19:07:24Z",
-  "total_prs": 28487,
+  "last_merged_at": "2026-07-02T17:25:25Z",
+  "last_run_at": "2026-07-03T00:39:17Z",
+  "total_prs": 28515,
   "incremental": true,
   "overlap_hours": 48.0
 }

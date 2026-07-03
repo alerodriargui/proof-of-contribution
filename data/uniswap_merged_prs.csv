@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+uniswap,URCs,gretzke,https://avatars.githubusercontent.com/u/10338391?v=4,14,URC-3: set Matteen Mobasheran as primary author,2026-07-02T19:51:13Z,2026-07-02,https://github.com/Uniswap/URCs/pull/14,1,1,2
+uniswap,calibur,zhongeric,https://avatars.githubusercontent.com/u/25067635?v=4,241,v1.1.0,2026-07-02T18:45:29Z,2026-07-02,https://github.com/Uniswap/calibur/pull/241,1237,917,2154
 uniswap,URCs,gretzke,https://avatars.githubusercontent.com/u/10338391?v=4,13,URC-2: set Eric Sanchirico as primary author,2026-07-01T20:33:43Z,2026-07-01,https://github.com/Uniswap/URCs/pull/13,1,1,2
 uniswap,uniswapx-tool,ericneil-sanc,https://avatars.githubusercontent.com/u/216762316?v=4,25,update uniswapx sdk ver,2026-07-01T20:09:26Z,2026-07-01,https://github.com/Uniswap/uniswapx-tool/pull/25,10,10,20
 uniswap,uniswap-ai,wkoutre,https://avatars.githubusercontent.com/u/13321210?v=4,118,"feat(uniswap-trading-tools): add DCA, index, and copy-trade skills",2026-07-01T19:05:23Z,2026-07-01,https://github.com/Uniswap/uniswap-ai/pull/118,4804,116,4920

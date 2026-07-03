@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,191,feat: Entry point scaffold,2026-07-02T19:53:31Z,2026-07-02,https://github.com/ripple/xrpl-wasm-stdlib/pull/191,174,0,174
 ripple,xrpl-wasm-stdlib,ricky122-5,https://avatars.githubusercontent.com/u/67663680?v=4,196,feat: FinishResult for SmartFeatures,2026-07-01T20:09:45Z,2026-07-01,https://github.com/ripple/xrpl-wasm-stdlib/pull/196,249,0,249
 ripple,rippled-workload,vvysokikh1,https://avatars.githubusercontent.com/u/129996061?v=4,71,Wire generative fuzzing into every transaction _faulty handler,2026-07-01T10:59:53Z,2026-07-01,https://github.com/ripple/rippled-workload/pull/71,2046,501,2547
 ripple,opensource.ripple.com,maria-robobug,https://avatars.githubusercontent.com/u/13270204?v=4,217,Remove Dynamic MPT clear flags + minor updates,2026-07-01T10:16:22Z,2026-07-01,https://github.com/ripple/opensource.ripple.com/pull/217,54,44,98
