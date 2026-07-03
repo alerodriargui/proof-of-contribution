@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-02T20:15:49Z",
+  "generated_at": "2026-07-03T05:26:16Z",
   "total_repos_processed": 157,
   "total_merged_prs": 4611,
   "ecosystems": [
@@ -12,18 +12,18 @@
       "processed_repos": 157,
       "prs_found": 4611,
       "prs_after_merge": 33857,
-      "api_request_count": 295,
-      "rate_limit_remaining": "4452",
-      "rate_limit_reset": "1783026468",
-      "started_at": "2026-07-02T20:11:31.741233+00:00",
-      "finished_at": "2026-07-02T20:15:49.090348+00:00",
-      "duration_seconds": 257.35,
+      "api_request_count": 159,
+      "rate_limit_remaining": "3829",
+      "rate_limit_reset": "1783058879",
+      "started_at": "2026-07-03T05:23:40.762947+00:00",
+      "finished_at": "2026-07-03T05:26:16.011477+00:00",
+      "duration_seconds": 155.25,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "cardano-foundation",
         "last_merged_at": "2026-07-02T17:19:59Z",
-        "last_run_at": "2026-07-02T20:15:49Z",
+        "last_run_at": "2026-07-03T05:26:16Z",
         "total_prs": 33857,
         "incremental": true,
         "overlap_hours": 48.0

@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+tronprotocol,wallet-cli,gummy789j,https://avatars.githubusercontent.com/u/65802504?v=4,943,"fix(staking): network-aware, fail-open resource-code validation",2026-07-03T03:24:10Z,2026-07-03,https://github.com/tronprotocol/wallet-cli/pull/943,281,19,300
+tronprotocol,wallet-cli,gummy789j,https://avatars.githubusercontent.com/u/65802504?v=4,936,test(permission): cover default active operation bitmap,2026-07-03T03:22:44Z,2026-07-03,https://github.com/tronprotocol/wallet-cli/pull/936,39,3,42
+tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,127,fix(tron): account for NATIVEVOTE gas and modifier diagnostics,2026-07-03T01:21:33Z,2026-07-03,https://github.com/tronprotocol/solidity/pull/127,130,5,135
 tronprotocol,tips,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,901,Add TRC-1363 and TRC-3156 (Last Call),2026-07-02T14:17:14Z,2026-07-02,https://github.com/tronprotocol/tips/pull/901,747,0,747
 tronprotocol,tips,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,900,Finalize TRC-173 and TRC-1167,2026-07-02T14:16:48Z,2026-07-02,https://github.com/tronprotocol/tips/pull/900,4,4,8
 tronprotocol,tips,BlackChar92,https://avatars.githubusercontent.com/u/100547866?v=4,898,docs(trc-4626): restore Security Considerations notes agreed in #840 (share-inflation mitigation + decimal basis),2026-07-02T10:44:52Z,2026-07-02,https://github.com/tronprotocol/tips/pull/898,4,0,4

@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,freighter,CassioMG,https://avatars.githubusercontent.com/u/3228151?v=4,2872,Swap to New Token,2026-07-02T23:46:01Z,2026-07-02,https://github.com/stellar/freighter/pull/2872,16687,2564,19251
+stellar,rs-stellar-archivist,jayz22,https://avatars.githubusercontent.com/u/13401372?v=4,27,Tolerate the pubnet early-SCP gap; preserve network passphrase in .well-known,2026-07-02T20:38:00Z,2026-07-02,https://github.com/stellar/rs-stellar-archivist/pull/27,1455,53,1508
+stellar,js-stellar-sdk,quietbits,https://avatars.githubusercontent.com/u/7346473?v=4,1502,Add rpc.Server.queryContract for one-line read-only contract calls,2026-07-02T20:20:47Z,2026-07-02,https://github.com/stellar/js-stellar-sdk/pull/1502,1053,73,1126
 stellar,js-stellar-sdk,quietbits,https://avatars.githubusercontent.com/u/7346473?v=4,1504,Make contract.Client factories generic for typed runtime clients,2026-07-02T20:14:36Z,2026-07-02,https://github.com/stellar/js-stellar-sdk/pull/1504,645,70,715
 stellar,js-stellar-sdk,quietbits,https://avatars.githubusercontent.com/u/7346473?v=4,1505,Add `rpc.Server.getContractMethods` for contract method discovery,2026-07-02T20:03:26Z,2026-07-02,https://github.com/stellar/js-stellar-sdk/pull/1505,551,51,602
 stellar,wallet-backend,aditya1702,https://avatars.githubusercontent.com/u/15054664?v=4,649,feat(balances): persist subentry count,2026-07-02T19:12:19Z,2026-07-02,https://github.com/stellar/wallet-backend/pull/649,152,18,170

@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ava-labs,core-extension,meeh0w,https://avatars.githubusercontent.com/u/3853033?v=4,971,"fix: dca swaps, QA round 2",2026-07-03T04:20:24Z,2026-07-03,https://github.com/ava-labs/core-extension/pull/971,562,42,604
 ava-labs,core-mobile,atn4z7,https://avatars.githubusercontent.com/u/8824551?v=4,3942,CP-14662: fix Earn amount input not shrinking / overflowing,2026-07-02T20:44:39Z,2026-07-02,https://github.com/ava-labs/core-mobile/pull/3942,34,25,59
 ava-labs,Simplex,yacovm,https://avatars.githubusercontent.com/u/7521849?v=4,428,Garbage collect blacklist upon epoch change,2026-07-02T20:28:46Z,2026-07-02,https://github.com/ava-labs/Simplex/pull/428,67,2,69
 ava-labs,core-mobile,bogdandobritoiu,https://avatars.githubusercontent.com/u/13921269?v=4,3937,"CP-14631, CP-14632: fix My Wallets missing balance/empty list & portfolio header animation",2026-07-02T18:43:47Z,2026-07-02,https://github.com/ava-labs/core-mobile/pull/3937,879,624,1503

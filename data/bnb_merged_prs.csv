@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bnb-chain,safe-transaction-service,ruojunm,https://avatars.githubusercontent.com/u/46366167?v=4,11,fix:fix the py dependency and lock them,2026-07-03T04:15:21Z,2026-07-03,https://github.com/bnb-chain/safe-transaction-service/pull/11,139,6,145
+bnb-chain,reth-bsc,chee-chyuan,https://avatars.githubusercontent.com/u/60590919?v=4,419,feat(miner): switch BidBlock to zero-simulate (broadcast-then-verify),2026-07-03T03:57:36Z,2026-07-03,https://github.com/bnb-chain/reth-bsc/pull/419,2609,221,2830
+bnb-chain,bsc,flywukong,https://avatars.githubusercontent.com/u/19421226?v=4,3741, miner: disable BidBlock on hard-fork activation blocks,2026-07-03T03:42:51Z,2026-07-03,https://github.com/bnb-chain/bsc/pull/3741,8,1,9
 bnb-chain,mpp-sdk,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,6,chore: version package,2026-07-02T10:05:14Z,2026-07-02,https://github.com/bnb-chain/mpp-sdk/pull/6,71,55,126
 bnb-chain,mpp-sdk,aiden-cao,https://avatars.githubusercontent.com/u/104969608?v=4,5,Feat/b402 support,2026-07-02T10:03:02Z,2026-07-02,https://github.com/bnb-chain/mpp-sdk/pull/5,9785,4089,13874
 bnb-chain,safe-transaction-service,ruojunm,https://avatars.githubusercontent.com/u/46366167?v=4,10,fix: use gevent==23.9.1,2026-07-02T07:59:20Z,2026-07-02,https://github.com/bnb-chain/safe-transaction-service/pull/10,4,0,4

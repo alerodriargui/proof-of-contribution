@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+OffchainLabs,prysm,james-prysm,https://avatars.githubusercontent.com/u/90280386?v=4,17037,removing parent block number post gloas,2026-07-03T05:15:55Z,2026-07-03,https://github.com/OffchainLabs/prysm/pull/17037,135,5,140
+OffchainLabs,prysm,syjn99,https://avatars.githubusercontent.com/u/87601811?v=4,17077,Add SSZ response support for `GET` & `POST` `validator_balances` endpoint,2026-07-03T03:18:45Z,2026-07-03,https://github.com/OffchainLabs/prysm/pull/17077,1309,990,2299
+OffchainLabs,prysm,syjn99,https://avatars.githubusercontent.com/u/87601811?v=4,16980,Use `head_v2` event as a default event topic for REST VC ,2026-07-03T00:57:08Z,2026-07-03,https://github.com/OffchainLabs/prysm/pull/16980,320,64,384
 OffchainLabs,prysm,terencechain,https://avatars.githubusercontent.com/u/21316537?v=4,17074,Gate partial column decode on subscription to protect the gossip loop,2026-07-02T22:06:55Z,2026-07-02,https://github.com/OffchainLabs/prysm/pull/17074,53,2,55
 OffchainLabs,prysm,terencechain,https://avatars.githubusercontent.com/u/21316537?v=4,17079,Submit block to winning builder before the broadcast error check,2026-07-02T21:03:59Z,2026-07-02,https://github.com/OffchainLabs/prysm/pull/17079,7,4,11
 OffchainLabs,arbitrum-docs,Gowtham118,https://avatars.githubusercontent.com/u/65408812?v=4,3427,chore: exchange integration checklist,2026-07-02T19:10:25Z,2026-07-02,https://github.com/OffchainLabs/arbitrum-docs/pull/3427,218,0,218
