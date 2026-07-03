@@ -101,6 +101,14 @@ const statsState = {
   aggregatedPrs: new Map(),
   // aggregated Contribution counts excluding bots: Map<orgId, Map<dayKey, number>>
   aggregatedPrsExBots: new Map(),
+  // aggregated changed lines: Map<orgId, Map<dayKey, number>>
+  aggregatedChangedLines: new Map(),
+  // aggregated changed lines excluding bots: Map<orgId, Map<dayKey, number>>
+  aggregatedChangedLinesExBots: new Map(),
+  // aggregated net lines (additions - deletions): Map<orgId, Map<dayKey, number>>
+  aggregatedNetLines: new Map(),
+  // aggregated net lines excluding bots: Map<orgId, Map<dayKey, number>>
+  aggregatedNetLinesExBots: new Map(),
   // aggregated projects: Map<orgId, Map<dayKey, Map<projectName, number>>>
   projectActivity: new Map(),
   // user data: Map<usuario, { firstSeen: Date, orgs: Set, prCount: number, activeDays: Map, isBot: boolean, isGhost: boolean }>
@@ -128,6 +136,8 @@ let chartMultiNetwork = null;
 let chartDayOfWeek = null;
 let chartContributionActivity = null;
 let chartContributorRetention = null;
+let chartNetLines = null;
+let chartLinesPerPr = null;
 
 // ── DOM helpers ───────────────────────────────────────
 const $ = (id) => document.getElementById(id);
@@ -145,6 +155,8 @@ function localizeStatsDom() {
     chartDayOfWeekTitle: "stats.dayOfWeekTitle",
     chartContributionActivityTitle: "stats.contributionActivityTitle",
     chartContributorRetentionTitle: "stats.contributorRetentionTitle",
+    chartNetLinesTitle: "stats.netLinesTitle",
+    chartLinesPerPrTitle: "stats.linesPerPrTitle",
   };
   Object.entries(textById).forEach(([id, key]) => {
     const el = $(id);
@@ -162,6 +174,8 @@ function localizeStatsDom() {
     ["chartDayOfWeekTitle", "stats.dayOfWeekSubtitle"],
     ["chartContributionActivityTitle", "stats.contributionActivitySubtitle"],
     ["chartContributorRetentionTitle", "stats.contributorRetentionSubtitle"],
+    ["chartNetLinesTitle", "stats.netLinesSubtitle"],
+    ["chartLinesPerPrTitle", "stats.linesPerPrSubtitle"],
   ];
   subtitles.forEach(([titleId, key]) => {
     const subtitle = $(titleId)?.parentElement?.querySelector(".chart-subtitle");
@@ -221,14 +235,31 @@ function buildTimeSeries() {
   const hash = filterHash();
   if (statsState._memo.hash === hash) return statsState._memo.data;
 
-  const { aggregatedPrs, aggregatedPrsExBots, userData, activeOrgs, range, gran, hideBots, hideGhost } = statsState;
+  const {
+    aggregatedPrs,
+    aggregatedPrsExBots,
+    aggregatedChangedLines,
+    aggregatedChangedLinesExBots,
+    aggregatedNetLines,
+    aggregatedNetLinesExBots,
+    userData,
+    activeOrgs,
+    range,
+    gran,
+    hideBots,
+    hideGhost,
+  } = statsState;
   const cutoff = cutoffDate(range);
   const effectivePrs = hideBots ? aggregatedPrsExBots : aggregatedPrs;
+  const effectiveChangedLines = hideBots ? aggregatedChangedLinesExBots : aggregatedChangedLines;
+  const effectiveNetLines = hideBots ? aggregatedNetLinesExBots : aggregatedNetLines;
 
   // ── Single pass over Contribution data: orgBuckets + cumulPrs + DoW ──
   const allKeys = new Set();
   const orgBuckets = new Map();
   const totalPrPerBucket = new Map();
+  const changedLinesPerBucket = new Map();
+  const netLinesPerBucket = new Map();
   const dowCounts = new Array(7).fill(0);
 
   effectivePrs.forEach((days, org) => {
@@ -250,6 +281,23 @@ function buildTimeSeries() {
       dowCounts[date.getUTCDay()] += count;
     });
   });
+
+  function addLineBuckets(source, target) {
+    source.forEach((days, org) => {
+      if (!activeOrgs.has(org)) return;
+      days.forEach((count, dayKey) => {
+        const [y, m, d] = dayKey.split("-").map(Number);
+        const date = new Date(Date.UTC(y, m - 1, d));
+        if (cutoff && date < cutoff) return;
+        const key = bucketKey(date, gran);
+        allKeys.add(key);
+        target.set(key, (target.get(key) || 0) + count);
+      });
+    });
+  }
+
+  addLineBuckets(effectiveChangedLines, changedLinesPerBucket);
+  addLineBuckets(effectiveNetLines, netLinesPerBucket);
 
   const sortedKeys = [...allKeys].sort();
   const labels = sortedKeys.map((k) => bucketLabel(k, gran));
@@ -273,6 +321,17 @@ function buildTimeSeries() {
   const cumulPrsData = sortedKeys.map((k) => {
     runningPrs += totalPrPerBucket.get(k) || 0;
     return runningPrs;
+  });
+  let runningNetLines = 0;
+  const cumulNetLinesData = sortedKeys.map((k) => {
+    runningNetLines += netLinesPerBucket.get(k) || 0;
+    return runningNetLines;
+  });
+  const changedLinesData = sortedKeys.map((k) => changedLinesPerBucket.get(k) || 0);
+  const avgLinesPerPrData = sortedKeys.map((k, index) => {
+    const prCount = totalPrPerBucket.get(k) || 0;
+    if (prCount === 0) return 0;
+    return Number((changedLinesData[index] / prCount).toFixed(1));
   });
 
   // ── Single pass over user data: filteredUsers + newContribs + tiers + networkShare + loyalty ──
@@ -377,6 +436,7 @@ function buildTimeSeries() {
     labels, mergedPrsDatasets, newContribData, cumulContribData, cumulPrsData,
     tierData, networkShare, loyalty: [singleNet, multiNet], dowCounts,
     activeContributorData, avgPrsPerActiveContributorData, retainedContributorData, retentionRateData,
+    cumulNetLinesData, changedLinesData, avgLinesPerPrData,
   };
 
   statsState._memo = { hash, data: result };
@@ -386,6 +446,11 @@ function buildTimeSeries() {
 // ── Number formatter ──────────────────────────────────
 function fmt(n) {
   return window.pocI18n ? window.pocI18n.formatNumber(n) : new Intl.NumberFormat("en-US").format(n);
+}
+
+function fmtSigned(n) {
+  const value = Number(n || 0);
+  return `${value > 0 ? "+" : ""}${fmt(value)}`;
 }
 
 // ── Chart.js shared defaults ──────────────────────────
@@ -766,6 +831,92 @@ function renderChart10(data) {
   });
 }
 
+function renderChart11(data) {
+  const { labels, cumulNetLinesData } = data;
+  chartNetLines = chartUpdate(chartNetLines, "chartNetLines", {
+    type: "line",
+    data: {
+      labels,
+      datasets: [{
+        label: t("stats.netLines"),
+        data: cumulNetLinesData,
+        borderColor: "#0f766e",
+        backgroundColor: "rgba(15, 118, 110, 0.12)",
+        borderWidth: 2,
+        tension: 0.1,
+        fill: true,
+        pointRadius: labels.length > 60 ? 0 : 3,
+      }],
+    },
+    options: {
+      ...sharedOptions(labels, t("stats.lines")),
+      plugins: {
+        ...sharedOptions(labels).plugins,
+        legend: { display: false },
+        tooltip: {
+          ...sharedOptions(labels).plugins.tooltip,
+          callbacks: { label: (ctx) => ` ${ctx.dataset.label}: ${fmtSigned(ctx.parsed.y)}` },
+        },
+      },
+    },
+  });
+}
+
+function renderChart12(data) {
+  const { labels, changedLinesData, avgLinesPerPrData } = data;
+  const options = sharedOptions(labels, t("stats.changedLines"));
+  options.scales.y1 = {
+    position: "right",
+    grid: { drawOnChartArea: false },
+    ticks: {
+      color: options.scales.y.ticks.color,
+      font: { size: 11 },
+      callback: (v) => fmt(v),
+    },
+    title: {
+      display: true,
+      text: t("stats.avgLines"),
+      color: options.scales.y.title.color,
+      font: { size: 11, weight: "700" },
+    },
+  };
+  options.plugins.legend = { display: true, position: "top", align: "start" };
+  options.plugins.tooltip.callbacks = {
+    label(ctx) {
+      if (ctx.dataset.yAxisID === "y1") return ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`;
+      return ` ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`;
+    },
+  };
+
+  chartLinesPerPr = chartUpdate(chartLinesPerPr, "chartLinesPerPr", {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: t("stats.changedLines"),
+          data: changedLinesData,
+          backgroundColor: "rgba(35, 100, 170, 0.68)",
+          borderRadius: 4,
+          yAxisID: "y",
+        },
+        {
+          type: "line",
+          label: t("stats.avgLinesPerPr"),
+          data: avgLinesPerPrData,
+          borderColor: "#dc2626",
+          backgroundColor: "rgba(220, 38, 38, 0.1)",
+          borderWidth: 2,
+          pointRadius: labels.length > 60 ? 0 : 3,
+          tension: 0.1,
+          yAxisID: "y1",
+        },
+      ],
+    },
+    options,
+  });
+}
+
 function renderCharts() {
   const data = buildTimeSeries();
 
@@ -778,6 +929,9 @@ function renderCharts() {
   $("badgeContributionActivity").textContent = t("stats.peakBadge", { count: fmt(Math.max(...data.activeContributorData, 0)) });
   const latestRetention = [...data.retentionRateData].reverse().find((value) => value > 0) || 0;
   $("badgeContributorRetention").textContent = t("stats.latestBadge", { value: latestRetention.toFixed(1) });
+  $("badgeNetLines").textContent = t("stats.netBadge", { count: fmtSigned(data.cumulNetLinesData.at(-1) ?? 0) });
+  const latestAvgLines = [...data.avgLinesPerPrData].reverse().find((value) => value > 0) || 0;
+  $("badgeLinesPerPr").textContent = t("stats.avgBadge", { count: fmt(latestAvgLines) });
 
   // Chart 1 (most important — render immediately)
   renderChart1(data);
@@ -800,6 +954,8 @@ function renderCharts() {
   setTimeout(() => {
     renderChart9(data);
     renderChart10(data);
+    renderChart11(data);
+    renderChart12(data);
   }, 100);
 }
 
@@ -917,7 +1073,23 @@ async function loadAll() {
   }
 
   // Convert JSON objects to Maps
-  const { aggregated_prs, aggregated_prs_ex_bots, users } = payload;
+  const {
+    aggregated_prs,
+    aggregated_prs_ex_bots,
+    aggregated_changed_lines,
+    aggregated_changed_lines_ex_bots,
+    aggregated_net_lines,
+    aggregated_net_lines_ex_bots,
+    users,
+  } = payload;
+  function loadDailyMap(source, target) {
+    if (!source || typeof source !== "object") return;
+    for (const [org, days] of Object.entries(source)) {
+      const m = new Map();
+      for (const [k, v] of Object.entries(days)) m.set(k, v);
+      target.set(org, m);
+    }
+  }
   for (const [org, days] of Object.entries(aggregated_prs)) {
     const m = new Map();
     for (const [k, v] of Object.entries(days)) m.set(k, v);
@@ -928,6 +1100,10 @@ async function loadAll() {
     for (const [k, v] of Object.entries(days)) m.set(k, v);
     statsState.aggregatedPrsExBots.set(org, m);
   }
+  loadDailyMap(aggregated_changed_lines, statsState.aggregatedChangedLines);
+  loadDailyMap(aggregated_changed_lines_ex_bots, statsState.aggregatedChangedLinesExBots);
+  loadDailyMap(aggregated_net_lines, statsState.aggregatedNetLines);
+  loadDailyMap(aggregated_net_lines_ex_bots, statsState.aggregatedNetLinesExBots);
   for (const u of users) {
     const activeDays = new Map();
     if (u.active_days && typeof u.active_days === "object") {

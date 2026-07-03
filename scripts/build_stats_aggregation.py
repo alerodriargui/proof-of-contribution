@@ -50,6 +50,8 @@ def main() -> int:
     aggregated_prs_ex_bots: dict[str, dict[str, int]] = {}
     aggregated_changed_lines: dict[str, dict[str, int]] = {}
     aggregated_changed_lines_ex_bots: dict[str, dict[str, int]] = {}
+    aggregated_net_lines: dict[str, dict[str, int]] = {}
+    aggregated_net_lines_ex_bots: dict[str, dict[str, int]] = {}
     users: dict[str, dict] = {}
     total_rows = 0
     total_additions = 0
@@ -67,6 +69,8 @@ def main() -> int:
         org_days_ex_bots: dict[str, int] = {}
         org_changed_days: dict[str, int] = {}
         org_changed_days_ex_bots: dict[str, int] = {}
+        org_net_days: dict[str, int] = {}
+        org_net_days_ex_bots: dict[str, int] = {}
 
         with path.open(newline="", encoding="utf-8-sig") as csv_file:
             reader = csv.DictReader(csv_file)
@@ -91,8 +95,10 @@ def main() -> int:
                 if additions is None or deletions is None:
                     unknown_line_count += 1
                     line_payload = None
+                    net_payload = None
                 else:
                     line_payload = changed_lines if changed_lines is not None else additions + deletions
+                    net_payload = additions - deletions
                     total_additions += additions
                     total_deletions += deletions
                     total_changed_lines += line_payload
@@ -103,9 +109,13 @@ def main() -> int:
                     org_days_ex_bots[day_key] = org_days_ex_bots.get(day_key, 0) + 1
                 if line_payload is not None:
                     org_changed_days[day_key] = org_changed_days.get(day_key, 0) + line_payload
+                    org_net_days[day_key] = org_net_days.get(day_key, 0) + (net_payload or 0)
                     if not bot:
                         org_changed_days_ex_bots[day_key] = (
                             org_changed_days_ex_bots.get(day_key, 0) + line_payload
+                        )
+                        org_net_days_ex_bots[day_key] = (
+                            org_net_days_ex_bots.get(day_key, 0) + (net_payload or 0)
                         )
 
                 # User metadata
@@ -142,9 +152,11 @@ def main() -> int:
         aggregated_prs_ex_bots[filename_prefix] = org_days_ex_bots
         aggregated_changed_lines[filename_prefix] = org_changed_days
         aggregated_changed_lines_ex_bots[filename_prefix] = org_changed_days_ex_bots
+        aggregated_net_lines[filename_prefix] = org_net_days
+        aggregated_net_lines_ex_bots[filename_prefix] = org_net_days_ex_bots
 
     payload = {
-        "schema": "stats-aggregation.v1",
+        "schema": "stats-aggregation.v2",
         "generated_at": iso_now(),
         "total_rows": total_rows,
         "user_count": len(users),
@@ -158,6 +170,8 @@ def main() -> int:
         "aggregated_prs_ex_bots": aggregated_prs_ex_bots,
         "aggregated_changed_lines": aggregated_changed_lines,
         "aggregated_changed_lines_ex_bots": aggregated_changed_lines_ex_bots,
+        "aggregated_net_lines": aggregated_net_lines,
+        "aggregated_net_lines_ex_bots": aggregated_net_lines_ex_bots,
         "users": list(users.values()),
     }
 

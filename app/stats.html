@@ -118,6 +118,8 @@
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
           <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
+          <div class="skeleton-card"><div class="skeleton-head"></div><div class="skeleton-body"></div></div>
         </div>
       </div>
 
@@ -257,6 +259,34 @@
           </div>
           <div class="chart-wrap">
             <canvas id="chartContributorRetention" role="img" aria-label="Contributor retention over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 11. Net Lines Built -->
+        <section class="chart-card" aria-labelledby="chartNetLinesTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartNetLinesTitle">Net Lines Built</h2>
+              <p class="chart-subtitle">Cumulative additions minus deletions across tracked Contributions</p>
+            </div>
+            <span class="chart-badge" id="badgeNetLines">-</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartNetLines" role="img" aria-label="Net lines built over time"></canvas>
+          </div>
+        </section>
+
+        <!-- 12. Lines per Contribution -->
+        <section class="chart-card" aria-labelledby="chartLinesPerPrTitle">
+          <div class="chart-card-head">
+            <div>
+              <h2 id="chartLinesPerPrTitle">Lines per Contribution</h2>
+              <p class="chart-subtitle">Average changed lines per merged Contribution each period</p>
+            </div>
+            <span class="chart-badge" id="badgeLinesPerPr">-</span>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="chartLinesPerPr" role="img" aria-label="Average lines changed per Contribution over time"></canvas>
           </div>
         </section>
 
