@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+OffchainLabs,Fumadocs-test,pete-vielhaber,https://avatars.githubusercontent.com/u/178667149?v=4,18,docs: versioning-option-2,2026-07-23T18:19:56Z,2026-07-23,https://github.com/OffchainLabs/Fumadocs-test/pull/18,669,6,675
+OffchainLabs,tally-zero,fionnachan,https://avatars.githubusercontent.com/u/13184582?v=4,86,feat: add voting period dates on proposal page main card,2026-07-23T17:22:58Z,2026-07-23,https://github.com/OffchainLabs/tally-zero/pull/86,1275,130,1405
+OffchainLabs,prysm,kasey,https://avatars.githubusercontent.com/u/489222?v=4,17230,update go toolchain to 1.26.5,2026-07-23T16:08:13Z,2026-07-23,https://github.com/OffchainLabs/prysm/pull/17230,33,31,64
 OffchainLabs,prysm,terencechain,https://avatars.githubusercontent.com/u/21316537?v=4,17215,Only count actually invalid envelopes in envelope invalid metric,2026-07-23T15:12:21Z,2026-07-23,https://github.com/OffchainLabs/prysm/pull/17215,9,1,10
 OffchainLabs,arbitrum-portal,fionnachan,https://avatars.githubusercontent.com/u/13184582?v=4,418,chore: remove superposition conditions for Li.Fi txs,2026-07-23T12:55:17Z,2026-07-23,https://github.com/OffchainLabs/arbitrum-portal/pull/418,368,280,648
 OffchainLabs,prysm,Inspector-Butters,https://avatars.githubusercontent.com/u/43618253?v=4,16860,wire progressive ssz functions into state fields,2026-07-23T12:07:56Z,2026-07-23,https://github.com/OffchainLabs/prysm/pull/16860,507,43,550

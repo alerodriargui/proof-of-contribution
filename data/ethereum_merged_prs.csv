@@ -1,4 +1,9 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,ethereum-org-website,claude[bot],https://avatars.githubusercontent.com/in/1236702?v=4,18879,Deploy v11.16.0,2026-07-23T15:57:54Z,2026-07-23,https://github.com/ethereum/ethereum-org-website/pull/18879,304327,137119,441446
+ethereum,execution-specs,gurukamath,https://avatars.githubusercontent.com/u/48196632?v=4,2924,refactor(spec-tools): use testing pydantic models in t8n,2026-07-23T15:34:46Z,2026-07-23,https://github.com/ethereum/execution-specs/pull/2924,1960,1834,3794
+ethereum,soundcalc,JiaxingHe,https://avatars.githubusercontent.com/u/144103588?v=4,87,Add zkDTVM v0.8.0 mixed soundness model,2026-07-23T15:00:17Z,2026-07-23,https://github.com/ethereum/soundcalc/pull/87,606,59,665
+ethereum,go-ethereum,cuiweixie,https://avatars.githubusercontent.com/u/1579517?v=4,35391,eth/catalyst: allow reorg depth equal to maxReorgDepth,2026-07-23T14:49:49Z,2026-07-23,https://github.com/ethereum/go-ethereum/pull/35391,1,1,2
+ethereum,go-ethereum,rjl493456442,https://avatars.githubusercontent.com/u/5959481?v=4,35403,core: optimize block validation,2026-07-23T14:49:02Z,2026-07-23,https://github.com/ethereum/go-ethereum/pull/35403,20,5,25
 ethereum,ethereum-org-website,wackerow,https://avatars.githubusercontent.com/u/54227730?v=4,18868,i18n: translation pipeline (all languages),2026-07-23T14:38:23Z,2026-07-23,https://github.com/ethereum/ethereum-org-website/pull/18868,299421,133801,433222
 ethereum,hive,flcl42,https://avatars.githubusercontent.com/u/630501?v=4,1584,all: stabilize execution sync interoperability,2026-07-23T13:57:54Z,2026-07-23,https://github.com/ethereum/hive/pull/1584,26,22,48
 ethereum,kohaku,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,254,Version Packages (alpha),2026-07-23T13:54:58Z,2026-07-23,https://github.com/ethereum/kohaku/pull/254,8,1,9

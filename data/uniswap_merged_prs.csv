@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+uniswap,protocol-fees,jtriley2p,https://avatars.githubusercontent.com/u/41972979?v=4,148,Adds robinhood fee activation & v4 fee activation,2026-07-23T17:15:31Z,2026-07-23,https://github.com/Uniswap/protocol-fees/pull/148,2163,5,2168
+uniswap,hooklist,hooklist-generator[bot],https://avatars.githubusercontent.com/u/36115574?v=4,1128,Add RobHook hook on robinhood,2026-07-23T17:12:18Z,2026-07-23,https://github.com/Uniswap/hooklist/pull/1128,35,0,35
+uniswap,uniswapx-service,alanhwu,https://avatars.githubusercontent.com/u/60207036?v=4,689,"feat, test: update swagger; add drift test",2026-07-23T15:20:40Z,2026-07-23,https://github.com/Uniswap/uniswapx-service/pull/689,1038,152,1190
 uniswap,sdks,scorzeth,https://avatars.githubusercontent.com/u/1350160?v=4,638,feat(ur-sdk): allow direct transfers as an option on swapsteps,2026-07-22T19:01:36Z,2026-07-22,https://github.com/Uniswap/sdks/pull/638,1979,49,2028
 uniswap,liquidity-launcher,mgretzke,https://avatars.githubusercontent.com/u/65617397?v=4,199,fix: fee beneficiary resolution for launched tokens,2026-07-22T16:47:14Z,2026-07-22,https://github.com/Uniswap/liquidity-launcher/pull/199,294,179,473
 uniswap,liquidity-launcher,zhongeric,https://avatars.githubusercontent.com/u/25067635?v=4,198,chore: fix test for DirectLaunchStrategy.strayEth,2026-07-21T21:16:12Z,2026-07-21,https://github.com/Uniswap/liquidity-launcher/pull/198,0,20,20
