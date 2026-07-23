@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "b2deff7d0fa26daf",
-  "generated_at": "2026-07-23T22:02:54Z",
-  "source_pr_count": 397034,
-  "row_count": 33516,
+  "version": "174a89c338125cb7",
+  "generated_at": "2026-07-23T23:47:33Z",
+  "source_pr_count": 397046,
+  "row_count": 33517,
   "rows": [
     {
       "org": "ethereum",
@@ -203900,19 +203900,6 @@
     {
       "org": "cardano",
       "project": "cardano-token-registry",
-      "user": "oconos",
-      "avatar_url": "https://avatars.githubusercontent.com/u/281279179?v=4",
-      "merged_pr_count": 3,
-      "total_additions": 157,
-      "total_deletions": 6,
-      "total_changed_lines": 163,
-      "unknown_line_count": 0,
-      "first_merged_at": "2026-06-02T09:04:08Z",
-      "latest_merged_at": "2026-06-04T12:19:54Z"
-    },
-    {
-      "org": "cardano",
-      "project": "cardano-token-registry",
       "user": "odedNea",
       "avatar_url": "https://avatars.githubusercontent.com/u/40433481?v=4",
       "merged_pr_count": 4,
@@ -204039,6 +204026,19 @@
       "unknown_line_count": 1,
       "first_merged_at": "2021-10-06T06:56:04Z",
       "latest_merged_at": "2021-10-06T06:56:04Z"
+    },
+    {
+      "org": "cardano",
+      "project": "cardano-token-registry",
+      "user": "orcunos",
+      "avatar_url": "https://avatars.githubusercontent.com/u/281279179?v=4",
+      "merged_pr_count": 3,
+      "total_additions": 157,
+      "total_deletions": 6,
+      "total_changed_lines": 163,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-06-02T09:04:08Z",
+      "latest_merged_at": "2026-06-04T12:19:54Z"
     },
     {
       "org": "cardano",
@@ -214276,13 +214276,13 @@
       "project": "cf-reeve-platform",
       "user": "M4rc0Russ0",
       "avatar_url": "https://avatars.githubusercontent.com/u/108673166?v=4",
-      "merged_pr_count": 200,
-      "total_additions": 30667,
+      "merged_pr_count": 201,
+      "total_additions": 30695,
       "total_deletions": 8006,
-      "total_changed_lines": 38673,
+      "total_changed_lines": 38701,
       "unknown_line_count": 156,
       "first_merged_at": "2024-07-24T11:11:50Z",
-      "latest_merged_at": "2026-07-22T15:21:27Z"
+      "latest_merged_at": "2026-07-23T22:47:18Z"
     },
     {
       "org": "cardano",
@@ -240991,13 +240991,13 @@
       "project": "js-stellar-sdk",
       "user": "Ryang-21",
       "avatar_url": "https://avatars.githubusercontent.com/u/104600435?v=4",
-      "merged_pr_count": 70,
-      "total_additions": 403563,
-      "total_deletions": 55380,
-      "total_changed_lines": 458943,
+      "merged_pr_count": 71,
+      "total_additions": 403759,
+      "total_deletions": 55397,
+      "total_changed_lines": 459156,
       "unknown_line_count": 37,
       "first_merged_at": "2025-09-19T18:33:41Z",
-      "latest_merged_at": "2026-07-23T18:19:53Z"
+      "latest_merged_at": "2026-07-23T22:44:37Z"
     },
     {
       "org": "stellar",
@@ -247660,13 +247660,13 @@
       "project": "soroban-examples",
       "user": "leighmcculloch",
       "avatar_url": "https://avatars.githubusercontent.com/u/351529?v=4",
-      "merged_pr_count": 127,
-      "total_additions": 25088,
-      "total_deletions": 5176,
-      "total_changed_lines": 30264,
+      "merged_pr_count": 128,
+      "total_additions": 25092,
+      "total_deletions": 5178,
+      "total_changed_lines": 30270,
       "unknown_line_count": 92,
       "first_merged_at": "2022-07-26T06:04:58Z",
-      "latest_merged_at": "2026-07-16T07:21:08Z"
+      "latest_merged_at": "2026-07-23T22:15:31Z"
     },
     {
       "org": "stellar",
@@ -251391,13 +251391,13 @@
       "project": "stellar-design-system",
       "user": "jeesunikim",
       "avatar_url": "https://avatars.githubusercontent.com/u/3912060?v=4",
-      "merged_pr_count": 6,
-      "total_additions": 234,
-      "total_deletions": 275,
-      "total_changed_lines": 509,
+      "merged_pr_count": 7,
+      "total_additions": 409,
+      "total_deletions": 800,
+      "total_changed_lines": 1209,
       "unknown_line_count": 0,
       "first_merged_at": "2024-06-24T14:47:57Z",
-      "latest_merged_at": "2026-02-05T21:27:57Z"
+      "latest_merged_at": "2026-07-23T22:48:41Z"
     },
     {
       "org": "stellar",
@@ -265899,13 +265899,13 @@
       "project": "chainlink",
       "user": "prashantkumar1982",
       "avatar_url": "https://avatars.githubusercontent.com/u/34992934?v=4",
-      "merged_pr_count": 130,
-      "total_additions": 2082,
-      "total_deletions": 334,
-      "total_changed_lines": 2416,
+      "merged_pr_count": 131,
+      "total_additions": 2136,
+      "total_deletions": 339,
+      "total_changed_lines": 2475,
       "unknown_line_count": 123,
       "first_merged_at": "2021-10-20T22:26:24Z",
-      "latest_merged_at": "2026-07-21T19:31:55Z"
+      "latest_merged_at": "2026-07-23T23:19:00Z"
     },
     {
       "org": "link",
@@ -270579,13 +270579,13 @@
       "project": "chainlink-confidential-compute",
       "user": "vreff",
       "avatar_url": "https://avatars.githubusercontent.com/u/104409744?v=4",
-      "merged_pr_count": 6,
-      "total_additions": 577,
+      "merged_pr_count": 7,
+      "total_additions": 743,
       "total_deletions": 712,
-      "total_changed_lines": 1289,
+      "total_changed_lines": 1455,
       "unknown_line_count": 0,
       "first_merged_at": "2026-07-20T15:02:59Z",
-      "latest_merged_at": "2026-07-23T14:18:03Z"
+      "latest_merged_at": "2026-07-23T23:03:06Z"
     },
     {
       "org": "link",
@@ -333863,13 +333863,13 @@
       "project": "avalanchego",
       "user": "JonathanOppenheimer",
       "avatar_url": "https://avatars.githubusercontent.com/u/12973114?v=4",
-      "merged_pr_count": 120,
-      "total_additions": 2812,
-      "total_deletions": 815,
-      "total_changed_lines": 3627,
+      "merged_pr_count": 121,
+      "total_additions": 3335,
+      "total_deletions": 834,
+      "total_changed_lines": 4169,
       "unknown_line_count": 96,
       "first_merged_at": "2025-07-09T16:37:42Z",
-      "latest_merged_at": "2026-07-23T19:51:32Z"
+      "latest_merged_at": "2026-07-23T23:07:14Z"
     },
     {
       "org": "avalanche",
@@ -408626,13 +408626,13 @@
       "project": "NearCon-Web",
       "user": "GothicDev29",
       "avatar_url": "https://avatars.githubusercontent.com/u/178748870?v=4",
-      "merged_pr_count": 7,
+      "merged_pr_count": 8,
       "total_additions": 1202,
       "total_deletions": 506,
       "total_changed_lines": 1708,
       "unknown_line_count": 0,
       "first_merged_at": "2026-04-17T20:57:12Z",
-      "latest_merged_at": "2026-04-21T23:03:25Z"
+      "latest_merged_at": "2026-07-23T22:45:38Z"
     },
     {
       "org": "near",
@@ -419312,13 +419312,13 @@
       "project": "deepbookv3",
       "user": "emmazzz",
       "avatar_url": "https://avatars.githubusercontent.com/u/14351986?v=4",
-      "merged_pr_count": 13,
-      "total_additions": 2496,
-      "total_deletions": 236,
-      "total_changed_lines": 2732,
+      "merged_pr_count": 14,
+      "total_additions": 3944,
+      "total_deletions": 279,
+      "total_changed_lines": 4223,
       "unknown_line_count": 5,
       "first_merged_at": "2026-04-02T18:50:56Z",
-      "latest_merged_at": "2026-07-17T22:48:50Z"
+      "latest_merged_at": "2026-07-23T23:41:42Z"
     },
     {
       "org": "sui",
@@ -427450,13 +427450,13 @@
       "project": "sui",
       "user": "lxfind",
       "avatar_url": "https://avatars.githubusercontent.com/u/1581614?v=4",
-      "merged_pr_count": 1097,
-      "total_additions": 5989,
-      "total_deletions": 3115,
-      "total_changed_lines": 9104,
+      "merged_pr_count": 1098,
+      "total_additions": 6073,
+      "total_deletions": 3308,
+      "total_changed_lines": 9381,
       "unknown_line_count": 1078,
       "first_merged_at": "2021-12-02T23:53:43Z",
-      "latest_merged_at": "2026-07-17T22:27:00Z"
+      "latest_merged_at": "2026-07-23T22:31:30Z"
     },
     {
       "org": "sui",
@@ -429829,13 +429829,13 @@
       "project": "sui",
       "user": "tzakian",
       "avatar_url": "https://avatars.githubusercontent.com/u/2895723?v=4",
-      "merged_pr_count": 532,
-      "total_additions": 12339,
-      "total_deletions": 706,
-      "total_changed_lines": 13045,
+      "merged_pr_count": 533,
+      "total_additions": 12515,
+      "total_deletions": 789,
+      "total_changed_lines": 13304,
       "unknown_line_count": 522,
       "first_merged_at": "2023-02-10T04:56:18Z",
-      "latest_merged_at": "2026-07-21T21:37:15Z"
+      "latest_merged_at": "2026-07-23T22:45:25Z"
     },
     {
       "org": "sui",
@@ -432644,6 +432644,19 @@
       "unknown_line_count": 0,
       "first_merged_at": "2025-03-26T21:48:11Z",
       "latest_merged_at": "2026-02-10T19:52:22Z"
+    },
+    {
+      "org": "sui",
+      "project": "tidehunter",
+      "user": "julio-ml",
+      "avatar_url": "https://avatars.githubusercontent.com/u/279794166?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 399,
+      "total_deletions": 94,
+      "total_changed_lines": 493,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T22:07:19Z",
+      "latest_merged_at": "2026-07-23T22:07:19Z"
     },
     {
       "org": "sui",

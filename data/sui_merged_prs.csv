@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,deepbookv3,emmazzz,https://avatars.githubusercontent.com/u/14351986?v=4,1096,[deepbook-server] add live OHCLV overlay,2026-07-23T23:41:42Z,2026-07-23,https://github.com/MystenLabs/deepbookv3/pull/1096,1448,43,1491
+MystenLabs,sui,tzakian,https://avatars.githubusercontent.com/u/2895723?v=4,27377,Fix Move VM tracing bookkeeping for loaded global references.,2026-07-23T22:45:25Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27377,176,83,259
+MystenLabs,sui,lxfind,https://avatars.githubusercontent.com/u/1581614?v=4,27368,Decouple old-execution-version tests from the built-in framework,2026-07-23T22:31:30Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27368,84,193,277
+MystenLabs,tidehunter,julio-ml,https://avatars.githubusercontent.com/u/279794166?v=4,122,concurrent_test: optional Antithesis SDK instrumentation,2026-07-23T22:07:19Z,2026-07-23,https://github.com/MystenLabs/tidehunter/pull/122,399,94,493
 MystenLabs,walrus,mystenmark,https://avatars.githubusercontent.com/u/103447440?v=4,3577,chore: replace MSIM_TEST_NUM with a for loop in simtest-run.sh,2026-07-23T20:47:44Z,2026-07-23,https://github.com/MystenLabs/walrus/pull/3577,14,12,26
 MystenLabs,sui,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,27372,"[source-verification 3] Output the verification metadata, and expose it via --json",2026-07-23T20:26:53Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27372,0,0,0
 MystenLabs,sui,awelc,https://avatars.githubusercontent.com/u/1724397?v=4,27406,[move-ide] Finessed testing for quick fixes,2026-07-23T19:38:33Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27406,30,29,59
