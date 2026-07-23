@@ -22,6 +22,7 @@ REQUIRED_COLUMNS = {
     "url",
 }
 LINE_COLUMNS = {"additions", "deletions", "changed_lines"}
+SUPPORTED_STATS_SCHEMAS = {"stats-aggregation.v1", "stats-aggregation.v2"}
 
 
 def optional_int(value: str | None) -> int | None:
@@ -141,9 +142,13 @@ def main() -> int:
     else:
         try:
             sp = json.loads(stats_path.read_text(encoding="utf-8"))
-            if sp.get("schema") != "stats-aggregation.v1":
+            if sp.get("schema") not in SUPPORTED_STATS_SCHEMAS:
                 failed = True
-                print(f"{stats_path.name}: INVALID (bad schema)", file=sys.stderr)
+                print(
+                    f"{stats_path.name}: INVALID "
+                    f"(unsupported schema: {sp.get('schema')!r})",
+                    file=sys.stderr,
+                )
             elif not isinstance(sp.get("aggregated_prs"), dict) or not isinstance(sp.get("users"), list):
                 failed = True
                 print(f"{stats_path.name}: INVALID (missing aggregated_prs or users)", file=sys.stderr)

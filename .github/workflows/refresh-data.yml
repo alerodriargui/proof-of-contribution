@@ -55,11 +55,11 @@ jobs:
             --sleep ${{ inputs.sleep || 0.1 }} \
             --rate-limit-threshold ${{ inputs.rate_limit_threshold || 100 }}
 
-      - name: Validate generated data
-        run: python scripts/validate_data.py
-
       - name: Build pre-aggregated stats JSON
         run: python scripts/build_stats_aggregation.py
+
+      - name: Validate generated data
+        run: python scripts/validate_data.py
 
       - name: Commit and publish changed data
         shell: bash
