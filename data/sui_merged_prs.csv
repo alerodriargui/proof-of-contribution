@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,walrus,mystenmark,https://avatars.githubusercontent.com/u/103447440?v=4,3577,chore: replace MSIM_TEST_NUM with a for loop in simtest-run.sh,2026-07-23T20:47:44Z,2026-07-23,https://github.com/MystenLabs/walrus/pull/3577,14,12,26
+MystenLabs,sui,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,27372,"[source-verification 3] Output the verification metadata, and expose it via --json",2026-07-23T20:26:53Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27372,0,0,0
 MystenLabs,sui,awelc,https://avatars.githubusercontent.com/u/1724397?v=4,27406,[move-ide] Finessed testing for quick fixes,2026-07-23T19:38:33Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27406,30,29,59
 MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27401,[v1.76][release notes] `sui::scratch`,2026-07-23T19:16:19Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27401,56,0,56
 MystenLabs,sui,andll,https://avatars.githubusercontent.com/u/2972353?v=4,27416,Remove live_owned_object_markers table,2026-07-23T19:00:38Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27416,15,213,228

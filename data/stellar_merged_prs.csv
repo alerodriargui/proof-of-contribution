@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,stellar-cli,fnando,https://avatars.githubusercontent.com/u/3009?v=4,2654,Centralize asset/token resolution behind a single resolver,2026-07-23T21:28:28Z,2026-07-23,https://github.com/stellar/stellar-cli/pull/2654,368,182,550
+stellar,stellar-rpc,karthikiyer56,https://avatars.githubusercontent.com/u/2722757?v=4,893,Reorganize stellar-rpc into shared/rpcv1/rpcv2 trees and build both binaries (#876),2026-07-23T20:32:25Z,2026-07-23,https://github.com/stellar/stellar-rpc/pull/893,2259,2027,4286
 stellar,wallet-backend,overcat,https://avatars.githubusercontent.com/u/2368403?v=4,656,fix(serve): allow disabling client auth with empty public keys,2026-07-23T19:57:10Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/656,63,3,66
 stellar,wallet-backend,aditya1702,https://avatars.githubusercontent.com/u/15054664?v=4,670,Pre-prod hardening 4/4: GraphQL API hardening + ops docs,2026-07-23T19:52:39Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/670,4842,2836,7678
 stellar,wallet-backend,aditya1702,https://avatars.githubusercontent.com/u/15054664?v=4,669,Pre-prod hardening 3/4: ingestion lifecycle & resilience,2026-07-23T19:49:42Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/669,2424,470,2894

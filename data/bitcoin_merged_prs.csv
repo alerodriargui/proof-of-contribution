@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bitcoin,bitcoin,MemeticMoney,https://avatars.githubusercontent.com/u/98700044?v=4,35076,doc: clarify pruning impact on wallet sync,2026-07-23T21:31:32Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35076,2,2,4
+bitcoin,bitcoin,muhahahmad68,https://avatars.githubusercontent.com/u/75504094?v=4,35320,key: validate BIP32 seed length in CExtKey::SetSeed,2026-07-23T20:25:19Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35320,1,0,1
+bitcoin,bitcoin,fanquake,https://avatars.githubusercontent.com/u/863730?v=4,35781,Update secp256k1 subtree to latest master,2026-07-23T20:12:26Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35781,13939,134,14073
 bitcoin,bitcoin,azuchi,https://avatars.githubusercontent.com/u/1539047?v=4,35664,test: add CLTV and CHECK(MULTI)SIGVERIFY failure-path vectors to script_tests.json,2026-07-23T19:49:33Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35664,18,0,18
 bitcoin,bips,murchandamus,https://avatars.githubusercontent.com/u/4060799?v=4,2214,"bip47: Change BIP type, move text from above preamble",2026-07-23T19:30:55Z,2026-07-23,https://github.com/bitcoin/bips/pull/2214,11,9,20
 bitcoin,bips,murchandamus,https://avatars.githubusercontent.com/u/4060799?v=4,2213,BIP179: Advance to Complete,2026-07-23T19:25:52Z,2026-07-23,https://github.com/bitcoin/bips/pull/2213,3,3,6

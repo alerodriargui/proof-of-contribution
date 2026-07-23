@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "b34b4145d7af3c86",
-  "generated_at": "2026-07-23T20:19:52Z",
-  "source_pr_count": 397014,
-  "row_count": 33511,
+  "version": "b2deff7d0fa26daf",
+  "generated_at": "2026-07-23T22:02:54Z",
+  "source_pr_count": 397034,
+  "row_count": 33516,
   "rows": [
     {
       "org": "ethereum",
@@ -11983,13 +11983,13 @@
       "project": "EIPs",
       "user": "AnkushinDaniil",
       "avatar_url": "https://avatars.githubusercontent.com/u/71745946?v=4",
-      "merged_pr_count": 8,
-      "total_additions": 63,
+      "merged_pr_count": 9,
+      "total_additions": 67,
       "total_deletions": 28,
-      "total_changed_lines": 91,
+      "total_changed_lines": 95,
       "unknown_line_count": 0,
       "first_merged_at": "2026-07-18T06:11:52Z",
-      "latest_merged_at": "2026-07-21T14:21:02Z"
+      "latest_merged_at": "2026-07-23T20:49:39Z"
     },
     {
       "org": "ethereum",
@@ -21603,13 +21603,13 @@
       "project": "EIPs",
       "user": "svlachakis",
       "avatar_url": "https://avatars.githubusercontent.com/u/89769224?v=4",
-      "merged_pr_count": 7,
-      "total_additions": 78,
-      "total_deletions": 12,
-      "total_changed_lines": 90,
+      "merged_pr_count": 10,
+      "total_additions": 121,
+      "total_deletions": 14,
+      "total_changed_lines": 135,
       "unknown_line_count": 0,
       "first_merged_at": "2026-07-17T21:49:08Z",
-      "latest_merged_at": "2026-07-21T19:30:07Z"
+      "latest_merged_at": "2026-07-23T20:50:16Z"
     },
     {
       "org": "ethereum",
@@ -49943,13 +49943,13 @@
       "project": "ethereum-org-website",
       "user": "nixorokish",
       "avatar_url": "https://avatars.githubusercontent.com/u/23272494?v=4",
-      "merged_pr_count": 13,
-      "total_additions": 0,
-      "total_deletions": 0,
-      "total_changed_lines": 0,
+      "merged_pr_count": 14,
+      "total_additions": 2,
+      "total_deletions": 2,
+      "total_changed_lines": 4,
       "unknown_line_count": 13,
       "first_merged_at": "2023-05-30T10:29:13Z",
-      "latest_merged_at": "2026-03-20T00:15:58Z"
+      "latest_merged_at": "2026-07-23T19:51:39Z"
     },
     {
       "org": "ethereum",
@@ -51139,13 +51139,13 @@
       "project": "ethereum-org-website",
       "user": "pettinarip",
       "avatar_url": "https://avatars.githubusercontent.com/u/468158?v=4",
-      "merged_pr_count": 637,
-      "total_additions": 24531,
-      "total_deletions": 6219,
-      "total_changed_lines": 30750,
+      "merged_pr_count": 639,
+      "total_additions": 24616,
+      "total_deletions": 6303,
+      "total_changed_lines": 30919,
       "unknown_line_count": 600,
       "first_merged_at": "2021-11-26T16:40:11Z",
-      "latest_merged_at": "2026-07-23T07:45:28Z"
+      "latest_merged_at": "2026-07-23T20:58:19Z"
     },
     {
       "org": "ethereum",
@@ -117491,13 +117491,13 @@
       "project": "bitcoin",
       "user": "fanquake",
       "avatar_url": "https://avatars.githubusercontent.com/u/863730?v=4",
-      "merged_pr_count": 1344,
-      "total_additions": 2642,
-      "total_deletions": 1431,
-      "total_changed_lines": 4073,
+      "merged_pr_count": 1345,
+      "total_additions": 16581,
+      "total_deletions": 1565,
+      "total_changed_lines": 18146,
       "unknown_line_count": 1321,
       "first_merged_at": "2012-02-28T12:33:44Z",
-      "latest_merged_at": "2026-07-21T12:23:42Z"
+      "latest_merged_at": "2026-07-23T20:12:26Z"
     },
     {
       "org": "bitcoin",
@@ -121623,6 +121623,19 @@
     {
       "org": "bitcoin",
       "project": "bitcoin",
+      "user": "MemeticMoney",
+      "avatar_url": "https://avatars.githubusercontent.com/u/98700044?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 2,
+      "total_deletions": 2,
+      "total_changed_lines": 4,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T21:31:32Z",
+      "latest_merged_at": "2026-07-23T21:31:32Z"
+    },
+    {
+      "org": "bitcoin",
+      "project": "bitcoin",
       "user": "merehap",
       "avatar_url": "",
       "merged_pr_count": 1,
@@ -122074,6 +122087,19 @@
       "unknown_line_count": 7,
       "first_merged_at": "2011-07-01T23:34:49Z",
       "latest_merged_at": "2012-07-17T01:24:14Z"
+    },
+    {
+      "org": "bitcoin",
+      "project": "bitcoin",
+      "user": "muhahahmad68",
+      "avatar_url": "https://avatars.githubusercontent.com/u/75504094?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 1,
+      "total_deletions": 0,
+      "total_changed_lines": 1,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T20:25:19Z",
+      "latest_merged_at": "2026-07-23T20:25:19Z"
     },
     {
       "org": "bitcoin",
@@ -141684,13 +141710,13 @@
       "project": "liquidity-launcher",
       "user": "mgretzke",
       "avatar_url": "https://avatars.githubusercontent.com/u/65617397?v=4",
-      "merged_pr_count": 8,
-      "total_additions": 3475,
-      "total_deletions": 6703,
-      "total_changed_lines": 10178,
+      "merged_pr_count": 9,
+      "total_additions": 3552,
+      "total_deletions": 6744,
+      "total_changed_lines": 10296,
       "unknown_line_count": 1,
       "first_merged_at": "2025-11-11T01:16:44Z",
-      "latest_merged_at": "2026-07-22T16:47:14Z"
+      "latest_merged_at": "2026-07-23T20:54:08Z"
     },
     {
       "org": "uniswap",
@@ -248726,13 +248752,13 @@
       "project": "stellar-cli",
       "user": "fnando",
       "avatar_url": "https://avatars.githubusercontent.com/u/3009?v=4",
-      "merged_pr_count": 273,
-      "total_additions": 11426,
-      "total_deletions": 3858,
-      "total_changed_lines": 15284,
+      "merged_pr_count": 274,
+      "total_additions": 11794,
+      "total_deletions": 4040,
+      "total_changed_lines": 15834,
       "unknown_line_count": 200,
       "first_merged_at": "2024-03-05T02:36:59Z",
-      "latest_merged_at": "2026-07-21T16:16:59Z"
+      "latest_merged_at": "2026-07-23T21:28:28Z"
     },
     {
       "org": "stellar",
@@ -256721,13 +256747,13 @@
       "project": "stellar-rpc",
       "user": "karthikiyer56",
       "avatar_url": "https://avatars.githubusercontent.com/u/2722757?v=4",
-      "merged_pr_count": 12,
-      "total_additions": 12128,
-      "total_deletions": 2394,
-      "total_changed_lines": 14522,
+      "merged_pr_count": 13,
+      "total_additions": 14387,
+      "total_deletions": 4421,
+      "total_changed_lines": 18808,
       "unknown_line_count": 1,
       "first_merged_at": "2026-02-20T22:02:28Z",
-      "latest_merged_at": "2026-07-21T23:46:12Z"
+      "latest_merged_at": "2026-07-23T20:32:25Z"
     },
     {
       "org": "stellar",
@@ -260333,6 +260359,19 @@
     {
       "org": "link",
       "project": "capabilities",
+      "user": "prashantkumar1982",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34992934?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 131,
+      "total_deletions": 13,
+      "total_changed_lines": 144,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T21:24:32Z",
+      "latest_merged_at": "2026-07-23T21:24:32Z"
+    },
+    {
+      "org": "link",
+      "project": "capabilities",
       "user": "silaslenihan",
       "avatar_url": "https://avatars.githubusercontent.com/u/32529249?v=4",
       "merged_pr_count": 8,
@@ -263065,13 +263104,13 @@
       "project": "chainlink",
       "user": "agusaldasoro",
       "avatar_url": "https://avatars.githubusercontent.com/u/8031515?v=4",
-      "merged_pr_count": 29,
-      "total_additions": 139,
-      "total_deletions": 101,
-      "total_changed_lines": 240,
+      "merged_pr_count": 30,
+      "total_additions": 307,
+      "total_deletions": 277,
+      "total_changed_lines": 584,
       "unknown_line_count": 28,
       "first_merged_at": "2024-07-09T16:49:30Z",
-      "latest_merged_at": "2026-07-08T18:56:26Z"
+      "latest_merged_at": "2026-07-23T20:12:04Z"
     },
     {
       "org": "link",
@@ -266699,6 +266738,19 @@
       "unknown_line_count": 1,
       "first_merged_at": "2022-04-08T12:51:55Z",
       "latest_merged_at": "2022-04-08T12:51:55Z"
+    },
+    {
+      "org": "link",
+      "project": "chainlink-ace",
+      "user": "afelisatti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3932724?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 1,
+      "total_deletions": 1,
+      "total_changed_lines": 2,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T21:28:50Z",
+      "latest_merged_at": "2026-07-23T21:28:50Z"
     },
     {
       "org": "link",
@@ -273023,13 +273075,13 @@
       "project": "chainlink-framework",
       "user": "amit-momin",
       "avatar_url": "https://avatars.githubusercontent.com/u/108959691?v=4",
-      "merged_pr_count": 2,
-      "total_additions": 12,
+      "merged_pr_count": 3,
+      "total_additions": 17,
       "total_deletions": 5,
-      "total_changed_lines": 17,
+      "total_changed_lines": 22,
       "unknown_line_count": 0,
       "first_merged_at": "2026-05-05T20:24:11Z",
-      "latest_merged_at": "2026-06-25T15:21:11Z"
+      "latest_merged_at": "2026-07-23T21:28:01Z"
     },
     {
       "org": "link",
@@ -332836,13 +332888,13 @@
       "project": "avalanchego",
       "user": "alarso16",
       "avatar_url": "https://avatars.githubusercontent.com/u/78000745?v=4",
-      "merged_pr_count": 91,
-      "total_additions": 3497,
-      "total_deletions": 1250,
-      "total_changed_lines": 4747,
+      "merged_pr_count": 92,
+      "total_additions": 3617,
+      "total_deletions": 1328,
+      "total_changed_lines": 4945,
       "unknown_line_count": 77,
       "first_merged_at": "2025-06-11T15:35:04Z",
-      "latest_merged_at": "2026-07-22T21:51:49Z"
+      "latest_merged_at": "2026-07-23T21:02:04Z"
     },
     {
       "org": "avalanche",
@@ -427580,13 +427632,13 @@
       "project": "sui",
       "user": "mdgeorge4153",
       "avatar_url": "https://avatars.githubusercontent.com/u/1286449?v=4",
-      "merged_pr_count": 128,
+      "merged_pr_count": 129,
       "total_additions": 214,
       "total_deletions": 38,
       "total_changed_lines": 252,
       "unknown_line_count": 126,
       "first_merged_at": "2024-11-26T18:24:04Z",
-      "latest_merged_at": "2026-07-23T16:41:56Z"
+      "latest_merged_at": "2026-07-23T20:26:53Z"
     },
     {
       "org": "sui",
@@ -433879,6 +433931,19 @@
       "unknown_line_count": 499,
       "first_merged_at": "2024-02-09T16:54:15Z",
       "latest_merged_at": "2026-06-03T06:50:13Z"
+    },
+    {
+      "org": "sui",
+      "project": "walrus",
+      "user": "mystenmark",
+      "avatar_url": "https://avatars.githubusercontent.com/u/103447440?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 14,
+      "total_deletions": 12,
+      "total_changed_lines": 26,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-23T20:47:44Z",
+      "latest_merged_at": "2026-07-23T20:47:44Z"
     },
     {
       "org": "sui",
