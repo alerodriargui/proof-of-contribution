@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-23T18:33:32Z",
+  "generated_at": "2026-07-23T20:19:52Z",
   "total_repos_processed": 176,
-  "total_merged_prs": 3468,
+  "total_merged_prs": 3465,
   "ecosystems": [
     {
       "org": "MystenLabs",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 176,
       "processed_repos": 176,
-      "prs_found": 3468,
-      "prs_after_merge": 30328,
-      "api_request_count": 187,
-      "rate_limit_remaining": "2212",
-      "rate_limit_reset": "1784832550",
-      "started_at": "2026-07-23T18:30:52.372612+00:00",
-      "finished_at": "2026-07-23T18:33:32.333579+00:00",
-      "duration_seconds": 159.96,
+      "prs_found": 3465,
+      "prs_after_merge": 30332,
+      "api_request_count": 182,
+      "rate_limit_remaining": "2234",
+      "rate_limit_reset": "1784839719",
+      "started_at": "2026-07-23T20:17:59.716110+00:00",
+      "finished_at": "2026-07-23T20:19:52.172171+00:00",
+      "duration_seconds": 112.46,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "MystenLabs",
-        "last_merged_at": "2026-07-23T18:32:18Z",
-        "last_run_at": "2026-07-23T18:33:32Z",
-        "total_prs": 30328,
+        "last_merged_at": "2026-07-23T19:38:33Z",
+        "last_run_at": "2026-07-23T20:19:52Z",
+        "total_prs": 30332,
         "incremental": true,
         "overlap_hours": 48.0
       }

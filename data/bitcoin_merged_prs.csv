@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bitcoin,bitcoin,azuchi,https://avatars.githubusercontent.com/u/1539047?v=4,35664,test: add CLTV and CHECK(MULTI)SIGVERIFY failure-path vectors to script_tests.json,2026-07-23T19:49:33Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35664,18,0,18
+bitcoin,bips,murchandamus,https://avatars.githubusercontent.com/u/4060799?v=4,2214,"bip47: Change BIP type, move text from above preamble",2026-07-23T19:30:55Z,2026-07-23,https://github.com/bitcoin/bips/pull/2214,11,9,20
+bitcoin,bips,murchandamus,https://avatars.githubusercontent.com/u/4060799?v=4,2213,BIP179: Advance to Complete,2026-07-23T19:25:52Z,2026-07-23,https://github.com/bitcoin/bips/pull/2213,3,3,6
+bitcoin,bitcoin,willcl-ark,https://avatars.githubusercontent.com/u/6606587?v=4,34683,rpc: support a formal description of our JSON-RPC interface,2026-07-23T17:57:51Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/34683,616,15,631
 bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,35775,scripted-diff: Use C.UTF-8 locale in Guix scripts,2026-07-23T13:34:01Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35775,42,24,66
 bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,32764,guix: Build for macOS using LLVM toolchain only,2026-07-23T12:57:03Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/32764,51,20,71
 bitcoin,bitcoin,hebasto,https://avatars.githubusercontent.com/u/32963518?v=4,34808,"cmake, translation: Use native Qt TS file as source for translations on Transifex",2026-07-23T12:56:19Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/34808,1743,8751,10494

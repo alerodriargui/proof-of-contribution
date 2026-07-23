@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,sui,awelc,https://avatars.githubusercontent.com/u/1724397?v=4,27406,[move-ide] Finessed testing for quick fixes,2026-07-23T19:38:33Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27406,30,29,59
+MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27401,[v1.76][release notes] `sui::scratch`,2026-07-23T19:16:19Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27401,56,0,56
+MystenLabs,sui,andll,https://avatars.githubusercontent.com/u/2972353?v=4,27416,Remove live_owned_object_markers table,2026-07-23T19:00:38Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27416,15,213,228
+MystenLabs,walrus,walrus-automerge[bot],https://avatars.githubusercontent.com/u/88845815?v=4,3574,chore: bump Walrus version to v1.54.0,2026-07-23T18:40:33Z,2026-07-23,https://github.com/MystenLabs/walrus/pull/3574,23,23,46
 MystenLabs,sui,andll,https://avatars.githubusercontent.com/u/2972353?v=4,27415,Destroy undeclared tidehunter key spaces on open,2026-07-23T18:32:18Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27415,67,5,72
 MystenLabs,walrus,jessiemongeon1,https://avatars.githubusercontent.com/u/133128541?v=4,3573,docs: generate llms-full.txt and auto-refresh on build,2026-07-23T17:57:29Z,2026-07-23,https://github.com/MystenLabs/walrus/pull/3573,887,41,928
 MystenLabs,sui,evan-wall-mysten,https://avatars.githubusercontent.com/u/219740240?v=4,27360,Fix broadcaster hang on fatal ingestion error while streaming is active,2026-07-23T17:40:51Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27360,59,7,66

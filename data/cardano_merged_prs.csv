@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+cardano-foundation,cardano-dev-skills,nemo83,https://avatars.githubusercontent.com/u/702606?v=4,25,ci+docs: PR policy gate and reshaped scope rules,2026-07-23T19:45:22Z,2026-07-23,https://github.com/cardano-foundation/cardano-dev-skills/pull/25,815,32,847
 cardano-foundation,cardano-wallet,paolino,https://avatars.githubusercontent.com/u/56350?v=4,5321,ci(windows): local-cluster smoke instead of preprod e2e,2026-07-23T13:30:20Z,2026-07-23,https://github.com/cardano-foundation/cardano-wallet/pull/5321,124,23,147
 cardano-foundation,keripy,AABelkhiria,https://avatars.githubusercontent.com/u/30621181?v=4,10,fix: clear stale exn escrows after signature check to avoid race conditions,2026-07-23T12:57:16Z,2026-07-23,https://github.com/cardano-foundation/keripy/pull/10,12,15,27
 cardano-foundation,cardano-graphql,VladislavKudrin,https://avatars.githubusercontent.com/u/17981725?v=4,1044,fix: update env variable,2026-07-23T11:51:46Z,2026-07-23,https://github.com/cardano-foundation/cardano-graphql/pull/1044,2,1,3

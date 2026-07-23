@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,hive,MysticRyuujin,https://avatars.githubusercontent.com/u/8877131?v=4,1582,.circleci: enforce gofmt and align Go version with go.mod,2026-07-23T19:29:53Z,2026-07-23,https://github.com/ethereum/hive/pull/1582,12,3,15
 ethereum,ethereum-org-website,claude[bot],https://avatars.githubusercontent.com/in/1236702?v=4,18879,Deploy v11.16.0,2026-07-23T15:57:54Z,2026-07-23,https://github.com/ethereum/ethereum-org-website/pull/18879,304327,137119,441446
 ethereum,execution-specs,gurukamath,https://avatars.githubusercontent.com/u/48196632?v=4,2924,refactor(spec-tools): use testing pydantic models in t8n,2026-07-23T15:34:46Z,2026-07-23,https://github.com/ethereum/execution-specs/pull/2924,1960,1834,3794
 ethereum,soundcalc,JiaxingHe,https://avatars.githubusercontent.com/u/144103588?v=4,87,Add zkDTVM v0.8.0 mixed soundness model,2026-07-23T15:00:17Z,2026-07-23,https://github.com/ethereum/soundcalc/pull/87,606,59,665

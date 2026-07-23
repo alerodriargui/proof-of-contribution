@@ -1,4 +1,9 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,wallet-backend,overcat,https://avatars.githubusercontent.com/u/2368403?v=4,656,fix(serve): allow disabling client auth with empty public keys,2026-07-23T19:57:10Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/656,63,3,66
+stellar,wallet-backend,aditya1702,https://avatars.githubusercontent.com/u/15054664?v=4,670,Pre-prod hardening 4/4: GraphQL API hardening + ops docs,2026-07-23T19:52:39Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/670,4842,2836,7678
+stellar,wallet-backend,aditya1702,https://avatars.githubusercontent.com/u/15054664?v=4,669,Pre-prod hardening 3/4: ingestion lifecycle & resilience,2026-07-23T19:49:42Z,2026-07-23,https://github.com/stellar/wallet-backend/pull/669,2424,470,2894
+stellar,js-stellar-sdk,Ryang-21,https://avatars.githubusercontent.com/u/104600435?v=4,1422,Class XDR Implementation,2026-07-23T18:19:53Z,2026-07-23,https://github.com/stellar/js-stellar-sdk/pull/1422,96245,20992,117237
+stellar,scf-handbook,JFWooten4,https://avatars.githubusercontent.com/u/60260750?v=4,14,💵 Spell out money amounts,2026-07-23T18:15:16Z,2026-07-23,https://github.com/stellar/scf-handbook/pull/14,30,30,60
 stellar,actions,leighmcculloch,https://avatars.githubusercontent.com/u/351529?v=4,110,Update README with usage warnings and limitations,2026-07-23T17:31:33Z,2026-07-23,https://github.com/stellar/actions/pull/110,8,0,8
 stellar,stellar-horizon,sisuresh,https://avatars.githubusercontent.com/u/5050166?v=4,207,SPIKE: Protocol 28 (CAP-0085),2026-07-23T16:50:34Z,2026-07-23,https://github.com/stellar/stellar-horizon/pull/207,11,6,17
 stellar,rs-soroban-sdk,leighmcculloch,https://avatars.githubusercontent.com/u/351529?v=4,1916,Clarify purpose of migration guides,2026-07-23T15:47:06Z,2026-07-23,https://github.com/stellar/rs-soroban-sdk/pull/1916,12,0,12

@@ -1,8 +1,8 @@
 {
   "org": "stellar",
-  "last_merged_at": "2026-07-23T17:31:33Z",
-  "last_run_at": "2026-07-23T18:11:51Z",
-  "total_prs": 28034,
+  "last_merged_at": "2026-07-23T19:57:10Z",
+  "last_run_at": "2026-07-23T20:04:33Z",
+  "total_prs": 28039,
   "incremental": true,
   "overlap_hours": 48.0
 }
