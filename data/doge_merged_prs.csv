@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+dogecoin,dogecoin,chromatic,https://avatars.githubusercontent.com/u/50255?v=4,4024,Fix `make -C depends` builds with GCC 15,2026-07-23T01:28:09Z,2026-07-23,https://github.com/dogecoin/dogecoin/pull/4024,53,2,55
+dogecoin,dogecoin,xanimo,https://avatars.githubusercontent.com/u/31856436?v=4,4026,ci: try multiple SDK_URL mirrors when installing the macOS SDK,2026-07-22T00:10:56Z,2026-07-22,https://github.com/dogecoin/dogecoin/pull/4026,22,4,26
+dogecoin,dogecoin,nformant1,https://avatars.githubusercontent.com/u/54002590?v=4,4020,depends: fix broken package source downloads,2026-07-20T17:30:01Z,2026-07-20,https://github.com/dogecoin/dogecoin/pull/4020,6,5,11
 dogecoin,dogecoin,pmzajaczkowski,https://avatars.githubusercontent.com/u/9041884?v=4,3997,cleanup: remove trailing whitespace across src/,2026-05-12T02:42:33Z,2026-05-12,https://github.com/dogecoin/dogecoin/pull/3997,134,134,268
 dogecoin,dogecoin,pmzajaczkowski,https://avatars.githubusercontent.com/u/9041884?v=4,3996,Remove duplicate #include lines in three source files,2026-05-12T02:42:19Z,2026-05-12,https://github.com/dogecoin/dogecoin/pull/3996,0,4,4
 dogecoin,dogecoin,pmzajaczkowski,https://avatars.githubusercontent.com/u/9041884?v=4,3988,style: add missing space after if/for/while keywords (per developer-notes.md),2026-05-07T18:19:22Z,2026-05-07,https://github.com/dogecoin/dogecoin/pull/3988,23,23,46

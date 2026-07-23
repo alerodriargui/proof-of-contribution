@@ -1,8 +1,8 @@
 {
   "org": "bitcoin",
-  "last_merged_at": "2026-07-02T19:04:59Z",
-  "last_run_at": "2026-07-03T05:13:20Z",
-  "total_prs": 17940,
+  "last_merged_at": "2026-07-23T13:34:01Z",
+  "last_run_at": "2026-07-23T14:49:10Z",
+  "total_prs": 18032,
   "incremental": true,
   "overlap_hours": 48.0
 }
