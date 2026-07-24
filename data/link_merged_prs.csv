@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+smartcontractkit,chainlink-ccip,futureproof1,https://avatars.githubusercontent.com/u/6923220?v=4,2195,feat: ConfigureTokenPool changeset (EVM v2.0),2026-07-24T22:58:43Z,2026-07-24,https://github.com/smartcontractkit/chainlink-ccip/pull/2195,910,3,913
+smartcontractkit,chainlink-ccip,toblich,https://avatars.githubusercontent.com/u/8509529?v=4,2189,[Solana] Fix tooling for setCurser operation,2026-07-24T22:14:46Z,2026-07-24,https://github.com/smartcontractkit/chainlink-ccip/pull/2189,15,14,29
 smartcontractkit,.github,app-token-issuer-releng-renovate[bot],https://avatars.githubusercontent.com/in/376532?v=4,1610,Version Packages,2026-07-24T21:15:20Z,2026-07-24,https://github.com/smartcontractkit/.github/pull/1610,10,6,16
 smartcontractkit,chainlink,russell-stern,https://avatars.githubusercontent.com/u/272814517?v=4,23231,Set json and yaml names for CapConfig struct,2026-07-24T20:30:41Z,2026-07-24,https://github.com/smartcontractkit/chainlink/pull/23231,2,2,4
 smartcontractkit,gocs,app-token-issuer-devex[bot],https://avatars.githubusercontent.com/in/351333?v=4,16,Version Packages,2026-07-24T19:18:59Z,2026-07-24,https://github.com/smartcontractkit/gocs/pull/16,7,6,13

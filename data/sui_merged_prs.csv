@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27304,[sui-framework] Add `get_*` macros to `sui::scratch`,2026-07-24T22:51:47Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27304,977,15,992
+MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27373,[hardening][sui-framework] Harden owner tracking for derived objects and dynamic fields,2026-07-24T22:13:35Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27373,123,33,156
 MystenLabs,hashi,dlukegordon,https://avatars.githubusercontent.com/u/4381657?v=4,887,Reduce withdrawal batch cap to 40,2026-07-24T21:37:03Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/887,59,68,127
 MystenLabs,deepbookv3,tonylee08,https://avatars.githubusercontent.com/u/9277589?v=4,1160,predict: reversible protocol-wide emergency freeze (DBU-656),2026-07-24T20:11:05Z,2026-07-24,https://github.com/MystenLabs/deepbookv3/pull/1160,201,16,217
 MystenLabs,attestations,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,4,"[attestations 1] Allow inline SVG in image_url, and say how to render it safely",2026-07-24T20:04:51Z,2026-07-24,https://github.com/MystenLabs/attestations/pull/4,30,4,34

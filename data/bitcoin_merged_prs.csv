@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bitcoin,bitcoin,musaHaruna,https://avatars.githubusercontent.com/u/124810379?v=4,32800,rpc: Distinguish between vsize and sigop adjusted mempool vsize,2026-07-24T22:09:24Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/32800,82,15,97
 bitcoin,bitcoin,mzumsande,https://avatars.githubusercontent.com/u/48763452?v=4,28463,p2p: Increase inbound capacity for block-relay only connections,2026-07-24T21:30:20Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/28463,206,16,222
 bitcoin,bitcoin,rustaceanrob,https://avatars.githubusercontent.com/u/102320249?v=4,35792,refactor: Make all `const static` class members `constexpr`,2026-07-24T17:14:14Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/35792,38,40,78
 bitcoin,bips,notmike-5,https://avatars.githubusercontent.com/u/16808272?v=4,2202,"bip360: add python example impl, drop Rust/JS ones; test vector fixes",2026-07-24T17:13:20Z,2026-07-24,https://github.com/bitcoin/bips/pull/2202,495,6531,7026
