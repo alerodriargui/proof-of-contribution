@@ -1,8 +1,8 @@
 {
   "org": "0xPolygon",
-  "last_merged_at": "2026-07-23T16:18:30Z",
-  "last_run_at": "2026-07-24T07:09:00Z",
-  "total_prs": 16886,
+  "last_merged_at": "2026-07-24T10:48:28Z",
+  "last_run_at": "2026-07-24T11:00:19Z",
+  "total_prs": 16888,
   "incremental": true,
   "overlap_hours": 48.0
 }

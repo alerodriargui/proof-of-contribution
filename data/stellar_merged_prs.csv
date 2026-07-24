@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,stellar-community-fund-contracts,KamilGlazer,https://avatars.githubusercontent.com/u/151772403?v=4,77,Feature/SDFCOMFUND-487-3 Update Cargo.lock,2026-07-24T08:39:41Z,2026-07-24,https://github.com/stellar/stellar-community-fund-contracts/pull/77,2,2,4
 stellar,stellar-core,graydon,https://avatars.githubusercontent.com/u/14097?v=4,5352,Add a new CI builder that builds fuzz targets,2026-07-24T06:30:20Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5352,135,81,216
 stellar,rs-soroban-sdk,leighmcculloch,https://avatars.githubusercontent.com/u/351529?v=4,1946,Refresh mainnet() resource limits and fees,2026-07-24T06:12:45Z,2026-07-24,https://github.com/stellar/rs-soroban-sdk/pull/1946,45,37,82
 stellar,stellar-core,dmkozh,https://avatars.githubusercontent.com/u/77305791?v=4,5364,Switch SHA-256 implementation from libsodium to Rust.,2026-07-24T06:07:21Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5364,140,38,178

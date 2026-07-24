@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bitcoin,bitcoin,Sjors,https://avatars.githubusercontent.com/u/10217?v=4,35783,chainparams: remove my testnet3 seed,2026-07-24T07:12:26Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/35783,0,2,2
 bitcoin,bips,ajtowns,https://avatars.githubusercontent.com/u/127186?v=4,2184,"BIP-39: Add shortcomings section, drop comments headers.",2026-07-24T02:57:18Z,2026-07-24,https://github.com/bitcoin/bips/pull/2184,16,2,18
 bitcoin,bitcoin,MemeticMoney,https://avatars.githubusercontent.com/u/98700044?v=4,35076,doc: clarify pruning impact on wallet sync,2026-07-23T21:31:32Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35076,2,2,4
 bitcoin,bitcoin,muhahahmad68,https://avatars.githubusercontent.com/u/75504094?v=4,35320,key: validate BIP32 seed length in CExtKey::SetSeed,2026-07-23T20:25:19Z,2026-07-23,https://github.com/bitcoin/bitcoin/pull/35320,1,0,1

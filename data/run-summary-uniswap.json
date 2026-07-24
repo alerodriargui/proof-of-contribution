@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-24T06:49:17Z",
+  "generated_at": "2026-07-24T10:38:08Z",
   "total_repos_processed": 172,
   "total_merged_prs": 4208,
   "ecosystems": [
@@ -13,17 +13,17 @@
       "prs_found": 4208,
       "prs_after_merge": 15383,
       "api_request_count": 174,
-      "rate_limit_remaining": "4406",
-      "rate_limit_reset": "1784878624",
-      "started_at": "2026-07-24T06:47:01.241282+00:00",
-      "finished_at": "2026-07-24T06:49:17.626850+00:00",
-      "duration_seconds": 136.39,
+      "rate_limit_remaining": "4394",
+      "rate_limit_reset": "1784892252",
+      "started_at": "2026-07-24T10:35:35.470593+00:00",
+      "finished_at": "2026-07-24T10:38:08.823866+00:00",
+      "duration_seconds": 153.35,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "uniswap",
         "last_merged_at": "2026-07-23T20:54:08Z",
-        "last_run_at": "2026-07-24T06:49:17Z",
+        "last_run_at": "2026-07-24T10:38:08Z",
         "total_prs": 15383,
         "incremental": true,
         "overlap_hours": 48.0
