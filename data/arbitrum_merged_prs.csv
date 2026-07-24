@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+OffchainLabs,prysm,potuz,https://avatars.githubusercontent.com/u/16044918?v=4,17231,Don't downscore honest peers for foreign data column sidecars,2026-07-24T16:16:18Z,2026-07-24,https://github.com/OffchainLabs/prysm/pull/17231,137,22,159
 OffchainLabs,prysm,syjn99,https://avatars.githubusercontent.com/u/87601811?v=4,17234,Support SSZ request bodies for `POST /eth/v2/beacon/pool/attestations` post-Electra,2026-07-24T15:13:35Z,2026-07-24,https://github.com/OffchainLabs/prysm/pull/17234,171,60,231
 OffchainLabs,prysm,terencechain,https://avatars.githubusercontent.com/u/21316537?v=4,17232,Don't block gloas block import on missing data columns,2026-07-24T14:56:00Z,2026-07-24,https://github.com/OffchainLabs/prysm/pull/17232,73,1,74
 OffchainLabs,arbitrum-monitoring,dewanshparashar,https://avatars.githubusercontent.com/u/7558499?v=4,128,fix: classify expired `CREATION_FAILED` tickets as `EXPIRED`,2026-07-24T13:42:05Z,2026-07-24,https://github.com/OffchainLabs/arbitrum-monitoring/pull/128,123,6,129

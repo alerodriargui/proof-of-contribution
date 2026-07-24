@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,ethereum-org-website,myelinated-wackerow,https://avatars.githubusercontent.com/u/263208946?v=4,18899,fix(i18n): stamp SSF manifests for template + title fixes,2026-07-24T15:53:57Z,2026-07-24,https://github.com/ethereum/ethereum-org-website/pull/18899,336,216,552
 ethereum,ethereum-org-website,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,18887,chore(deps): bump sharp from 0.34.5 to 0.35.0,2026-07-24T15:46:15Z,2026-07-24,https://github.com/ethereum/ethereum-org-website/pull/18887,336,52,388
 ethereum,ethereum-org-website,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,18888,chore(deps-dev): bump postcss from 8.5.10 to 8.5.12,2026-07-24T15:45:55Z,2026-07-24,https://github.com/ethereum/ethereum-org-website/pull/18888,71,64,135
 ethereum,execution-specs,qu0b,https://avatars.githubusercontent.com/u/22667037?v=4,3232,tests(amsterdam): pin receipt status of top-frame OOG txs in multi-tx blocks,2026-07-24T14:53:33Z,2026-07-24,https://github.com/ethereum/execution-specs/pull/3232,217,0,217

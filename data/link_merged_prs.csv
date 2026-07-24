@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+smartcontractkit,libocr,kaleofduty,https://avatars.githubusercontent.com/u/59616916?v=4,130,Restrict GHA to `contents: read` permission,2026-07-24T18:11:53Z,2026-07-24,https://github.com/smartcontractkit/libocr/pull/130,3,0,3
+smartcontractkit,.github,chainchad,https://avatars.githubusercontent.com/u/96362174?v=4,1609,Update dependency for reviewdog actionlint action,2026-07-24T18:05:36Z,2026-07-24,https://github.com/smartcontractkit/.github/pull/1609,6,1,7
 smartcontractkit,chainlink-evm,amit-momin,https://avatars.githubusercontent.com/u/108959691?v=4,510,Bump cl-framework,2026-07-24T15:50:58Z,2026-07-24,https://github.com/smartcontractkit/chainlink-evm/pull/510,6,6,12
 smartcontractkit,chainlink-common,pkcll,https://avatars.githubusercontent.com/u/177363085?v=4,2266,beholder: handle partial-delivery errors via metric and log suppression,2026-07-24T15:38:31Z,2026-07-24,https://github.com/smartcontractkit/chainlink-common/pull/2266,215,8,223
 smartcontractkit,chainlink-framework,amit-momin,https://avatars.githubusercontent.com/u/108959691?v=4,112,Add dedicated triggers map lock,2026-07-24T15:35:16Z,2026-07-24,https://github.com/smartcontractkit/chainlink-framework/pull/112,16,6,22

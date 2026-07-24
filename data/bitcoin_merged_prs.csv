@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+bitcoin,bitcoin,rustaceanrob,https://avatars.githubusercontent.com/u/102320249?v=4,35792,refactor: Make all `const static` class members `constexpr`,2026-07-24T17:14:14Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/35792,38,40,78
+bitcoin,bips,notmike-5,https://avatars.githubusercontent.com/u/16808272?v=4,2202,bip-0360: added python reference example; test vector fixes,2026-07-24T17:13:20Z,2026-07-24,https://github.com/bitcoin/bips/pull/2202,495,6531,7026
 bitcoin,bips,jonatack,https://avatars.githubusercontent.com/u/2415484?v=4,2216,BIP54: update reference implementation,2026-07-24T15:05:25Z,2026-07-24,https://github.com/bitcoin/bips/pull/2216,1,1,2
 bitcoin,bitcoin,Sjors,https://avatars.githubusercontent.com/u/10217?v=4,35783,chainparams: remove my testnet3 seed,2026-07-24T07:12:26Z,2026-07-24,https://github.com/bitcoin/bitcoin/pull/35783,0,2,2
 bitcoin,bips,ajtowns,https://avatars.githubusercontent.com/u/127186?v=4,2184,"BIP-39: Add shortcomings section, drop comments headers.",2026-07-24T02:57:18Z,2026-07-24,https://github.com/bitcoin/bips/pull/2184,16,2,18

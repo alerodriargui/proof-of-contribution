@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+cardano-foundation,cardano-wallet,jpraynaud,https://avatars.githubusercontent.com/u/5566665?v=4,5319,Update Mithril client image to the IntersectMBO container registry,2026-07-24T17:54:40Z,2026-07-24,https://github.com/cardano-foundation/cardano-wallet/pull/5319,2,2,4
 cardano-foundation,developer-portal,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,1911,Bump shell-quote from 1.8.4 to 1.10.0,2026-07-24T15:30:54Z,2026-07-24,https://github.com/cardano-foundation/developer-portal/pull/1911,3,3,6
 cardano-foundation,developer-portal,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,1912,Bump dompurify from 3.4.11 to 3.4.12,2026-07-24T15:25:30Z,2026-07-24,https://github.com/cardano-foundation/developer-portal/pull/1912,3,3,6
 cardano-foundation,developer-portal,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,1914,Bump webpack-dev-server from 5.2.5 to 5.2.6,2026-07-24T15:15:39Z,2026-07-24,https://github.com/cardano-foundation/developer-portal/pull/1914,5,5,10
