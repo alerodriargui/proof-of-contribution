@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,sui,nickvikeras,https://avatars.githubusercontent.com/u/1908006?v=4,27442,Set checkpoint in initial subscription watermark frame,2026-07-24T00:38:50Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27442,74,23,97
+MystenLabs,sui,nickvikeras,https://avatars.githubusercontent.com/u/1908006?v=4,27441,Set checkpoint in initial subscription watermark frame,2026-07-24T00:38:38Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27441,74,23,97
 MystenLabs,deepbookv3,emmazzz,https://avatars.githubusercontent.com/u/14351986?v=4,1096,[deepbook-server] add live OHCLV overlay,2026-07-23T23:41:42Z,2026-07-23,https://github.com/MystenLabs/deepbookv3/pull/1096,1448,43,1491
 MystenLabs,sui,tzakian,https://avatars.githubusercontent.com/u/2895723?v=4,27377,Fix Move VM tracing bookkeeping for loaded global references.,2026-07-23T22:45:25Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27377,176,83,259
 MystenLabs,sui,lxfind,https://avatars.githubusercontent.com/u/1581614?v=4,27368,Decouple old-execution-version tests from the built-in framework,2026-07-23T22:31:30Z,2026-07-23,https://github.com/MystenLabs/sui/pull/27368,84,193,277

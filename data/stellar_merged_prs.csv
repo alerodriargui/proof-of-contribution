@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,stellar-docs,JFWooten4,https://avatars.githubusercontent.com/u/60260750?v=4,2679,🔧 Update vanity toolkit repo reference,2026-07-24T02:12:46Z,2026-07-24,https://github.com/stellar/stellar-docs/pull/2679,1,1,2
+stellar,stellar-core,bboston7,https://avatars.githubusercontent.com/u/168167?v=4,5348,Fix `kStructurallyValidValue` validation downgrade after reboot,2026-07-24T00:51:01Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5348,168,7,175
+stellar,freighter,piyalbasu,https://avatars.githubusercontent.com/u/6789586?v=4,2829,Show all operation fields in the transaction signing details view,2026-07-23T23:30:45Z,2026-07-23,https://github.com/stellar/freighter/pull/2829,541,29,570
 stellar,stellar-design-system,jeesunikim,https://avatars.githubusercontent.com/u/3912060?v=4,370,Update `<Card/>` `<Notification/>` and remove `<Alert/>`,2026-07-23T22:48:41Z,2026-07-23,https://github.com/stellar/stellar-design-system/pull/370,175,525,700
 stellar,js-stellar-sdk,Ryang-21,https://avatars.githubusercontent.com/u/104600435?v=4,1551,fix(contract): handle scSpecTypeVal in Spec.scValToNative,2026-07-23T22:44:37Z,2026-07-23,https://github.com/stellar/js-stellar-sdk/pull/1551,196,17,213
 stellar,soroban-examples,leighmcculloch,https://avatars.githubusercontent.com/u/351529?v=4,410,Disable resource limits in bn254 wasm test,2026-07-23T22:15:31Z,2026-07-23,https://github.com/stellar/soroban-examples/pull/410,4,2,6

@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+tronprotocol,solc-bin,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,13,Binaries for 0.8.29,2026-07-24T03:31:25Z,2026-07-24,https://github.com/tronprotocol/solc-bin/pull/13,215,0,215
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,143,Backport release_0.8.31 build pipeline updates to release_0.8.30,2026-07-23T11:43:23Z,2026-07-23,https://github.com/tronprotocol/solidity/pull/143,168,82,250
 tronprotocol,solidity,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,142,Backport SOL-2025-1 through SOL-2026-3 fixes to release_0.8.30,2026-07-23T11:04:30Z,2026-07-23,https://github.com/tronprotocol/solidity/pull/142,3869,761,4630
 tronprotocol,tips,yanghang8612,https://avatars.githubusercontent.com/u/6821662?v=4,913,Add six TRC specifications as Draft,2026-07-23T09:44:08Z,2026-07-23,https://github.com/tronprotocol/tips/pull/913,1566,0,1566

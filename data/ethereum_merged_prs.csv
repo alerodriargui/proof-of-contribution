@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5443,Add dependent root check to `proposer_preferences` validation,2026-07-24T01:31:21Z,2026-07-24,https://github.com/ethereum/consensus-specs/pull/5443,22,0,22
 ethereum,ethereum-org-website,pettinarip,https://avatars.githubusercontent.com/u/468158?v=4,18881,"fix(ci): review release against deploy preview, not stale staging",2026-07-23T20:58:19Z,2026-07-23,https://github.com/ethereum/ethereum-org-website/pull/18881,84,27,111
 ethereum,EIPs,svlachakis,https://avatars.githubusercontent.com/u/89769224?v=4,12005,Update EIP-8141: bound the fee fields in the static constraints,2026-07-23T20:50:16Z,2026-07-23,https://github.com/ethereum/EIPs/pull/12005,3,0,3
 ethereum,EIPs,AnkushinDaniil,https://avatars.githubusercontent.com/u/71745946?v=4,12003,Update EIP-8141: specify the APPROVE opcode gas cost,2026-07-23T20:49:39Z,2026-07-23,https://github.com/ethereum/EIPs/pull/12003,4,0,4
