@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,suins-contracts,John-Atha,https://avatars.githubusercontent.com/u/72494204?v=4,397,[SUIP-1105] chore(move): format flagged files with prettier-move,2026-07-24T16:06:01Z,2026-07-24,https://github.com/MystenLabs/suins-contracts/pull/397,14,3,17
+MystenLabs,sui,jon-mysten,https://avatars.githubusercontent.com/u/244786318?v=4,27434,docs: DeepBook/DeFi builder path,2026-07-24T15:59:30Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27434,944,34,978
+MystenLabs,sui,amnn,https://avatars.githubusercontent.com/u/332275?v=4,27447,[1.76] fix(indexer): correctly cache chain id (#27390),2026-07-24T15:46:57Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27447,27,2,29
+MystenLabs,walrus,jessiemongeon1,https://avatars.githubusercontent.com/u/133128541?v=4,3578,"docs: update homepage cards, navbar, and walrus-memory routing",2026-07-24T15:42:44Z,2026-07-24,https://github.com/MystenLabs/walrus/pull/3578,22,55,77
 MystenLabs,sui,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,27213,[source-verification 2] Reimplement verify-source,2026-07-24T14:40:59Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27213,2425,2502,4927
 MystenLabs,seal,tamashi095,https://avatars.githubusercontent.com/u/197889486?v=4,623,[key-server] Apply the configured RPC timeout to the fullnode gRPC client,2026-07-24T13:20:13Z,2026-07-24,https://github.com/MystenLabs/seal/pull/623,87,20,107
 MystenLabs,evm-sui,alilloig,https://avatars.githubusercontent.com/u/6607145?v=4,25,docs(patterns): label patterns Token (ERC-20) and NFT (ERC-721),2026-07-24T13:08:39Z,2026-07-24,https://github.com/MystenLabs/evm-sui/pull/25,7,7,14

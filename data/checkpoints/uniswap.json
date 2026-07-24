@@ -1,8 +1,8 @@
 {
   "org": "uniswap",
-  "last_merged_at": "2026-07-23T20:54:08Z",
-  "last_run_at": "2026-07-24T14:24:03Z",
-  "total_prs": 15383,
+  "last_merged_at": "2026-07-24T15:30:18Z",
+  "last_run_at": "2026-07-24T15:55:48Z",
+  "total_prs": 15385,
   "incremental": true,
   "overlap_hours": 48.0
 }

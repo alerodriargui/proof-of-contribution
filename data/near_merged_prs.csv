@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+near,intents,mitinarseny,https://avatars.githubusercontent.com/u/10659110?v=4,320,feat!(wallet): future-compatibility with External Contract Calls,2026-07-24T15:01:04Z,2026-07-24,https://github.com/near/intents/pull/320,83,10,93
 near,nearcore,Trisfald,https://avatars.githubusercontent.com/u/12259188?v=4,16110,test: add additional test-loop coverage,2026-07-24T13:49:50Z,2026-07-24,https://github.com/near/nearcore/pull/16110,374,9,383
 near,nearcore,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,16078,chore: bump the cargo-side-security group across 2 directories with 1 update,2026-07-24T13:19:50Z,2026-07-24,https://github.com/near/nearcore/pull/16078,186,42,228
 near,mpc,SimonRastikian,https://avatars.githubusercontent.com/u/43679791?v=4,3798,refactor: shortening the line to StdRng::seed_from_u64,2026-07-24T12:12:51Z,2026-07-24,https://github.com/near/mpc/pull/3798,22,22,44

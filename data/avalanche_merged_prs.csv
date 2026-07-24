@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ava-labs,builders-hub,ashucoder9,https://avatars.githubusercontent.com/u/39340292?v=4,4394,chore: improve Block and Transaction page headers,2026-07-24T15:54:46Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4394,72,45,117
 ava-labs,icm-services,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,1422,Bump the weekly-ext-updates group with 4 updates,2026-07-24T14:19:20Z,2026-07-24,https://github.com/ava-labs/icm-services/pull/1422,55,54,109
 ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4391,feat(explorer): staking metric sheets — the gas treatment for the staking page,2026-07-24T12:07:33Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4391,1584,328,1912
 ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4392,fix(explorer): subnav rail fits its inventory,2026-07-24T12:07:00Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4392,50,10,60

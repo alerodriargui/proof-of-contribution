@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+aave,aave-proposals-v3,AlbertoCentonze,https://avatars.githubusercontent.com/u/11707683?v=4,69,feat: cap update 11,2026-07-24T15:14:53Z,2026-07-24,https://github.com/aave/aave-proposals-v3/pull/69,946,0,946
 aave,interface,mgrabina,https://avatars.githubusercontent.com/u/22989452?v=4,3076,fix: crash on ENS names with disallowed unicode characters,2026-07-23T17:26:14Z,2026-07-23,https://github.com/aave/interface/pull/3076,43,4,47
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3081,feat: map aPlaUSDT0 Merkl reward to USDT0 parent icon,2026-07-23T13:10:52Z,2026-07-23,https://github.com/aave/interface/pull/3081,5,0,5
 aave,interface,sammdec,https://avatars.githubusercontent.com/u/878503?v=4,3074,chore: migrate to node 24 and use pnpm,2026-07-22T14:30:58Z,2026-07-22,https://github.com/aave/interface/pull/3074,23903,15937,39840
