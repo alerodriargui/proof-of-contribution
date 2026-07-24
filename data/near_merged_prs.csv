@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+near,near-api-ts,denbite,https://avatars.githubusercontent.com/u/41162202?v=4,3,feat: implement ML-DSA-65 post-quantum keys support,2026-07-24T07:01:22Z,2026-07-24,https://github.com/near/near-api-ts/pull/3,495,90,585
 near,NearCon-Web,GothicDev29,https://avatars.githubusercontent.com/u/178748870?v=4,8,Update favicon and add opengraph share image,2026-07-23T22:45:38Z,2026-07-23,https://github.com/near/NearCon-Web/pull/8,0,0,0
 near,mpc,barakeinav1,https://avatars.githubusercontent.com/u/196017599?v=4,3948,fix(attestation): revert DEFAULT_EXPIRATION_DURATION_SECONDS to 7 days,2026-07-23T18:36:32Z,2026-07-23,https://github.com/near/mpc/pull/3948,1,1,2
 near,mpc,kevindeforth,https://avatars.githubusercontent.com/u/32777623?v=4,3916,refactor: typed request_app_private_key on MpcContractHandle,2026-07-23T17:34:46Z,2026-07-23,https://github.com/near/mpc/pull/3916,137,45,182

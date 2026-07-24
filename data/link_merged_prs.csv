@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+smartcontractkit,external-adapters-js,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,5227,Bump find-my-way from 9.1.0 to 9.7.0,2026-07-24T06:47:34Z,2026-07-24,https://github.com/smartcontractkit/external-adapters-js/pull/5227,9,47,56
 smartcontractkit,documentation,QingyangKong,https://avatars.githubusercontent.com/u/19964698?v=4,3992,add monad config for svr,2026-07-24T02:27:31Z,2026-07-24,https://github.com/smartcontractkit/documentation/pull/3992,105,13,118
 smartcontractkit,.github,jmank88,https://avatars.githubusercontent.com/u/1194128?v=4,1576,workflows: add dependabump,2026-07-24T01:04:35Z,2026-07-24,https://github.com/smartcontractkit/.github/pull/1576,419,0,419
 smartcontractkit,chainlink-ccv,jadepark-dev,https://avatars.githubusercontent.com/u/21018729?v=4,1289,feat(devenv)!: expose src/dest tx hashes in tcapi run results,2026-07-23T23:32:58Z,2026-07-23,https://github.com/smartcontractkit/chainlink-ccv/pull/1289,346,142,488

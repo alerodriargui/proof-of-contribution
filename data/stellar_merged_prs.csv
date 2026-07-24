@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,stellar-core,graydon,https://avatars.githubusercontent.com/u/14097?v=4,5352,Add a new CI builder that builds fuzz targets,2026-07-24T06:30:20Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5352,135,81,216
+stellar,rs-soroban-sdk,leighmcculloch,https://avatars.githubusercontent.com/u/351529?v=4,1946,Refresh mainnet() resource limits and fees,2026-07-24T06:12:45Z,2026-07-24,https://github.com/stellar/rs-soroban-sdk/pull/1946,45,37,82
+stellar,stellar-core,dmkozh,https://avatars.githubusercontent.com/u/77305791?v=4,5364,Switch SHA-256 implementation from libsodium to Rust.,2026-07-24T06:07:21Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5364,140,38,178
+stellar,stellar-core,dmkozh,https://avatars.githubusercontent.com/u/77305791?v=4,5349,Make log level checks lock-free via permanent loggers.,2026-07-24T04:12:30Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5349,128,50,178
 stellar,stellar-docs,JFWooten4,https://avatars.githubusercontent.com/u/60260750?v=4,2679,🔧 Update vanity toolkit repo reference,2026-07-24T02:12:46Z,2026-07-24,https://github.com/stellar/stellar-docs/pull/2679,1,1,2
 stellar,stellar-core,bboston7,https://avatars.githubusercontent.com/u/168167?v=4,5348,Fix `kStructurallyValidValue` validation downgrade after reboot,2026-07-24T00:51:01Z,2026-07-24,https://github.com/stellar/stellar-core/pull/5348,168,7,175
 stellar,freighter,piyalbasu,https://avatars.githubusercontent.com/u/6789586?v=4,2829,Show all operation fields in the transaction signing details view,2026-07-23T23:30:45Z,2026-07-23,https://github.com/stellar/freighter/pull/2829,541,29,570

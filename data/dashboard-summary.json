@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "16c5a02195be884d",
-  "generated_at": "2026-07-24T04:18:00Z",
-  "source_pr_count": 397059,
-  "row_count": 33517,
+  "version": "4fc4ccbcd130e370",
+  "generated_at": "2026-07-24T07:13:58Z",
+  "source_pr_count": 397067,
+  "row_count": 33518,
   "rows": [
     {
       "org": "ethereum",
@@ -45666,13 +45666,13 @@
       "project": "ethereum-org-website",
       "user": "kafeelraza",
       "avatar_url": "https://avatars.githubusercontent.com/u/193384171?v=4",
-      "merged_pr_count": 3,
-      "total_additions": 30,
-      "total_deletions": 14,
-      "total_changed_lines": 44,
+      "merged_pr_count": 4,
+      "total_additions": 1268,
+      "total_deletions": 16,
+      "total_changed_lines": 1284,
       "unknown_line_count": 2,
       "first_merged_at": "2026-05-18T11:01:49Z",
-      "latest_merged_at": "2026-07-20T17:26:26Z"
+      "latest_merged_at": "2026-07-24T04:29:31Z"
     },
     {
       "org": "ethereum",
@@ -186066,13 +186066,13 @@
       "project": "solidity",
       "user": "yanghang8612",
       "avatar_url": "https://avatars.githubusercontent.com/u/6821662?v=4",
-      "merged_pr_count": 67,
-      "total_additions": 289092,
-      "total_deletions": 118988,
-      "total_changed_lines": 408080,
+      "merged_pr_count": 68,
+      "total_additions": 289120,
+      "total_deletions": 118995,
+      "total_changed_lines": 408115,
       "unknown_line_count": 0,
       "first_merged_at": "2022-07-07T02:11:29Z",
-      "latest_merged_at": "2026-07-23T11:43:23Z"
+      "latest_merged_at": "2026-07-24T04:13:10Z"
     },
     {
       "org": "tron",
@@ -245957,13 +245957,13 @@
       "project": "rs-soroban-sdk",
       "user": "leighmcculloch",
       "avatar_url": "https://avatars.githubusercontent.com/u/351529?v=4",
-      "merged_pr_count": 726,
-      "total_additions": 77562,
-      "total_deletions": 2838,
-      "total_changed_lines": 80400,
+      "merged_pr_count": 727,
+      "total_additions": 77607,
+      "total_deletions": 2875,
+      "total_changed_lines": 80482,
       "unknown_line_count": 702,
       "first_merged_at": "2022-04-08T21:34:26Z",
-      "latest_merged_at": "2026-07-23T15:47:06Z"
+      "latest_merged_at": "2026-07-24T06:12:45Z"
     },
     {
       "org": "stellar",
@@ -249727,13 +249727,13 @@
       "project": "stellar-core",
       "user": "dmkozh",
       "avatar_url": "https://avatars.githubusercontent.com/u/77305791?v=4",
-      "merged_pr_count": 176,
-      "total_additions": 5174,
-      "total_deletions": 2064,
-      "total_changed_lines": 7238,
+      "merged_pr_count": 178,
+      "total_additions": 5442,
+      "total_deletions": 2152,
+      "total_changed_lines": 7594,
       "unknown_line_count": 159,
       "first_merged_at": "2022-02-01T15:30:41Z",
-      "latest_merged_at": "2026-07-22T23:23:52Z"
+      "latest_merged_at": "2026-07-24T06:07:21Z"
     },
     {
       "org": "stellar",
@@ -249883,13 +249883,13 @@
       "project": "stellar-core",
       "user": "graydon",
       "avatar_url": "https://avatars.githubusercontent.com/u/14097?v=4",
-      "merged_pr_count": 477,
-      "total_additions": 7273,
-      "total_deletions": 4144,
-      "total_changed_lines": 11417,
+      "merged_pr_count": 478,
+      "total_additions": 7408,
+      "total_deletions": 4225,
+      "total_changed_lines": 11633,
       "unknown_line_count": 462,
       "first_merged_at": "2015-01-20T01:15:26Z",
-      "latest_merged_at": "2026-07-23T05:55:58Z"
+      "latest_merged_at": "2026-07-24T06:30:20Z"
     },
     {
       "org": "stellar",
@@ -285126,13 +285126,13 @@
       "project": "external-adapters-js",
       "user": "dependabot[bot]",
       "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
-      "merged_pr_count": 84,
-      "total_additions": 520,
-      "total_deletions": 244,
-      "total_changed_lines": 764,
+      "merged_pr_count": 85,
+      "total_additions": 529,
+      "total_deletions": 291,
+      "total_changed_lines": 820,
       "unknown_line_count": 76,
       "first_merged_at": "2020-07-18T22:19:55Z",
-      "latest_merged_at": "2026-07-23T07:06:25Z"
+      "latest_merged_at": "2026-07-24T06:47:34Z"
     },
     {
       "org": "link",
@@ -397505,6 +397505,19 @@
       "unknown_line_count": 0,
       "first_merged_at": "2022-02-28T16:13:26Z",
       "latest_merged_at": "2022-05-31T17:12:24Z"
+    },
+    {
+      "org": "near",
+      "project": "near-api-ts",
+      "user": "denbite",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41162202?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 495,
+      "total_deletions": 90,
+      "total_changed_lines": 585,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-24T07:01:22Z",
+      "latest_merged_at": "2026-07-24T07:01:22Z"
     },
     {
       "org": "near",
