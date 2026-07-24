@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+near,nearcore,Trisfald,https://avatars.githubusercontent.com/u/12259188?v=4,16110,test: add additional test-loop coverage,2026-07-24T13:49:50Z,2026-07-24,https://github.com/near/nearcore/pull/16110,374,9,383
+near,nearcore,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,16078,chore: bump the cargo-side-security group across 2 directories with 1 update,2026-07-24T13:19:50Z,2026-07-24,https://github.com/near/nearcore/pull/16078,186,42,228
+near,mpc,SimonRastikian,https://avatars.githubusercontent.com/u/43679791?v=4,3798,refactor: shortening the line to StdRng::seed_from_u64,2026-07-24T12:12:51Z,2026-07-24,https://github.com/near/mpc/pull/3798,22,22,44
+near,mpc,SimonRastikian,https://avatars.githubusercontent.com/u/43679791?v=4,3952,refactor(ops): move prepare-release.sh under scripts/ops/,2026-07-24T11:15:59Z,2026-07-24,https://github.com/near/mpc/pull/3952,9,8,17
 near,mpc,kevindeforth,https://avatars.githubusercontent.com/u/32777623?v=4,3933,refactor(interface): share the propose_update deposit calculation,2026-07-24T09:45:55Z,2026-07-24,https://github.com/near/mpc/pull/3933,150,84,234
 near,mpc,gilcu3,https://avatars.githubusercontent.com/u/828241?v=4,3958,perf(tests): improve newly introduced test performance by reducing timout,2026-07-24T09:35:56Z,2026-07-24,https://github.com/near/mpc/pull/3958,32,15,47
 near,mpc,gilcu3,https://avatars.githubusercontent.com/u/828241?v=4,3956,chore: use trait to avoid free-form strings in tracking,2026-07-24T08:33:32Z,2026-07-24,https://github.com/near/mpc/pull/3956,101,27,128

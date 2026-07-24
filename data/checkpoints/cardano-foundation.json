@@ -1,8 +1,8 @@
 {
   "org": "cardano-foundation",
-  "last_merged_at": "2026-07-24T09:02:51Z",
-  "last_run_at": "2026-07-24T10:45:47Z",
-  "total_prs": 34093,
+  "last_merged_at": "2026-07-24T14:20:21Z",
+  "last_run_at": "2026-07-24T14:31:00Z",
+  "total_prs": 34099,
   "incremental": true,
   "overlap_hours": 48.0
 }

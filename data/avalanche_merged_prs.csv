@@ -1,4 +1,7 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ava-labs,icm-services,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,1422,Bump the weekly-ext-updates group with 4 updates,2026-07-24T14:19:20Z,2026-07-24,https://github.com/ava-labs/icm-services/pull/1422,55,54,109
+ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4391,feat(explorer): staking metric sheets — the gas treatment for the staking page,2026-07-24T12:07:33Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4391,1584,328,1912
+ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4392,fix(explorer): subnav rail fits its inventory,2026-07-24T12:07:00Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4392,50,10,60
 ava-labs,firewood,bernard-avalabs,https://avatars.githubusercontent.com/u/53795885?v=4,2080,test(merkle): add ethhash-shaped proof fuzzer,2026-07-24T00:44:28Z,2026-07-24,https://github.com/ava-labs/firewood/pull/2080,936,0,936
 ava-labs,avalanchego,JonathanOppenheimer,https://avatars.githubusercontent.com/u/12973114?v=4,5570,feat(saevm): bound block size to the P2P message size limit,2026-07-23T23:07:14Z,2026-07-23,https://github.com/ava-labs/avalanchego/pull/5570,523,19,542
 ava-labs,avalanchego,alarso16,https://avatars.githubusercontent.com/u/78000745?v=4,5616,refactor(sae): Separate network,2026-07-23T21:02:04Z,2026-07-23,https://github.com/ava-labs/avalanchego/pull/5616,120,78,198

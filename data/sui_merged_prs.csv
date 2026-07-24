@@ -1,4 +1,9 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,sui,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,27213,[source-verification 2] Reimplement verify-source,2026-07-24T14:40:59Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27213,2425,2502,4927
+MystenLabs,seal,tamashi095,https://avatars.githubusercontent.com/u/197889486?v=4,623,[key-server] Apply the configured RPC timeout to the fullnode gRPC client,2026-07-24T13:20:13Z,2026-07-24,https://github.com/MystenLabs/seal/pull/623,87,20,107
+MystenLabs,evm-sui,alilloig,https://avatars.githubusercontent.com/u/6607145?v=4,25,docs(patterns): label patterns Token (ERC-20) and NFT (ERC-721),2026-07-24T13:08:39Z,2026-07-24,https://github.com/MystenLabs/evm-sui/pull/25,7,7,14
+MystenLabs,evm-sui,alilloig,https://avatars.githubusercontent.com/u/6607145?v=4,24,docs(patterns): soften unsourced stats in P01 and P04,2026-07-24T12:46:57Z,2026-07-24,https://github.com/MystenLabs/evm-sui/pull/24,10,6,16
+MystenLabs,evm-sui,alilloig,https://avatars.githubusercontent.com/u/6607145?v=4,23,docs(patterns): correct P05 factory claims (stat + ERC-1167/CREATE2),2026-07-24T12:38:05Z,2026-07-24,https://github.com/MystenLabs/evm-sui/pull/23,24,16,40
 MystenLabs,confidential-transfers,benr-ml,https://avatars.githubusercontent.com/u/112846738?v=4,23,[TS] Migrate to grpc,2026-07-24T07:16:27Z,2026-07-24,https://github.com/MystenLabs/confidential-transfers/pull/23,1425,3859,5284
 MystenLabs,sui,nickvikeras,https://avatars.githubusercontent.com/u/1908006?v=4,27442,Set checkpoint in initial subscription watermark frame,2026-07-24T00:38:50Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27442,74,23,97
 MystenLabs,sui,nickvikeras,https://avatars.githubusercontent.com/u/1908006?v=4,27441,Set checkpoint in initial subscription watermark frame,2026-07-24T00:38:38Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27441,74,23,97

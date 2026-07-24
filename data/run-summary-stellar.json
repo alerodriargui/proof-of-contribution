@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-24T10:48:05Z",
+  "generated_at": "2026-07-24T14:33:13Z",
   "total_repos_processed": 145,
-  "total_merged_prs": 4949,
+  "total_merged_prs": 4950,
   "ecosystems": [
     {
       "org": "stellar",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 145,
       "processed_repos": 145,
-      "prs_found": 4949,
-      "prs_after_merge": 28052,
-      "api_request_count": 148,
-      "rate_limit_remaining": "3662",
-      "rate_limit_reset": "1784892252",
-      "started_at": "2026-07-24T10:45:47.362758+00:00",
-      "finished_at": "2026-07-24T10:48:05.454214+00:00",
-      "duration_seconds": 138.09,
+      "prs_found": 4950,
+      "prs_after_merge": 28054,
+      "api_request_count": 149,
+      "rate_limit_remaining": "3674",
+      "rate_limit_reset": "1784906169",
+      "started_at": "2026-07-24T14:31:00.676425+00:00",
+      "finished_at": "2026-07-24T14:33:13.841604+00:00",
+      "duration_seconds": 133.17,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "stellar",
-        "last_merged_at": "2026-07-24T08:39:41Z",
-        "last_run_at": "2026-07-24T10:48:05Z",
-        "total_prs": 28052,
+        "last_merged_at": "2026-07-24T14:20:15Z",
+        "last_run_at": "2026-07-24T14:33:13Z",
+        "total_prs": 28054,
         "incremental": true,
         "overlap_hours": 48.0
       }
