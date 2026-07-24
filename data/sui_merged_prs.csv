@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,deepbookv3,tonylee08,https://avatars.githubusercontent.com/u/9277589?v=4,1160,predict: reversible protocol-wide emergency freeze (DBU-656),2026-07-24T20:11:05Z,2026-07-24,https://github.com/MystenLabs/deepbookv3/pull/1160,201,16,217
+MystenLabs,attestations,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,4,"[attestations 1] Allow inline SVG in image_url, and say how to render it safely",2026-07-24T20:04:51Z,2026-07-24,https://github.com/MystenLabs/attestations/pull/4,30,4,34
+MystenLabs,walrus,reemsabawi-mystenlabs,https://avatars.githubusercontent.com/u/283630495?v=4,3570,docs: BEDU-911: upload relay interactive diagram,2026-07-24T19:49:36Z,2026-07-24,https://github.com/MystenLabs/walrus/pull/3570,421,14,435
+MystenLabs,hashi,dlukegordon,https://avatars.githubusercontent.com/u/4381657?v=4,886,Handle missing testnet release tags,2026-07-24T19:16:47Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/886,1,1,2
 MystenLabs,MemWal,reemsabawi-mystenlabs,https://avatars.githubusercontent.com/u/283630495?v=4,487,BEDU-912: Walrus Memory storage interactive diagram,2026-07-24T18:24:00Z,2026-07-24,https://github.com/MystenLabs/MemWal/pull/487,1240,77,1317
 MystenLabs,hashi,dlukegordon,https://avatars.githubusercontent.com/u/4381657?v=4,879,Skip duplicate deposit confirmation retries,2026-07-24T18:11:01Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/879,171,12,183
 MystenLabs,hashi,Bridgerz,https://avatars.githubusercontent.com/u/24499532?v=4,885,Fix a state-lock re-entry deadlock in committee-transition signing,2026-07-24T18:00:48Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/885,34,39,73

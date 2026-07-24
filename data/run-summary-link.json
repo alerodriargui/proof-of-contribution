@@ -1,8 +1,8 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-24T18:15:44Z",
+  "generated_at": "2026-07-24T20:05:23Z",
   "total_repos_processed": 381,
-  "total_merged_prs": 5784,
+  "total_merged_prs": 5787,
   "ecosystems": [
     {
       "org": "smartcontractkit",
@@ -10,21 +10,21 @@
       "overlap_hours": 48.0,
       "total_repos": 381,
       "processed_repos": 381,
-      "prs_found": 5784,
-      "prs_after_merge": 45684,
-      "api_request_count": 387,
-      "rate_limit_remaining": "3278",
-      "rate_limit_reset": "1784919282",
-      "started_at": "2026-07-24T18:11:52.299542+00:00",
-      "finished_at": "2026-07-24T18:15:44.832207+00:00",
-      "duration_seconds": 232.53,
+      "prs_found": 5787,
+      "prs_after_merge": 45688,
+      "api_request_count": 389,
+      "rate_limit_remaining": "3290",
+      "rate_limit_reset": "1784926154",
+      "started_at": "2026-07-24T20:02:23.742689+00:00",
+      "finished_at": "2026-07-24T20:05:23.110007+00:00",
+      "duration_seconds": 179.37,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "smartcontractkit",
-        "last_merged_at": "2026-07-24T18:11:53Z",
-        "last_run_at": "2026-07-24T18:15:44Z",
-        "total_prs": 45684,
+        "last_merged_at": "2026-07-24T19:18:59Z",
+        "last_run_at": "2026-07-24T20:05:23Z",
+        "total_prs": 45688,
         "incremental": true,
         "overlap_hours": 48.0
       }

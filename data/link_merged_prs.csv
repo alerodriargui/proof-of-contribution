@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+smartcontractkit,gocs,app-token-issuer-devex[bot],https://avatars.githubusercontent.com/in/351333?v=4,16,Version Packages,2026-07-24T19:18:59Z,2026-07-24,https://github.com/smartcontractkit/gocs/pull/16,7,6,13
+smartcontractkit,chainlink,amit-momin,https://avatars.githubusercontent.com/u/108959691?v=4,23224,"Bump cl-framework, cl-evm",2026-07-24T19:15:47Z,2026-07-24,https://github.com/smartcontractkit/chainlink/pull/23224,64,64,128
+smartcontractkit,gocs,chainchad,https://avatars.githubusercontent.com/u/96362174?v=4,15,Support longer/multiline changelog messages and fix package selection indent,2026-07-24T19:13:40Z,2026-07-24,https://github.com/smartcontractkit/gocs/pull/15,107,22,129
+smartcontractkit,libocr,kaleofduty,https://avatars.githubusercontent.com/u/59616916?v=4,140,Improvements:,2026-07-24T18:52:23Z,2026-07-24,https://github.com/smartcontractkit/libocr/pull/140,756,370,1126
 smartcontractkit,libocr,kaleofduty,https://avatars.githubusercontent.com/u/59616916?v=4,130,Restrict GHA to `contents: read` permission,2026-07-24T18:11:53Z,2026-07-24,https://github.com/smartcontractkit/libocr/pull/130,3,0,3
 smartcontractkit,.github,chainchad,https://avatars.githubusercontent.com/u/96362174?v=4,1609,Update dependency for reviewdog actionlint action,2026-07-24T18:05:36Z,2026-07-24,https://github.com/smartcontractkit/.github/pull/1609,6,1,7
 smartcontractkit,chainlink-evm,amit-momin,https://avatars.githubusercontent.com/u/108959691?v=4,510,Bump cl-framework,2026-07-24T15:50:58Z,2026-07-24,https://github.com/smartcontractkit/chainlink-evm/pull/510,6,6,12
