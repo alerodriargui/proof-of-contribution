@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,hashi,dlukegordon,https://avatars.githubusercontent.com/u/4381657?v=4,887,Reduce withdrawal batch cap to 40,2026-07-24T21:37:03Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/887,59,68,127
 MystenLabs,deepbookv3,tonylee08,https://avatars.githubusercontent.com/u/9277589?v=4,1160,predict: reversible protocol-wide emergency freeze (DBU-656),2026-07-24T20:11:05Z,2026-07-24,https://github.com/MystenLabs/deepbookv3/pull/1160,201,16,217
 MystenLabs,attestations,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,4,"[attestations 1] Allow inline SVG in image_url, and say how to render it safely",2026-07-24T20:04:51Z,2026-07-24,https://github.com/MystenLabs/attestations/pull/4,30,4,34
 MystenLabs,walrus,reemsabawi-mystenlabs,https://avatars.githubusercontent.com/u/283630495?v=4,3570,docs: BEDU-911: upload relay interactive diagram,2026-07-24T19:49:36Z,2026-07-24,https://github.com/MystenLabs/walrus/pull/3570,421,14,435

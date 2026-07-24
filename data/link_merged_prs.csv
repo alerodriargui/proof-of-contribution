@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+smartcontractkit,.github,app-token-issuer-releng-renovate[bot],https://avatars.githubusercontent.com/in/376532?v=4,1610,Version Packages,2026-07-24T21:15:20Z,2026-07-24,https://github.com/smartcontractkit/.github/pull/1610,10,6,16
+smartcontractkit,chainlink,russell-stern,https://avatars.githubusercontent.com/u/272814517?v=4,23231,Set json and yaml names for CapConfig struct,2026-07-24T20:30:41Z,2026-07-24,https://github.com/smartcontractkit/chainlink/pull/23231,2,2,4
 smartcontractkit,gocs,app-token-issuer-devex[bot],https://avatars.githubusercontent.com/in/351333?v=4,16,Version Packages,2026-07-24T19:18:59Z,2026-07-24,https://github.com/smartcontractkit/gocs/pull/16,7,6,13
 smartcontractkit,chainlink,amit-momin,https://avatars.githubusercontent.com/u/108959691?v=4,23224,"Bump cl-framework, cl-evm",2026-07-24T19:15:47Z,2026-07-24,https://github.com/smartcontractkit/chainlink/pull/23224,64,64,128
 smartcontractkit,gocs,chainchad,https://avatars.githubusercontent.com/u/96362174?v=4,15,Support longer/multiline changelog messages and fix package selection indent,2026-07-24T19:13:40Z,2026-07-24,https://github.com/smartcontractkit/gocs/pull/15,107,22,129

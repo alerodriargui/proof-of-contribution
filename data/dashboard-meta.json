@@ -1,45 +1,45 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "e6e51ec0213ee19c",
-  "generated_at": "2026-07-24T20:14:36Z",
+  "version": "77bce453bf533856",
+  "generated_at": "2026-07-24T21:56:56Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 397241,
+  "source_pr_count": 397257,
   "row_count": 33527,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 59315,
+      "raw_pr_count": 59317,
       "summary_row_count": 8282,
-      "last_updated": "2026-07-24T19:52:29Z"
+      "last_updated": "2026-07-24T21:34:14Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
-      "raw_pr_count": 18044,
+      "raw_pr_count": 18045,
       "summary_row_count": 1489,
-      "last_updated": "2026-07-24T19:52:33Z"
+      "last_updated": "2026-07-24T21:34:19Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5260,
       "summary_row_count": 486,
-      "last_updated": "2026-07-24T19:53:24Z"
+      "last_updated": "2026-07-24T21:35:13Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
-      "raw_pr_count": 15394,
+      "raw_pr_count": 15395,
       "summary_row_count": 1556,
-      "last_updated": "2026-07-24T19:55:20Z"
+      "last_updated": "2026-07-24T21:37:05Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4890,
       "summary_row_count": 404,
-      "last_updated": "2026-07-24T19:56:17Z"
+      "last_updated": "2026-07-24T21:37:57Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -79,14 +79,14 @@
     {
       "path": "data/stellar_merged_prs.csv",
       "org": "stellar",
-      "raw_pr_count": 28071,
+      "raw_pr_count": 28078,
       "summary_row_count": 1936,
-      "last_updated": "2026-07-24T20:02:23Z"
+      "last_updated": "2026-07-24T21:44:12Z"
     },
     {
       "path": "data/link_merged_prs.csv",
       "org": "link",
-      "raw_pr_count": 45688,
+      "raw_pr_count": 45690,
       "summary_row_count": 2724,
       "last_updated": null
     },
@@ -121,14 +121,14 @@
     {
       "path": "data/near_merged_prs.csv",
       "org": "near",
-      "raw_pr_count": 28770,
+      "raw_pr_count": 28772,
       "summary_row_count": 2487,
-      "last_updated": "2026-07-24T20:13:05Z"
+      "last_updated": "2026-07-24T21:55:22Z"
     },
     {
       "path": "data/sui_merged_prs.csv",
       "org": "sui",
-      "raw_pr_count": 30368,
+      "raw_pr_count": 30369,
       "summary_row_count": 1381,
       "last_updated": null
     }
