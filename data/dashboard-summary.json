@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "bff12c502663f653",
-  "generated_at": "2026-07-25T12:10:30Z",
-  "source_pr_count": 397286,
+  "version": "baef737b805f9ec3",
+  "generated_at": "2026-07-25T14:28:55Z",
+  "source_pr_count": 397289,
   "row_count": 33531,
   "rows": [
     {
@@ -95456,13 +95456,13 @@
       "project": "protocol-security",
       "user": "dependabot[bot]",
       "avatar_url": "https://avatars.githubusercontent.com/in/29110?v=4",
-      "merged_pr_count": 11,
-      "total_additions": 302,
-      "total_deletions": 227,
-      "total_changed_lines": 529,
+      "merged_pr_count": 12,
+      "total_additions": 305,
+      "total_deletions": 230,
+      "total_changed_lines": 535,
       "unknown_line_count": 0,
       "first_merged_at": "2025-03-25T22:10:02Z",
-      "latest_merged_at": "2026-03-01T17:42:07Z"
+      "latest_merged_at": "2026-07-25T13:21:11Z"
     },
     {
       "org": "ethereum",
@@ -124524,13 +124524,13 @@
       "project": "bitcoin",
       "user": "sedited",
       "avatar_url": "https://avatars.githubusercontent.com/u/8421793?v=4",
-      "merged_pr_count": 84,
-      "total_additions": 175,
+      "merged_pr_count": 85,
+      "total_additions": 176,
       "total_deletions": 15,
-      "total_changed_lines": 190,
+      "total_changed_lines": 191,
       "unknown_line_count": 82,
       "first_merged_at": "2018-07-09T15:56:27Z",
-      "latest_merged_at": "2026-07-07T10:12:41Z"
+      "latest_merged_at": "2026-07-25T12:41:01Z"
     },
     {
       "org": "bitcoin",
@@ -339323,13 +339323,13 @@
       "project": "builders-hub",
       "user": "owenwahlgren",
       "avatar_url": "https://avatars.githubusercontent.com/u/79551442?v=4",
-      "merged_pr_count": 271,
-      "total_additions": 33873,
-      "total_deletions": 28588,
-      "total_changed_lines": 62461,
+      "merged_pr_count": 272,
+      "total_additions": 36334,
+      "total_deletions": 28918,
+      "total_changed_lines": 65252,
       "unknown_line_count": 245,
       "first_merged_at": "2024-08-21T19:16:26Z",
-      "latest_merged_at": "2026-07-24T17:06:24Z"
+      "latest_merged_at": "2026-07-25T13:59:44Z"
     },
     {
       "org": "avalanche",

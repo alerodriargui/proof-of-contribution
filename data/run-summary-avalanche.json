@@ -1,6 +1,6 @@
 {
   "schema": "run-summary.v1",
-  "generated_at": "2026-07-25T12:01:51Z",
+  "generated_at": "2026-07-25T14:22:42Z",
   "total_repos_processed": 153,
   "total_merged_prs": 3529,
   "ecosystems": [
@@ -11,20 +11,20 @@
       "total_repos": 153,
       "processed_repos": 153,
       "prs_found": 3529,
-      "prs_after_merge": 22576,
-      "api_request_count": 155,
-      "rate_limit_remaining": "3029",
-      "rate_limit_reset": "1784983068",
-      "started_at": "2026-07-25T11:59:51.226032+00:00",
-      "finished_at": "2026-07-25T12:01:51.782089+00:00",
-      "duration_seconds": 120.56,
+      "prs_after_merge": 22577,
+      "api_request_count": 156,
+      "rate_limit_remaining": "3018",
+      "rate_limit_reset": "1784990423",
+      "started_at": "2026-07-25T14:21:14.308863+00:00",
+      "finished_at": "2026-07-25T14:22:42.423996+00:00",
+      "duration_seconds": 88.12,
       "skipped_repos": [],
       "errors": [],
       "checkpoint": {
         "org": "ava-labs",
-        "last_merged_at": "2026-07-24T19:22:29Z",
-        "last_run_at": "2026-07-25T12:01:51Z",
-        "total_prs": 22576,
+        "last_merged_at": "2026-07-25T13:59:44Z",
+        "last_run_at": "2026-07-25T14:22:42Z",
+        "total_prs": 22577,
         "incremental": true,
         "overlap_hours": 48.0
       }

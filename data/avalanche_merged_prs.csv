@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4396,Explorer UX improvements,2026-07-25T13:59:44Z,2026-07-25,https://github.com/ava-labs/builders-hub/pull/4396,2461,330,2791
 ava-labs,icm-services,iansuvak,https://avatars.githubusercontent.com/u/1126091?v=4,1423,remove darwin releases from icm-services goreleaser actions,2026-07-24T19:22:29Z,2026-07-24,https://github.com/ava-labs/icm-services/pull/1423,2,24,26
 ava-labs,avalanchego,JonathanOppenheimer,https://avatars.githubusercontent.com/u/12973114?v=4,5549,feat(saevm): set a minimum atomic tx gas based on serialized size,2026-07-24T17:57:11Z,2026-07-24,https://github.com/ava-labs/avalanchego/pull/5549,146,23,169
 ava-labs,builders-hub,owenwahlgren,https://avatars.githubusercontent.com/u/79551442?v=4,4393,feat(explorer): P-Chain home Chain Stats board,2026-07-24T17:06:24Z,2026-07-24,https://github.com/ava-labs/builders-hub/pull/4393,201,47,248
