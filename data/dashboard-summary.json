@@ -1,9 +1,9 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "5443c2270dd71cee",
-  "generated_at": "2026-07-25T07:18:56Z",
-  "source_pr_count": 397281,
-  "row_count": 33529,
+  "version": "357cf07ab5ce1359",
+  "generated_at": "2026-07-25T10:31:40Z",
+  "source_pr_count": 397285,
+  "row_count": 33531,
   "rows": [
     {
       "org": "ethereum",
@@ -15324,13 +15324,13 @@
       "project": "EIPs",
       "user": "gcolvin",
       "avatar_url": "https://avatars.githubusercontent.com/u/16827129?v=4",
-      "merged_pr_count": 194,
-      "total_additions": 12700,
-      "total_deletions": 1902,
-      "total_changed_lines": 14602,
+      "merged_pr_count": 195,
+      "total_additions": 12725,
+      "total_deletions": 1924,
+      "total_changed_lines": 14649,
       "unknown_line_count": 177,
       "first_merged_at": "2017-02-21T17:24:33Z",
-      "latest_merged_at": "2026-07-23T03:40:03Z"
+      "latest_merged_at": "2026-07-25T09:32:13Z"
     },
     {
       "org": "ethereum",
@@ -95489,6 +95489,19 @@
       "unknown_line_count": 0,
       "first_merged_at": "2024-12-17T14:34:11Z",
       "latest_merged_at": "2025-09-22T05:41:50Z"
+    },
+    {
+      "org": "ethereum",
+      "project": "protocol-security",
+      "user": "moodmosaic",
+      "avatar_url": "https://avatars.githubusercontent.com/u/287532?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 0,
+      "total_deletions": 31,
+      "total_changed_lines": 31,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-25T08:11:02Z",
+      "latest_merged_at": "2026-07-25T08:11:02Z"
     },
     {
       "org": "ethereum",
@@ -190315,6 +190328,19 @@
     {
       "org": "cardano",
       "project": "cardano-governance-voting-tool",
+      "user": "katomm",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31965230?v=4",
+      "merged_pr_count": 1,
+      "total_additions": 4,
+      "total_deletions": 0,
+      "total_changed_lines": 4,
+      "unknown_line_count": 0,
+      "first_merged_at": "2026-07-25T07:57:13Z",
+      "latest_merged_at": "2026-07-25T07:57:13Z"
+    },
+    {
+      "org": "cardano",
+      "project": "cardano-governance-voting-tool",
       "user": "mpizenberg",
       "avatar_url": "https://avatars.githubusercontent.com/u/2905865?v=4",
       "merged_pr_count": 102,
@@ -210129,13 +210155,13 @@
       "project": "cardano-wallet",
       "user": "paolino",
       "avatar_url": "https://avatars.githubusercontent.com/u/56350?v=4",
-      "merged_pr_count": 562,
-      "total_additions": 36842,
-      "total_deletions": 58831,
-      "total_changed_lines": 95673,
+      "merged_pr_count": 563,
+      "total_additions": 37115,
+      "total_deletions": 58833,
+      "total_changed_lines": 95948,
       "unknown_line_count": 490,
       "first_merged_at": "2022-04-26T04:07:46Z",
-      "latest_merged_at": "2026-07-25T04:47:58Z"
+      "latest_merged_at": "2026-07-25T10:03:04Z"
     },
     {
       "org": "cardano",

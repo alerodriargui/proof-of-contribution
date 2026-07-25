@@ -1,45 +1,45 @@
 {
   "schema": "dashboard-meta.v1",
-  "version": "5443c2270dd71cee",
-  "generated_at": "2026-07-25T07:18:56Z",
+  "version": "357cf07ab5ce1359",
+  "generated_at": "2026-07-25T10:31:40Z",
   "summary_path": "data/dashboard-summary.json",
-  "source_pr_count": 397281,
-  "row_count": 33529,
+  "source_pr_count": 397285,
+  "row_count": 33531,
   "source_files": [
     {
       "path": "data/ethereum_merged_prs.csv",
       "org": "ethereum",
-      "raw_pr_count": 59317,
-      "summary_row_count": 8282,
-      "last_updated": "2026-07-25T06:37:41Z"
+      "raw_pr_count": 59319,
+      "summary_row_count": 8283,
+      "last_updated": "2026-07-25T10:05:40Z"
     },
     {
       "path": "data/bitcoin_merged_prs.csv",
       "org": "bitcoin",
       "raw_pr_count": 18046,
       "summary_row_count": 1489,
-      "last_updated": "2026-07-25T06:37:48Z"
+      "last_updated": "2026-07-25T10:05:45Z"
     },
     {
       "path": "data/aave_merged_prs.csv",
       "org": "aave",
       "raw_pr_count": 5260,
       "summary_row_count": 486,
-      "last_updated": "2026-07-25T06:39:23Z"
+      "last_updated": "2026-07-25T10:06:46Z"
     },
     {
       "path": "data/uniswap_merged_prs.csv",
       "org": "uniswap",
       "raw_pr_count": 15399,
       "summary_row_count": 1557,
-      "last_updated": "2026-07-25T06:42:36Z"
+      "last_updated": "2026-07-25T10:08:52Z"
     },
     {
       "path": "data/ripple_merged_prs.csv",
       "org": "ripple",
       "raw_pr_count": 4890,
       "summary_row_count": 404,
-      "last_updated": "2026-07-25T06:44:08Z"
+      "last_updated": "2026-07-25T10:09:52Z"
     },
     {
       "path": "data/bnb_merged_prs.csv",
@@ -72,8 +72,8 @@
     {
       "path": "data/cardano_merged_prs.csv",
       "org": "cardano",
-      "raw_pr_count": 34111,
-      "summary_row_count": 3367,
+      "raw_pr_count": 34113,
+      "summary_row_count": 3368,
       "last_updated": null
     },
     {
@@ -81,7 +81,7 @@
       "org": "stellar",
       "raw_pr_count": 28082,
       "summary_row_count": 1936,
-      "last_updated": "2026-07-25T06:55:43Z"
+      "last_updated": "2026-07-25T10:17:00Z"
     },
     {
       "path": "data/link_merged_prs.csv",
@@ -123,7 +123,7 @@
       "org": "near",
       "raw_pr_count": 28773,
       "summary_row_count": 2487,
-      "last_updated": "2026-07-25T07:16:07Z"
+      "last_updated": "2026-07-25T10:29:53Z"
     },
     {
       "path": "data/sui_merged_prs.csv",
