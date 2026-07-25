@@ -1,4 +1,8 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,ts-sdks,hayes-mysten,https://avatars.githubusercontent.com/u/135670682?v=4,1171,Fix CoinWithBalance cleanup before Random calls,2026-07-25T02:19:09Z,2026-07-25,https://github.com/MystenLabs/ts-sdks/pull/1171,358,295,653
+MystenLabs,sui,mwtian,https://avatars.githubusercontent.com/u/81660174?v=4,27440,[consensus] wait for canceled task futures to drop before DagState leak check,2026-07-25T01:48:25Z,2026-07-25,https://github.com/MystenLabs/sui/pull/27440,15,2,17
+MystenLabs,nautilus,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,35,[nautilus] Ship allowed_endpoints.yaml into the enclave image so health_check works,2026-07-25T00:45:57Z,2026-07-25,https://github.com/MystenLabs/nautilus/pull/35,24,1,25
+MystenLabs,hashi,0xsiddharthks,https://avatars.githubusercontent.com/u/137832435?v=4,889,[withdrawals] Fix CPFP transactions,2026-07-25T00:14:57Z,2026-07-25,https://github.com/MystenLabs/hashi/pull/889,510,57,567
 MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27304,[sui-framework] Add `get_*` macros to `sui::scratch`,2026-07-24T22:51:47Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27304,977,15,992
 MystenLabs,sui,tnowacki,https://avatars.githubusercontent.com/u/1753366?v=4,27373,[hardening][sui-framework] Harden owner tracking for derived objects and dynamic fields,2026-07-24T22:13:35Z,2026-07-24,https://github.com/MystenLabs/sui/pull/27373,123,33,156
 MystenLabs,hashi,dlukegordon,https://avatars.githubusercontent.com/u/4381657?v=4,887,Reduce withdrawal batch cap to 40,2026-07-24T21:37:03Z,2026-07-24,https://github.com/MystenLabs/hashi/pull/887,59,68,127

@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "54fbdd4ddf320c24",
-  "generated_at": "2026-07-24T23:58:42Z",
-  "source_pr_count": 397271,
+  "version": "826ea9f5117b541e",
+  "generated_at": "2026-07-25T04:06:30Z",
+  "source_pr_count": 397277,
   "row_count": 33529,
   "rows": [
     {
@@ -371498,13 +371498,13 @@
       "project": "codegenie",
       "user": "pkieltyka",
       "avatar_url": "https://avatars.githubusercontent.com/u/18831?v=4",
-      "merged_pr_count": 7,
-      "total_additions": 16723,
-      "total_deletions": 3205,
-      "total_changed_lines": 19928,
+      "merged_pr_count": 8,
+      "total_additions": 28113,
+      "total_deletions": 3853,
+      "total_changed_lines": 31966,
       "unknown_line_count": 0,
       "first_merged_at": "2026-06-23T00:15:12Z",
-      "latest_merged_at": "2026-07-23T15:36:22Z"
+      "latest_merged_at": "2026-07-25T00:44:41Z"
     },
     {
       "org": "polygon",
@@ -401853,13 +401853,13 @@
       "project": "near-jsonrpc-client-py",
       "user": "hosseinkarami-dev",
       "avatar_url": "https://avatars.githubusercontent.com/u/49790581?v=4",
-      "merged_pr_count": 83,
-      "total_additions": 297543,
-      "total_deletions": 26910,
-      "total_changed_lines": 324453,
+      "merged_pr_count": 84,
+      "total_additions": 299721,
+      "total_deletions": 29088,
+      "total_changed_lines": 328809,
       "unknown_line_count": 0,
       "first_merged_at": "2025-12-31T17:00:16Z",
-      "latest_merged_at": "2026-07-23T02:28:11Z"
+      "latest_merged_at": "2026-07-25T02:23:57Z"
     },
     {
       "org": "near",
@@ -420469,13 +420469,13 @@
       "project": "hashi",
       "user": "0xsiddharthks",
       "avatar_url": "https://avatars.githubusercontent.com/u/137832435?v=4",
-      "merged_pr_count": 100,
-      "total_additions": 6277,
-      "total_deletions": 1507,
-      "total_changed_lines": 7784,
+      "merged_pr_count": 101,
+      "total_additions": 6787,
+      "total_deletions": 1564,
+      "total_changed_lines": 8351,
       "unknown_line_count": 73,
       "first_merged_at": "2026-02-10T16:36:19Z",
-      "latest_merged_at": "2026-07-20T23:35:41Z"
+      "latest_merged_at": "2026-07-25T00:14:57Z"
     },
     {
       "org": "sui",
@@ -423199,13 +423199,13 @@
       "project": "nautilus",
       "user": "mdgeorge4153",
       "avatar_url": "https://avatars.githubusercontent.com/u/1286449?v=4",
-      "merged_pr_count": 2,
-      "total_additions": 110,
-      "total_deletions": 14,
-      "total_changed_lines": 124,
+      "merged_pr_count": 3,
+      "total_additions": 134,
+      "total_deletions": 15,
+      "total_changed_lines": 149,
       "unknown_line_count": 0,
       "first_merged_at": "2026-07-22T07:42:13Z",
-      "latest_merged_at": "2026-07-22T08:48:39Z"
+      "latest_merged_at": "2026-07-25T00:45:57Z"
     },
     {
       "org": "sui",
@@ -427879,13 +427879,13 @@
       "project": "sui",
       "user": "mwtian",
       "avatar_url": "https://avatars.githubusercontent.com/u/81660174?v=4",
-      "merged_pr_count": 709,
-      "total_additions": 5715,
-      "total_deletions": 967,
-      "total_changed_lines": 6682,
+      "merged_pr_count": 710,
+      "total_additions": 5730,
+      "total_deletions": 969,
+      "total_changed_lines": 6699,
       "unknown_line_count": 693,
       "first_merged_at": "2022-07-27T18:11:33Z",
-      "latest_merged_at": "2026-07-24T17:06:58Z"
+      "latest_merged_at": "2026-07-25T01:48:25Z"
     },
     {
       "org": "sui",
@@ -433079,13 +433079,13 @@
       "project": "ts-sdks",
       "user": "hayes-mysten",
       "avatar_url": "https://avatars.githubusercontent.com/u/135670682?v=4",
-      "merged_pr_count": 317,
-      "total_additions": 32530,
-      "total_deletions": 10488,
-      "total_changed_lines": 43018,
+      "merged_pr_count": 318,
+      "total_additions": 32888,
+      "total_deletions": 10783,
+      "total_changed_lines": 43671,
       "unknown_line_count": 269,
       "first_merged_at": "2025-01-07T20:25:38Z",
-      "latest_merged_at": "2026-07-21T16:51:16Z"
+      "latest_merged_at": "2026-07-25T02:19:09Z"
     },
     {
       "org": "sui",
