@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+MystenLabs,ts-sdks,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,1156,Version Packages,2026-07-25T06:29:40Z,2026-07-25,https://github.com/MystenLabs/ts-sdks/pull/1156,159,75,234
 MystenLabs,ts-sdks,hayes-mysten,https://avatars.githubusercontent.com/u/135670682?v=4,1171,Fix CoinWithBalance cleanup before Random calls,2026-07-25T02:19:09Z,2026-07-25,https://github.com/MystenLabs/ts-sdks/pull/1171,358,295,653
 MystenLabs,sui,mwtian,https://avatars.githubusercontent.com/u/81660174?v=4,27440,[consensus] wait for canceled task futures to drop before DagState leak check,2026-07-25T01:48:25Z,2026-07-25,https://github.com/MystenLabs/sui/pull/27440,15,2,17
 MystenLabs,nautilus,mdgeorge4153,https://avatars.githubusercontent.com/u/1286449?v=4,35,[nautilus] Ship allowed_endpoints.yaml into the enclave image so health_check works,2026-07-25T00:45:57Z,2026-07-25,https://github.com/MystenLabs/nautilus/pull/35,24,1,25

@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "826ea9f5117b541e",
-  "generated_at": "2026-07-25T04:06:30Z",
-  "source_pr_count": 397277,
+  "version": "5443c2270dd71cee",
+  "generated_at": "2026-07-25T07:18:56Z",
+  "source_pr_count": 397281,
   "row_count": 33529,
   "rows": [
     {
@@ -191149,13 +191149,13 @@
       "project": "cardano-node-antithesis",
       "user": "paolino",
       "avatar_url": "https://avatars.githubusercontent.com/u/56350?v=4",
-      "merged_pr_count": 92,
-      "total_additions": 47288,
-      "total_deletions": 34143,
-      "total_changed_lines": 81431,
+      "merged_pr_count": 94,
+      "total_additions": 47304,
+      "total_deletions": 34167,
+      "total_changed_lines": 81471,
       "unknown_line_count": 0,
       "first_merged_at": "2025-11-21T20:56:02Z",
-      "latest_merged_at": "2026-07-22T19:28:10Z"
+      "latest_merged_at": "2026-07-25T05:13:22Z"
     },
     {
       "org": "cardano",
@@ -210129,13 +210129,13 @@
       "project": "cardano-wallet",
       "user": "paolino",
       "avatar_url": "https://avatars.githubusercontent.com/u/56350?v=4",
-      "merged_pr_count": 561,
-      "total_additions": 36840,
-      "total_deletions": 58827,
-      "total_changed_lines": 95667,
+      "merged_pr_count": 562,
+      "total_additions": 36842,
+      "total_deletions": 58831,
+      "total_changed_lines": 95673,
       "unknown_line_count": 490,
       "first_merged_at": "2022-04-26T04:07:46Z",
-      "latest_merged_at": "2026-07-24T13:08:10Z"
+      "latest_merged_at": "2026-07-25T04:47:58Z"
     },
     {
       "org": "cardano",
@@ -433053,13 +433053,13 @@
       "project": "ts-sdks",
       "user": "github-actions[bot]",
       "avatar_url": "https://avatars.githubusercontent.com/in/15368?v=4",
-      "merged_pr_count": 233,
-      "total_additions": 3573,
-      "total_deletions": 1203,
-      "total_changed_lines": 4776,
+      "merged_pr_count": 234,
+      "total_additions": 3732,
+      "total_deletions": 1278,
+      "total_changed_lines": 5010,
       "unknown_line_count": 200,
       "first_merged_at": "2025-01-09T20:49:47Z",
-      "latest_merged_at": "2026-07-21T16:52:42Z"
+      "latest_merged_at": "2026-07-25T06:29:40Z"
     },
     {
       "org": "sui",
