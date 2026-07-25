@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "831c61cf93f56a26",
-  "generated_at": "2026-07-25T17:54:49Z",
-  "source_pr_count": 397298,
+  "version": "06d7c46cfa3f63ae",
+  "generated_at": "2026-07-25T20:06:32Z",
+  "source_pr_count": 397299,
   "row_count": 33531,
   "rows": [
     {
@@ -210155,13 +210155,13 @@
       "project": "cardano-wallet",
       "user": "paolino",
       "avatar_url": "https://avatars.githubusercontent.com/u/56350?v=4",
-      "merged_pr_count": 563,
-      "total_additions": 37115,
-      "total_deletions": 58833,
-      "total_changed_lines": 95948,
+      "merged_pr_count": 564,
+      "total_additions": 37288,
+      "total_deletions": 58835,
+      "total_changed_lines": 96123,
       "unknown_line_count": 490,
       "first_merged_at": "2022-04-26T04:07:46Z",
-      "latest_merged_at": "2026-07-25T10:03:04Z"
+      "latest_merged_at": "2026-07-25T18:23:12Z"
     },
     {
       "org": "cardano",
