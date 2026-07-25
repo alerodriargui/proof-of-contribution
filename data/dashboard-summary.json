@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "357cf07ab5ce1359",
-  "generated_at": "2026-07-25T10:31:40Z",
-  "source_pr_count": 397285,
+  "version": "bff12c502663f653",
+  "generated_at": "2026-07-25T12:10:30Z",
+  "source_pr_count": 397286,
   "row_count": 33531,
   "rows": [
     {
@@ -113955,13 +113955,13 @@
       "project": "bitcoin",
       "user": "ajtowns",
       "avatar_url": "https://avatars.githubusercontent.com/u/127186?v=4",
-      "merged_pr_count": 93,
-      "total_additions": 549,
-      "total_deletions": 420,
-      "total_changed_lines": 969,
+      "merged_pr_count": 94,
+      "total_additions": 1256,
+      "total_deletions": 540,
+      "total_changed_lines": 1796,
       "unknown_line_count": 92,
       "first_merged_at": "2016-09-09T06:59:00Z",
-      "latest_merged_at": "2026-06-10T20:40:59Z"
+      "latest_merged_at": "2026-07-25T10:17:02Z"
     },
     {
       "org": "bitcoin",
