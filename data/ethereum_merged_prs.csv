@@ -1,4 +1,9 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,EIPs,wemeetagain,https://avatars.githubusercontent.com/u/1348242?v=4,11871,Add EIP: Align Checkpoint with Epoch Boundary Block,2026-07-25T15:18:47Z,2026-07-25,https://github.com/ethereum/EIPs/pull/11871,110,0,110
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5478,Remove inline tables of contents from the documentation site,2026-07-25T14:53:29Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5478,73,0,73
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5477,Fix website navigation nits,2026-07-25T14:33:54Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5477,38,6,44
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5475,Fix broken links,2026-07-25T14:29:17Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5475,6,6,12
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5476,Remove links that do not resolve on the documentation site,2026-07-25T14:27:08Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5476,22,28,50
 ethereum,protocol-security,dependabot[bot],https://avatars.githubusercontent.com/in/29110?v=4,48,Bump flatted from 3.3.1 to 3.4.2 in the npm_and_yarn group across 1 directory,2026-07-25T13:21:11Z,2026-07-25,https://github.com/ethereum/protocol-security/pull/48,3,3,6
 ethereum,EIPs,gcolvin,https://avatars.githubusercontent.com/u/16827129?v=4,12015,"Update EIP-7979: Performance measurements, reference implementation",2026-07-25T09:32:13Z,2026-07-25,https://github.com/ethereum/EIPs/pull/12015,25,22,47
 ethereum,protocol-security,moodmosaic,https://avatars.githubusercontent.com/u/287532?v=4,49,Remove former team members from team.tsx,2026-07-25T08:11:02Z,2026-07-25,https://github.com/ethereum/protocol-security/pull/49,0,31,31

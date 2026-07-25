@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "baef737b805f9ec3",
-  "generated_at": "2026-07-25T14:28:55Z",
-  "source_pr_count": 397289,
+  "version": "14cb11fe73948656",
+  "generated_at": "2026-07-25T16:01:48Z",
+  "source_pr_count": 397296,
   "row_count": 33531,
   "rows": [
     {
@@ -7667,13 +7667,13 @@
       "project": "consensus-specs",
       "user": "jtraglia",
       "avatar_url": "https://avatars.githubusercontent.com/u/95511699?v=4",
-      "merged_pr_count": 507,
-      "total_additions": 7943,
-      "total_deletions": 10128,
-      "total_changed_lines": 18071,
+      "merged_pr_count": 511,
+      "total_additions": 8082,
+      "total_deletions": 10168,
+      "total_changed_lines": 18250,
       "unknown_line_count": 463,
       "first_merged_at": "2022-03-23T10:05:55Z",
-      "latest_merged_at": "2026-07-24T01:31:21Z"
+      "latest_merged_at": "2026-07-25T14:53:29Z"
     },
     {
       "org": "ethereum",
@@ -22552,13 +22552,13 @@
       "project": "EIPs",
       "user": "wemeetagain",
       "avatar_url": "https://avatars.githubusercontent.com/u/1348242?v=4",
-      "merged_pr_count": 2,
-      "total_additions": 187,
+      "merged_pr_count": 3,
+      "total_additions": 297,
       "total_deletions": 0,
-      "total_changed_lines": 187,
+      "total_changed_lines": 297,
       "unknown_line_count": 1,
       "first_merged_at": "2024-05-16T19:25:05Z",
-      "latest_merged_at": "2026-07-03T00:35:52Z"
+      "latest_merged_at": "2026-07-25T15:18:47Z"
     },
     {
       "org": "ethereum",
@@ -371524,13 +371524,13 @@
       "project": "codegenie",
       "user": "pkieltyka",
       "avatar_url": "https://avatars.githubusercontent.com/u/18831?v=4",
-      "merged_pr_count": 8,
-      "total_additions": 28113,
-      "total_deletions": 3853,
-      "total_changed_lines": 31966,
+      "merged_pr_count": 10,
+      "total_additions": 28268,
+      "total_deletions": 3997,
+      "total_changed_lines": 32265,
       "unknown_line_count": 0,
       "first_merged_at": "2026-06-23T00:15:12Z",
-      "latest_merged_at": "2026-07-25T00:44:41Z"
+      "latest_merged_at": "2026-07-25T15:09:23Z"
     },
     {
       "org": "polygon",

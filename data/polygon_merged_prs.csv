@@ -1,4 +1,6 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+0xPolygon,codegenie,pkieltyka,https://avatars.githubusercontent.com/u/18831?v=4,13,update gh action examples to use opus-5 model,2026-07-25T15:09:23Z,2026-07-25,https://github.com/0xPolygon/codegenie/pull/13,149,138,287
+0xPolygon,codegenie,pkieltyka,https://avatars.githubusercontent.com/u/18831?v=4,12,upgrade pi with opus-5,2026-07-25T14:46:52Z,2026-07-25,https://github.com/0xPolygon/codegenie/pull/12,6,6,12
 0xPolygon,codegenie,pkieltyka,https://avatars.githubusercontent.com/u/18831?v=4,9,additional lang support and improvements,2026-07-25T00:44:41Z,2026-07-25,https://github.com/0xPolygon/codegenie/pull/9,11390,648,12038
 0xPolygon,codegenie,pratikspatil024,https://avatars.githubusercontent.com/u/45988062?v=4,10,fix(github): tolerate Actions installation tokens in gh preflight,2026-07-24T18:42:44Z,2026-07-24,https://github.com/0xPolygon/codegenie/pull/10,56,1,57
 0xPolygon,bor,pratikspatil024,https://avatars.githubusercontent.com/u/45988062?v=4,2324,".github: harden codegenie review (key preflight, CLAUDE_API_KEY, config)",2026-07-24T15:57:21Z,2026-07-24,https://github.com/0xPolygon/bor/pull/2324,97,2,99
