@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+stellar,freighter-mobile,CassioMG,https://avatars.githubusercontent.com/u/3228151?v=4,945,[Home refresh] Collapsible 2-column grid collections,2026-07-25T16:14:09Z,2026-07-25,https://github.com/stellar/freighter-mobile/pull/945,594,117,711
 stellar,freighter-mobile,CassioMG,https://avatars.githubusercontent.com/u/3228151?v=4,950,(Android) Add a per-origin camera/microphone prompt to the in-app browser,2026-07-24T22:59:07Z,2026-07-24,https://github.com/stellar/freighter-mobile/pull/950,219,0,219
 stellar,stellar-cli-docker,fnando,https://avatars.githubusercontent.com/u/3009?v=4,33,Resolve alias target for releases on older distros,2026-07-24T22:55:38Z,2026-07-24,https://github.com/stellar/stellar-cli-docker/pull/33,46,10,56
 stellar,stellar-cli-docker,github-actions[bot],https://avatars.githubusercontent.com/in/15368?v=4,34,Release stellar-cli 25.2.0,2026-07-24T22:40:44Z,2026-07-24,https://github.com/stellar/stellar-cli-docker/pull/34,7,0,7

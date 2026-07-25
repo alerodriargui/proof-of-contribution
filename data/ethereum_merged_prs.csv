@@ -1,4 +1,5 @@
 org,proyecto,usuario,avatar_url,pr_number,pr_title,merged_at,merged_date,url,additions,deletions,changed_lines
+ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5479,Switch the website from MkDocs to Zensical,2026-07-25T16:31:36Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5479,237,567,804
 ethereum,EIPs,wemeetagain,https://avatars.githubusercontent.com/u/1348242?v=4,11871,Add EIP: Align Checkpoint with Epoch Boundary Block,2026-07-25T15:18:47Z,2026-07-25,https://github.com/ethereum/EIPs/pull/11871,110,0,110
 ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5478,Remove inline tables of contents from the documentation site,2026-07-25T14:53:29Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5478,73,0,73
 ethereum,consensus-specs,jtraglia,https://avatars.githubusercontent.com/u/95511699?v=4,5477,Fix website navigation nits,2026-07-25T14:33:54Z,2026-07-25,https://github.com/ethereum/consensus-specs/pull/5477,38,6,44

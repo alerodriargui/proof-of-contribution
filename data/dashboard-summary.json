@@ -1,8 +1,8 @@
 {
   "schema": "dashboard-summary.v1",
-  "version": "14cb11fe73948656",
-  "generated_at": "2026-07-25T16:01:48Z",
-  "source_pr_count": 397296,
+  "version": "831c61cf93f56a26",
+  "generated_at": "2026-07-25T17:54:49Z",
+  "source_pr_count": 397298,
   "row_count": 33531,
   "rows": [
     {
@@ -7667,13 +7667,13 @@
       "project": "consensus-specs",
       "user": "jtraglia",
       "avatar_url": "https://avatars.githubusercontent.com/u/95511699?v=4",
-      "merged_pr_count": 511,
-      "total_additions": 8082,
-      "total_deletions": 10168,
-      "total_changed_lines": 18250,
+      "merged_pr_count": 512,
+      "total_additions": 8319,
+      "total_deletions": 10735,
+      "total_changed_lines": 19054,
       "unknown_line_count": 463,
       "first_merged_at": "2022-03-23T10:05:55Z",
-      "latest_merged_at": "2026-07-25T14:53:29Z"
+      "latest_merged_at": "2026-07-25T16:31:36Z"
     },
     {
       "org": "ethereum",
@@ -236454,13 +236454,13 @@
       "project": "freighter-mobile",
       "user": "CassioMG",
       "avatar_url": "https://avatars.githubusercontent.com/u/3228151?v=4",
-      "merged_pr_count": 186,
-      "total_additions": 31659,
-      "total_deletions": 6191,
-      "total_changed_lines": 37850,
+      "merged_pr_count": 187,
+      "total_additions": 32253,
+      "total_deletions": 6308,
+      "total_changed_lines": 38561,
       "unknown_line_count": 153,
       "first_merged_at": "2025-02-10T21:48:23Z",
-      "latest_merged_at": "2026-07-24T22:59:07Z"
+      "latest_merged_at": "2026-07-25T16:14:09Z"
     },
     {
       "org": "stellar",
